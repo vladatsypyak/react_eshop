@@ -1,0 +1,39 @@
+.header {
+  background-color: #756856;
+  .catalogue {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .catalogue_text {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+  }
+
+  .header_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    .icon {
+      width: 50px;
+      height: 50px;
+
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
