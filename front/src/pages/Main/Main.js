@@ -8,5 +8,6 @@ export const Main = () => {
         <Slider/>
         <Categories/>
 
+
     </div>
 }

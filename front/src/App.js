@@ -1,14 +1,16 @@
 import {Header} from "./components/Header/Header";
 import {Main} from "./pages/Main/Main";
+import {Footer} from "./components/Footer/Footer";
 
 function App() {
-  return (
-    <div className="App">
+    return (
+        <div className="App">
 
-     <Header/>
-        <Main/>
-    </div>
-  );
+            <Header/>
+            <Main/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
