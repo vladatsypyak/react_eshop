@@ -39,9 +39,6 @@ function createLoad(req, res, next) {
 
 async function getCategories(req, res) {
     const categories = await Category.find()
-    // const log = new Log({reqBody: trucks[0]._id, function: "getTrucksInfo"}
-    // )
-    // await log.save()
     if (!categories) {
         res.status(500).send({
             message: "trucks were not found"
@@ -52,7 +49,24 @@ async function getCategories(req, res) {
         categories,
     })
 }
+
+async function getCategoryByValue(req, res) {
+    console.log(req.params)
+    const {type} = req.params;
+
+    const category = await Category.findOne({type: type})
+    console.log(category)
+    if (!category) {
+        res.status(500).send({
+            message: "category was not found"
+        });
+    }
+    res.send({
+        category,
+    })
+}
 module.exports = {
     createLoad,
-    getCategories
+    getCategories,
+    getCategoryByValue
 };
