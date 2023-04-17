@@ -35,7 +35,6 @@ export const Categories = () => {
 
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categories.categories)
-    console.log(categories)
 
     const getCategories = async () => {
         dispatch(fetchCategories())
@@ -46,7 +45,7 @@ export const Categories = () => {
         getCategories()
     }, [])
     return <div className={s.categories}>
-        {  categories.map((el) => {
+        {categories.map((el) => {
             return <CategoriesItem imageUrl={el.imageUrl} category={el.value}/>
         })}
     </div>

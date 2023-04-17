@@ -10,6 +10,10 @@ const categorySchema = mongoose.Schema(
             type: String,
             required: true
         },
+        iconUrl: {
+            type: String,
+            required: true
+        },
 
         logs: {
             type : {

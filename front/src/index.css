@@ -20,3 +20,8 @@ code {
   max-width: 1600px;
   margin: 0 auto;
 }
+button{
+  outline: none;
+  border: none;
+  background: none;
+}

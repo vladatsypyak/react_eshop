@@ -120,6 +120,27 @@ export const GlobalSvgSelector = ({id}) => {
                 </svg>
 
             )
+        case "categorie_arrow" :
+            return (
+
+                <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="#CBCBCB"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="#CBCBCB"/>
+                </svg>
+
+            )
         default:
             return null;
     }
