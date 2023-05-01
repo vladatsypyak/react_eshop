@@ -3,6 +3,7 @@ const {Category} = require('../models/Categories');
 
 const jwt = require("jsonwebtoken");
 const {now} = require("mongoose");
+const {Item} = require("../models/Items");
 require('dotenv').config();
 
 
@@ -65,8 +66,24 @@ async function getCategoryByValue(req, res) {
         category,
     })
 }
+async function getItemsByCategory(req, res) {
+    console.log(req.params)
+    const {category} = req.params;
+
+    const items = await Item.find({category: category})
+    console.log(items)
+    if (!items) {
+        res.status(500).send({
+            message: "category was not found"
+        });
+    }
+    res.send({
+        items,
+    })
+}
 module.exports = {
     createLoad,
     getCategories,
-    getCategoryByValue
+    getCategoryByValue,
+    getItemsByCategory
 };

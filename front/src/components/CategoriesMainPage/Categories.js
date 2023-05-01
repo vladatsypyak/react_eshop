@@ -46,7 +46,7 @@ export const Categories = () => {
     }, [])
     return <div className={s.categories}>
         {categories.map((el) => {
-            return <CategoriesItem imageUrl={el.imageUrl} category={el.type}/>
+            return <CategoriesItem imageUrl={el.imageUrl} name={el.value} category={el.type}/>
         })}
     </div>
 }

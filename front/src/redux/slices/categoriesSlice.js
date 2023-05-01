@@ -2,16 +2,18 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatus', async (params) => {
-    console.log(221)
-
     const {data} = await axios.get(`http://localhost:8080/api/app/categories`)
-    console.log(data)
-    console.log(5)
     return data.categories
+})
+export const fetchCategoryByType = createAsyncThunk("categories/getCategory", async (params)=>{
+    const {data} = await axios.get(`http://localhost:8080/api/app/categories/${params}`)
+    console.log(data)
+    return data.category
 })
 
 const initialState = {
-   categories: []
+    categories: [],
+    currentCategory: {}
 }
 
 export const categoriesSlice = createSlice({
@@ -21,27 +23,28 @@ export const categoriesSlice = createSlice({
         setCategories: (state, action) => {
             state.categories = action.payload
         },
+
     },
-    extraReducers: (builder)=> {
-
-        builder.addCase(fetchCategories.fulfilled, (state, action)=>{
-            console.log(5)
+    extraReducers: (builder) => {
+        builder.addCase(fetchCategories.fulfilled, (state, action) => {
             state.categories = action.payload
-
-
         });
-        builder.addCase(fetchCategories.pending, (state, action)=>{
-            state.categories = []
-
-
-        });
-        builder.addCase(fetchCategories.rejected, (state, action)=>{
+        builder.addCase(fetchCategories.pending, (state, action) => {
             state.categories = []
         });
+        builder.addCase(fetchCategories.rejected, (state, action) => {
+            state.categories = []
+        });
+
+        builder.addCase(fetchCategoryByType.fulfilled, (state, action) => {
+            console.log(action)
+            state.currentCategory = action.payload
+        });
+
     },
 
 })
-export const selectCategories = (state)=> state.categories
+export const selectCategories = (state) => state.categories
 
 export const {setCategories} = categoriesSlice.actions
 

@@ -1,0 +1,70 @@
+[
+  {
+    "category": "tea",
+    "imgUrl": "https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/1/2196369.jpg",
+    "price": "1871",
+    "rating": "4.7",
+    "isInStock": true,
+    "title": "Чорний чай Newby Ерл Грей Екзотик з/б 75 г (112070)",
+    "characteristics": [
+      {
+        "name": "ВИД ЧАЮ",
+        "value": "чорний, купаж"
+      },
+      {
+        "name": "ТИП ЧАЮ",
+        "value": "розсипний"
+      },
+      {
+        "name": "СМАК",
+        "value": "гіркий"
+      },
+      {
+        "name": "ДОБАВКА",
+        "value": "бергамот, волошка, троянда"
+      },
+      {
+        "name": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "name": "ВИРОБНИК",
+        "value": "ВИРОБНИК"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/1/2196369.jpg",
+    "price": "1871",
+    "rating": "4.7",
+    "isInStock": true,
+    "title": "Чорний чай Newby Ерл Грей Екзотик з/б 75 г (112070)",
+    "characteristics": [
+      {
+        "name": "ВИД ЧАЮ",
+        "value": "чорний, купаж"
+      },
+      {
+        "name": "ТИП ЧАЮ",
+        "value": "розсипний"
+      },
+      {
+        "name": "СМАК",
+        "value": "гіркий"
+      },
+      {
+        "name": "ДОБАВКА",
+        "value": "бергамот, волошка, троянда"
+      },
+      {
+        "name": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "name": "ВИРОБНИК",
+        "value": "ВИРОБНИК"
+      }
+    ]
+  }
+]
