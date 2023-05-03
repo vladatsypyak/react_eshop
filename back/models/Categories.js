@@ -18,6 +18,10 @@ const categorySchema = mongoose.Schema(
             type: String,
             required: true
         },
+        filters: {
+            type: Array,
+            required: true
+        },
 
         logs: {
             type : {

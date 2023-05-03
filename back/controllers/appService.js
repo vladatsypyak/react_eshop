@@ -7,7 +7,6 @@ const {Item} = require("../models/Items");
 require('dotenv').config();
 
 
-
 function getTokenPayload(req) {
     const {authorization} = req.headers;
     const [, token] = authorization.split(' ');
@@ -66,12 +65,13 @@ async function getCategoryByValue(req, res) {
         category,
     })
 }
+
 async function getItemsByCategory(req, res) {
     console.log(req.params)
     const {category} = req.params;
 
     const items = await Item.find({category: category})
-    console.log(items)
+    console.log("here" +items)
     if (!items) {
         res.status(500).send({
             message: "category was not found"
@@ -81,9 +81,60 @@ async function getItemsByCategory(req, res) {
         items,
     })
 }
+
+async function getCategoryFilters(req, res) {
+    const {category} = req.params;
+    const currentCategory = await Category.findOne({type: category})
+    console.log(currentCategory)
+    const filters =  currentCategory.filters;
+    console.log(filters)
+
+  // let test =  filters.map( el => {
+  //     console.log(el.value)
+  //     Item.find({category: el.value}).
+  //     then(res => console.log(res))
+  //
+  //       // const filterValues = items.map(item=> item[el.value])
+  //       return
+  //   })
+  //   console.log(test)
+
+    if (!currentCategory) {
+        res.status(500).send({
+            message: "currentCategory was not found"
+        });
+    }
+    res.send(
+        filters
+    )
+}
+async function getFilterValues(req, res) {
+    console.log(req.params)
+    const {category, filter} = req.params;
+    const items = await Item.find({category: category})
+    console.log(items)
+   let filterValues = items.map(obj=> {
+           return obj.characteristics.find((el)=> el.name === filter).value
+
+       }
+   )
+    let uniqueFilterValues =[...new Set(filterValues)]
+
+    console.log(filterValues)
+    if (!items) {
+        res.status(500).send({
+            message: "category was not found"
+        });
+    }
+    res.send(
+        uniqueFilterValues,
+    )
+}
 module.exports = {
     createLoad,
     getCategories,
     getCategoryByValue,
-    getItemsByCategory
+    getItemsByCategory,
+    getCategoryFilters,
+    getFilterValues
 };
