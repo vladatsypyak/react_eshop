@@ -6,6 +6,7 @@ import heart from "../../assets/heart_red.png"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {Search} from "./Search/Search";
 import {Catalogue} from "./Catalogue";
+import {Link} from "react-router-dom";
 
 export const Header = () => {
     const btnRef = React.useRef()
@@ -18,9 +19,11 @@ export const Header = () => {
     }
     return <header className={s.header}>
         <div className={`container ${s.header_container}`}>
-            <div className={s.logo}>
-                <img src={logo} alt=""/>
-            </div>
+            <Link to={""}>
+                <div className={s.logo}>
+                    <img src={logo} alt=""/>
+                </div>
+            </Link>
             <button ref={btnRef} onClick={onCatalogueBtnClick} className={s.catalogueBtn}>
                 <GlobalSvgSelector id="catalogue_icon"/>
                 <p className={s.catalogue_text}>Каталог</p>
