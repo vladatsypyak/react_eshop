@@ -1,0 +1,75 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 329px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(122, 122, 122, 0.25);
+  border-radius: 15px;
+  padding: 20px;
+
+  img {
+    width: 262px;
+    user-select: none;
+  }
+
+  .like {
+    width: 40px;
+    height: 40px;
+    align-self: flex-end;
+  }
+
+  .star {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.items_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 30px;
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-end;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+
+  color: #767676;
+}
+
+.card_btn {
+  align-self: flex-end;
+  width: 44px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #FD0000;
+  border-radius: 5px;
+
+  svg {
+    width: 30px;
+    height: 25px;
+  }
+
+}
+.title{
+  margin-bottom: 20px;
+}
+.flex_wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.code{
+  font-size: 12px;
+  line-height: 15px;
+  color: #A5A5A5;
+}

@@ -5,6 +5,7 @@ import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {fetchItems} from "../../redux/slices/itemsSlice";
 import {Card} from "./Card/Card";
+import s from "./items.module.scss"
 
 export const Items = () => {
     const dispatch = useDispatch()
@@ -18,8 +19,7 @@ export const Items = () => {
     }, [])
     console.log(items)
 
-    return <div className={"category"}>
-        <p>{currentCategory?.value}</p>
+    return <div className={s.items_wrap}>
         {items.map(item => {
             return <Card item={item}/>
         })}
