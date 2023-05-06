@@ -117,31 +117,11 @@ async function getFilterValues(req, res) {
 
 async function getFilteredItems(req, res) {
     const allFilters = req.query;
-
     const items = await Item.find({category: allFilters.category})
-    let filters = {}
-    for (const key in allFilters) {
-        if(key !== "category"){
-            filters[key] = allFilters[key]
-        }
-    }
-    console.log(filters)
+    let filters = Object.fromEntries(
 
-    // let filteredItems = items.filter(item => {
-    //     let isValid = true
-    //     for (const key in filters) {
-    //         let found = false
-    //         item.characteristics.forEach(el=>{
-    //             if(el.name === key && el.value === filters[key]){
-    //               found = true
-    //             }
-    //         })
-    //         if(!found){
-    //             isValid = false
-    //         }
-    //     }
-    //     return isValid
-    // })
+        Object.entries(allFilters).filter(([key]) => key !== "category")
+    );
     let filteredItems = items.filter(item =>
         Object.keys(filters).every(key =>
             item.characteristics.some(el =>
@@ -149,10 +129,6 @@ async function getFilteredItems(req, res) {
             )
         )
     );
-
-    console.log("result")
-    console.log(filteredItems)
-
     if (!filteredItems) {
         res.status(500).send({
             message: "no items"
