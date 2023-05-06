@@ -9,26 +9,31 @@ import {fetchFilters} from "../../redux/slices/filtersSlice";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const FiltersItem = ({filter}) => {
+export const FiltersItem = ({filter, filterName}) => {
+    const [values, setValues] = React.useState([])
     console.log(filter)
     const dispatch = useDispatch()
     const currentCategory = useSelector(store => store.categories.currentCategory)
     React.useEffect( () => {
         const getFilterValues =  async  ()=>{
-            console.log(currentCategory)
             const {data} = await axios.get(`http://localhost:8080/api/app/filters/${currentCategory.type}/${filter}`)
             console.log(data)
             return data
         }
-        if(filter === "country"){
-            console.log(1)
-            getFilterValues()
-        }
+
+            getFilterValues().then(res =>setValues(res))
+
 
     }, [])
 
 
     return <div className={s.filtersItem_wrap}>
-
+        <p className={s.title}>{filterName}</p>
+        {values.map(el=>{
+            return <div className={s.filter_values}>
+                <input type="checkbox"/>
+                <p>{el}</p>
+            </div>
+        })}
     </div>
 }

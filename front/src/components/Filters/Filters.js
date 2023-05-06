@@ -25,7 +25,10 @@ export const Filters = () => {
         <div className={s.price_range}></div>
         <div className={s.filters}>
             {filters.map(obj=>{
-                return <FiltersItem filter={obj.value}/>
+                if (obj.value !== "price"){
+                    return <FiltersItem filterName={obj.name} filter={obj.value}/>
+
+                }
             })}
         </div>
     </div>

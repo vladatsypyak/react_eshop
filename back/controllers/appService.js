@@ -71,7 +71,7 @@ async function getItemsByCategory(req, res) {
     const {category} = req.params;
 
     const items = await Item.find({category: category})
-    console.log("here" +items)
+    console.log("here" + items)
     if (!items) {
         res.status(500).send({
             message: "category was not found"
@@ -86,19 +86,7 @@ async function getCategoryFilters(req, res) {
     const {category} = req.params;
     const currentCategory = await Category.findOne({type: category})
     console.log(currentCategory)
-    const filters =  currentCategory.filters;
-    console.log(filters)
-
-  // let test =  filters.map( el => {
-  //     console.log(el.value)
-  //     Item.find({category: el.value}).
-  //     then(res => console.log(res))
-  //
-  //       // const filterValues = items.map(item=> item[el.value])
-  //       return
-  //   })
-  //   console.log(test)
-
+    const filters = currentCategory.filters;
     if (!currentCategory) {
         res.status(500).send({
             message: "currentCategory was not found"
@@ -108,19 +96,15 @@ async function getCategoryFilters(req, res) {
         filters
     )
 }
+
 async function getFilterValues(req, res) {
-    console.log(req.params)
     const {category, filter} = req.params;
     const items = await Item.find({category: category})
-    console.log(items)
-   let filterValues = items.map(obj=> {
-           return obj.characteristics.find((el)=> el.name === filter).value
-
-       }
-   )
-    let uniqueFilterValues =[...new Set(filterValues)]
-
-    console.log(filterValues)
+    let filterValues = items.map(obj => {
+            return obj.characteristics.find((el) => el.name === filter).value
+        }
+    )
+    let uniqueFilterValues = [...new Set(filterValues)]
     if (!items) {
         res.status(500).send({
             message: "category was not found"
@@ -130,11 +114,61 @@ async function getFilterValues(req, res) {
         uniqueFilterValues,
     )
 }
+
+async function getFilteredItems(req, res) {
+    const allFilters = req.query;
+
+    const items = await Item.find({category: allFilters.category})
+    let filters = {}
+    for (const key in allFilters) {
+        if(key !== "category"){
+            filters[key] = allFilters[key]
+        }
+    }
+    console.log(filters)
+
+    // let filteredItems = items.filter(item => {
+    //     let isValid = true
+    //     for (const key in filters) {
+    //         let found = false
+    //         item.characteristics.forEach(el=>{
+    //             if(el.name === key && el.value === filters[key]){
+    //               found = true
+    //             }
+    //         })
+    //         if(!found){
+    //             isValid = false
+    //         }
+    //     }
+    //     return isValid
+    // })
+    let filteredItems = items.filter(item =>
+        Object.keys(filters).every(key =>
+            item.characteristics.some(el =>
+                el.name === key && el.value === filters[key]
+            )
+        )
+    );
+
+    console.log("result")
+    console.log(filteredItems)
+
+    if (!filteredItems) {
+        res.status(500).send({
+            message: "no items"
+        });
+    }
+    res.send(
+        filteredItems
+    )
+}
+
 module.exports = {
     createLoad,
     getCategories,
     getCategoryByValue,
     getItemsByCategory,
     getCategoryFilters,
-    getFilterValues
+    getFilterValues,
+    getFilteredItems
 };
