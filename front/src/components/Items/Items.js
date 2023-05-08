@@ -14,10 +14,10 @@ export const Items = () => {
     const currentCategory = useSelector(store => store.categories.currentCategory)
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))
-        dispatch(fetchItems(category))
+        dispatch(fetchItems([{name: "category", value: category}]))
+
 
     }, [])
-    console.log(items)
 
     return <div className={s.items_wrap}>
         {items.map(item => {

@@ -7,7 +7,6 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatu
 })
 export const fetchCategoryByType = createAsyncThunk("categories/getCategory", async (params)=>{
     const {data} = await axios.get(`http://localhost:8080/api/app/categories/${params}`)
-    console.log(data)
     return data.category
 })
 
@@ -37,7 +36,6 @@ export const categoriesSlice = createSlice({
         });
 
         builder.addCase(fetchCategoryByType.fulfilled, (state, action) => {
-            console.log(action)
             state.currentCategory = action.payload
         });
 

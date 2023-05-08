@@ -53,9 +53,7 @@ async function getCategories(req, res) {
 async function getCategoryByValue(req, res) {
     console.log(req.params)
     const {type} = req.params;
-
     const category = await Category.findOne({type: type})
-    console.log(category)
     if (!category) {
         res.status(500).send({
             message: "category was not found"
@@ -69,9 +67,7 @@ async function getCategoryByValue(req, res) {
 async function getItemsByCategory(req, res) {
     console.log(req.params)
     const {category} = req.params;
-
     const items = await Item.find({category: category})
-    console.log("here" + items)
     if (!items) {
         res.status(500).send({
             message: "category was not found"
@@ -98,18 +94,20 @@ async function getCategoryFilters(req, res) {
 }
 
 async function getFilterValues(req, res) {
+    console.log("getfiltervalue")
     const {category, filter} = req.params;
+    console.log(filter)
     const items = await Item.find({category: category})
     let filterValues = items.map(obj => {
-            return obj.characteristics.find((el) => el.name === filter).value
+            return obj?.characteristics?.find((el) => el.name === filter).value
         }
     )
     let uniqueFilterValues = [...new Set(filterValues)]
-    if (!items) {
-        res.status(500).send({
-            message: "category was not found"
-        });
-    }
+    // if (!items) {
+    //     res.status(500).send({
+    //         message: "category was not found"
+    //     });
+    // }
     res.send(
         uniqueFilterValues,
     )
@@ -117,9 +115,10 @@ async function getFilterValues(req, res) {
 
 async function getFilteredItems(req, res) {
     const allFilters = req.query;
+    console.log("all filters")
+    console.log(allFilters)
     const items = await Item.find({category: allFilters.category})
     let filters = Object.fromEntries(
-
         Object.entries(allFilters).filter(([key]) => key !== "category")
     );
     let filteredItems = items.filter(item =>
@@ -129,6 +128,8 @@ async function getFilteredItems(req, res) {
             )
         )
     );
+    console.log("filt items")
+    console.log(filteredItems)
     if (!filteredItems) {
         res.status(500).send({
             message: "no items"
