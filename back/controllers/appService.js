@@ -94,9 +94,7 @@ async function getCategoryFilters(req, res) {
 }
 
 async function getFilterValues(req, res) {
-    console.log("getfiltervalue")
     const {category, filter} = req.params;
-    console.log(filter)
     const items = await Item.find({category: category})
     let filterValues = items.map(obj => {
             return obj?.characteristics?.find((el) => el.name === filter).value
@@ -115,8 +113,6 @@ async function getFilterValues(req, res) {
 
 async function getFilteredItems(req, res) {
     const allFilters = req.query;
-    console.log("all filters")
-    console.log(allFilters)
     const items = await Item.find({category: allFilters.category})
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category")
@@ -128,8 +124,6 @@ async function getFilteredItems(req, res) {
             )
         )
     );
-    console.log("filt items")
-    console.log(filteredItems)
     if (!filteredItems) {
         res.status(500).send({
             message: "no items"
@@ -140,6 +134,20 @@ async function getFilteredItems(req, res) {
     )
 }
 
+async function getItemsByTitle(req, res) {
+    const title = req.query.title;
+    console.log(title)
+    const items = await Item.find({title: { $regex: title, $options: "i" }})
+    console.log(items)
+    if (!items) {
+        res.status(500).send({
+            message: "no items"
+        });
+    }
+    res.send(
+        items
+    )
+}
 module.exports = {
     createLoad,
     getCategories,
@@ -147,5 +155,6 @@ module.exports = {
     getItemsByCategory,
     getCategoryFilters,
     getFilterValues,
-    getFilteredItems
+    getFilteredItems,
+    getItemsByTitle
 };
