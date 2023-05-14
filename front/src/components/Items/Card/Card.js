@@ -6,12 +6,20 @@ import like from "../../../assets/card_like_icon.png"
 import star from "../../../assets/star .png"
 
 export const Card = ({item}) => {
+    const [liked, setLiked] = React.useState(false)
+    const [hovered, setHovered] = React.useState(false)
+    function onLikeClick() {
+    setLiked(!liked)
+    }
 
-    return <div className={s.card}>
-     <div className={s.flex_wrap}>
-         <p className={s.code}>Код товару: 980128</p>
-         <img className={s.like} src={like} alt=""/>
-     </div>
+    return <div onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)} className={s.card}>
+        <div className={s.flex_wrap}>
+            <p className={s.code}>Код товару: 980128</p>
+            <div onClick={onLikeClick} className={liked ? `${s.like} ${s.liked}` : s.like}>
+                <GlobalSvgSelector id={"like_not_active"}/>
+            </div>
+
+        </div>
         <img src={item.imgUrl} alt=""/>
         <div className={s.rate}>
             <span>{item.rating}</span><img className={s.star} src={star}/>
@@ -20,7 +28,7 @@ export const Card = ({item}) => {
 
         <div className={s.flex_wrap}>
             <p className={s.price}>{item.price} <span>₴</span></p>
-            <button className={s.card_btn}><GlobalSvgSelector id={"cart_icon"}/></button>
+            <button className={s.card_btn}>{hovered && "До кошика"}<GlobalSvgSelector id={"cart_icon"}/></button>
 
         </div>
 

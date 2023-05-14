@@ -1,11 +1,20 @@
+
 .card {
   display: flex;
   flex-direction: column;
   width: 329px;
   background: #FFFFFF;
-  box-shadow: 0px 4px 10px rgba(122, 122, 122, 0.25);
+  box-shadow: 0px 3px 8px rgba(122, 122, 122, 0.14);
   border-radius: 15px;
   padding: 20px;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(122, 122, 122, 0.31);
+
+    transition: ease-in-out;
+
+  }
 
   img {
     width: 262px;
@@ -16,6 +25,31 @@
     width: 40px;
     height: 40px;
     align-self: flex-end;
+
+    svg path {
+      stroke-width: 1;
+      stroke: #767676;
+    }
+
+    svg:hover {
+      fill: #cf1a1b;
+      cursor: pointer;
+    }
+
+    svg:hover path {
+      stroke-width: 0;
+    }
+
+  }
+
+  .liked {
+    svg path {
+      stroke-width: 0;
+    }
+
+    svg {
+      fill: #cf1a1b;
+    }
   }
 
   .star {
@@ -46,14 +80,23 @@
 
 .card_btn {
   align-self: flex-end;
-  width: 44px;
+
   height: 32px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  font-size: 16px;
 
-  background: #FD0000;
+  background: #cf1a1b;
   border-radius: 5px;
+
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(207, 26, 27, 0.69);
+  }
 
   svg {
     width: 30px;
@@ -61,16 +104,23 @@
   }
 
 }
-.title{
+
+.title {
   margin-bottom: 20px;
 }
-.flex_wrap{
+
+.flex_wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.code{
+
+.code {
   font-size: 12px;
   line-height: 15px;
   color: #A5A5A5;
+}
+
+.like_test {
+  background-image: url("../../logo.svg");
 }
