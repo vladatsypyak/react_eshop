@@ -172,6 +172,17 @@ async function getFavourites(req, res) {
         favourites
     )
 }
+async function deleteFavourite(req, res) {
+    const {userId, itemId} = req.body
+
+    const favourite = await Favourite.findOneAndDelete({ userId , itemId});
+    console.log(favourite)
+
+
+    res.send(
+        favourite
+    )
+}
 module.exports = {
     createLoad,
     getCategories,
@@ -182,5 +193,6 @@ module.exports = {
     getFilteredItems,
     getItemsByTitle,
     addToFavourite,
-    getFavourites
+    getFavourites,
+    deleteFavourite
 };

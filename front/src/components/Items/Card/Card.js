@@ -5,21 +5,26 @@ import s from "../items.module.scss"
 import like from "../../../assets/card_like_icon.png"
 import star from "../../../assets/star .png"
 import {useDispatch} from "react-redux";
-import {putFavourite} from "../../../redux/slices/itemsSlice";
+import {deleteFavourite, putFavourite} from "../../../redux/slices/itemsSlice";
 
 export const Card = ({item}) => {
 
     const [liked, setLiked] = React.useState(false)
     const [hovered, setHovered] = React.useState(false)
     const dispatch = useDispatch()
+
     function onLikeClick() {
-        if(!liked){
-dispatch(putFavourite({userId: "123456", itemId: item._id}))
+        if (!liked) {
+            dispatch(putFavourite({userId: "123456", itemId: item._id}))
+        } else {
+            console.log("delete")
+            dispatch(deleteFavourite({userId: "123456", itemId: item._id}))
+
         }
-    setLiked(!liked)
+        setLiked(!liked)
     }
 
-    return <div onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)} className={s.card}>
+    return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
             <div onClick={onLikeClick} className={liked ? `${s.like} ${s.liked}` : s.like}>
