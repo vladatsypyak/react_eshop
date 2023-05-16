@@ -4,6 +4,7 @@ const {Category} = require('../models/Categories');
 const jwt = require("jsonwebtoken");
 const {now} = require("mongoose");
 const {Item} = require("../models/Items");
+const {Favourite} = require("../models/Favourites");
 require('dotenv').config();
 
 
@@ -148,6 +149,29 @@ async function getItemsByTitle(req, res) {
         items
     )
 }
+
+async function addToFavourite(req, res) {
+   const {userId, itemId} = req.body
+    console.log(userId)
+    const favourite = new Favourite({ userId, itemId });
+    await favourite.save();
+
+    res.send(
+        {message: "added to favourite"}
+    )
+}
+
+async function getFavourites(req, res) {
+    const {userId} = req.params
+    console.log(userId)
+    const favourites = await Favourite.find({ userId });
+    console.log(favourites)
+
+
+    res.send(
+        favourites
+    )
+}
 module.exports = {
     createLoad,
     getCategories,
@@ -156,5 +180,7 @@ module.exports = {
     getCategoryFilters,
     getFilterValues,
     getFilteredItems,
-    getItemsByTitle
+    getItemsByTitle,
+    addToFavourite,
+    getFavourites
 };

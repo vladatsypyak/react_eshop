@@ -30,6 +30,9 @@ const itemSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        favorite:{
+            type: Boolean
+        },
 
         logs: {
             type : {

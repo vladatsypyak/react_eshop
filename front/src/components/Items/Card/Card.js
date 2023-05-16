@@ -4,11 +4,18 @@ import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import s from "../items.module.scss"
 import like from "../../../assets/card_like_icon.png"
 import star from "../../../assets/star .png"
+import {useDispatch} from "react-redux";
+import {putFavourite} from "../../../redux/slices/itemsSlice";
 
 export const Card = ({item}) => {
+
     const [liked, setLiked] = React.useState(false)
     const [hovered, setHovered] = React.useState(false)
+    const dispatch = useDispatch()
     function onLikeClick() {
+        if(!liked){
+dispatch(putFavourite({userId: "123456", itemId: item._id}))
+        }
     setLiked(!liked)
     }
 
