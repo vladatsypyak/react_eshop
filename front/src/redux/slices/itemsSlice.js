@@ -30,7 +30,11 @@ export const putFavourite = createAsyncThunk('items/putFavourite', async (params
 export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {
     const {result} = await axios.delete(`http://localhost:8080/api/app/favourite`,{data: params} )
     const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${params.userId}`)
-    console.log(data)
+    return data
+})
+
+export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
+    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${params.userId}`)
     return data
 })
 
@@ -70,6 +74,10 @@ export const itemsSlice = createSlice({
 
         });
         builder.addCase(deleteFavourite.fulfilled, (state, action) => {
+            state.favouriteItems = action.payload
+
+        });
+        builder.addCase(getAllFavourites.fulfilled, (state, action) => {
             state.favouriteItems = action.payload
 
         });

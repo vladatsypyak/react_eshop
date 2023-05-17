@@ -4,22 +4,29 @@ import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import s from "../items.module.scss"
 import like from "../../../assets/card_like_icon.png"
 import star from "../../../assets/star .png"
-import {useDispatch} from "react-redux";
-import {deleteFavourite, putFavourite} from "../../../redux/slices/itemsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteFavourite, getAllFavourites, putFavourite} from "../../../redux/slices/itemsSlice";
 
 export const Card = ({item}) => {
-
+    const allFavourites = useSelector(state => state.items.favouriteItems)
     const [liked, setLiked] = React.useState(false)
     const [hovered, setHovered] = React.useState(false)
     const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        dispatch(getAllFavourites({userId: "123456"}))
+    }, [])
+    React.useEffect(() => {
+      if(allFavourites.some(el =>  el.itemId === item._id)){
+          setLiked(true)
+      }
+    }, [allFavourites])
 
     function onLikeClick() {
         if (!liked) {
             dispatch(putFavourite({userId: "123456", itemId: item._id}))
         } else {
-            console.log("delete")
             dispatch(deleteFavourite({userId: "123456", itemId: item._id}))
-
         }
         setLiked(!liked)
     }
