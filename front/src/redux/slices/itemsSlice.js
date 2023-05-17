@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
+
 function buildURL(arr) {
     const baseUrl = 'http://localhost:8080/api/app/items/filter';
 
@@ -10,34 +11,33 @@ function buildURL(arr) {
     return `${baseUrl}?${queryParams}`;
 }
 
+const fetchFavourites = async (userId) => {
+    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${userId}`);
+    return data;
+};
 
 
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
     let str = buildURL(params)
-    const {data } = await axios.get(str)
-
+    const {data} = await axios.get(str)
     return data
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
     const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params}`)
     return data
 })
+export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
+    return await fetchFavourites(params.userId)
+})
 export const putFavourite = createAsyncThunk('items/putFavourite', async (params) => {
-    const {result} = await axios.post(`http://localhost:8080/api/app/favourite`, params)
-    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${params.userId}`)
-    return data
+    await axios.post(`http://localhost:8080/api/app/favourite`, params)
+    return await fetchFavourites(params.userId)
 })
 export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {
-    const {result} = await axios.delete(`http://localhost:8080/api/app/favourite`,{data: params} )
-    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${params.userId}`)
-    return data
-})
+    await axios.delete(`http://localhost:8080/api/app/favourite`, {data: params})
+    return await fetchFavourites(params.userId)
 
-export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${params.userId}`)
-    return data
 })
-
 
 
 const initialState = {
@@ -57,14 +57,14 @@ export const itemsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchItems.fulfilled, (state, action) => {
 
-            if(action.payload){
+            if (action.payload) {
                 state.items = action.payload
             }
 
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
             console.log(action)
-            if(action.payload){
+            if (action.payload) {
                 state.items = action.payload
             }
 
