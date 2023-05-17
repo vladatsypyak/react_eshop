@@ -32,12 +32,15 @@
     }
 
     svg:hover {
-      fill: #cf1a1b;
+      //fill: #cf1a1b;
       cursor: pointer;
     }
 
     svg:hover path {
-      stroke-width: 0;
+      stroke-width: 1.3;
+
+      stroke: #b91111;
+
     }
 
   }
