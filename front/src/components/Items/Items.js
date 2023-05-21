@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
@@ -12,12 +12,12 @@ export const Items = () => {
     const {category} = useParams()
     const items = useSelector(state => state.items.items)
     const currentCategory = useSelector(store => store.categories.currentCategory)
+    const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
+
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))
-        dispatch(fetchItems([{name: "category", value: category}]))
-
-
-    }, [])
+        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}]))
+    }, [currentChosenFilters, currentCategory])
 
     return <div className={s.items_wrap}>
         {items.map(item => {

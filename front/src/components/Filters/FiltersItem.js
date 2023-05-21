@@ -13,29 +13,20 @@ import {store} from "../../redux/store";
 
 export const FiltersItem = ({filter, filterName}) => {
     const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
-
     const [values, setValues] = React.useState([])
-
     const dispatch = useDispatch()
     const currentCategory = useSelector(store => store.categories.currentCategory)
     React.useEffect(() => {
         const getFilterValues = async () => {
-
             const {data} = await axios.get(`http://localhost:8080/api/app/filters/${currentCategory.type}/${filter}`)
             return data
         }
         getFilterValues().then(res => setValues(res))
-    }, [filter])
-    React.useEffect(() => {
-        console.log(currentChosenFilters)
-        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}]))
-
-    }, [currentChosenFilters])
+    }, [])
 
     const handleFilterChange = (e) => {
         dispatch(setFilters({name: filter, value: e.target.value}))
     }
-
 
     return <div className={s.filtersItem_wrap}>
         <p className={s.title}>{filterName}</p>
