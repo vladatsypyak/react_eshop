@@ -8,6 +8,7 @@ function buildURL(arr) {
         .map(obj => `${encodeURIComponent(obj.name)}=${encodeURIComponent(obj.value)}`)
         .join('&');
 
+
     return `${baseUrl}?${queryParams}`;
 }
 

@@ -15,28 +15,6 @@ function getTokenPayload(req) {
     return tokenPayload;
 }
 
-function createLoad(req, res, next) {
-    const {name, payload, pickup_address, delivery_address, dimensions} = req.body;
-    console.log(dimensions)
-    const user = getTokenPayload(req);
-    const load = new Load({
-        created_by: user.userId,
-        name,
-        payload,
-        pickup_address,
-        delivery_address,
-        dimensions,
-        assigned_to: null,
-        status: "NEW"
-    });
-    console.log(load)
-    Load.create(load)
-        .then(() => res.json({"message": "Truck created successfully"}))
-        .catch((err) => {
-            console.log(err)
-            next(err);
-        });
-}
 
 async function getCategories(req, res) {
     const categories = await Category.find()
@@ -102,11 +80,6 @@ async function getFilterValues(req, res) {
         }
     )
     let uniqueFilterValues = [...new Set(filterValues)]
-    // if (!items) {
-    //     res.status(500).send({
-    //         message: "category was not found"
-    //     });
-    // }
     res.send(
         uniqueFilterValues,
     )
@@ -114,9 +87,14 @@ async function getFilterValues(req, res) {
 
 async function getFilteredItems(req, res) {
     const allFilters = req.query;
-    const items = await Item.find({category: allFilters.category})
+    const sortBy = allFilters.sortBy
+    console.log(sortBy)
+    const sortProperty = sortBy.replace("DESC", "")
+    const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    console.log(sortOrder)
+    const items = await Item.find({category: allFilters.category}).sort({[sortProperty]: sortOrder})
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy")
     );
     let filteredItems = items.filter(item =>
         Object.keys(filters).every(key =>
@@ -125,6 +103,7 @@ async function getFilteredItems(req, res) {
             )
         )
     );
+
     if (!filteredItems) {
         res.status(500).send({
             message: "no items"
@@ -138,7 +117,7 @@ async function getFilteredItems(req, res) {
 async function getItemsByTitle(req, res) {
     const title = req.query.title;
     console.log(title)
-    const items = await Item.find({title: { $regex: title, $options: "i" }})
+    const items = await Item.find({title: {$regex: title, $options: "i"}})
     console.log(items)
     if (!items) {
         res.status(500).send({
@@ -151,9 +130,9 @@ async function getItemsByTitle(req, res) {
 }
 
 async function addToFavourite(req, res) {
-   const {userId, itemId} = req.body
+    const {userId, itemId} = req.body
     console.log(userId)
-    const favourite = new Favourite({ userId, itemId });
+    const favourite = new Favourite({userId, itemId});
     await favourite.save();
 
     res.send(
@@ -164,7 +143,7 @@ async function addToFavourite(req, res) {
 async function getFavourites(req, res) {
     const {userId} = req.params
     console.log(userId)
-    const favourites = await Favourite.find({ userId });
+    const favourites = await Favourite.find({userId});
     console.log(favourites)
 
 
@@ -172,19 +151,24 @@ async function getFavourites(req, res) {
         favourites
     )
 }
+
 async function deleteFavourite(req, res) {
     const {userId, itemId} = req.body
-
-    const favourite = await Favourite.findOneAndDelete({ userId , itemId});
-    console.log(favourite)
-
-
+    const favourite = await Favourite.findOneAndDelete({userId, itemId});
     res.send(
         favourite
     )
 }
+
+async function getItemById(req, res) {
+    const {id} = req.params
+    const item = await Item.findById(id);
+    res.send(
+        item
+    )
+}
+
 module.exports = {
-    createLoad,
     getCategories,
     getCategoryByValue,
     getItemsByCategory,
@@ -194,5 +178,7 @@ module.exports = {
     getItemsByTitle,
     addToFavourite,
     getFavourites,
-    deleteFavourite
+    deleteFavourite,
+    getItemById
+
 };

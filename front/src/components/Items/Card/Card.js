@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import s from "../items.module.scss"
@@ -12,6 +13,7 @@ export const Card = ({item}) => {
     const [liked, setLiked] = React.useState(false)
     const [hovered, setHovered] = React.useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     React.useEffect(() => {
         dispatch(getAllFavourites({userId: "123456"}))
@@ -30,8 +32,11 @@ export const Card = ({item}) => {
         }
         setLiked(!liked)
     }
+    function onCardClick(){
+        navigate(`/items/${item._id}`)
+    }
 
-    return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
+    return <div  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
             <div onClick={onLikeClick} className={liked ? `${s.like} ${s.liked}` : s.like}>
@@ -39,11 +44,11 @@ export const Card = ({item}) => {
             </div>
 
         </div>
-        <img src={item.imgUrl} alt=""/>
+        <img onClick={onCardClick} src={item.imgUrl} alt=""/>
         <div className={s.rate}>
             <span>{item.rating}</span><img className={s.star} src={star}/>
         </div>
-        <p className={s.title}>{item.title}</p>
+        <p onClick={onCardClick}  className={s.title}>{item.title}</p>
 
         <div className={s.flex_wrap}>
             <p className={s.price}>{item.price} <span>₴</span></p>

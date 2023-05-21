@@ -13,12 +13,17 @@ export const Items = () => {
     const items = useSelector(state => state.items.items)
     const currentCategory = useSelector(store => store.categories.currentCategory)
     const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
+    const sortBy = useSelector(state => state.filters.sortBy)
+
+    React.useEffect(() => {
+        console.log(5)
+        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}, {name: "sortBy", value: sortBy.sortProperty}]))
+    }, [currentChosenFilters, currentCategory, sortBy])
+
 
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))
-        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}]))
-    }, [currentChosenFilters, currentCategory])
-
+    }, [])
     return <div className={s.items_wrap}>
         {items.map(item => {
             return <Card item={item}/>

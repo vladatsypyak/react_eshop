@@ -33,6 +33,9 @@ const itemSchema = mongoose.Schema(
         favorite:{
             type: Boolean
         },
+        date:{
+            type: String
+        },
 
         logs: {
             type : {
@@ -40,7 +43,7 @@ const itemSchema = mongoose.Schema(
                     type: String
                 },
                 time: {
-                    type: String
+                    type: Date
                 }
             }
 

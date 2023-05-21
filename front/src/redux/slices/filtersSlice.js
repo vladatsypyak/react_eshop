@@ -12,7 +12,11 @@ export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params
 
 const initialState = {
     allFilters: [],
-    chosenFilters: []
+    chosenFilters: [],
+    sortBy: {
+        name: "даті",
+        sortProperty: "date"
+    }
 
 }
 
@@ -23,14 +27,18 @@ export const filtersSlice = createSlice({
         setItems: (state, action) => {
             state.allFilters = action.payload
         },
-        setFilters: (state, action) =>{
+        setSortBy: (state, action) => {
+            state.sortBy = action.payload
+        },
+
+        setFilters: (state, action) => {
 
             let filter = action.payload
 
-            if(state.chosenFilters.some(obj =>{
+            if (state.chosenFilters.some(obj => {
                 return obj.name === filter.name && filter.value === obj.value
-            })){
-                state.chosenFilters = state.chosenFilters.filter(el => el.name !== action.payload.name || el.value !== action.payload.value  )
+            })) {
+                state.chosenFilters = state.chosenFilters.filter(el => el.name !== action.payload.name || el.value !== action.payload.value)
             } else {
                 state.chosenFilters = [...state.chosenFilters, action.payload]
             }
@@ -47,6 +55,6 @@ export const filtersSlice = createSlice({
 
 })
 
-export const {setItems, setFilters} = filtersSlice.actions
+export const {setItems, setFilters, setSortBy} = filtersSlice.actions
 
 export default filtersSlice.reducer
