@@ -6,7 +6,7 @@ import {Sort} from "../../components/Sort/Sort";
 
 
 export const Category = () => {
-    return <div className={s.category_page_wrap}>
+    return <div className={`${s.category_page_wrap} container`}>
         <Filters/>
         <Items/>
         <Sort/>
