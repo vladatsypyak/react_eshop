@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const {now} = require("mongoose");
 const {Item} = require("../models/Items");
 const {Favourite} = require("../models/Favourites");
+const {CartItem} = require("../models/CartItems");
 require('dotenv').config();
 
 
@@ -142,14 +143,60 @@ async function addToFavourite(req, res) {
 
 async function getFavourites(req, res) {
     const {userId} = req.params
-    console.log(userId)
     const favourites = await Favourite.find({userId});
-    console.log(favourites)
-
-
     res.send(
         favourites
     )
+}
+
+async function getUserFavourites(req, res) {
+    try {
+        const {userId} = req.params;
+        const favourites = await Favourite.find({userId}).exec();
+        const itemIds = favourites.map((el) => el.itemId);
+        const items = await Item.find({_id: {$in: itemIds}}).exec();
+        console.log(items);
+
+        res.send(items);
+    } catch (error) {
+        // Обробка помилки, якщо є
+        console.error(error);
+        res.status(500).send('Помилка сервера');
+    }
+}
+
+async function addToCart(req, res) {
+    const {userId, itemId} = req.body
+    const existingCartItem = await CartItem.findOne({userId, itemId});
+    const item = await Item.findById(itemId)
+    console.log(item)
+    if (existingCartItem) {
+        console.log("here")
+        const quantity = existingCartItem.quantity
+        const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity + 1});
+
+    } else {
+        const newCartItem = new CartItem({userId, itemId, quantity: 1, item: item});
+        await newCartItem.save();
+    }
+    res.send(
+        {message: "added to cart"}
+    )
+}
+
+async function getUserCartItems(req, res) {
+    try {
+        const {userId} = req.params;
+        const cartItems = await CartItem.find({userId}).exec();
+        // const itemIds = cartItems.map((el) => el.itemId);
+        // const items = await Item.find({_id: {$in: itemIds}}).exec();
+
+        res.send(cartItems);
+    } catch (error) {
+        // Обробка помилки, якщо є
+        console.error(error);
+        res.status(500).send('Помилка сервера');
+    }
 }
 
 async function deleteFavourite(req, res) {
@@ -179,6 +226,9 @@ module.exports = {
     addToFavourite,
     getFavourites,
     deleteFavourite,
-    getItemById
+    getItemById,
+    getUserFavourites,
+    addToCart,
+    getUserCartItems
 
 };

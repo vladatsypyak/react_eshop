@@ -14,7 +14,7 @@ const initialState = {
     allFilters: [],
     chosenFilters: [],
     sortBy: {
-        name: "даті",
+        name: "По даті",
         sortProperty: "date"
     }
 

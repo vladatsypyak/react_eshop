@@ -34,9 +34,24 @@ export const Sort = () => {
         dispatch(setSortBy(i))
         setOpen(!open)
     }
-    return <div className={s.sort}>
-        <div className={s.sort__label}>
-             <span onClick={() => setOpen(!open)}>{sort?.name}</span>
+
+    React.useEffect(() => {
+        const handleClickOutside = (event) => {
+
+            if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
+                setOpen(false)
+            }
+        }
+        document.body.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.body.removeEventListener("click", handleClickOutside)
+        }
+    }, [])
+
+    return <div ref={sortRef} className={s.sort}>
+        <div onClick={() => setOpen(!open)} className={s.sort__label}>
+             <span >{sort?.name}</span>
             { open ? <GlobalSvgSelector id={"sort_arrow_up"} /> :<GlobalSvgSelector id={"sort_arrow_down"} />  }
         </div>
         {
