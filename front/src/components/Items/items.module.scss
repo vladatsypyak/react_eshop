@@ -94,6 +94,7 @@
 
   background: #cf1a1b;
   border-radius: 5px;
+  position: relative;
 
 
   &:hover {
@@ -126,4 +127,17 @@
 
 .like_test {
   background-image: url("../../logo.svg");
+}
+.quantity{
+  position: absolute;
+  background-color: #f2d465;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  top: -8px;
+  right: -8px;
+  font-size: 14px;
+  text-align: center;
+  color: black;
+  line-height: 23px;
 }

@@ -32,7 +32,7 @@ export const Header = () => {
             <div className={s.icons}>
                 <img className={s.icon} src={heart} alt=""/>
                 <div className={s.icon}>
-                    <GlobalSvgSelector id="cart_icon"/>
+                   <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                 </div>
                 <div className={s.icon}>
                     <GlobalSvgSelector id="user_icon"/>

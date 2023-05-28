@@ -4,6 +4,7 @@ import {Footer} from "./components/Footer/Footer";
 import {Route, Routes} from "react-router-dom";
 import {Category} from "./pages/Category/Category";
 import {ItemInfo} from "./components/ItemInfo/ItemInfo";
+import {CartPage} from "./pages/Cart/CartPage";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 {/*<Route path={"cart"} element={<Cart/>}/>*/}
                 <Route path={"categories/:category"} element={<Category/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
+                <Route path={"cart"} element={<CartPage/>}/>
 
                 {/*<Route path={"*"} element={<NotFound/>}/>*/}
 
