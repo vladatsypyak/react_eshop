@@ -184,6 +184,30 @@ async function addToCart(req, res) {
     )
 }
 
+async function removeOneFromCart(req, res) {
+    const {userId, itemId} = req.body
+    const cartItem = await CartItem.findOne({userId, itemId});
+    const item = await Item.findById(itemId)
+    console.log(item)
+
+    console.log("here")
+    const quantity = cartItem.quantity
+    const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity - 1});
+
+
+    res.send(
+        {message: "removed from cart"}
+    )
+}
+
+async function deleteCartItem(req, res) {
+    console.log("worj")
+    const {userId, itemId} = req.body
+    const cartItem = await CartItem.findOneAndDelete({userId, itemId});
+    res.send(
+        cartItem
+    )
+}
 async function getUserCartItems(req, res) {
     try {
         const {userId} = req.params;
@@ -229,6 +253,8 @@ module.exports = {
     getItemById,
     getUserFavourites,
     addToCart,
-    getUserCartItems
+    getUserCartItems,
+    removeOneFromCart,
+    deleteCartItem
 
 };
