@@ -5,10 +5,13 @@ const router = express.Router();
 const {
     getCategories, getCategoryByValue, getItemsByCategory, getCategoryFilters, getFilterValues, getFilteredItems,
     getItemsByTitle, addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites, addToCart,
-    getUserCartItems, removeOneFromCart, deleteCartItem
+    getUserCartItems, removeOneFromCart, deleteCartItem, searchCategories
 } = require("../controllers/appService");
 
+
+router.get('/app/categories/search', searchCategories);
 router.get('/app/categories', getCategories);
+
 router.get('/app/categories/:type', getCategoryByValue);
 router.get('/app/items/filter', getFilteredItems);
 router.get('/app/items/search', getItemsByTitle);

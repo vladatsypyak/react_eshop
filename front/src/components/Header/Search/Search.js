@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {searchItems} from "../../../redux/slices/itemsSlice";
 import {SearchSection} from "./SearchSection/SearchSection";
 import {logDOM} from "@testing-library/react";
+import {searchCategories} from "../../../redux/slices/categoriesSlice";
 
 
 export const Search = () => {
@@ -29,6 +30,7 @@ export const Search = () => {
 
         }
         dispatch(searchItems(e.target.value))
+        dispatch(searchCategories(e.target.value))
     }
 
     function onInputClick() {

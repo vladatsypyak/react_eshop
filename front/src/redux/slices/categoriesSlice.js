@@ -9,10 +9,15 @@ export const fetchCategoryByType = createAsyncThunk("categories/getCategory", as
     const {data} = await axios.get(`http://localhost:8080/api/app/categories/${params}`)
     return data.category
 })
+export const searchCategories = createAsyncThunk("categories/searchCategories", async (params)=>{
+    const {data} = await axios.get(`http://localhost:8080/api/app/categories/search?text=${params}`)
+    return data
+})
 
 const initialState = {
     categories: [],
-    currentCategory: {}
+    currentCategory: {},
+    foundCategories: []
 }
 
 export const categoriesSlice = createSlice({
@@ -37,6 +42,9 @@ export const categoriesSlice = createSlice({
 
         builder.addCase(fetchCategoryByType.fulfilled, (state, action) => {
             state.currentCategory = action.payload
+        });
+        builder.addCase(searchCategories.fulfilled, (state, action) => {
+            state.foundCategories = action.payload
         });
 
     },

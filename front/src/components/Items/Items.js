@@ -10,7 +10,6 @@ import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
 export const Items = () => {
     const dispatch = useDispatch()
-    const {category} = useParams()
     const items = useSelector(state => state.items.items)
     const currentCategory = useSelector(store => store.categories.currentCategory)
     const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
@@ -25,14 +24,11 @@ export const Items = () => {
 
 
     React.useEffect(() => {
-        console.log(5)
         dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}, {name: "sortBy", value: sortBy.sortProperty}]))
     }, [currentChosenFilters, currentCategory, sortBy])
 
 
-    React.useEffect(() => {
-        dispatch(fetchCategoryByType(category))
-    }, [])
+
     return <div className={s.items_wrap}>
         {items.map(item => {
             return <Card onLikeClick={onLikeClick} item={item}/>

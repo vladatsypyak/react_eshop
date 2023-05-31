@@ -72,6 +72,18 @@ async function getCategoryFilters(req, res) {
         filters
     )
 }
+async function searchCategories(req, res) {
+    const text = req.query.text;
+    const categories = await Category.find({value: {$regex: text, $options: "i"}})
+    if (!categories) {
+        res.status(500).send({
+            message: "no items"
+        });
+    }
+    res.send(
+        categories
+    )
+}
 
 async function getFilterValues(req, res) {
     const {category, filter} = req.params;
@@ -117,9 +129,7 @@ async function getFilteredItems(req, res) {
 
 async function getItemsByTitle(req, res) {
     const title = req.query.title;
-    console.log(title)
     const items = await Item.find({title: {$regex: title, $options: "i"}})
-    console.log(items)
     if (!items) {
         res.status(500).send({
             message: "no items"
@@ -129,6 +139,7 @@ async function getItemsByTitle(req, res) {
         items
     )
 }
+
 
 async function addToFavourite(req, res) {
     const {userId, itemId} = req.body
@@ -255,6 +266,6 @@ module.exports = {
     addToCart,
     getUserCartItems,
     removeOneFromCart,
-    deleteCartItem
-
+    deleteCartItem,
+    searchCategories
 };
