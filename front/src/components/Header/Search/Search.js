@@ -3,6 +3,7 @@ import s from "./search.module.scss"
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import {useDispatch} from "react-redux";
 import {searchItems} from "../../../redux/slices/itemsSlice";
+import {SearchSection} from "./SearchSection/SearchSection";
 
 
 export const Search = () => {
@@ -15,16 +16,20 @@ export const Search = () => {
     }
 
     return <div className={s.search}>
-        <input onFocus={()=>setFocused(true)}
-               onBlur={()=>setFocused(false)}
-               onChange={onInputChange}
-               type="text"
-               placeholder={"Пошук"}/>
-        {!focused && !searchValue &&
-            <div className={s.search_icon}>
+        <div className={s.input_wrap}>
+            <input onFocus={()=>setFocused(true)}
+                   onBlur={()=>setFocused(false)}
+                   onChange={onInputChange}
+                   type="text"
+                   placeholder={"Пошук"}/>
+            {!focused && !searchValue &&
+                <div className={s.search_icon}>
 
-            <GlobalSvgSelector id={"search_icon"}/>
-            </div>
-        }
+                    <GlobalSvgSelector id={"search_icon"}/>
+                </div>
+            }
+        </div>
+
+        {searchValue && <SearchSection/>}
     </div>
 }

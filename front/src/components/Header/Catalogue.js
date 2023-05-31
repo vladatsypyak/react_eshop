@@ -18,9 +18,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
             if (catalogueRef.current && !event.composedPath().includes(catalogueRef.current) && !event.composedPath().includes(btnRef.current)) {
                 hideCatalogue()
             }
-            // if(catalogueRef.current && !catalogueRef.current.contains(event.target)) {
-            //         hideCatalogue()
-            // }
         }
         document.body.addEventListener("click", handleClickOutside)
 

@@ -30,7 +30,7 @@ export const Header = () => {
             </button>
             <Search/>
             <div className={s.icons}>
-                <img className={s.icon} src={heart} alt=""/>
+                <Link to={"/favourites"}><img className={s.icon} src={heart} alt=""/></Link>
                 <div className={s.icon}>
                    <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                 </div>

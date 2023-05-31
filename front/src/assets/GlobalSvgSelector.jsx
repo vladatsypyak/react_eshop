@@ -183,6 +183,17 @@ export const GlobalSvgSelector = ({id}) => {
                 </svg>
 
             )
+        case "cross" :
+            return  (
+
+
+                <svg width="19" height="21" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M29.126 2L2.99999 26.3312" stroke="#FE5747" strokeWidth="4" strokeLinecap="round"/>
+                    <path d="M3 2L29.126 26.3312" stroke="#FE5747" strokeWidth="4" strokeLinecap="round"/>
+                </svg>
+
+
+            )
 
         default:
             return null;

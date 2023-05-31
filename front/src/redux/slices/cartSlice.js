@@ -11,16 +11,20 @@ export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
     await axios.post(`http://localhost:8080/api/app/cart`, params)
     return await fetchCartItems(params.userId)
 })
+export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', async (params) => {
+    await axios.post(`http://localhost:8080/api/app/cart/remove`, params)
+    return await fetchCartItems(params.userId)
+})
 
 export const getAllCartItems = createAsyncThunk('items/getAllCartItems', async (params) => {
     return await fetchCartItems(params.userId)
 })
 
-// export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {
-//     await axios.delete(`http://localhost:8080/api/app/favourite`, {data: params})
-//     return await fetchFavourites(params.userId)
-//
-// })
+export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (params) => {
+    await axios.delete(`http://localhost:8080/api/app/cart`, {data: params})
+    return await fetchCartItems(params.userId)
+
+})
 
 const initialState = {
     items: [],
@@ -45,6 +49,12 @@ export const cartSlice = createSlice({
             state.items = action.payload
         });
         builder.addCase(getAllCartItems.fulfilled, (state, action) => {
+            state.items = action.payload
+        });
+        builder.addCase(removeOneFromCart.fulfilled, (state, action) => {
+            state.items = action.payload
+        });
+        builder.addCase(deleteCartItem.fulfilled, (state, action) => {
             state.items = action.payload
         });
     },

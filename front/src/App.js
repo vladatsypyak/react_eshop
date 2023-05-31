@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import {Category} from "./pages/Category/Category";
 import {ItemInfo} from "./components/ItemInfo/ItemInfo";
 import {CartPage} from "./pages/Cart/CartPage";
+import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
                 <Route path={"categories/:category"} element={<Category/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
                 <Route path={"cart"} element={<CartPage/>}/>
+                <Route path={"favourites"} element={<FavouritesPage/>}/>
+
 
                 {/*<Route path={"*"} element={<NotFound/>}/>*/}
 

@@ -1,15 +1,15 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
-import s from "../items.module.scss"
-import like from "../../../assets/card_like_icon.png"
-import star from "../../../assets/star .png"
+import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
+import s from "../Items/items.module.scss"
+import like from "../../assets/card_like_icon.png"
+import star from "../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
-import {deleteFavourite, getAllFavourites, putFavourite} from "../../../redux/slices/itemsSlice";
-import {getAllCartItems, putToCart} from "../../../redux/slices/cartSlice";
+import {deleteFavourite, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
+import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
-export const Card = ({item}) => {
+export const Card = ({item, onLikeClick}) => {
     const allFavourites = useSelector(state => state.items.favouriteItems)
     const allCartItems = useSelector(state => state.cart.items)
 
@@ -25,7 +25,7 @@ export const Card = ({item}) => {
 
     }, [])
     React.useEffect(() => {
-        if (allFavourites.some(el => el.itemId === item._id)) {
+        if (allFavourites.some(el => el._id === item._id)) {
             setLiked(true)
         }
     }, [allFavourites])
@@ -36,12 +36,8 @@ export const Card = ({item}) => {
         }
     }, [allCartItems])
 
-    function onLikeClick() {
-        if (!liked) {
-            dispatch(putFavourite({userId: "123456", itemId: item._id}))
-        } else {
-            dispatch(deleteFavourite({userId: "123456", itemId: item._id}))
-        }
+    function likeClickHandle() {
+      onLikeClick(item._id, liked)
         setLiked(!liked)
     }
 
@@ -56,7 +52,7 @@ export const Card = ({item}) => {
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
-            <div onClick={onLikeClick} className={liked ? `${s.like} ${s.liked}` : s.like}>
+            <div onClick={likeClickHandle} className={liked ? `${s.like} ${s.liked}` : s.like}>
                 <GlobalSvgSelector id={"like_not_active"}/>
             </div>
 

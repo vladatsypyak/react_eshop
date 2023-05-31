@@ -43,7 +43,8 @@ export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (
 
 const initialState = {
     items: [],
-    favouriteItems: []
+    favouriteItems: [],
+    foundItems: []
 }
 
 export const itemsSlice = createSlice({
@@ -66,7 +67,7 @@ export const itemsSlice = createSlice({
         builder.addCase(searchItems.fulfilled, (state, action) => {
             console.log(action)
             if (action.payload) {
-                state.items = action.payload
+                state.foundItems = action.payload
             }
 
         });

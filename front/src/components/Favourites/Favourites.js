@@ -8,12 +8,9 @@ import {Card} from "../Card/Card"
 import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
-export const Items = () => {
+export const Favourites = () => {
     const dispatch = useDispatch()
-    const {category} = useParams()
-    const items = useSelector(state => state.items.items)
-    const currentCategory = useSelector(store => store.categories.currentCategory)
-    const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
+    const items = useSelector(state => state.items.favouriteItems)
     const sortBy = useSelector(state => state.filters.sortBy)
     function onLikeClick(itemId, liked) {
         if (!liked) {
@@ -25,14 +22,9 @@ export const Items = () => {
 
 
     React.useEffect(() => {
-        console.log(5)
-        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}, {name: "sortBy", value: sortBy.sortProperty}]))
-    }, [currentChosenFilters, currentCategory, sortBy])
-
-
-    React.useEffect(() => {
-        dispatch(fetchCategoryByType(category))
+        dispatch(getAllFavourites({userId: "123456"}))
     }, [])
+
     return <div className={s.items_wrap}>
         {items.map(item => {
             return <Card onLikeClick={onLikeClick} item={item}/>
