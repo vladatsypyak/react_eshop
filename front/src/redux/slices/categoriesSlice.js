@@ -27,7 +27,9 @@ export const categoriesSlice = createSlice({
         setCategories: (state, action) => {
             state.categories = action.payload
         },
-
+        setCurrentCategory: (state, action) => {
+            state.currentCategory = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchCategories.fulfilled, (state, action) => {
@@ -52,6 +54,6 @@ export const categoriesSlice = createSlice({
 })
 export const selectCategories = (state) => state.categories
 
-export const {setCategories} = categoriesSlice.actions
+export const {setCategories, setCurrentCategory} = categoriesSlice.actions
 
 export default categoriesSlice.reducer

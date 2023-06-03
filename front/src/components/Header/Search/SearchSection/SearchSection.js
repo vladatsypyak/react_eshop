@@ -7,6 +7,7 @@ import s from "./search_section.module.scss"
 import star from "../../../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
 import {setItems} from "../../../../redux/slices/itemsSlice";
+import {setCurrentCategory} from "../../../../redux/slices/categoriesSlice";
 
 
 export const SearchSection = ({hideSearchResults, inputRef}) => {
@@ -38,14 +39,23 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
 
     }
 
+    function onCategoryClick(category) {
+        dispatch(setCurrentCategory(category))
+        hideSearchResults()
+
+    }
+
     return <div className={s.search_section_wrap}>
         <div className={s.overlay}></div>
         <div ref={searchRef} className={s.search_results}>
             <div className={s.categories_wrap}>
+                <h3 className={s.title}>Категорії</h3>
+
                 {foundCategories.map(el => {
-                    return <div className={s.category}>
+                    return <Link to={  `categories/${el.type}`} onClick={()=>onCategoryClick(el)} className={s.category}>
+                        <img src={el.iconUrl} alt=""/>
                         <p>{el.value}</p>
-                    </div>
+                    </Link>
                 })}
             </div>
             <div className={s.items_wrap}>
