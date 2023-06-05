@@ -1,19 +1,24 @@
 import React, {useRef} from "react"
 import s from "./search.module.scss"
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {searchItems} from "../../../redux/slices/itemsSlice";
 import {SearchSection} from "./SearchSection/SearchSection";
 import {logDOM} from "@testing-library/react";
 import {searchCategories} from "../../../redux/slices/categoriesSlice";
+import {setSearchValue} from "../../../redux/slices/filtersSlice";
 
 
 export const Search = () => {
     const dispatch = useDispatch()
+    const sortBy = useSelector(state => state.filters.sortBy)
+
     const [focused, setFocused] = React.useState(false)
-    const [searchValue, setSearchValue] = React.useState("")
+    // const [searchValue, setSearchValue] = React.useState("")
+
     const [showResults, setShowResults] = React.useState(false)
     const inputRef = useRef()
+    const searchValue = useSelector(state => state.filters.searchValue)
 
 
     function hideSearchResults() {
@@ -22,14 +27,14 @@ export const Search = () => {
 
 
     function onInputChange(e) {
-        setSearchValue(e.target.value)
+        dispatch(setSearchValue(e.target.value))
         if (e.target.value) {
             setShowResults(true)
         } else {
             setShowResults(false)
 
         }
-        dispatch(searchItems(e.target.value))
+        dispatch(searchItems({title: e.target.value, sortBy: sortBy.sortProperty}))
         dispatch(searchCategories(e.target.value))
     }
 

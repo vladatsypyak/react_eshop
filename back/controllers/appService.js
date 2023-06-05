@@ -128,8 +128,11 @@ async function getFilteredItems(req, res) {
 }
 
 async function getItemsByTitle(req, res) {
+    const sortBy = req.query.sortBy
     const title = req.query.title;
-    const items = await Item.find({title: {$regex: title, $options: "i"}})
+    const sortProperty = sortBy.replace("DESC", "")
+    const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    const items = await Item.find({title: {$regex: title, $options: "i"}}).sort({[sortProperty]: sortOrder})
     if (!items) {
         res.status(500).send({
             message: "no items"

@@ -24,7 +24,8 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async (params) =>
     return data
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params}`)
+    const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params.title}&sortBy=${params.sortBy}`)
+    console.log(data)
     return data
 })
 export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
