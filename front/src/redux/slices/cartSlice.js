@@ -3,7 +3,6 @@ import axios from "axios";
 
 const fetchCartItems = async (userId) => {
     const {data} = await axios.get(`http://localhost:8080/api/app/cart/${userId}`);
-    console.log(data)
     return data;
 };
 
@@ -40,6 +39,11 @@ export const cartSlice = createSlice({
         setItems: (state, action) => {
             state.items = action.payload
         },
+        setTotal: (state, action) => {
+            state.total = state.items.reduce((acc, el) => {
+                return acc + (el.item.price * el.quantity)
+            }, 0)
+        },
 
 
 
@@ -61,6 +65,6 @@ export const cartSlice = createSlice({
 
 })
 
-export const {setItems} = cartSlice.actions
+export const {setItems, setTotal} = cartSlice.actions
 
 export default cartSlice.reducer

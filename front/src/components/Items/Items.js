@@ -9,6 +9,11 @@ import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
 export const Items = ({items}) => {
+    React.useEffect(() => {
+        dispatch(getAllFavourites({userId: "123456"}))
+        dispatch(getAllCartItems({userId: "123456"}))
+
+    }, [])
     const dispatch = useDispatch()
     function onLikeClick(itemId, liked) {
         if (!liked) {

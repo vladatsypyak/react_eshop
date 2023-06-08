@@ -7,11 +7,8 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
 export const Item = ({cartItem}) => {
     const dispatch = useDispatch()
-    console.log(cartItem)
-
     function onMinusClick() {
         if(cartItem.quantity === 1){
-            console.log("+")
             dispatch(deleteCartItem({userId: "123456", itemId: cartItem.itemId}))
 
         } else {
@@ -40,7 +37,7 @@ export const Item = ({cartItem}) => {
 
 
         </div>
-        <p className={s.item_total}>500 грн</p>
+        <p className={s.item_total}>{cartItem.quantity * cartItem.item.price} грн</p>
 
 
     </div>

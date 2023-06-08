@@ -21,7 +21,7 @@ export const Card = ({item, onLikeClick}) => {
 
     React.useEffect(() => {
         dispatch(getAllFavourites({userId: "123456"}))
-        dispatch(getAllCartItems({userId: "123456"}))
+        // dispatch(getAllCartItems({userId: "123456"}))
 
     }, [])
     React.useEffect(() => {
