@@ -180,17 +180,16 @@ async function getUserFavourites(req, res) {
 }
 
 async function addToCart(req, res) {
-    const {userId, itemId} = req.body
+    const {userId, itemId, quantity} = req.body
     const existingCartItem = await CartItem.findOne({userId, itemId});
     const item = await Item.findById(itemId)
     console.log(item)
     if (existingCartItem) {
         console.log("here")
-        const quantity = existingCartItem.quantity
-        const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity + 1});
+        const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity});
 
     } else {
-        const newCartItem = new CartItem({userId, itemId, quantity: 1, item: item});
+        const newCartItem = new CartItem({userId, itemId, quantity: quantity, item: item});
         await newCartItem.save();
     }
     res.send(

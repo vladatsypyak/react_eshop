@@ -19,7 +19,8 @@ export const Item = ({cartItem}) => {
     }
 
     function onPlusClick() {
-        dispatch(putToCart({userId: "123456", itemId: cartItem.itemId}))
+        console.log(cartItem.quantity)
+        dispatch(putToCart({userId: "123456", itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
     }
 
     function onDeleteClick() {

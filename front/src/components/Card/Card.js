@@ -8,27 +8,16 @@ import star from "../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFavourite, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
+import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 
-export const Card = ({item, onLikeClick}) => {
-    const allFavourites = useSelector(state => state.items.favouriteItems)
+export const Card = ({item}) => {
     const allCartItems = useSelector(state => state.cart.items)
-
-    const [liked, setLiked] = React.useState(false)
     const [hovered, setHovered] = React.useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [quantityInCart, setQuantityInCart] = React.useState(0)
 
-    React.useEffect(() => {
-        dispatch(getAllFavourites({userId: "123456"}))
-        // dispatch(getAllCartItems({userId: "123456"}))
 
-    }, [])
-    React.useEffect(() => {
-        if (allFavourites.some(el => el._id === item._id)) {
-            setLiked(true)
-        }
-    }, [allFavourites])
     React.useEffect(() => {
         let cartItem = allCartItems.find(el => el.itemId === item._id)
         if (cartItem) {
@@ -36,10 +25,7 @@ export const Card = ({item, onLikeClick}) => {
         }
     }, [allCartItems])
 
-    function likeClickHandle() {
-      onLikeClick(item._id, liked)
-        setLiked(!liked)
-    }
+
 
     function onCardClick() {
         navigate(`/items/${item._id}`)
@@ -52,9 +38,8 @@ export const Card = ({item, onLikeClick}) => {
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
-            <div onClick={likeClickHandle} className={liked ? `${s.like} ${s.liked}` : s.like}>
-                <GlobalSvgSelector id={"like_not_active"}/>
-            </div>
+            <LikeBtn itemId={item._id}/>
+
 
         </div>
         <img onClick={onCardClick} src={item.imgUrl} alt=""/>

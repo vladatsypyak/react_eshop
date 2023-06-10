@@ -12,11 +12,9 @@ export const Cart = () => {
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cart.items)
     const items = useSelector(state => state.items.items)
-
     const total = useSelector(state => state.cart.total)
 
     React.useEffect(() => {
-        console.log(4)
             dispatch(getAllCartItems({userId: "123456"}))
         }, [items])
     React.useEffect(() => {
