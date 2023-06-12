@@ -4,6 +4,8 @@ import categories from "./slices/categoriesSlice";
 import items from "./slices/itemsSlice";
 import filters from "./slices/filtersSlice";
 import cart from "./slices/cartSlice";
+import user from "./slices/userSlice";
+
 
 
 export const store = configureStore({
@@ -11,7 +13,8 @@ export const store = configureStore({
         categories,
         items,
         filters,
-        cart
+        cart,
+        user
     }
 })
 
