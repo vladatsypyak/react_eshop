@@ -10,6 +10,7 @@ const bp = require('body-parser');
 mongoose.connect('mongodb+srv://vladatsyupyak:Vladochka2002@eshop2.fsgyzpe.mongodb.net/?retryWrites=true&w=majority');
 
 const { appRouter } = require('./routers/appRouter');
+const {usersRouter} = require("./routers/usersRouter");
 
 
 
@@ -22,6 +23,9 @@ app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
 app.use('/api/', appRouter);
+app.use('/api/user/', usersRouter);
+
+
 
 
 
