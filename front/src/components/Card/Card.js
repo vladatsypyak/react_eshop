@@ -32,7 +32,7 @@ export const Card = ({item}) => {
     }
 
     function onAddToCartClick() {
-        dispatch(putToCart({userId: "123456", itemId: item._id}))
+        dispatch(putToCart({userId: "123456", itemId: item._id, quantity: quantityInCart + 1}))
     }
 
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
@@ -52,7 +52,7 @@ export const Card = ({item}) => {
             <p className={s.price}>{item.price} <span>₴</span></p>
             <button onClick={onAddToCartClick} className={s.card_btn}>{hovered && "До кошика"} <GlobalSvgSelector
                 id={"cart_icon"}/>
-            <div className={s.quantity}>{quantityInCart}</div>
+                {quantityInCart && <div className={s.quantity}>{quantityInCart}</div>}
             </button>
 
         </div>

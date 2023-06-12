@@ -1,24 +1,41 @@
 .like {
-  width: 40px;
-  height: 40px;
-  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+
+    p {
+      color: #707070;
+      font-size: 17px;
+    }
+
+    svg {
+      //fill: #cf1a1b;
+      cursor: pointer;
+    }
+
+    svg path {
+      stroke-width: 1.3;
+
+      stroke: #b91111;
+
+    }
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+
+  }
 
   svg path {
     stroke-width: 1;
     stroke: #767676;
   }
 
-  svg:hover {
-    //fill: #cf1a1b;
-    cursor: pointer;
-  }
-
-  svg:hover path {
-    stroke-width: 1.3;
-
-    stroke: #b91111;
-
-  }
 
 }
 
@@ -30,4 +47,8 @@
   svg {
     fill: #cf1a1b;
   }
+}
+
+.like_btn_wrap {
+  display: flex;
 }

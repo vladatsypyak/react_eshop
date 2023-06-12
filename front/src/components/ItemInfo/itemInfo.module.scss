@@ -54,17 +54,24 @@
 
   .quantity {
     border: 1px solid #c0c0c0;
-    margin-bottom: 10px;
 
     width: 130px;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    .btn:hover{
+      color: #767676;
+      cursor: pointer;
+      user-select: none;
+    }
 
     p {
+      user-select: none;
+
       &:not(:last-child) {
         border-right: 1px solid #c0c0c0;;
       }
+
 
       padding: 15px;
     }
@@ -88,6 +95,9 @@
   .add_to_cart_wrap {
     display: flex;
     gap: 30px;
+    margin-bottom: 10px;
+    align-items: center;
+
   }
 
   .favourite_wrap {

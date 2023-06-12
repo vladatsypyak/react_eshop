@@ -7,10 +7,13 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {Search} from "./Search/Search";
 import {Catalogue} from "./Catalogue";
 import {Link} from "react-router-dom";
+import {UserMenuPopup} from "../UserMenuPopup/UserMenuPopup";
 
 export const Header = () => {
     const btnRef = React.useRef()
     const [isCatalogue, setCatalogue] = React.useState(false)
+    const [showUserMenu, setShowUserMenu] = React.useState(false)
+
     function onCatalogueBtnClick(){
         setCatalogue(!isCatalogue)
     }
@@ -34,12 +37,13 @@ export const Header = () => {
                 <div className={s.icon}>
                    <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                 </div>
-                <div className={s.icon}>
+                <div onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
                     <GlobalSvgSelector id="user_icon"/>
 
                 </div>
             </div>
             {isCatalogue && <Catalogue btnRef={btnRef} hideCatalogue={hideCatalogue}/>}
+            <UserMenuPopup setIsShown={setShowUserMenu} isShown={showUserMenu}/>
         </div>
     </header>
 }

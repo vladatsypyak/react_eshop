@@ -62,9 +62,9 @@ export const ItemInfo = () => {
                 </div>
                 <div className={s.add_to_cart_wrap}>
                     <div className={s.quantity}>
-                        <p onClick={onMinusClick}>-</p>
+                        <p className={s.btn} onClick={onMinusClick}>-</p>
                         <p>{quantityInCart}</p>
-                        <p onClick={onPlusClick}>+</p>
+                        <p className={s.btn}  onClick={onPlusClick}>+</p>
                     </div>
                     <button onClick={onAddToCartClick}>До кошика</button>
                 </div>
@@ -73,8 +73,7 @@ export const ItemInfo = () => {
                 <p className={s.info}><span>Вага упаковки:</span>100 грамів.</p>
                 <p className={s.info}><span>Країна:</span>Індія</p>
                 <div className={s.favourite_wrap}>
-                    <LikeBtn itemId={item._id}/>
-                    Додати до вподобань
+                    <LikeBtn itemId={item._id} isText={true}/>
                 </div>
             </div>
 

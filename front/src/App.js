@@ -7,6 +7,7 @@ import {ItemInfo} from "./components/ItemInfo/ItemInfo";
 import {CartPage} from "./pages/Cart/CartPage";
 import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
+import {UserPage} from "./pages/UserPage/UserPage";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
                 <Route path={""} element={<Main/>}/>
                 {/*<Route path={"cart"} element={<Cart/>}/>*/}
                 <Route path={"categories/:category"} element={<Category/>}/>
+                <Route path={"user/:page"} element={<UserPage/>}/>
+
                 <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
                 <Route path={"cart"} element={<CartPage/>}/>
