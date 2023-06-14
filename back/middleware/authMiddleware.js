@@ -17,11 +17,10 @@ const authMiddleware = (req, res, next) => {
     }
 
     try {
-        const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
+        const tokenPayload = jwt.verify(token, "secret");
         req.user = {
             userId: tokenPayload.userId,
             email: tokenPayload.email,
-            role: tokenPayload.role
         };
         console.log(req.user);
         return next();

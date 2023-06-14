@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const {User} = require('../models/Users');
 require('dotenv').config();
 const nodemailer = require('nodejs-nodemailer-outlook')
+const {auth} = require("firebase-admin");
 
 const registerUser = async (req, res, next) => {
     console.log(req.body)
@@ -29,7 +30,7 @@ const registerUser = async (req, res, next) => {
 const loginUser = async (req, res) => {
     const user = await User.findOne({email: req.body.email});
     if (user && await bcrypt.compare(String(req.body.password), String(user.password))) {
-        const payload = {email: user.email, userId: user._id, role: user.role};
+        const payload = {email: user.email, userId: user._id};
         const jwtToken = jwt.sign(payload, "secret");
         return res.json({
             message: 'Success',
@@ -77,19 +78,20 @@ const forgotPassword = async (req, res) => {
 function getTokenPayload(req) {
     const { authorization } = req.headers;
     const [, token] = authorization.split(' ');
-    const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
+    // const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
+    const tokenPayload = jwt.verify(token, "secret");
+
     return tokenPayload;
 }
 
 const getUserProfile = async (req, res) => {
+    console.log(7)
     const tokenPayload = getTokenPayload(req);
     const user = await User.findOne({ email: tokenPayload.email });
-    console.log(user)
     return res.status(200).send({
         user: {
             _id: user._id,
             email: user.email,
-            role: user.role,
             createdAt: user.createdAt,
         },
     });

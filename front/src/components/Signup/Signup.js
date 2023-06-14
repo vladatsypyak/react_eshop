@@ -4,9 +4,11 @@ import {Input} from "../shared/Input/Input";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {registerUser} from "../../redux/slices/userSlice";
+import {useNavigate} from "react-router-dom";
 
 export const Signup = () => {
     const {register, handleSubmit} = useForm();
+    const navigate = useNavigate()
     const [password, setPassword] = React.useState("")
     const [repeatPassword, setRepeatPassword] = React.useState("")
     const dispatch = useDispatch()
@@ -15,6 +17,8 @@ export const Signup = () => {
         const {password, repeatPassword, email } = data
         if (password ===repeatPassword) {
             dispatch(registerUser({email, password}))
+            navigate("/user/login")
+
         }
 
     }
