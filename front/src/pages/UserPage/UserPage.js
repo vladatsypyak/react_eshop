@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {Orders} from "../../components/Order/Orders";
-import {Login} from "../../components/Login/Login";
 
 
 export const UserPage = () => {
@@ -13,9 +12,6 @@ export const UserPage = () => {
     switch (page) {
         case  "orders" :
             component = <Orders/>
-            break;
-        case  "login" :
-            component = <Login/>
             break;
         case "info": return
     }

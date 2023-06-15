@@ -8,20 +8,23 @@ import {CartPage} from "./pages/Cart/CartPage";
 import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
 import {UserPage} from "./pages/UserPage/UserPage";
-import {Login} from "./components/Login/Login";
-import {Signup} from "./components/Signup/Signup";
 import {TestPage} from "./pages/TestPage";
+import {useState} from "react";
+import {useSelector} from "react-redux";
+import {Modal} from "./components/Auth/Modal";
+import {Login} from "./components/Auth/Login/Login";
+import {Signup} from "./components/Auth/Signup/Signup";
 
 function App() {
-    const location = useLocation();
-    const previousLocation = location.state?.previousLocation;
+    const showLogin = useSelector(state => state.modal.showLogin)
+    const showSignup = useSelector(state => state.modal.showSignup)
 
 
     return (
         <div className="App">
 
             <Header/>
-            <Routes location={previousLocation || location}>
+            <Routes>
 
                 <Route path={"/"} element={<Main/>}/>
                 <Route path={"/categories/:category"} element={<Category/>}/>
@@ -41,25 +44,11 @@ function App() {
 
             </Routes>
 
-            {/*<Routes location={previousLocation || location}>*/}
-
-            {/*        <Route index element={<Main />} />*/}
-            {/*        <Route path="/cart/" element={<CartPage />} />*/}
-            {/*</Routes>*/}
-
-            {previousLocation && (
-                <Routes>
-                    <Route path="/login/" element={<Login />} />
-
-                </Routes>
-            )}
-            {previousLocation && (
-                <Routes>
-                    <Route path="/signup/" element={<Signup />} />
-                </Routes>
-            )}
 
             <Footer/>
+            {showLogin && <Login/>}
+            {showSignup && <Signup/>}
+
         </div>
     );
 }

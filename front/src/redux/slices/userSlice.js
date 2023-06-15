@@ -25,6 +25,8 @@ export const loginUser = createAsyncThunk('items/loginUser', async (params) => {
 
 const initialState = {
     user: {},
+    isError: false,
+
 }
 
 export const userSlice = createSlice({
@@ -41,7 +43,11 @@ export const userSlice = createSlice({
         builder.addCase(loginUser.fulfilled, (state, action) => {
             console.log(action.payload)
             state.user = action.payload
+            state.isError = false
 
+        });
+        builder.addCase(loginUser.rejected, (state, action) => {
+            state.isError = true
 
         });
 

@@ -5,6 +5,8 @@ import items from "./slices/itemsSlice";
 import filters from "./slices/filtersSlice";
 import cart from "./slices/cartSlice";
 import user from "./slices/userSlice";
+import modal from "./slices/modalSlice";
+
 
 
 
@@ -14,7 +16,8 @@ export const store = configureStore({
         items,
         filters,
         cart,
-        user
+        user,
+        modal
     },
     middleware: getDefaultMiddleware({
         serializableCheck: false,
