@@ -12,17 +12,19 @@ export const Favourites = () => {
     const dispatch = useDispatch()
     const items = useSelector(state => state.items.favouriteItems)
     const sortBy = useSelector(state => state.filters.sortBy)
+    const user = useSelector(state => state.user.user)
+
     function onLikeClick(itemId, liked) {
         if (!liked) {
-            dispatch(putFavourite({userId: "123456", itemId: itemId}))
+            dispatch(putFavourite({userId: user._id, itemId: itemId}))
         } else {
-            dispatch(deleteFavourite({userId: "123456", itemId: itemId}))
+            dispatch(deleteFavourite({userId: user._id, itemId: itemId}))
         }
     }
 
 
     React.useEffect(() => {
-        dispatch(getAllFavourites({userId: "123456"}))
+        dispatch(getAllFavourites({userId: user._id}))
     }, [])
 
     return <div className={s.items_wrap}>

@@ -13,12 +13,12 @@ export const Cart = () => {
     const cartItems = useSelector(state => state.cart.items)
     const items = useSelector(state => state.items.items)
     const total = useSelector(state => state.cart.total)
-
+    const user = useSelector(state => state.user.user)
     React.useEffect(() => {
-            dispatch(getAllCartItems({userId: "123456"}))
-        }, [items])
+        dispatch(getAllCartItems({userId: user._id}))
+    }, [items])
     React.useEffect(() => {
-        dispatch(getAllCartItems({userId: "123456"}))
+        dispatch(getAllCartItems({userId: user._id}))
     }, [])
     React.useEffect(() => {
         dispatch(setTotal())
@@ -26,8 +26,8 @@ export const Cart = () => {
 
     return <div className={s.cart_wrap}>
         {
-            cartItems.map(el => {
-                return <Item cartItem={el}/>
+            cartItems?.map(el => {
+                return <Item user={user} cartItem={el}/>
             })
         }
         <div className={s.cart_bottom}>

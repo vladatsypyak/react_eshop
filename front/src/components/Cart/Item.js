@@ -5,14 +5,14 @@ import s from "./cart.module.scss"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
 
-export const Item = ({cartItem}) => {
+export const Item = ({cartItem, user}) => {
     const dispatch = useDispatch()
     function onMinusClick() {
         if(cartItem.quantity === 1){
-            dispatch(deleteCartItem({userId: "123456", itemId: cartItem.itemId}))
+            dispatch(deleteCartItem({userId: user._id, itemId: cartItem.itemId}))
 
         } else {
-            dispatch(removeOneFromCart({userId: "123456", itemId: cartItem.itemId}))
+            dispatch(removeOneFromCart({userId:  user._id, itemId: cartItem.itemId}))
 
         }
 
@@ -20,11 +20,11 @@ export const Item = ({cartItem}) => {
 
     function onPlusClick() {
         console.log(cartItem.quantity)
-        dispatch(putToCart({userId: "123456", itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
+        dispatch(putToCart({userId:  user._id, itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
     }
 
     function onDeleteClick() {
-        dispatch(deleteCartItem({userId: "123456", itemId: cartItem.itemId}))
+        dispatch(deleteCartItem({userId: user._id, itemId: cartItem.itemId}))
     }
     return <div className={s.cart_item_wrap}>
         <div onClick={onDeleteClick}><GlobalSvgSelector id={"cross"}/></div>

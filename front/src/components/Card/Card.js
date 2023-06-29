@@ -16,7 +16,7 @@ export const Card = ({item}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [quantityInCart, setQuantityInCart] = React.useState(0)
-
+    const user = useSelector(state => state.user.user)
 
     React.useEffect(() => {
         let cartItem = allCartItems.find(el => el.itemId === item._id)
@@ -26,13 +26,12 @@ export const Card = ({item}) => {
     }, [allCartItems])
 
 
-
     function onCardClick() {
         navigate(`/items/${item._id}`)
     }
 
     function onAddToCartClick() {
-        dispatch(putToCart({userId: "123456", itemId: item._id, quantity: quantityInCart + 1}))
+        dispatch(putToCart({userId: user._id, itemId: item._id, quantity: quantityInCart + 1}))
     }
 
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>

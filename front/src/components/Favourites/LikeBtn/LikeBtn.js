@@ -8,25 +8,24 @@ import {deleteFavourite, getAllFavourites, putFavourite} from "../../../redux/sl
 export const LikeBtn = ({ itemId, isText}) => {
     const [liked, setLiked] = React.useState(false)
     const allFavourites = useSelector(state => state.items.favouriteItems)
+    const user = useSelector(state => state.user.user)
+
     const dispatch = useDispatch()
 
 
     function onLikeClick(itemId, liked) {
         if (!liked) {
-            dispatch(putFavourite({userId: "123456", itemId: itemId}))
+            dispatch(putFavourite({userId: user._id, itemId: itemId}))
         } else {
-            dispatch(deleteFavourite({userId: "123456", itemId: itemId}))
+            dispatch(deleteFavourite({userId: user._id, itemId: itemId}))
         }
     }
+
     function likeClickHandle() {
         onLikeClick(itemId, liked)
         setLiked(!liked)
     }
 
-    React.useEffect(() => {
-        dispatch(getAllFavourites({userId: "123456"}))
-
-    }, [])
     React.useEffect(() => {
         if (allFavourites.some(el => el._id === itemId)) {
             setLiked(true)

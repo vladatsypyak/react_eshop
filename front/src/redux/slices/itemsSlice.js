@@ -20,6 +20,7 @@ const fetchFavourites = async (userId) => {
 
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
     let str = buildURL(params)
+    console.log(params)
     const {data} = await axios.get(str)
     return data
 })
@@ -44,7 +45,7 @@ export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (
 
 const initialState = {
     items: [],
-    favouriteItems: [],
+    favouriteItems: null,
     foundItems: []
 }
 

@@ -26,7 +26,7 @@ export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (pa
 })
 
 const initialState = {
-    items: [],
+    items: null,
     total: 0,
 
 
@@ -40,7 +40,7 @@ export const cartSlice = createSlice({
             state.items = action.payload
         },
         setTotal: (state, action) => {
-            state.total = state.items.reduce((acc, el) => {
+            state.total = state.items?.reduce((acc, el) => {
                 return acc + (el.item.price * el.quantity)
             }, 0)
         },
