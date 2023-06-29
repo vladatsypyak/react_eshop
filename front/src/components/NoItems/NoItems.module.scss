@@ -1,0 +1,35 @@
+.no_items {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  user-select: none;
+
+  img {
+    width: 300px;
+    display: block;
+    margin: 0 auto 15px;
+  }
+
+  text-align: center;
+
+  p {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  button{
+    background-color: #8DA0FF;
+    a{
+      color: white;
+    }
+
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 18px;
+    &:hover{
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+  }
+}
