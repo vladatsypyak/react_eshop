@@ -3,6 +3,7 @@ import s from "./likeBtn.module.scss"
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFavourite, getAllFavourites, putFavourite} from "../../../redux/slices/itemsSlice";
+import {setLogin} from "../../../redux/slices/modalSlice";
 
 
 export const LikeBtn = ({ itemId, isText}) => {
@@ -14,6 +15,10 @@ export const LikeBtn = ({ itemId, isText}) => {
 
 
     function onLikeClick(itemId, liked) {
+        if(!Object.values(user).length){
+            dispatch(setLogin(true))
+            return
+        }
         if (!liked) {
             dispatch(putFavourite({userId: user._id, itemId: itemId}))
         } else {
@@ -27,7 +32,7 @@ export const LikeBtn = ({ itemId, isText}) => {
     }
 
     React.useEffect(() => {
-        if (allFavourites.some(el => el._id === itemId)) {
+        if (allFavourites?.some(el => el._id === itemId)) {
             setLiked(true)
         }
     }, [allFavourites])

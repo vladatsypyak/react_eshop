@@ -28,7 +28,7 @@ export const Favourites = () => {
     }, [])
 
     return <div className={s.items_wrap}>
-        {items.map(item => {
+        {items?.map(item => {
             return <Card onLikeClick={onLikeClick} item={item}/>
         })}
 

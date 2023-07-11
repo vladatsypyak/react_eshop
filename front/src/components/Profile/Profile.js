@@ -4,12 +4,11 @@ import {useParams} from "react-router-dom";
 
 
 
-export const TestPage = ({component}) => {
+export const Profile = () => {
 
 
     return <div className={` container`}>
-        <p>test</p>
-        {component}
+        profile page
     </div>
 
 }

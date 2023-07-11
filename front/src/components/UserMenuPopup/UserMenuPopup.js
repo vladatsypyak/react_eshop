@@ -7,7 +7,10 @@ import {setLogin} from "../../redux/slices/modalSlice";
 
 export const UserMenuPopup = ({isShown, setIsShown}) => {
     const dispatch = useDispatch()
-
+    const user = useSelector(state => state.user.user)
+    function isEmpty(obj) {
+        return Object.values(obj).length === 0;
+    }
 
     return <div className={s.menu}>
         {isShown &&
@@ -16,11 +19,14 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
                 <div className={s.container}>
                     <div className={`${s.menu_wrap} `}>
                         <p><Link onClick={() => setIsShown(false)} to={"user/orders"}>Мої замовлення</Link></p>
-                        <p><Link onClick={() => setIsShown(false)}>Дані</Link></p>
-                        <p onClick={() => {
+                        <p><Link onClick={() => setIsShown(false)} to={"user/profile"}>Дані</Link></p>
+                        {isEmpty(user) ? <p onClick={() => {
                             dispatch(setLogin(true))
                             setIsShown(false)
                         }}>Вхід</p>
+                            : <p>Вихід</p>
+
+                        }
 
 
                     </div>

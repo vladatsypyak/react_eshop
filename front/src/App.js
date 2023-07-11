@@ -8,12 +8,15 @@ import {CartPage} from "./pages/Cart/CartPage";
 import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
 import {UserPage} from "./pages/UserPage/UserPage";
-import {TestPage} from "./pages/TestPage";
+// import {TestPage} from "./pages/TestPage";
 import {useState} from "react";
 import {useSelector} from "react-redux";
 import {Modal} from "./components/Auth/Modal";
 import {Login} from "./components/Auth/Login/Login";
 import {Signup} from "./components/Auth/Signup/Signup";
+import {Profile} from "./components/Profile/Profile";
+import {Orders} from "./components/Orders/Orders";
+import {Favourites} from "./components/Favourites/Favourites";
 
 function App() {
     const showLogin = useSelector(state => state.modal.showLogin)
@@ -28,16 +31,18 @@ function App() {
 
                 <Route path={"/"} element={<Main/>}/>
                 <Route path={"/categories/:category"} element={<Category/>}/>
-                {/*<Route path={"user/:page"} element={<UserPage/>}/>*/}
-                {/*<Route path={"user/auth"} element={<TestPage component={<Login/>} />}>*/}
-                {/*</Route>*/}
-                {/*<Route path={"user/signup"} element={<Signup/>}/>*/}
-
 
                 <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
                 <Route path={"cart"} element={<CartPage/>}/>
                 <Route path={"favourites"} element={<FavouritesPage/>}/>
+                <Route path={"user/"} element={<UserPage/>}>
+                    <Route path={"profile"} element={<Profile/>}/>
+                    <Route path={"orders"} element={<Orders/>}/>
+                    <Route path={"favourites"} element={<FavouritesPage/>}/>
+
+                </Route>
+
 
 
                 {/*<Route path={"*"} element={<NotFound/>}/>*/}
