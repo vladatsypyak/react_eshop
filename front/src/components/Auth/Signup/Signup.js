@@ -17,9 +17,10 @@ export const Signup = () => {
     const dispatch = useDispatch()
     const [email, setEmail] = React.useState("")
     const onSubmit = (data) => {
-        const {password, repeatPassword, email} = data
+        console.log(data)
+        const {password, repeatPassword, email, name, surname, patronymic, birthdate, gender} = data
         if (password === repeatPassword) {
-            dispatch(registerUser({email, password}))
+            dispatch(registerUser({email, password, name, surname, patronymic, birthdate, gender}))
             dispatch(setLogin(true))
             dispatch(setSignup(false))
 
@@ -38,22 +39,41 @@ export const Signup = () => {
     const onRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value)
     }
+    const onDateChange = (e) => {
+        setRepeatPassword(e.target.value)
+    }
 
     return <div className={s.signup}>
         <Modal>
             <div className={s.signup_wrap}>
-                <button className={s.close} onClick={()=> dispatch(setSignup(false))}><GlobalSvgSelector id={"cross"}/></button>
+                <button className={s.close} onClick={() => dispatch(setSignup(false))}><GlobalSvgSelector id={"cross"}/>
+                </button>
                 <h3>Зареєструйтесь</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input type={"email"} placeholder={"email"} register={{...register("email", {required: true})}} onChange={onEmailChange}/>
+                    <Input type={"email"} placeholder={"email"} register={{...register("email", {required: true})}}
+                           onChange={onEmailChange}/>
                     <Input type={"text"} placeholder={"пароль"} register={{...register("password", {required: true})}}
                            onChange={onPasswordChange}/>
-                    <Input type={"text"} placeholder={"повторіть пароль"} register={{...register("repeatPassword", {required: true})}}
+                    <Input type={"text"} placeholder={"повторіть пароль"}
+                           register={{...register("repeatPassword", {required: true})}}
                            onChange={onRepeatPasswordChange}/>
-                    <div className={s.submit}>
-                        <Input type={"submit"}/>
+                    <Input type={"text"} placeholder={"прізвище"} register={{...register("surname", {required: true})}}/>
+                        <Input type={"text"} placeholder={"ім'я"} register={{...register("name", {required: true})}}
+                        />
+                        <Input type={"text"} placeholder={"по батькові"}
+                               register={{...register("patronymic", {required: true})}}/>
+                        <Input type={"date"} placeholder={"дата народження"}
+                               register={{...register("birthdate", {required: true})}}
+                               onChange={onPasswordChange}/>
+                        <select {...register("gender", {required: true})} className={s.text} defaultValue="Жіноча">
+                            <option value="female">Жіноча</option>
+                            <option value="male">чоловіча</option>
 
-                    </div>
+                        </select>
+                        <div className={s.submit}>
+                            <Input type={"submit"}/>
+
+                        </div>
                 </form>
             </div>
         </Modal>

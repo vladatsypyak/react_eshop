@@ -1,0 +1,68 @@
+.section {
+  border: 1px solid #CACACA;
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+  padding: 20px;
+
+  svg {
+    fill: black;
+    position: absolute;
+    height: 40px;
+    top: 10px;
+  }
+
+  .content {
+    padding-left: 70px;
+
+
+  }
+
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    &_item {
+      width: 30%;
+      margin-bottom: 10px;
+
+      input, option, select {
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        font-size: 14px;
+      }
+
+    }
+  }
+
+  .label {
+    color: #989898;
+    font-size: 14px;
+    font-style: normal;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 20px;
+
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .edit_btn {
+    border-radius: 10px;
+    background: #96A7FF;
+    color: #FFF;
+    font-weight: 700;
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+
+  }
+}

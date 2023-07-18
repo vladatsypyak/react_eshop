@@ -7,11 +7,16 @@ const {auth} = require("firebase-admin");
 
 const registerUser = async (req, res, next) => {
     console.log(req.body)
-    const {email, password, role} = req.body;
+    const {email, password, name, surname, birthdate, patronymic, gender} = req.body;
     const user = new User({
         email,
         password: await bcrypt.hash(password, 10),
-        role
+        name,
+        surname,
+        birthdate,
+        patronymic,
+        gender
+
     });
     // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
