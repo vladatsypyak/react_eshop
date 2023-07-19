@@ -7,7 +7,6 @@ import s from "./UserPage.module.scss"
 
 export const UserPage = () => {
     const {page} = useParams()
-    console.log(page)
     const dispatch = useDispatch()
 
 

@@ -23,6 +23,16 @@ export const loginUser = createAsyncThunk('items/loginUser', async (params) => {
 
 })
 
+export const editProfile = createAsyncThunk('items/editProfile', async (params) => {
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    const headers =  {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    let {data} = await axios.patch(`http://localhost:8080/api/user/users/me/edit`, params,{headers} )
+    return fetchUser(sessionStorage.getItem("jwt_token"))
+
+})
+
 const initialState = {
     user: {},
     isError: false,
@@ -48,6 +58,10 @@ export const userSlice = createSlice({
         });
         builder.addCase(loginUser.rejected, (state, action) => {
             state.isError = true
+
+        });
+        builder.addCase(editProfile.fulfilled, (state, action) => {
+            state.user = action.payload
 
         });
 

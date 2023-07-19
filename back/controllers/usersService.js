@@ -98,6 +98,11 @@ const getUserProfile = async (req, res) => {
             _id: user._id,
             email: user.email,
             createdAt: user.createdAt,
+            name: user.name,
+            surname: user.surname,
+            birthdate: user.birthdate,
+            patronymic: user.patronymic,
+            gender:  user.gender
         },
     });
 };
@@ -128,11 +133,25 @@ const changeUserPassword = async (req, res) => {
     }
     res.send({ message: 'Success' });
 };
+const editUserProfile = async (req, res) => {
+    let newData = req.body
+    const tokenPayload = getTokenPayload(req);
+    const user = await User.findOne({ email: tokenPayload.email });
+    console.log(user)
+    if(!user){
+        return  res.status(401).send('user is not found');
+    }
+    const changedData = await User.findByIdAndUpdate(user._id,newData )
+
+
+    res.send({ message: 'Success' });
+};
 module.exports = {
     loginUser,
     registerUser,
     forgotPassword,
     getUserProfile,
     deleteUserProfile,
-    changeUserPassword
+    changeUserPassword,
+    editUserProfile
 };
