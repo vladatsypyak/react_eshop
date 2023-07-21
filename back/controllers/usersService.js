@@ -92,7 +92,7 @@ function getTokenPayload(req) {
 const getUserProfile = async (req, res) => {
     console.log(7)
     const tokenPayload = getTokenPayload(req);
-    const user = await User.findOne({ email: tokenPayload.email });
+    const user = await User.findById(tokenPayload.userId);
     return res.status(200).send({
         user: {
             _id: user._id,
@@ -136,7 +136,8 @@ const changeUserPassword = async (req, res) => {
 const editUserProfile = async (req, res) => {
     let newData = req.body
     const tokenPayload = getTokenPayload(req);
-    const user = await User.findOne({ email: tokenPayload.email });
+    console.log(tokenPayload.userId)
+    const user = await User.findById( tokenPayload.userId);
     console.log(user)
     if(!user){
         return  res.status(401).send('user is not found');

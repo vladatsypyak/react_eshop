@@ -56,13 +56,36 @@
 
   .edit_btn {
     border-radius: 10px;
-    background: #96A7FF;
+    background: #5e75eb;
     color: #FFF;
     font-weight: 700;
     width: 150px;
     padding: 10px;
     font-size: 16px;
     margin-top: 10px;
+    margin-right: 20px;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #a7b0e6;
+    }
+
+  }
+
+  .disabled {
+    background-color: #a7b0e6;
+    cursor: auto;
+  }
+
+  .submit {
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #13ab13;
+    padding: 10px;
+    border-radius: 10px;
+    user-select: none;
 
   }
 }
