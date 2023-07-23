@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import s from "./UserMenuPopup.module.scss"
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {setLogin} from "../../redux/slices/modalSlice";
+import {logout} from "../../redux/slices/userSlice";
 
 export const UserMenuPopup = ({isShown, setIsShown}) => {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
                             dispatch(setLogin(true))
                             setIsShown(false)
                         }}>Вхід</p>
-                            : <p>Вихід</p>
+                            : <p onClick={()=> dispatch(logout())}>Вихід</p>
 
                         }
 

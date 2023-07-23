@@ -52,6 +52,11 @@ export const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload
         },
+        logout: (state, action) => {
+            state.user = {}
+            sessionStorage.clear()
+        }
+
 
 
     },
@@ -80,6 +85,6 @@ export const userSlice = createSlice({
 
 })
 
-export const {setItems, setTotal} = userSlice.actions
+export const {setItems, setTotal, logout} = userSlice.actions
 
 export default userSlice.reducer
