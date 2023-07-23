@@ -27,7 +27,7 @@
       width: 30%;
       margin-bottom: 10px;
 
-      input, option, select {
+      input, option, .select {
         border: 1px solid grey;
         border-radius: 10px;
         padding: 10px;
@@ -87,5 +87,13 @@
     border-radius: 10px;
     user-select: none;
 
+  }
+  .PhoneInputCountryIcon :root{
+    width: 500px;
+  }
+  svg{
+    width: 26px;
+    height: auto;
+    user-select: none;
   }
 }

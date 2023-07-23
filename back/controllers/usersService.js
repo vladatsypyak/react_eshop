@@ -84,9 +84,7 @@ function getTokenPayload(req) {
     const { authorization } = req.headers;
     const [, token] = authorization.split(' ');
     // const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
-    const tokenPayload = jwt.verify(token, "secret");
-
-    return tokenPayload;
+    return jwt.verify(token, "secret");
 }
 
 const getUserProfile = async (req, res) => {
@@ -94,16 +92,17 @@ const getUserProfile = async (req, res) => {
     const tokenPayload = getTokenPayload(req);
     const user = await User.findById(tokenPayload.userId);
     return res.status(200).send({
-        user: {
-            _id: user._id,
-            email: user.email,
-            createdAt: user.createdAt,
-            name: user.name,
-            surname: user.surname,
-            birthdate: user.birthdate,
-            patronymic: user.patronymic,
-            gender:  user.gender
-        },
+        // user: {
+        //     _id: user._id,
+        //     email: user.email,
+        //     createdAt: user.createdAt,
+        //     name: user.name,
+        //     surname: user.surname,
+        //     birthdate: user.birthdate,
+        //     patronymic: user.patronymic,
+        //     gender:  user.gender
+        // },
+        user
     });
 };
 const deleteUserProfile = async (req, res) => {
