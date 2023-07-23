@@ -9,19 +9,27 @@ import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
 import {UserPage} from "./pages/UserPage/UserPage";
 // import {TestPage} from "./pages/TestPage";
-import {useState} from "react";
-import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Modal} from "./components/Auth/Modal";
 import {Login} from "./components/Auth/Login/Login";
 import {Signup} from "./components/Auth/Signup/Signup";
 import {Profile} from "./components/Profile/Profile";
 import {Orders} from "./components/Orders/Orders";
 import {Favourites} from "./components/Favourites/Favourites";
+import {getUser} from "./redux/slices/userSlice";
 
 function App() {
+    const dispatch = useDispatch()
     const showLogin = useSelector(state => state.modal.showLogin)
     const showSignup = useSelector(state => state.modal.showSignup)
+    useEffect(() => {
+        const token = sessionStorage.getItem("jwt_token")
+        if (token) {
+            dispatch(getUser(token))
+        }
 
+    }, [])
 
     return (
         <div className="App">
@@ -42,7 +50,6 @@ function App() {
                     <Route path={"favourites"} element={<FavouritesPage/>}/>
 
                 </Route>
-
 
 
                 {/*<Route path={"*"} element={<NotFound/>}/>*/}

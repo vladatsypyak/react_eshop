@@ -14,6 +14,9 @@ export const registerUser = createAsyncThunk('items/registerUser', async (params
     console.log(params)
     await axios.post(`http://localhost:8080/api/user/auth/register`, params)
 })
+export const getUser = createAsyncThunk('items/getUser', async (params) => {
+    return fetchUser(params)
+})
 
 
 export const loginUser = createAsyncThunk('items/loginUser', async (params) => {
@@ -57,6 +60,11 @@ export const userSlice = createSlice({
             console.log(action.payload)
             state.user = action.payload
             state.isError = false
+
+        });
+        builder.addCase(getUser.fulfilled, (state, action) => {
+            console.log(action.payload)
+            state.user = action.payload
 
         });
         builder.addCase(loginUser.rejected, (state, action) => {
