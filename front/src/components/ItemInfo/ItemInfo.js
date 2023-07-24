@@ -13,11 +13,12 @@ export const ItemInfo = () => {
     const allCartItems = useSelector(state => state.cart.items)
     const [quantityInCart, setQuantityInCart] = React.useState(0)
     const dispatch = useDispatch()
+    const user = useSelector(state => state.user.user)
 
     const {id} = useParams()
 
     React.useEffect(() => {
-        dispatch(getAllCartItems({userId: "123456"}))
+        dispatch(getAllCartItems({userId: user._id}))
     }, [])
 
     React.useEffect(() => {
@@ -47,7 +48,7 @@ export const ItemInfo = () => {
 
     }
     function onAddToCartClick(){
-        dispatch(putToCart({userId: "123456", itemId: id, quantity:quantityInCart}))
+        dispatch(putToCart({userId: user._id, itemId: id, quantity:quantityInCart}))
 
     }
 

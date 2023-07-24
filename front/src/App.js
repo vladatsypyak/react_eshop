@@ -1,7 +1,7 @@
 import {Header} from "./components/Header/Header";
 import {Main} from "./pages/Main/Main";
 import {Footer} from "./components/Footer/Footer";
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Outlet, Route, Routes, useLocation} from "react-router-dom";
 import {Category} from "./pages/Category/Category";
 import {ItemInfo} from "./components/ItemInfo/ItemInfo";
 import {CartPage} from "./pages/Cart/CartPage";
@@ -18,6 +18,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Orders} from "./components/Orders/Orders";
 import {Favourites} from "./components/Favourites/Favourites";
 import {getUser} from "./redux/slices/userSlice";
+import {OrderForm} from "./components/OrderForm/OrderForm";
 
 function App() {
     const dispatch = useDispatch()
@@ -35,13 +36,19 @@ function App() {
         <div className="App">
 
             <Header/>
+            {<Outlet/>}
             <Routes>
 
                 <Route path={"/"} element={<Main/>}/>
+                {/*<Route path={"/"} element={<App/>}>*/}
+                {/*    <Route path={"login"} element={<Login/>}/>*/}
+                {/*</Route>*/}
                 <Route path={"/categories/:category"} element={<Category/>}/>
 
                 <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
+                <Route path={"orderform"} element={<OrderForm/>}/>
+
                 <Route path={"cart"} element={<CartPage/>}/>
                 <Route path={"favourites"} element={<FavouritesPage/>}/>
                 <Route path={"user/"} element={<UserPage/>}>

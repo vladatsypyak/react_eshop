@@ -6,6 +6,7 @@ import {Item} from "./Item";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {getAllCartItems, setTotal} from "../../redux/slices/cartSlice";
 import {logDOM} from "@testing-library/react";
+import {useNavigate} from "react-router-dom";
 
 
 export const Cart = () => {
@@ -14,6 +15,7 @@ export const Cart = () => {
     const items = useSelector(state => state.items.items)
     const total = useSelector(state => state.cart.total)
     const user = useSelector(state => state.user.user)
+    const navigate = useNavigate()
     React.useEffect(() => {
         dispatch(getAllCartItems({userId: user._id}))
     }, [items])
@@ -23,6 +25,10 @@ export const Cart = () => {
     React.useEffect(() => {
         dispatch(setTotal())
     }, [cartItems])
+
+    function onOrderClick(){
+        navigate("/orderform")
+    }
 
     return <div className={s.cart_wrap}>
         {
@@ -35,7 +41,7 @@ export const Cart = () => {
                 <p>Загалом</p>
                 <p className={s.total}>{total} грн</p>
             </div>
-            <button className={s.cart_btn}>Оформити замовлення <GlobalSvgSelector id={"rarrow"}/></button>
+            <button onClick={onOrderClick} className={s.cart_btn}>Оформити замовлення <GlobalSvgSelector id={"rarrow"}/></button>
         </div>
     </div>
 }
