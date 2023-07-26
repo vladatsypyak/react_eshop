@@ -26,7 +26,7 @@
   }
   input{
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #c4c4c4;
     outline: none;
@@ -34,5 +34,17 @@
   }
   .title{
     margin-bottom: 15px;
+  }
+  .delivery{
+    .items_wrap{
+      justify-content: space-between;
+
+    }
+    .item{
+      width: 45%;
+    }
+    input{
+      width: 100%;
+    }
   }
 }

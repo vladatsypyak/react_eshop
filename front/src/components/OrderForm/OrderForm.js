@@ -9,13 +9,14 @@ import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import {useState, useMemo} from 'react'
 import {useRef} from "react";
+import NovaPoshtaOffices from "./NP";
 
 
 
 export const OrderForm = () => {
     const {register, handleSubmit, control} = useForm();
     const user = useSelector(state => state.user.user)
-    const [country, setCountry] = useState('ua')
+    const [country, setCountry] = useState({value: "ua"})
     const [city, setCity] = useState('')
 
     const countryOptions = useMemo(() => countryList().getData(), [])
@@ -28,14 +29,14 @@ export const OrderForm = () => {
         types: ["(cities)"]
     };
     useEffect(() => {
-        console.log(country.value)
+        // console.log(country.value)
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
         );
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace();
-            console.log({ place });
+            // console.log({ place });
             setCity({ place })
         });
     }, [country]);
@@ -78,7 +79,7 @@ const onFormSubmit = (data)=>{
                     </div>
                 </div>
             </div>
-            <div className={s.section}>
+            <div className={`${s.section} ${s.delivery}`}>
                 <h4 className={s.title}>Доставка</h4>
                 <div className={s.items_wrap}>
                     <div className={s.item}>
@@ -99,12 +100,14 @@ const onFormSubmit = (data)=>{
                         />
                     </div>
 
-                    <div>
-                        <label>enter address :</label>
+                    <div className={s.item}>
+                        <p className={s.text}>Введіть свій населений пункт :</p>
                         <input type={"text"} ref={inputRef}  />
                     </div>
-                    <button type={"submit"}>сабміт</button>
+
                 </div>
+                <button type={"submit"}>сабміт</button>
+                <NovaPoshtaOffices/>
             </div>
 
         </form>
