@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteFavourite, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
+import {setLogin} from "../../redux/slices/modalSlice";
 
 export const Card = ({item}) => {
     const allCartItems = useSelector(state => state.cart.items)
@@ -31,6 +32,10 @@ export const Card = ({item}) => {
     }
 
     function onAddToCartClick() {
+        if(!Object.values(user).length){
+            dispatch(setLogin(true))
+            return
+        }
         dispatch(putToCart({userId: user._id, itemId: item._id, quantity: quantityInCart + 1}))
     }
 

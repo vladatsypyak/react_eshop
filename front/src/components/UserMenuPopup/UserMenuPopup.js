@@ -12,6 +12,7 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
     function isEmpty(obj) {
         return Object.values(obj).length === 0;
     }
+    const navigate= useNavigate()
 
     return <div className={s.menu}>
         {isShown &&
@@ -23,6 +24,7 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
                         <p><Link onClick={() => setIsShown(false)} to={"user/profile"}>Дані</Link></p>
                         {isEmpty(user) ? <p onClick={() => {
                             dispatch(setLogin(true))
+                            // navigate("/login")
                             setIsShown(false)
                         }}>Вхід</p>
                             : <p onClick={()=> dispatch(logout())}>Вихід</p>
