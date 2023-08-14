@@ -19,6 +19,8 @@ import {Orders} from "./components/Orders/Orders";
 import {Favourites} from "./components/Favourites/Favourites";
 import {getUser} from "./redux/slices/userSlice";
 import {OrderForm} from "./components/OrderForm/OrderForm";
+import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
+import {Confirmed} from "./components/OrderConfirm/Confirmed";
 
 function App() {
     const dispatch = useDispatch()
@@ -47,7 +49,11 @@ function App() {
 
                 <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
                 <Route path={"items/:id"} element={<ItemInfo/>}/>
-                <Route path={"orderform"} element={<OrderForm/>}/>
+                <Route path={"orderform/"} element={<OrderForm/>}>
+                    <Route path={"confirm"} element={<OrderConfirm/>}/>
+                    <Route path={"confirmed"} element={<Confirmed/>}/>
+
+                </Route>
 
                 <Route path={"cart"} element={<CartPage/>}/>
                 <Route path={"favourites"} element={<FavouritesPage/>}/>

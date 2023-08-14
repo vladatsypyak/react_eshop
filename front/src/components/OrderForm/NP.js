@@ -12,6 +12,7 @@ const NovaPoshtaOffices = () => {
                     `https://api.novaposhta.ua/v2.0/json/Address/getWarehouses?apiKey=${apiKey}`
                 );
                 setOffices(response.data.data);
+                console.log(response)
             } catch (error) {
                 console.error('Error fetching Nova Poshta offices:', error);
             }

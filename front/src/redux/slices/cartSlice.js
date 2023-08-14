@@ -28,6 +28,7 @@ export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (pa
 const initialState = {
     items: null,
     total: 0,
+    orderData: {}
 
 
 }
@@ -35,6 +36,7 @@ const initialState = {
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
+
     reducers: {
         setItems: (state, action) => {
             state.items = action.payload
@@ -44,6 +46,10 @@ export const cartSlice = createSlice({
                 return acc + (el.item.price * el.quantity)
             }, 0)
         },
+        setOrderData: (state, action)=>{
+            console.log(action.payload)
+            state.orderData = action.payload
+        }
 
 
 
@@ -61,10 +67,11 @@ export const cartSlice = createSlice({
         builder.addCase(deleteCartItem.fulfilled, (state, action) => {
             state.items = action.payload
         });
+
     },
 
 })
 
-export const {setItems, setTotal} = cartSlice.actions
+export const {setItems, setTotal, setOrderData} = cartSlice.actions
 
 export default cartSlice.reducer
