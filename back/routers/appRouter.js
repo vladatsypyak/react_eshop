@@ -5,7 +5,7 @@ const router = express.Router();
 const {
     getCategories, getCategoryByValue, getItemsByCategory, getCategoryFilters, getFilterValues, getFilteredItems,
     getItemsByTitle, addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites, addToCart,
-    getUserCartItems, removeOneFromCart, deleteCartItem, searchCategories
+    getUserCartItems, removeOneFromCart, deleteCartItem, searchCategories, createOrder
 } = require("../controllers/appService");
 
 
@@ -31,6 +31,8 @@ router.post('/app/cart/remove', removeOneFromCart);
 router.get('/app/cart/:userId', getUserCartItems);
 router.post('/app/cart', addToCart);
 router.delete('/app/cart', deleteCartItem);
+
+router.post('/app/order/add', createOrder);
 
 
 

@@ -6,6 +6,7 @@ const {now} = require("mongoose");
 const {Item} = require("../models/Items");
 const {Favourite} = require("../models/Favourites");
 const {CartItem} = require("../models/CartItems");
+const {Order} = require("../models/Orders");
 require('dotenv').config();
 
 
@@ -252,6 +253,17 @@ async function getItemById(req, res) {
     )
 }
 
+async function createOrder(req, res) {
+    const {userId, items, status, price} = req.body
+    console.log(userId)
+    const order = new Order({userId, items, status, price});
+    await order.save();
+
+    res.send(
+        {message: "added to favourite"}
+    )
+}
+
 module.exports = {
     getCategories,
     getCategoryByValue,
@@ -269,5 +281,6 @@ module.exports = {
     getUserCartItems,
     removeOneFromCart,
     deleteCartItem,
-    searchCategories
+    searchCategories,
+    createOrder
 };
