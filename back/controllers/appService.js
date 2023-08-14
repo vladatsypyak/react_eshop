@@ -186,7 +186,6 @@ async function addToCart(req, res) {
     const item = await Item.findById(itemId)
     console.log(item)
     if (existingCartItem) {
-        console.log("here")
         const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity});
 
     } else {
@@ -204,7 +203,6 @@ async function removeOneFromCart(req, res) {
     const item = await Item.findById(itemId)
     console.log(item)
 
-    console.log("here")
     const quantity = cartItem.quantity
     const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity - 1});
 
@@ -215,9 +213,16 @@ async function removeOneFromCart(req, res) {
 }
 
 async function deleteCartItem(req, res) {
-    console.log("worj")
     const {userId, itemId} = req.body
     const cartItem = await CartItem.findOneAndDelete({userId, itemId});
+    res.send(
+        cartItem
+    )
+}
+
+async function clearCart (req, res) {
+    const {userId} = req.params
+    const cartItem = await CartItem.deleteMany({userId});
     res.send(
         cartItem
     )
@@ -254,9 +259,9 @@ async function getItemById(req, res) {
 }
 
 async function createOrder(req, res) {
-    const {userId, items, status, price} = req.body
+    const {userId, items, price, userData} = req.body
     console.log(userId)
-    const order = new Order({userId, items, status, price});
+    const order = new Order({userId, items, status: "New", price, userData});
     await order.save();
 
     res.send(
@@ -281,6 +286,7 @@ module.exports = {
     getUserCartItems,
     removeOneFromCart,
     deleteCartItem,
+    clearCart,
     searchCategories,
     createOrder
 };

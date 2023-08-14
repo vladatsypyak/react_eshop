@@ -10,6 +10,12 @@ export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
     await axios.post(`http://localhost:8080/api/app/cart`, params)
     return await fetchCartItems(params.userId)
 })
+export const createOrder = createAsyncThunk('items/createOrder', async (params) => {
+
+    await axios.post(`http://localhost:8080/api/app/order/add`, params)
+    await axios.delete(`http://localhost:8080/api/app/cart/clear/${params.userId}`)
+
+})
 export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', async (params) => {
     await axios.post(`http://localhost:8080/api/app/cart/remove`, params)
     return await fetchCartItems(params.userId)
@@ -66,6 +72,9 @@ export const cartSlice = createSlice({
         });
         builder.addCase(deleteCartItem.fulfilled, (state, action) => {
             state.items = action.payload
+        });
+        builder.addCase(createOrder.fulfilled, (state, action) => {
+            state.items = []
         });
 
     },

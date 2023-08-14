@@ -14,6 +14,9 @@ const OrderSchema = mongoose.Schema(
         status: {
             type: String
         },
+        userData: {
+            type: Object
+        },
         logs: {
             type: {
                 message: {
