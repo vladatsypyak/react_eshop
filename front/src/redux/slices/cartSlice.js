@@ -6,15 +6,25 @@ const fetchCartItems = async (userId) => {
     return data;
 };
 
+const fetchUserOrders = async (userId) => {
+    const {data} = await axios.get(`http://localhost:8080/api/app/orders/${userId}`);
+    return data;
+};
+
 export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
     await axios.post(`http://localhost:8080/api/app/cart`, params)
     return await fetchCartItems(params.userId)
 })
 export const createOrder = createAsyncThunk('items/createOrder', async (params) => {
 
-    await axios.post(`http://localhost:8080/api/app/order/add`, params)
+    await axios.post(`http://localhost:8080/api/app/orders/add`, params)
     await axios.delete(`http://localhost:8080/api/app/cart/clear/${params.userId}`)
 
+})
+
+export const getUserOrders = createAsyncThunk('orders/getUserOrders', async (params) => {
+    console.log(params)
+    return await fetchUserOrders(params.userId)
 })
 export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', async (params) => {
     await axios.post(`http://localhost:8080/api/app/cart/remove`, params)
@@ -34,7 +44,8 @@ export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (pa
 const initialState = {
     items: null,
     total: 0,
-    orderData: {}
+    orderData: {},
+    orders: []
 
 
 }
@@ -75,6 +86,9 @@ export const cartSlice = createSlice({
         });
         builder.addCase(createOrder.fulfilled, (state, action) => {
             state.items = []
+        });
+        builder.addCase(getUserOrders.fulfilled, (state, action) => {
+            state.orders = action.payload
         });
 
     },

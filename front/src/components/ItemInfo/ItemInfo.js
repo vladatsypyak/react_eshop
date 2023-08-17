@@ -69,10 +69,10 @@ export const ItemInfo = () => {
                     </div>
                     <button onClick={onAddToCartClick}>До кошика</button>
                 </div>
-                <p className={s.info}><span>Склад:</span>індійський чай Дарджилінг, сушене яблуко, цедра апельсину,
+                <p className={s.info}><span>Склад: </span>індійський чай Дарджилінг, сушене яблуко, цедра апельсину,
                     бутон троянди, сушена та сублімована малина, аромати малини, саусепа, бергамота.</p>
-                <p className={s.info}><span>Вага упаковки:</span>100 грамів.</p>
-                <p className={s.info}><span>Країна:</span>Індія</p>
+                <p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>
+                <p className={s.info}><span>Країна: </span>Індія</p>
                 <div className={s.favourite_wrap}>
                     <LikeBtn itemId={item._id} isText={true}/>
                 </div>

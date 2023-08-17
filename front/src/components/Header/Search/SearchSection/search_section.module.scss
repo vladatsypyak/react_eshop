@@ -12,7 +12,8 @@
 .search_results {
   display: flex;
   position: absolute;
-  left: 18%;
+  left: 50%;
+  transform: translateX(-50%);
   margin-right: 30px;
   border-radius: 10px;
   background-color: #fff;
