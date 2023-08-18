@@ -12,6 +12,7 @@ import {useRef} from "react";
 import PhoneInput from "react-phone-number-input";
 import {Outlet, NavLink} from "react-router-dom";
 import {setOrderData} from "../../redux/slices/cartSlice";
+import NovaPoshtaOffices from "./NP";
 
 
 export const OrderForm = () => {
@@ -19,6 +20,8 @@ export const OrderForm = () => {
     const user = useSelector(state => state.user.user)
     const [country, setCountry] = useState({value: "ua"})
     const [city, setCity] = useState('')
+    const [npWarehouse, setNpWarehouse] = useState('')
+
     const [phone, setUserPhone] = useState(user.phone);
     const dispatch = useDispatch()
     const [address, setAddress] = useState('')
@@ -64,6 +67,7 @@ export const OrderForm = () => {
     const onFormSubmit = (data) => {
         console.log({...data, ...address, placeStr: address.place.address_components.map(el => el.long_name).join(",")})
         console.log(address)
+        console.log(npWarehouse)
         dispatch(setOrderData({
                 ...data, ...address,
                 placeStr: address.place.address_components.map(el => el.long_name).join(",")
@@ -153,6 +157,21 @@ export const OrderForm = () => {
                     {/*</div>*/}
 
                 </div>
+                <Controller
+                    name="npWarehous"
+                    // Provide the default value for the input field
+
+                    control={control}
+                    render={({field: {onChange}, field: {value}}) => (
+                        <NovaPoshtaOffices onChange={(val)=>{
+                            console.log(val)
+                            setNpWarehouse(val)
+                            onChange(val)
+                        }}/>
+
+                    )}
+                />
+
 
                 {/*<NovaPoshtaOffices/>*/}
 
