@@ -43,8 +43,12 @@ export const OrderConfirm = () => {
                     <p>{orderData.phone}</p>
                 </div>
                 <div className={s.item}>
-                    <p className={s.title}>Адреса доставки</p>
-                    <p>{orderData.placeStr}</p>
+                    <p className={s.title}>Місто доставки</p>
+                    <p>{orderData.city}</p>
+                </div>
+                <div className={s.item}>
+                    <p className={s.title}>Відділення нової пошти</p>
+                    <p>{orderData.npWarehous}</p>
                 </div>
             </div>
             <div className={s.buttons_wrap}>

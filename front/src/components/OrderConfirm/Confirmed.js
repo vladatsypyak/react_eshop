@@ -14,10 +14,10 @@ export const Confirmed = () => {
                 <p>З подальшими питаннями з вами звяжеться менеджер</p>
 
             </div>
-            <button className={s.return_btn}>
+            <div className={s.return}>
                 <Link to={"/"}>На головну сторінку</Link>
 
-            </button>
+            </div>
 
 
         </Modal>

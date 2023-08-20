@@ -60,11 +60,13 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
 
-        <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="Interface / Heart_01">
-            <path id="Vector" d="M12 7.69431C10 2.99988 3 3.49988 3 9.49991C3 15.4999 12 20.5001 12 20.5001C12 20.5001 21 15.4999 21 9.49991C21 3.49988 14 2.99988 12 7.69431Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-        </svg>
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Interface / Heart_01">
+                        <path id="Vector"
+                              d="M12 7.69431C10 2.99988 3 3.49988 3 9.49991C3 15.4999 12 20.5001 12 20.5001C12 20.5001 21 15.4999 21 9.49991C21 3.49988 14 2.99988 12 7.69431Z"
+                              stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>
 
 
             );
@@ -86,13 +88,15 @@ export const GlobalSvgSelector = ({id}) => {
         case "heart_icon" :
             return (
 
-                <svg width="59" height="71" viewBox="0 0 59 71" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <svg width="59" height="71" viewBox="0 0 59 71" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     xmlnsXlink="http://www.w3.org/1999/xlink">
                     <rect width="59" height="71" fill="url(#pattern0)"/>
                     <defs>
                         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
                             <use xlinkHref="#image0_15_177" transform="matrix(0.0120339 0 0 0.01 -0.101695 0)"/>
                         </pattern>
-                        <image id="image0_15_177" width="100" height="100" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFDElEQVR4nO2c3YscRRTFyw/8ehHU3e5zenajIShEwRBE1IioKIpPoiKCEkWMGBAVRXzQP0B8EIP7YBQirD4EUcS3oGjAL1A39q3ZTRBBJSIaCWhWE9eYNS13HOOSRMluuruqZu4PDiwLM31vna6u6aq65ZxhGIZhGIZhGIZhGIZhGIZhGIZhGEbjbMvzZZ68xwMveGCrAN8K8JOQBz25V8gfBBAPbPbkUyWwZqtzJ9cdh36nAFfqNfRaek29dj+Gg/2YdnrgvV6s5N0zwLgbBD7P8xEhH+s1NFktWsAeATZ1ycuPN5Zp8goBXvbk7BJjKYV8dAo4x6XGzMhILuRznty3pOR5VH3aBa5fbCwC3KCfrTGOvQI82x0dzVzsvObcSQI8pHd2jQ1QHaYtx/II0UekkG83Fgfwcxd4sHLuRBcj28bG2HvuNmdEtUCzZZ7f9V+xSFGsXfKjaZES4B19IriY8MBqIXe1ZEZ1qDHIpxfeofq3AM+0HYcHvi/JVS4GyqK4WshfWm8EHtKkGtEzg3w1YByzPs+vCmpGN88vCWxG1e8pG4V8MXQcPVOA1UHM8EXR8eSPETRCFZP0nWZqfBytmqEvV578IHTyPlYBW/UXZ2uGePLx4EkzcgGPtGLGNDkm5K/BE2bc0rFVXwUaN6Q/vxM8YZ+AhHy+UTPUcQF+D52oT0QCzDX60ujJJ0Mn6RNTF3iiMUME+CJ0gj49bW/EDE9eEEFyVYrqjo4ur90QIdeHTsynKmBd/YYAm4InxjQl5EtNGPJR6MR8ohLy/doN8cB3oRPziUr3D9RuSAyzuj5VAXtqN8ST88ETY7I6ULsh1kN4PIbM1m6IjSGMbgzZEUHXrxLVdO2G6KJLBIlVSQp4t3ZDBJgInhiT1Yb6DbGpk2qphnSB+2s3RDc/R3CnVSmqjr3JR/DlihWn2tItF22Gtpm2nWsCAd4Kfbf59PRGI2b0DCEfiCDBKikB9zVmiK4Pe+CP4EkyDQmwX7Js1DWJJ18PnahPRcBm1zRaNBM8UaahsiiuadyQyrkTdOE+dLI+fk1rW7k28EVxWwQJVzGrC9zs2qLXS4BPQiftI5WQn7XWO/6hS14XOnEfobS0WouYXAg8+UroBvCRSUuvXSh2kGdb0Q4XGrJba/NdSEry9tB3pY9Ekue3uhiwEgXqo2rCxUJ/Jnjb0PYMwH/c6ZzuYkKy7LxhHE+E3FVm2bkuRrRMuubzTaqoBfzmi+IyFzM6sA3Jprp5yfNbXAroGVNC/hlBo1VNqHfGVxMlBk0i5L39w8kGzgwh17sU0RXGAesp88n1jMMR8o5BWGUUYL++BLtBoFsUNyW+WXtW8vxGN0hIll3kya+T6xnkVxq7G0R6k5HtnTpX1aAPG9+kEJr+Ma0TKRRqzqxceYobFvS0HK0sCt3w/kgd0IM83TBSdjqX6jM6ol6xU/cwu2FmavnyM/unWVeBzXhzptM5K3R7REP/aNd9rRsBzHng4dY3JaRASa5quXRu+3RRXBw676j5Ztmy0/Q83ianXPrzURungDNC55sMJbCmiQFfB24pimtD55fugE9O1mjIpH5n6LySR/5e9Np9nAfn3xk6j4FCsmx0iRVcW1o5HXRY8cC6Y6l17M0uN1m9ZPyLkOfr1pv/MWNHmWUXLviI0cbPY09uOOrAbT9nw77hCzDXU1GsDRiKsXCSUnXoH4ZhGIZhGIZhGIZhGIYbQP4CqmVNU4vkwvsAAAAASUVORK5CYII="/>
+                        <image id="image0_15_177" width="100" height="100"
+                               xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFDElEQVR4nO2c3YscRRTFyw/8ehHU3e5zenajIShEwRBE1IioKIpPoiKCEkWMGBAVRXzQP0B8EIP7YBQirD4EUcS3oGjAL1A39q3ZTRBBJSIaCWhWE9eYNS13HOOSRMluuruqZu4PDiwLM31vna6u6aq65ZxhGIZhGIZhGIZhGIZhGIZhGIZhGEbjbMvzZZ68xwMveGCrAN8K8JOQBz25V8gfBBAPbPbkUyWwZqtzJ9cdh36nAFfqNfRaek29dj+Gg/2YdnrgvV6s5N0zwLgbBD7P8xEhH+s1NFktWsAeATZ1ycuPN5Zp8goBXvbk7BJjKYV8dAo4x6XGzMhILuRznty3pOR5VH3aBa5fbCwC3KCfrTGOvQI82x0dzVzsvObcSQI8pHd2jQ1QHaYtx/II0UekkG83Fgfwcxd4sHLuRBcj28bG2HvuNmdEtUCzZZ7f9V+xSFGsXfKjaZES4B19IriY8MBqIXe1ZEZ1qDHIpxfeofq3AM+0HYcHvi/JVS4GyqK4WshfWm8EHtKkGtEzg3w1YByzPs+vCmpGN88vCWxG1e8pG4V8MXQcPVOA1UHM8EXR8eSPETRCFZP0nWZqfBytmqEvV578IHTyPlYBW/UXZ2uGePLx4EkzcgGPtGLGNDkm5K/BE2bc0rFVXwUaN6Q/vxM8YZ+AhHy+UTPUcQF+D52oT0QCzDX60ujJJ0Mn6RNTF3iiMUME+CJ0gj49bW/EDE9eEEFyVYrqjo4ur90QIdeHTsynKmBd/YYAm4InxjQl5EtNGPJR6MR8ohLy/doN8cB3oRPziUr3D9RuSAyzuj5VAXtqN8ST88ETY7I6ULsh1kN4PIbM1m6IjSGMbgzZEUHXrxLVdO2G6KJLBIlVSQp4t3ZDBJgInhiT1Yb6DbGpk2qphnSB+2s3RDc/R3CnVSmqjr3JR/DlihWn2tItF22Gtpm2nWsCAd4Kfbf59PRGI2b0DCEfiCDBKikB9zVmiK4Pe+CP4EkyDQmwX7Js1DWJJ18PnahPRcBm1zRaNBM8UaahsiiuadyQyrkTdOE+dLI+fk1rW7k28EVxWwQJVzGrC9zs2qLXS4BPQiftI5WQn7XWO/6hS14XOnEfobS0WouYXAg8+UroBvCRSUuvXSh2kGdb0Q4XGrJba/NdSEry9tB3pY9Ekue3uhiwEgXqo2rCxUJ/Jnjb0PYMwH/c6ZzuYkKy7LxhHE+E3FVm2bkuRrRMuubzTaqoBfzmi+IyFzM6sA3Jprp5yfNbXAroGVNC/hlBo1VNqHfGVxMlBk0i5L39w8kGzgwh17sU0RXGAesp88n1jMMR8o5BWGUUYL++BLtBoFsUNyW+WXtW8vxGN0hIll3kya+T6xnkVxq7G0R6k5HtnTpX1aAPG9+kEJr+Ma0TKRRqzqxceYobFvS0HK0sCt3w/kgd0IM83TBSdjqX6jM6ol6xU/cwu2FmavnyM/unWVeBzXhzptM5K3R7REP/aNd9rRsBzHng4dY3JaRASa5quXRu+3RRXBw676j5Ztmy0/Q83ianXPrzURungDNC55sMJbCmiQFfB24pimtD55fugE9O1mjIpH5n6LySR/5e9Np9nAfn3xk6j4FCsmx0iRVcW1o5HXRY8cC6Y6l17M0uN1m9ZPyLkOfr1pv/MWNHmWUXLviI0cbPY09uOOrAbT9nw77hCzDXU1GsDRiKsXCSUnXoH4ZhGIZhGIZhGIZhGIYbQP4CqmVNU4vkwvsAAAAASUVORK5CYII="/>
                     </defs>
                 </svg>
 
@@ -101,7 +105,9 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
                 <svg width="66" height="71" viewBox="0 0 66 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.1607 14.7917H50.119C53.8733 14.7917 56.524 18.7481 55.3369 22.5794L50.7534 37.3711C50.0049 39.7869 47.9031 41.4167 45.5359 41.4167H16.6964M13.1607 14.7917L13.0496 13.9549C12.6625 11.0401 10.342 8.875 7.60488 8.875H5.5M13.1607 14.7917L16.6964 41.4167M16.6964 41.4167L17.2004 45.2116C17.5875 48.1265 19.908 50.2917 22.6451 50.2917H46.75M46.75 50.2917C43.7124 50.2917 41.25 52.9406 41.25 56.2083C41.25 59.4761 43.7124 62.125 46.75 62.125C49.7876 62.125 52.25 59.4761 52.25 56.2083C52.25 52.9406 49.7876 50.2917 46.75 50.2917ZM30.25 56.2083C30.25 59.4761 27.7876 62.125 24.75 62.125C21.7124 62.125 19.25 59.4761 19.25 56.2083C19.25 52.9406 21.7124 50.2917 24.75 50.2917C27.7876 50.2917 30.25 52.9406 30.25 56.2083Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                        d="M13.1607 14.7917H50.119C53.8733 14.7917 56.524 18.7481 55.3369 22.5794L50.7534 37.3711C50.0049 39.7869 47.9031 41.4167 45.5359 41.4167H16.6964M13.1607 14.7917L13.0496 13.9549C12.6625 11.0401 10.342 8.875 7.60488 8.875H5.5M13.1607 14.7917L16.6964 41.4167M16.6964 41.4167L17.2004 45.2116C17.5875 48.1265 19.908 50.2917 22.6451 50.2917H46.75M46.75 50.2917C43.7124 50.2917 41.25 52.9406 41.25 56.2083C41.25 59.4761 43.7124 62.125 46.75 62.125C49.7876 62.125 52.25 59.4761 52.25 56.2083C52.25 52.9406 49.7876 50.2917 46.75 50.2917ZM30.25 56.2083C30.25 59.4761 27.7876 62.125 24.75 62.125C21.7124 62.125 19.25 59.4761 19.25 56.2083C19.25 52.9406 21.7124 50.2917 24.75 50.2917C27.7876 50.2917 30.25 52.9406 30.25 56.2083Z"
+                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
 
             )
@@ -109,8 +115,12 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
                 <svg width="78" height="64" viewBox="0 0 78 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M54.766 56V50.6667C54.766 47.8377 53.6659 45.1246 51.7077 43.1242C49.7496 41.1238 47.0937 40 44.3245 40H23.4415C20.6722 40 18.0164 41.1238 16.0582 43.1242C14.1001 45.1246 13 47.8377 13 50.6667V56" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M33.883 29.3333C39.6497 29.3333 44.3245 24.5577 44.3245 18.6667C44.3245 12.7756 39.6497 8 33.883 8C28.1163 8 23.4415 12.7756 23.4415 18.6667C23.4415 24.5577 28.1163 29.3333 33.883 29.3333Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                        d="M54.766 56V50.6667C54.766 47.8377 53.6659 45.1246 51.7077 43.1242C49.7496 41.1238 47.0937 40 44.3245 40H23.4415C20.6722 40 18.0164 41.1238 16.0582 43.1242C14.1001 45.1246 13 47.8377 13 50.6667V56"
+                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                        d="M33.883 29.3333C39.6497 29.3333 44.3245 24.5577 44.3245 18.6667C44.3245 12.7756 39.6497 8 33.883 8C28.1163 8 23.4415 12.7756 23.4415 18.6667C23.4415 24.5577 28.1163 29.3333 33.883 29.3333Z"
+                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
 
             )
@@ -118,8 +128,12 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
                 <svg width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.06066 0.93934C2.47487 0.353553 1.52513 0.353553 0.93934 0.93934C0.353553 1.52513 0.353553 2.47487 0.93934 3.06066L3.06066 0.93934ZM0.93934 3.06066L14.9393 17.0607L17.0607 14.9393L3.06066 0.93934L0.93934 3.06066Z" fill="#756856"/>
-                    <path d="M0.93934 26.9393C0.353554 27.5251 0.353553 28.4749 0.93934 29.0607C1.52513 29.6464 2.47487 29.6464 3.06066 29.0607L0.93934 26.9393ZM13.9393 13.9393L0.93934 26.9393L3.06066 29.0607L16.0607 16.0607L13.9393 13.9393Z" fill="#756856"/>
+                    <path
+                        d="M3.06066 0.93934C2.47487 0.353553 1.52513 0.353553 0.93934 0.93934C0.353553 1.52513 0.353553 2.47487 0.93934 3.06066L3.06066 0.93934ZM0.93934 3.06066L14.9393 17.0607L17.0607 14.9393L3.06066 0.93934L0.93934 3.06066Z"
+                        fill="#756856"/>
+                    <path
+                        d="M0.93934 26.9393C0.353554 27.5251 0.353553 28.4749 0.93934 29.0607C1.52513 29.6464 2.47487 29.6464 3.06066 29.0607L0.93934 26.9393ZM13.9393 13.9393L0.93934 26.9393L3.06066 29.0607L16.0607 16.0607L13.9393 13.9393Z"
+                        fill="#756856"/>
                 </svg>
 
             )
@@ -127,8 +141,12 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
                 <svg width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.9393 29.0607C15.5251 29.6464 16.4749 29.6464 17.0607 29.0607C17.6464 28.4749 17.6464 27.5251 17.0607 26.9393L14.9393 29.0607ZM17.0607 26.9393L3.06066 12.9393L0.93934 15.0607L14.9393 29.0607L17.0607 26.9393Z" fill="#756856"/>
-                    <path d="M17.0607 3.06066C17.6464 2.47487 17.6464 1.52513 17.0607 0.93934C16.4749 0.353553 15.5251 0.353554 14.9393 0.93934L17.0607 3.06066ZM4.06066 16.0607L17.0607 3.06066L14.9393 0.93934L1.93934 13.9393L4.06066 16.0607Z" fill="#756856"/>
+                    <path
+                        d="M14.9393 29.0607C15.5251 29.6464 16.4749 29.6464 17.0607 29.0607C17.6464 28.4749 17.6464 27.5251 17.0607 26.9393L14.9393 29.0607ZM17.0607 26.9393L3.06066 12.9393L0.93934 15.0607L14.9393 29.0607L17.0607 26.9393Z"
+                        fill="#756856"/>
+                    <path
+                        d="M17.0607 3.06066C17.6464 2.47487 17.6464 1.52513 17.0607 0.93934C16.4749 0.353553 15.5251 0.353554 14.9393 0.93934L17.0607 3.06066ZM4.06066 16.0607L17.0607 3.06066L14.9393 0.93934L1.93934 13.9393L4.06066 16.0607Z"
+                        fill="#756856"/>
                 </svg>
 
             )
@@ -136,55 +154,79 @@ export const GlobalSvgSelector = ({id}) => {
             return (
 
                 <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="#CBCBCB"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
-                    <rect width="1.53472" height="10.9812" rx="0.767361" transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="#CBCBCB"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 -0.647951 0.761682 0.647951 0 0.994415)" fill="#CBCBCB"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="white"/>
+                    <rect width="1.53472" height="10.9812" rx="0.767361"
+                          transform="matrix(0.761682 0.647951 0.761682 -0.647951 0 13.1153)" fill="#CBCBCB"/>
                 </svg>
 
             )
         case "cart_btn" :
             return (
 
-                <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     xmlnsXlink="http://www.w3.org/1999/xlink">
                     <rect width="24" height="27" rx="5" fill="url(#pattern0)"/>
                     <defs>
                         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
                             <use xlinkHref="#image0_12_161" transform="matrix(0.046875 0 0 0.0416667 -0.0625 0)"/>
                         </pattern>
-                        <image id="image0_12_161" width="24" height="24" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6klEQVR4nN2UvwqBURiHD4MkBsmmTC6AXIQ/ZXIr7kGuQVFyCTbFbjRbMMhgIgw8klcR3+c9PvLnNz+/9zmd93SM+YtwncY7BPsLwQaIv1xyDNDBe3rGKUDxBYKhm8APjAQsOIK3vQgwk17pEVwRsGMhqEqnr4GjwEoWn1LwiQs+qz1RU05UU7BtYVuq4VLKSGkBhFy4NLAD1kBSLZDywOLlVG2Hx4C5YvBarihoK6jLgC7gsyorhoflu9hqXtEzggCw5IkYC0lZuYOrmK8Jp09vCkyAvFfuXvFYOGfslfuIIC/lMZDzyv12DiLMmTXG+gXzAAAAAElFTkSuQmCC"/>
+                        <image id="image0_12_161" width="24" height="24"
+                               xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6klEQVR4nN2UvwqBURiHD4MkBsmmTC6AXIQ/ZXIr7kGuQVFyCTbFbjRbMMhgIgw8klcR3+c9PvLnNz+/9zmd93SM+YtwncY7BPsLwQaIv1xyDNDBe3rGKUDxBYKhm8APjAQsOIK3vQgwk17pEVwRsGMhqEqnr4GjwEoWn1LwiQs+qz1RU05UU7BtYVuq4VLKSGkBhFy4NLAD1kBSLZDywOLlVG2Hx4C5YvBarihoK6jLgC7gsyorhoflu9hqXtEzggCw5IkYC0lZuYOrmK8Jp09vCkyAvFfuXvFYOGfslfuIIC/lMZDzyv12DiLMmTXG+gXzAAAAAElFTkSuQmCC"/>
                     </defs>
                 </svg>
             )
         case "sort_arrow_down" :
-            return  (
+            return (
 
                 <svg width="32" height="17" viewBox="0 0 32 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.94074 1.42408C3.8689 0.553718 2.1311 0.553718 1.05926 1.42408C-0.012578 2.29443 -0.012578 3.70557 1.05926 4.57592L4.94074 1.42408ZM1.05926 4.57592L15.8372 16.5759L19.7186 13.4241L4.94074 1.42408L1.05926 4.57592Z" fill="#F0F3FF"/>
-                    <path d="M30.9407 4.57592C32.0126 3.70557 32.0126 2.29443 30.9407 1.42408C29.8689 0.553718 28.1311 0.553718 27.0593 1.42408L30.9407 4.57592ZM27.0593 1.42408L12.2814 13.4241L16.1628 16.5759L30.9407 4.57592L27.0593 1.42408Z" fill="#F0F3FF"/>
+                    <path
+                        d="M4.94074 1.42408C3.8689 0.553718 2.1311 0.553718 1.05926 1.42408C-0.012578 2.29443 -0.012578 3.70557 1.05926 4.57592L4.94074 1.42408ZM1.05926 4.57592L15.8372 16.5759L19.7186 13.4241L4.94074 1.42408L1.05926 4.57592Z"
+                        fill="#F0F3FF"/>
+                    <path
+                        d="M30.9407 4.57592C32.0126 3.70557 32.0126 2.29443 30.9407 1.42408C29.8689 0.553718 28.1311 0.553718 27.0593 1.42408L30.9407 4.57592ZM27.0593 1.42408L12.2814 13.4241L16.1628 16.5759L30.9407 4.57592L27.0593 1.42408Z"
+                        fill="#F0F3FF"/>
                 </svg>
             )
         case "sort_arrow_up" :
-            return  (
+            return (
 
                 <svg width="32" height="17" viewBox="0 0 32 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M27.0593 15.5759C28.1311 16.4463 29.8689 16.4463 30.9407 15.5759C32.0126 14.7056 32.0126 13.2944 30.9407 12.4241L27.0593 15.5759ZM30.9407 12.4241L16.1628 0.424076L12.2814 3.57592L27.0593 15.5759L30.9407 12.4241Z" fill="#727CB3"/>
-                    <path d="M1.05926 12.4241C-0.0125779 13.2944 -0.0125779 14.7056 1.05926 15.5759C2.1311 16.4463 3.8689 16.4463 4.94074 15.5759L1.05926 12.4241ZM4.94074 15.5759L19.7186 3.57592L15.8372 0.424076L1.05926 12.4241L4.94074 15.5759Z" fill="#727CB3"/>
+                    <path
+                        d="M27.0593 15.5759C28.1311 16.4463 29.8689 16.4463 30.9407 15.5759C32.0126 14.7056 32.0126 13.2944 30.9407 12.4241L27.0593 15.5759ZM30.9407 12.4241L16.1628 0.424076L12.2814 3.57592L27.0593 15.5759L30.9407 12.4241Z"
+                        fill="#727CB3"/>
+                    <path
+                        d="M1.05926 12.4241C-0.0125779 13.2944 -0.0125779 14.7056 1.05926 15.5759C2.1311 16.4463 3.8689 16.4463 4.94074 15.5759L1.05926 12.4241ZM4.94074 15.5759L19.7186 3.57592L15.8372 0.424076L1.05926 12.4241L4.94074 15.5759Z"
+                        fill="#727CB3"/>
                 </svg>
 
             )
         case "cross" :
-            return  (
+            return (
 
 
                 <svg width="19" height="21" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -193,6 +235,14 @@ export const GlobalSvgSelector = ({id}) => {
                 </svg>
 
 
+            )
+        case "done" :
+            return (
+                <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m901-250a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm3.48 3.783c.912-.026 1.381 1.081.727 1.717l-5.207 5.207-2.907-2.907c-.982-.942.472-2.396 1.414-1.414l1.493 1.493 3.793-3.793a1 1 0 0 1 .688-.303z"
+                        fill="#4e9a06" transform="translate(-893 251)"/>
+                </svg>
             )
 
         default:

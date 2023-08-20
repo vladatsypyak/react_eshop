@@ -39,6 +39,9 @@
     border: 1px solid #c4c4c4;
     outline: none;
     //background-color: rgba(238, 238, 238, 0.35);
+    &:focus{
+      border: 2px solid #7a8bed;
+    }
   }
 
   .title {
@@ -53,13 +56,16 @@
 
     .item {
       width: 45%;
+      font-size: 16px;
     }
 
     input {
       width: 100%;
+
     }
   }
-  .btn_wrap{
+
+  .btn_wrap {
     display: flex;
     justify-content: flex-end;
   }
@@ -74,11 +80,22 @@
     //right: 10px;
     //bottom: 10px;
     font-size: 18px;
-    &:hover{
+
+    &:hover {
       background-color: #11ac12;
       cursor: pointer;
     }
 
   }
 
+}
+
+.select {
+  font-size: 14px;
+  border: 1px solid #c4c4c4;
+
+}
+.focused{
+  border: 2px solid #7a8bed;
+  box-shadow: none;
 }

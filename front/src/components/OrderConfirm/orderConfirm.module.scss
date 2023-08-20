@@ -25,6 +25,7 @@
   border-radius: 5px;
   background-color: #b8b8b8;
   user-select: none;
+
   &:hover{
     background-color: #807f7f;
     cursor: pointer;
@@ -36,6 +37,7 @@
 }
 .confirm_btn{
   background-color: green;
+  color: white;
   &:hover{
     background-color: #04af06;
   }
@@ -43,4 +45,14 @@
 .buttons_wrap{
   display: flex;
   justify-content: space-between;
+}
+.return{
+  text-align: center;
+  margin: 0 auto;
+  a{
+    color: #727cb3;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
