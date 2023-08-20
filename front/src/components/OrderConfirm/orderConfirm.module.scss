@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  p{
+
+  p {
     text-align: right;
   }
-  .title{
+
+  .title {
     color: #767676;
     text-align: left;
 
@@ -14,45 +16,68 @@
 }
 
 .order_confirm {
+  user-select: none;
   .info_wrap {
     width: 500px;
     margin-bottom: 30px;
+    text-align: center;
   }
 }
-.btn{
+
+.btn {
   //border: 1px solid grey;
   padding: 10px;
   border-radius: 5px;
   background-color: #b8b8b8;
   user-select: none;
 
-  &:hover{
+  &:hover {
     background-color: #807f7f;
     cursor: pointer;
   }
-  a{
+
+  a {
     color: white;
   }
 
 }
-.confirm_btn{
+
+.confirm_btn {
   background-color: green;
   color: white;
-  &:hover{
+
+  &:hover {
     background-color: #04af06;
   }
 }
-.buttons_wrap{
+
+.buttons_wrap {
   display: flex;
   justify-content: space-between;
 }
-.return{
+
+.return {
   text-align: center;
   margin: 0 auto;
-  a{
+
+  a {
     color: #727cb3;
-    &:hover{
+
+    &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.done_img {
+  margin: 0 auto;
+  display: block;
+  width: 100px;
+
+  svg {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+
   }
 }
