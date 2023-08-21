@@ -1,5 +1,7 @@
 .main_info_wrap {
   padding: 30px;
+  user-select: none;
+
 
   img {
     width: auto;
@@ -11,9 +13,13 @@
 
   .main_info_text {
     width: 60%;
+    user-select: text;
+
   }
 
   .title {
+    user-select: text;
+
     font-weight: 700;
     font-size: 32px;
     line-height: 60px;
@@ -59,7 +65,8 @@
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    .btn:hover{
+
+    .btn:hover {
       color: #767676;
       cursor: pointer;
       user-select: none;
@@ -78,18 +85,40 @@
   }
 
   button {
+    user-select: none;
+
     width: 150px;
     background: #8DA0FF;
     border-radius: 50px;
     padding: 15px;
     color: white;
     font-size: 16px;
+    position: relative;
 
     &:hover {
       background: #aab7f8;
       cursor: pointer;
 
     }
+
+    .quantityInBtn {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      border-radius: 50%;
+      background-color: #f0d265;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      color: #696969;
+
+      p {
+        padding: 0;
+        margin: 0;
+        padding-top: 6px;
+      }
+    }
+
   }
 
   .add_to_cart_wrap {

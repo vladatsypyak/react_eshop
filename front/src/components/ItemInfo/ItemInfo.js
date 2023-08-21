@@ -12,6 +12,8 @@ export const ItemInfo = () => {
     const [item, setItem] = React.useState({})
     const allCartItems = useSelector(state => state.cart.items)
     const [quantityInCart, setQuantityInCart] = React.useState(0)
+    const [quantityOnBtn, setQuantityOnBtn] = React.useState(0)
+
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.user)
 
@@ -22,16 +24,18 @@ export const ItemInfo = () => {
     }, [])
 
     React.useEffect(() => {
-        let cartItem = allCartItems.find(el => el.itemId === id)
+        let cartItem = allCartItems?.find(el => el.itemId === id)
         if (cartItem) {
             setQuantityInCart(cartItem.quantity)
+            setQuantityOnBtn(cartItem.quantity)
         }
     }, [allCartItems])
 
 
     function onPlusClick() {
-        setQuantityInCart(()=>quantityInCart + 1)
+        setQuantityInCart(() => quantityInCart + 1)
     }
+
     useEffect(() => {
         const fetchItem = async () => {
             const {data} = await axios.get(`http://localhost:8080/api/app/item/${id}`)
@@ -41,14 +45,17 @@ export const ItemInfo = () => {
         fetchItem()
 
     }, [])
+
     function onMinusClick() {
-        if(quantityInCart !== 0){
-            setQuantityInCart(()=> quantityInCart -1)
+        if (quantityInCart !== 0) {
+            setQuantityInCart(() => quantityInCart - 1)
         }
 
     }
-    function onAddToCartClick(){
-        dispatch(putToCart({userId: user._id, itemId: id, quantity:quantityInCart}))
+
+    function onAddToCartClick() {
+        setQuantityOnBtn(quantityInCart)
+        dispatch(putToCart({userId: user._id, itemId: id, quantity: quantityInCart}))
 
     }
 
@@ -65,9 +72,16 @@ export const ItemInfo = () => {
                     <div className={s.quantity}>
                         <p className={s.btn} onClick={onMinusClick}>-</p>
                         <p>{quantityInCart}</p>
-                        <p className={s.btn}  onClick={onPlusClick}>+</p>
+                        <p className={s.btn} onClick={onPlusClick}>+</p>
                     </div>
-                    <button onClick={onAddToCartClick}>До кошика</button>
+                    <button onClick={onAddToCartClick}>
+                        <div className={s.quantityInBtn}>
+                            <p>
+                                {quantityOnBtn}
+
+                            </p></div>
+                        До кошика
+                    </button>
                 </div>
                 <p className={s.info}><span>Склад: </span>індійський чай Дарджилінг, сушене яблуко, цедра апельсину,
                     бутон троянди, сушена та сублімована малина, аромати малини, саусепа, бергамота.</p>
