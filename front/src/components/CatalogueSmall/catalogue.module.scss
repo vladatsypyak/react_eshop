@@ -1,0 +1,22 @@
+.catalogue_item {
+  width: 30%;
+  height: 110px;
+  box-sizing: border-box;
+  padding: 10px;
+  user-select: none;
+
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 90px
+  }
+
+  &:hover {
+    //border: 1px solid cornflowerblue;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px lightgrey;
+  }
+}

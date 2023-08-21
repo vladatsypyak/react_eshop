@@ -101,4 +101,7 @@
 .catalogue_items{
   width: 30vw;
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

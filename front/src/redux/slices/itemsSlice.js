@@ -22,6 +22,7 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async (params) =>
     let str = buildURL(params)
     console.log(params)
     const {data} = await axios.get(str)
+    console.log(data)
     return data
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
