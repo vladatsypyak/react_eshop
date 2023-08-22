@@ -39,35 +39,38 @@ function App() {
 
             <Header/>
             {<Outlet/>}
-            <Routes>
+            <main>
+                <Routes>
 
-                <Route path={"/"} element={<Main/>}/>
-                {/*<Route path={"/"} element={<App/>}>*/}
-                {/*    <Route path={"login"} element={<Login/>}/>*/}
-                {/*</Route>*/}
-                <Route path={"/categories/:category"} element={<Category/>}/>
+                    <Route path={"/"} element={<Main/>}/>
+                    {/*<Route path={"/"} element={<App/>}>*/}
+                    {/*    <Route path={"login"} element={<Login/>}/>*/}
+                    {/*</Route>*/}
+                    <Route path={"/categories/:category"} element={<Category/>}/>
 
-                <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
-                <Route path={"items/:id"} element={<ItemInfo/>}/>
-                <Route path={"orderform/"} element={<OrderForm/>}>
-                    <Route path={"confirm"} element={<OrderConfirm/>}/>
-                    <Route path={"confirmed"} element={<Confirmed/>}/>
+                    <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
+                    <Route path={"items/:id"} element={<ItemInfo/>}/>
+                    <Route path={"orderform/"} element={<OrderForm/>}>
+                        <Route path={"confirm"} element={<OrderConfirm/>}/>
+                        <Route path={"confirmed"} element={<Confirmed/>}/>
 
-                </Route>
+                    </Route>
 
-                <Route path={"cart"} element={<CartPage/>}/>
-                <Route path={"favourites"} element={<FavouritesPage/>}/>
-                <Route path={"user/"} element={<UserPage/>}>
-                    <Route path={"profile"} element={<Profile/>}/>
-                    <Route path={"orders"} element={<Orders/>}/>
+                    <Route path={"cart"} element={<CartPage/>}/>
                     <Route path={"favourites"} element={<FavouritesPage/>}/>
+                    <Route path={"user/"} element={<UserPage/>}>
+                        <Route path={"profile"} element={<Profile/>}/>
+                        <Route path={"orders"} element={<Orders/>}/>
+                        <Route path={"favourites"} element={<FavouritesPage/>}/>
 
-                </Route>
+                    </Route>
 
 
-                {/*<Route path={"*"} element={<NotFound/>}/>*/}
+                    {/*<Route path={"*"} element={<NotFound/>}/>*/}
 
-            </Routes>
+                </Routes>
+
+            </main>
 
 
             <Footer/>

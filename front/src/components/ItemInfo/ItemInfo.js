@@ -78,7 +78,6 @@ export const ItemInfo = () => {
                         <div className={s.quantityInBtn}>
                             <p>
                                 {quantityOnBtn}
-
                             </p></div>
                         До кошика
                     </button>

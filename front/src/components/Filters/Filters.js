@@ -1,8 +1,5 @@
 import React from "react";
-import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
-import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
 import s from "./filters.module.scss"
 import {fetchFilters} from "../../redux/slices/filtersSlice";
@@ -16,10 +13,8 @@ export const Filters = () => {
     React.useEffect(() => {
         if (currentCategory.type){
             dispatch(fetchFilters(currentCategory.type))
-
       }
     }, [currentCategory])
-
 
     return <div className={s.filters_wrap}>
         <div className={s.price_range}></div>

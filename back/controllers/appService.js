@@ -73,6 +73,7 @@ async function getCategoryFilters(req, res) {
         filters
     )
 }
+
 async function searchCategories(req, res) {
     const text = req.query.text;
     const categories = await Category.find({value: {$regex: text, $options: "i"}})
@@ -110,16 +111,30 @@ async function getFilteredItems(req, res) {
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy")
     );
+    console.log(filters)
     let filteredItems = items.filter(item =>
-        Object.keys(filters).every(key =>
-            item.characteristics.some(el =>
-                el.name === key && el.value === filters[key]
-            )
+        Object.keys(filters).every(key => {
+                if (Array.isArray(filters[key])) {
+                    let sum = 0
+                    filters[key].forEach(filterValue=>{
+                        if(item.characteristics.some(el =>  el.name === key && el.value === filterValue)) {
+                             sum = sum + 1
+                        }
+                    })
+                    if(sum){
+                        return true
+                    }
+
+                }
+                return item.characteristics.some(el =>
+                    el.name === key && el.value === filters[key]
+                )
+            }
         )
     );
 
     if (!filteredItems) {
-        res.status(500).send({
+        res.status(200).send({
             message: "no items"
         });
     }
@@ -127,6 +142,7 @@ async function getFilteredItems(req, res) {
         filteredItems
     )
 }
+
 
 async function getItemsByTitle(req, res) {
     const sortBy = req.query.sortBy
@@ -220,13 +236,14 @@ async function deleteCartItem(req, res) {
     )
 }
 
-async function clearCart (req, res) {
+async function clearCart(req, res) {
     const {userId} = req.params
     const cartItem = await CartItem.deleteMany({userId});
     res.send(
         cartItem
     )
 }
+
 async function getUserCartItems(req, res) {
     try {
         const {userId} = req.params;
@@ -268,6 +285,7 @@ async function createOrder(req, res) {
         {message: "added to favourite"}
     )
 }
+
 async function getUserOrders(req, res) {
     try {
         const {userId} = req.params;
