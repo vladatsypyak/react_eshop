@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {fetchItems} from "../../redux/slices/itemsSlice";
 import {CatalogueItem} from "./CatalogueItem";
+import {useNavigate} from "react-router-dom";
 
 
 export const Catalogue = ({hideCatalogue, btnRef}) => {
@@ -13,7 +14,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     const [showItems, setShowItems] = React.useState(false);
     const [activeCategory, setActiveCategory] = React.useState("")
     const items = useSelector(state => state.items.items)
-    console.log(items)
+    const navigate = useNavigate()
     const categories = useSelector(state => state.categories.categories)
 
     React.useEffect(() => {
@@ -39,6 +40,11 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     function onLeave() {
         setShowItems(false)
     }
+    function onIconClick(){
+        console.log(activeCategory)
+        navigate(`/categories/${activeCategory.type}`)
+        hideCatalogue(true)
+    }
 
     return <div className={s.catalogue_wrap}>
         <div className={s.overlay}></div>
@@ -47,7 +53,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         <div ref={catalogueRef} onMouseLeave={onLeave} className={s.catalogue}>
             <div className={s.catalogue_categories_wrap}>
                 {categories.map((el) => {
-                    return <div onMouseEnter={() => onCategoryHover(el)} className={s.catalogue_categorie}>
+                    return <div onClick={onIconClick} onMouseEnter={() => onCategoryHover(el)} className={s.catalogue_categorie}>
                         <img src={el.iconUrl} alt={el.value}/>
                         <p>{el.value}</p>
                         <GlobalSvgSelector id={"categorie_arrow"}/>

@@ -53,7 +53,6 @@ function App() {
                     <Route path={"orderform/"} element={<OrderForm/>}>
                         <Route path={"confirm"} element={<OrderConfirm/>}/>
                         <Route path={"confirmed"} element={<Confirmed/>}/>
-
                     </Route>
 
                     <Route path={"cart"} element={<CartPage/>}/>
@@ -62,12 +61,8 @@ function App() {
                         <Route path={"profile"} element={<Profile/>}/>
                         <Route path={"orders"} element={<Orders/>}/>
                         <Route path={"favourites"} element={<FavouritesPage/>}/>
-
                     </Route>
-
-
                     {/*<Route path={"*"} element={<NotFound/>}/>*/}
-
                 </Routes>
 
             </main>
