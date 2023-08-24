@@ -21,6 +21,7 @@ import {getUser} from "./redux/slices/userSlice";
 import {OrderForm} from "./components/OrderForm/OrderForm";
 import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
 import {Confirmed} from "./components/OrderConfirm/Confirmed";
+import axios from "axios";
 
 function App() {
     const dispatch = useDispatch()
@@ -33,6 +34,23 @@ function App() {
         }
 
     }, [])
+    const [user, setUser] = useState(null);
+
+    const getUser = async () => {
+        console.log("here")
+        try {
+            const url = `http://localhost:8080/auth/login/success`;
+            const { data } = await axios.get(url, { withCredentials: true });
+            console.log(data)
+            setUser(data.user._json);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
 
     return (
         <div className="App">

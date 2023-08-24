@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
 import {Modal} from "../Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
+import axios from "axios";
 
 
 export const Login = () => {
@@ -15,10 +16,11 @@ export const Login = () => {
     const dispatch = useDispatch()
     const error = useSelector(state => state.user.isError)
 
+    const navigate = useNavigate()
     const onSubmit = async (data) => {
         const {password, email} = data
         try {
-            await dispatch(loginUser({ email, password })).unwrap();
+            await dispatch(loginUser({email, password})).unwrap();
             dispatch(setLogin(false));
         } catch (err) {
             console.log(err);
@@ -37,10 +39,19 @@ export const Login = () => {
 
     }
 
+    const googleAuth = () => {
+        window.open(
+            `http://localhost:8080/auth/google/callback`,
+            "_self"
+        );
+    };
+
+
     return <div className={s.login}>
         <Modal>
             <div className={s.login_wrap}>
-                <button className={s.close} onClick={() => dispatch(setLogin(false))}><GlobalSvgSelector id={"cross"}/></button>
+                <button className={s.close} onClick={() => dispatch(setLogin(false))}><GlobalSvgSelector id={"cross"}/>
+                </button>
 
                 <h3>Ввійдіть в свій аккаунт</h3>
 
@@ -58,7 +69,8 @@ export const Login = () => {
                     </p>
                 </form>
             </div>
-        </Modal>
+            <button onClick={googleAuth}>google</button>
 
+        </Modal>
     </div>
 }

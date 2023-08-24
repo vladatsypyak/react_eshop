@@ -32,8 +32,8 @@ export const FiltersItem = ({filter, filterName}) => {
         <p className={s.title}>{filterName}</p>
         {values.map(el => {
             return <div className={s.filter_values}>
-                <input onChange={handleFilterChange} type="checkbox" value={el}/>
-                <p>{el}</p>
+                <label><input onChange={handleFilterChange} type="checkbox" value={el}/>
+                {el}</label>
             </div>
         })}
     </div>

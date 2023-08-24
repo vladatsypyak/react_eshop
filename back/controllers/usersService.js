@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const {User} = require('../models/Users');
 require('dotenv').config();
 const nodemailer = require('nodejs-nodemailer-outlook')
-const {auth} = require("firebase-admin");
 
 const registerUser = async (req, res, next) => {
     console.log(req.body)
