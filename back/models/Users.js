@@ -9,7 +9,6 @@ const userSchema = mongoose.Schema(
         },
         googleId:{
             type: String,
-            unique: true,
         },
         password: {
             type: String,

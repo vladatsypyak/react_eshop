@@ -57,22 +57,21 @@ export const Signup = () => {
                     <Input type={"text"} placeholder={"повторіть пароль"}
                            register={{...register("repeatPassword", {required: true})}}
                            onChange={onRepeatPasswordChange}/>
-                    <Input type={"text"} placeholder={"прізвище"} register={{...register("surname", {required: true})}}/>
-                        <Input type={"text"} placeholder={"ім'я"} register={{...register("name", {required: true})}}
+                    <Input type={"text"} placeholder={"прізвище"} register={{...register("surname" )}}/>
+                        <Input type={"text"} placeholder={"ім'я"} register={{...register("name" )}}
                         />
                         <Input type={"text"} placeholder={"по батькові"}
-                               register={{...register("patronymic", {required: true})}}/>
+                               register={{...register("patronymic" )}}/>
                         <Input type={"date"} placeholder={"дата народження"}
-                               register={{...register("birthdate", {required: true})}}
+                               register={{...register("birthdate")}}
                                onChange={onPasswordChange}/>
-                        <select {...register("gender", {required: true})} className={s.text} defaultValue="Жіноча">
+                        <select {...register("gender")} className={s.text} defaultValue="Жіноча">
                             <option value="female">Жіноча</option>
                             <option value="male">чоловіча</option>
 
                         </select>
                         <div className={s.submit}>
                             <Input type={"submit"}/>
-
                         </div>
                 </form>
             </div>

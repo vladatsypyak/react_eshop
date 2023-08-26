@@ -7,16 +7,18 @@ const nodemailer = require('nodejs-nodemailer-outlook')
 const registerUser = async (req, res, next) => {
     console.log(req.body)
     const {email, password, name, surname, birthdate, patronymic, gender} = req.body;
+    console.log(surname)
     const user = new User({
-        email,
+        email: email,
         password: await bcrypt.hash(password, 10),
-        name,
-        surname,
-        birthdate,
-        patronymic,
-        gender
+        name: req.body.name,
+        surname: req.body.surname,
+        birthdate: req.body.birthdate,
+        patronymic: req.body.patronymic,
+        gender: req.body.gender
 
     });
+    console.log(user)
     // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     user.save()
@@ -28,6 +30,7 @@ const registerUser = async (req, res, next) => {
             res.status(400).json({
                 message: err,
             })
+            console.log(err)
         });
 };
 
@@ -91,16 +94,6 @@ const getUserProfile = async (req, res) => {
     const tokenPayload = getTokenPayload(req);
     const user = await User.findById(tokenPayload.userId);
     return res.status(200).send({
-        // user: {
-        //     _id: user._id,
-        //     email: user.email,
-        //     createdAt: user.createdAt,
-        //     name: user.name,
-        //     surname: user.surname,
-        //     birthdate: user.birthdate,
-        //     patronymic: user.patronymic,
-        //     gender:  user.gender
-        // },
         user
     });
 };
