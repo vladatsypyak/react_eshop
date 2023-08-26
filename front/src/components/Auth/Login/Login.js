@@ -65,11 +65,22 @@ export const Login = () => {
                         <Input type={"submit"}/>
 
                     </div>
-                    <p>Do not have an account? <span onClick={customNavigate}>Register</span>
+                    <div className={s.google}>
+                        <div className={s.or_container}>
+                            <div className={s.line_separator}></div>
+                            <div className={s.or_label}>or</div>
+                            <div className={s.line_separator}></div>
+                        </div>
+
+                        <button onClick={googleAuth}>
+                          <img src="https://img.icons8.com/color/16/000000/google-logo.png"/>
+                            Sign in with Google </button>
+                    </div>
+                    <p className={s.register_link}>Do not have an account? <span onClick={customNavigate}>Register</span>
                     </p>
                 </form>
             </div>
-            <button onClick={googleAuth}>google</button>
+
 
         </Modal>
     </div>

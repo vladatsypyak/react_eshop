@@ -17,7 +17,7 @@ import {Signup} from "./components/Auth/Signup/Signup";
 import {Profile} from "./components/Profile/Profile";
 import {Orders} from "./components/Orders/Orders";
 import {Favourites} from "./components/Favourites/Favourites";
-import {getUser} from "./redux/slices/userSlice";
+import {getUser, setUser} from "./redux/slices/userSlice";
 import {OrderForm} from "./components/OrderForm/OrderForm";
 import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
 import {Confirmed} from "./components/OrderConfirm/Confirmed";
@@ -34,22 +34,25 @@ function App() {
         }
 
     }, [])
-    const [user, setUser] = useState(null);
 
-    const getUser = async () => {
-        console.log("here")
+    const getUser1 = async () => {
         try {
             const url = `http://localhost:8080/auth/login/success`;
             const { data } = await axios.get(url, { withCredentials: true });
             console.log(data)
-            setUser(data.user._json);
+            sessionStorage.setItem("jwt_token", data.jwt_token)
+            const token = sessionStorage.getItem("jwt_token")
+            dispatch(getUser(token))
+
+            // setUser(data.user._json);
+            // dispatch(setUser(data.user))
         } catch (err) {
             console.log(err);
         }
     };
 
     useEffect(() => {
-        getUser();
+        getUser1();
     }, []);
 
     return (

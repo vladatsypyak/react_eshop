@@ -16,7 +16,9 @@ router.get("/login/failed", (req, res) => {
 router.get("/login/success", async (req, res) => {
     if (req.user) {
         console.log(req.user.id)
-        const user = await User.findOne({googleId: req.user.id});
+        // const user = await User.findOne({googleId: req.user.id});
+        const user = await User.findOne({email: req.user.emails[0].value})
+
         if (user) {
             const payload = {email: user.email, userId: user._id};
             const jwtToken = jwt.sign(payload, "secret");
@@ -26,7 +28,7 @@ router.get("/login/success", async (req, res) => {
                 jwt_token: jwtToken,
             });
         }
-        console.log(7)
+
         res.status(200).json({
             error: false,
             message: "Successfully Loged In",

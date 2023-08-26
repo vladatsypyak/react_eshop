@@ -5,6 +5,7 @@
 .login {
   form {
     margin: 0 auto;
+    user-select: none;
 
     input {
       width: 300px;
@@ -58,6 +59,63 @@
         scale: 1.3;
         cursor: pointer;
       }
+    }
+  }
+}
+.google{
+
+  button{
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+      margin-right: 8px;
+      width: 20px;
+      display: block;
+
+    }
+    &:hover{
+      cursor: pointer;
+      box-shadow: 0 2px 3px 2px #ddd;
+
+    }
+  }
+  .or_container {
+    align-items: center;
+    color: #ccc;
+    display: flex;
+    margin: 25px 0;
+  }
+  .line_separator {
+    background-color: #ccc;
+    flex-grow: 5;
+    height: 1px;
+  }
+  .or_label {
+    flex-grow: 1;
+    margin: 0 15px;
+    text-align: center;
+  }
+}
+.register_link{
+  padding-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  span{
+    color: #727cb3;
+    &:hover{
+      //display: inline-block;
+      //padding-bottom:4px ;
+      //border-bottom: 1px solid grey;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 }
