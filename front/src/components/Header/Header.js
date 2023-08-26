@@ -37,7 +37,7 @@ export const Header = () => {
                 <div className={s.icon}>
                    <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                 </div>
-                <div onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
+                <div  onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
                     <GlobalSvgSelector id="user_icon"/>
 
                 </div>

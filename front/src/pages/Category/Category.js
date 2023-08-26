@@ -20,9 +20,10 @@ export const Category = () => {
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))
     }, [])
+    console.log(category)
 
     React.useEffect(() => {
-        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: currentCategory.type}, {name: "sortBy", value: sortBy.sortProperty}]))
+        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: category}, {name: "sortBy", value: sortBy.sortProperty}]))
     }, [currentChosenFilters, currentCategory, sortBy])
 
     return <div className={`${s.category_page_wrap} container`}>

@@ -50,29 +50,36 @@ export const Signup = () => {
                 </button>
                 <h3>Зареєструйтесь</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input type={"email"} placeholder={"email"} register={{...register("email", {required: true})}}
-                           onChange={onEmailChange}/>
-                    <Input type={"text"} placeholder={"пароль"} register={{...register("password", {required: true})}}
-                           onChange={onPasswordChange}/>
+
+                    <div className={s.field}>
+                        <p className={s.asterisk}>*</p>
+                        <Input type={"email"} placeholder={"email"} register={{...register("email", {required: true})}}
+                               onChange={onEmailChange}/>
+                    </div>
+                   <div className={s.field}>
+                       <p className={s.asterisk}>*</p>
+                       <Input type={"text"} placeholder={"пароль"} register={{...register("password", {required: true})}}
+                              onChange={onPasswordChange}/>
+                   </div>
                     <Input type={"text"} placeholder={"повторіть пароль"}
                            register={{...register("repeatPassword", {required: true})}}
                            onChange={onRepeatPasswordChange}/>
-                    <Input type={"text"} placeholder={"прізвище"} register={{...register("surname" )}}/>
-                        <Input type={"text"} placeholder={"ім'я"} register={{...register("name" )}}
-                        />
-                        <Input type={"text"} placeholder={"по батькові"}
-                               register={{...register("patronymic" )}}/>
-                        <Input type={"date"} placeholder={"дата народження"}
-                               register={{...register("birthdate")}}
-                               onChange={onPasswordChange}/>
-                        <select {...register("gender")} className={s.text} defaultValue="Жіноча">
-                            <option value="female">Жіноча</option>
-                            <option value="male">чоловіча</option>
-
-                        </select>
-                        <div className={s.submit}>
-                            <Input type={"submit"}/>
-                        </div>
+                    <Input type={"text"} placeholder={"прізвище"} register={{...register("surname")}}/>
+                    <Input type={"text"} placeholder={"ім'я"} register={{...register("name")}}
+                    />
+                    <Input type={"text"} placeholder={"по батькові"}
+                           register={{...register("patronymic")}}/>
+                    <Input type={"date"} placeholder={"дата народження"}
+                           register={{...register("birthdate")}}
+                           onChange={onPasswordChange}/>
+                    <label className={s.label}>Стать: </label>
+                    <select {...register("gender")} className={s.text} defaultValue="Жіноча">
+                        <option value="female">Жіноча</option>
+                        <option value="male">чоловіча</option>
+                    </select>
+                    <div className={s.submit}>
+                        <Input type={"submit"}/>
+                    </div>
                 </form>
             </div>
         </Modal>

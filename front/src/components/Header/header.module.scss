@@ -34,6 +34,9 @@
     .icon {
       width: 35px;
       height: 40px;
+      &:hover{
+        cursor: pointer;
+      }
 
       svg {
         width: 40px;
