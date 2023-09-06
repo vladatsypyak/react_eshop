@@ -91,10 +91,15 @@ async function getFilterValues(req, res) {
     const {category, filter} = req.params;
     const items = await Item.find({category: category})
     let filterValues = items.map(obj => {
-            return obj?.characteristics?.find((el) => el.name === filter).value
+            let foundFilter = obj?.characteristics?.find((el) => el.name === filter)
+            if (foundFilter) {
+                return foundFilter.value
+            }
+
         }
     )
-    let uniqueFilterValues = [...new Set(filterValues)]
+    let uniqueFilterValues = [...new Set(filterValues.filter(el=> el))]
+    console.log(uniqueFilterValues)
     res.send(
         uniqueFilterValues,
     )
@@ -116,12 +121,12 @@ async function getFilteredItems(req, res) {
         Object.keys(filters).every(key => {
                 if (Array.isArray(filters[key])) {
                     let sum = 0
-                    filters[key].forEach(filterValue=>{
-                        if(item.characteristics.some(el =>  el.name === key && el.value === filterValue)) {
-                             sum = sum + 1
+                    filters[key].forEach(filterValue => {
+                        if (item.characteristics.some(el => el.name === key && el.value === filterValue)) {
+                            sum = sum + 1
                         }
                     })
-                    if(sum){
+                    if (sum) {
                         return true
                     }
 

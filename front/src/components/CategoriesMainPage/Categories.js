@@ -3,6 +3,8 @@ import s from "./categories.module.scss"
 import {CategoriesItem} from "./CategoriesItem";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategories, selectCategories} from "../../redux/slices/categoriesSlice";
+import {Amplify, Auth, Storage} from 'aws-amplify';
+
 
 const categoriesMock = [
     {
@@ -43,6 +45,13 @@ export const Categories = () => {
     }
     React.useEffect(() => {
         getCategories()
+    }, [])
+    React.useEffect(() => {
+        console.log("mm")
+        Storage.get("coffee.jpg").
+        then(data=> console.log(data)
+
+        )
     }, [])
     return <div className={s.categories}>
         {categories.map((el) => {

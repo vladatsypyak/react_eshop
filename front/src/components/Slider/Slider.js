@@ -2,7 +2,7 @@ import React from "react";
 import s from "./slider.module.scss"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
-const imagesUrls = ["https://www.dropbox.com/s/w17bw23vwi35d7d/44840-1680608871.jpg?raw=1", "https://www.dropbox.com/s/rem7egzgc73pu2a/44903-1680774523.jpg?raw=1", "https://www.dropbox.com/s/2i6d2phhissysmg/image%201%20%283%29.png?raw=1"]
+const imagesUrls = ["https://www.dropbox.com/s/w17bw23vwi35d7d/44840-1680608871.jpg?raw=1", "https://www.dropbox.com/s/rem7egzgc73pu2a/44903-1680774523.jpg?raw=1", "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/coffee.jpg"]
 export const Slider = () => {
     const [slideIndex, setSlideIndex] = React.useState(0);
 

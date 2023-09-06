@@ -22,7 +22,7 @@ import {OrderForm} from "./components/OrderForm/OrderForm";
 import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
 import {Confirmed} from "./components/OrderConfirm/Confirmed";
 import axios from "axios";
-
+// import {withAuthenticator} from "aws-amplify-react"
 function App() {
     const dispatch = useDispatch()
     const showLogin = useSelector(state => state.modal.showLogin)

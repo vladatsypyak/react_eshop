@@ -1,0 +1,426 @@
+[
+  {
+    "category": "tea",
+    "imgUrl": "https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/1/2196369.jpg",
+    "price": "187",
+    "rating": "4.7",
+    "isInStock": true,
+    "title": "Чорний чай Newby Ерл Грей Екзотик з/б 75 г (112070)",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "розсипний"
+      },
+      {
+        "name": "taste",
+        "title": "СМАК",
+        "value": "гіркий"
+      },
+      {
+        "name": "adds",
+        "title": "ДОБАВКА",
+        "value": "бергамот, волошка, троянда"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "ВИРОБНИК"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/1/2196369.jpg",
+    "price": 1871,
+    "rating": "4.7",
+    "isInStock": true,
+    "title": "Чорний чай Newby Ерл Грей Екзотик з/б 75 г (112070)",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "розсипний"
+      },
+      {
+        "name": "taste",
+        "title": "СМАК",
+        "value": "гіркий"
+      },
+      {
+        "name": "adds",
+        "title": "ДОБАВКА",
+        "value": "бергамот, волошка, троянда"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "ВИРОБНИК"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets+%C2%ABEnglish+Breakfast%C2%BB+%D1%87%D0%BE%D1%80%D0%BD%D0%B8%D0%B9+%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B8%D0%B9%2C+100+%D0%B3.png",
+    "price": 58.50,
+    "rating": "3",
+    "description": "ENGLISH BREAKFAST - класичне гармонійне поєднання трьох сортів чаю - яскравий солодовий смак індійського чаю Ассам з природньою міцністю та повнотою, глибокий насичений оксамитовий смак кенійського чаю, багатий медовий аромат цейлонського чаю. Це досконалий баланс у чаї для ідеального сніданку, який «розбудить», збадьорить, наддасть енергію на цілий день, який чудово тонізує та добре смакує з цукром та молоком.",
+    "ingredients": "Чай чорний байховий листовий, чай чорний байховий гранульований.\n",
+    "isInStock": true,
+    "title": "Чай Sherlock Secrets «English Breakfast» чорний листовий, 100 г\n",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "Листовий"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments.png",
+    "price": 48.50,
+    "rating": "4.5",
+    "description": "",
+    "ingredients": "чай чорний байховий листовий, рослинна сировина подрібнена (гібіскус – пелюстки суданської троянди (каркаде), ягоди чорниці сушені, шматочки малини сушені, шматочки смородини сушені, шматочки полуниці сушені, цедра апельсина, пелюстки волошки, листя ожини), ароматизатор",
+    "isInStock": true,
+    "title": "Чай Tea Moments \"Berries Party\" чорний зі смаком лісових ягід, 20 пірамідок\n",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "В пірамідках"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Chocolate+Truffle1.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Chocolate+Truffle1.png",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Chocolate+Truffle2.png"
+    ],
+    "price": 39.50,
+    "rating": "4.8",
+    "description": "Вишуканий чорний чай зі шматочками зерен какао, стружкою кокосу та неперевершеним ароматом шоколадного трюфеля!\nПодаруй собі відчуття неймовірної легкості, налаштуйся на релаксуючі чайні моменти разом із чаєм Chocolate Truffle!",
+    "ingredients": "Чай чорний байховий листовий, рослинна сировина подрібнена (зерна какао, кокосова стружка), ароматизатор.\n",
+    "isInStock": true,
+    "title": "Чай Tea Moments \"Chocolate Truffle\" чорний зі смаком шоколадного трюфеля, 25 сашетів",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "\nВ сашетах"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets1.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets1.png"
+    ],
+    "price": 45.30,
+    "rating": "5",
+    "description": "Зелений чай з цитрусовими та м’ятою вважається одним з популярних класичних поєднань. Такий чай чудово освіжає та розслабляє.\n\nGREEN LIME & MINT – ніжний зелений чай з ароматом цитрусового кафрського лайма та свіжої англійської м’яти створюють ковток справжньої свіжості та прохолоди. Ідеальний напій у будь-який час, який не тільки освіжить та заспокоїть, а і надасть нову енергію рухатися далі.",
+    "ingredients": "Чай зелений байховий дрібний, росинна сировина подрібнена 10,1% (м'ята 10%, цедра лимона 0,1%), ароматизатор \"Кафрський лайм - Англійська м'ята\"",
+    "isInStock": true,
+    "title": "Чай Sherlock Secrets «Green Lime & Mint» зелений зі смаком лайма та м'яти, 25 пакетиків",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "Зелений",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "\nВ пакетиках"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Китай"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Everyday+Green+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%BA%D0%BB%D0%B0%D1%81%D0%B8%D1%87%D0%BD%D0%B8%D0%B9%2C+1+%D0%BF%D1%96%D1%80%D0%B0%D0%BC%D1%96%D0%B4%D0%BA%D0%B0.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Everyday+Green+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%BA%D0%BB%D0%B0%D1%81%D0%B8%D1%87%D0%BD%D0%B8%D0%B9%2C+1+%D0%BF%D1%96%D1%80%D0%B0%D0%BC%D1%96%D0%B4%D0%BA%D0%B0.png"
+    ],
+    "price": 30.50,
+    "rating": "4",
+    "description": "Класичний зелений чай для будь-яких моментів на кожен день, має освіжаючий квітковий смак!\nЗаряд свій день енергією з неперевершеною класикою зеленого чаю Everyday Green!",
+    "ingredients": "Склад: чай зелений листовий\n",
+    "isInStock": true,
+    "title": "Чай Tea Moments \"Everyday Green\" зелений класичний, 1 пірамідка\n",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "В пірамідках"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Китай"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "",
+    "allImages": [],
+    "price": 58.50,
+    "rating": "3",
+    "description": "",
+    "ingredients": "",
+    "isInStock": true,
+    "title": "",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "чорний",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "Листовий"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Індія"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Mango+Time+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B7%D1%96+%D1%81%D0%BC%D0%B0%D0%BA%D0%BE%D0%BC+%D0%BC%D0%B0%D0%BD%D0%B3%D0%BE%2C+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B21.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Mango+Time+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B7%D1%96+%D1%81%D0%BC%D0%B0%D0%BA%D0%BE%D0%BC+%D0%BC%D0%B0%D0%BD%D0%B3%D0%BE%2C+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B21.png",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Mango+Time+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B7%D1%96+%D1%81%D0%BC%D0%B0%D0%BA%D0%BE%D0%BC+%D0%BC%D0%B0%D0%BD%D0%B3%D0%BE%2C+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B22.png"
+    ],
+    "price": 56.50,
+    "rating": "4",
+    "description": "Витончений смак зеленого чаю зі шматочками тропічного манго, пелюстками троянди та квітів апельсина.\nЧас для найекзотичніших чайних моментів разом із чаєм Mango Time!",
+    "ingredients": "Чай зелений байховий листовий, рослинна сировина подрібнена (шматочки манго, пелюстки квітів апельсина, пелюстки троянди), ароматизатор.",
+    "isInStock": true,
+    "title": "Чай Tea Moments \"Mango Time\" зелений зі смаком манго, 50 сашетів\n",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "Зелений",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "\nВ сашетах"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Китай"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Mojito+Breeze%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B7%D1%96+%D1%81%D0%BC%D0%B0%D0%BA%D0%BE%D0%BC+%D0%BC%D0%BE%D1%85%D1%96%D1%82%D0%BE%2C+20+%D0%BF%D1%96%D1%80%D0%B0%D0%BC%D1%96%D0%B4%D0%BE%D0%BA.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Tea+Moments+Mojito+Breeze%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B7%D1%96+%D1%81%D0%BC%D0%B0%D0%BA%D0%BE%D0%BC+%D0%BC%D0%BE%D1%85%D1%96%D1%82%D0%BE%2C+20+%D0%BF%D1%96%D1%80%D0%B0%D0%BC%D1%96%D0%B4%D0%BE%D0%BA.png"
+    ],
+    "price": 48,
+    "rating": "5",
+    "description": "Освіжаючий зелений чай з ароматом найпопулярнішого літнього коктейлю Мохіто зі шматочками соковитих цитрусових та м’ятою!\nПодаруй собі незабутні освіжаючі моменти, відчуття\nлегкого бризу разом з чаєм Mojito Breeze!",
+    "ingredients": "чай зелений байховий листовий, рослинна сировина подрібнена (м'ята, пелюстки квітів апельсина, лимонник, цедра лимона), ароматизатор.",
+    "isInStock": true,
+    "title": "Чай Tea Moments \"Mojito Breeze\" зелений зі смаком мохіто, 20 пірамідок\n",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "Зелений",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "В пірамідках"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Китай"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets+White+Needle%D0%B1%D1%96%D0%BB%D0%B8%D0%B9+%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B8%D0%B9+50+%D0%B31.jpeg",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets+White+Needle%D0%B1%D1%96%D0%BB%D0%B8%D0%B9+%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B8%D0%B9+50+%D0%B31.jpeg",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Sherlock+Secrets+White+Needle%D0%B1%D1%96%D0%BB%D0%B8%D0%B9+%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B8%D0%B9+50+%D0%B32.jpeg"
+    ],
+    "price": 324.00,
+    "rating": "4",
+    "description": "White Needle – білий чай, що складається виключно з молодих ще не розпустившихся бруньок (тіпсів) чайного дерева Fuding Da Bai Cha. Молоді бруньки покриті білими ворсинками, що і дало назву чаю – білі голки (інколи ще називають срібними).\n\nЗавдяки спеціальній обробці чайні бруньки зберегли все своє багатство смаку та корисні властивості.\n\nЕксперти стверджують, що цей чай поєднує в собі багатство смаку, цілющу силу зеленого чаю та тонізуючі властивості чорного чаю.\n\nНастій білого чаю дарує приємний оксамитовий смак, тонкий квітковий аромат у поєднанні з легким післясмаком дині. Настій має прозорий світло-золотистим відтінок.\n\nЧай White Needle дуже легко п’ється та не гірчить навіть після багаторазового заварювання.\n\nВластивості:\n• Колір: жовто-зелений.\n• Аромат: лугові трави, квітково-фруктовий.\n• Смак: солодкуватий, з фруктовими нотками.\n• Ефект: тонізуючий.",
+    "ingredients": "Чай білий крупнолистовий (бруньки)",
+    "isInStock": true,
+    "title": "Чай Sherlock Secrets \"White Needle\" білий листовий 50 г",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "Білий",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "Листовий"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Китай"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  },
+  {
+    "category": "tea",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Richard+Royal+Garden%D1%8F%D0%B3%D1%96%D0%B4%D0%BD%D0%BE-%D1%82%D1%80%D0%B0%D0%B2'%D1%8F%D0%BD%D0%B8%D0%B9+%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B2+%D0%B2+%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%963.jpeg",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Richard+Royal+Garden+%D1%8F%D0%B3%D1%96%D0%B4%D0%BD%D0%BE-%D1%82%D1%80%D0%B0%D0%B2'%D1%8F%D0%BD%D0%B8%D0%B9+%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B2+%D0%B2+%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%96.jpeg",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Richard+Royal+Garden+%D1%8F%D0%B3%D1%96%D0%B4%D0%BD%D0%BE-%D1%82%D1%80%D0%B0%D0%B2'%D1%8F%D0%BD%D0%B8%D0%B9+%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B2+%D0%B2+%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%962.jpeg",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D0%B9+Richard+Royal+Garden%D1%8F%D0%B3%D1%96%D0%B4%D0%BD%D0%BE-%D1%82%D1%80%D0%B0%D0%B2'%D1%8F%D0%BD%D0%B8%D0%B9+%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9+50+%D1%81%D0%B0%D1%88%D0%B5%D1%82%D1%96%D0%B2+%D0%B2+%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%963.jpeg"
+    ],
+    "price": 55.50,
+    "rating": "4",
+    "description": "Чай Richard Royal Garden - ягідно-трав'яний чай на основі пелюсток суданської троянди (каркаде) з шматочками соковитої малини та солодких яблук, що має тонкий аромат стиглої вишні в сашетах.\n",
+    "ingredients": "Подрібнені пелюстки суданської троянди (каркаде) 58%, рослинна сировина 37% (шматочки яблука сушені, шматочки малини сушені, цедра лимона), ароматизатор \"Вишня\".",
+    "isInStock": true,
+    "title": "Чай Richard \"Royal Garden\" ягідно-трав'яний ароматизований 50 сашетів в пакеті",
+    "characteristics": [
+      {
+        "name": "sort",
+        "value": "Каркаде",
+        "title": "ВИД ЧАЮ"
+      },
+      {
+        "name": "type",
+        "title": "ТИП ЧАЮ",
+        "value": "В пакетиках"
+      },
+      {
+        "name": "country",
+        "title": "ПОХОДЖЕННЯ",
+        "value": "Єгипет"
+      },
+      {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    ]
+  }
+
+
+
+
+
+
+
+]
+
+
