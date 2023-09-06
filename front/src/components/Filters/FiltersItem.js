@@ -1,40 +1,61 @@
-import React from "react";
-import {useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-
-
-import s from "./filters.module.scss"
-import {setFilters} from "../../redux/slices/filtersSlice";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setFilters } from "../../redux/slices/filtersSlice";
 import axios from "axios";
-import {fetchItems} from "../../redux/slices/itemsSlice";
-import {logDOM} from "@testing-library/react";
-import {store} from "../../redux/store";
+import s from "./filters.module.scss";
 
-export const FiltersItem = ({filter, filterName}) => {
-    const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
-    const [values, setValues] = React.useState([])
-    const dispatch = useDispatch()
-    const currentCategory = useSelector(store => store.categories.currentCategory)
-    React.useEffect(() => {
+export const FiltersItem = ({ filter, filterName }) => {
+    const currentChosenFilters = useSelector(
+        (state) => state.filters.chosenFilters
+    );
+    const [values, setValues] = useState([]);
+    const [loading, setLoading] = useState(true); // Initialize loading state
+    const dispatch = useDispatch();
+    const currentCategory = useSelector(
+        (store) => store.categories.currentCategory
+    );
+
+    useEffect(() => {
         const getFilterValues = async () => {
-            const {data} = await axios.get(`http://localhost:8080/api/app/filters/${currentCategory.type}/${filter}`)
-            return data
-        }
-        getFilterValues().then(res => setValues(res))
-    }, [])
+            try {
+                const { data } = await axios.get(
+                    `http://localhost:8080/api/app/filters/${currentCategory.type}/${filter}`
+                );
+                setValues(data);
+                setLoading(false); // Update loading state once data is fetched
+            } catch (error) {
+                console.error("Error fetching filter values:", error);
+                setLoading(false); // Update loading state in case of an error
+            }
+        };
+
+        getFilterValues();
+    }, [currentCategory.type, filter]);
 
     const handleFilterChange = (e) => {
-        dispatch(setFilters({name: filter, value: e.target.value}))
-    }
+        dispatch(setFilters({ name: filter, value: e.target.value }));
+    };
 
-    return <div className={s.filtersItem_wrap}>
-        <p className={s.title}>{filterName}</p>
-        {values.map(el => {
-            return <div className={s.filter_values}>
-                <label><input onChange={handleFilterChange} type="checkbox" value={el}/>
-                {el}</label>
-            </div>
-        })}
-    </div>
-}
+    return (
+        <div className={s.filtersItem_wrap}>
+            <p className={s.title}>{filterName}</p>
+            {loading ? ( // Display loading indicator while data is being fetched
+                <p>Loading filter values...</p>
+            ) : (
+                values.map((el) => (
+                    <div className={s.filter_values} key={el}>
+                        <label>
+                            <input
+                                onChange={handleFilterChange}
+                                type="checkbox"
+                                value={el}
+                            />
+                            {el}
+                        </label>
+                    </div>
+                ))
+            )}
+        </div>
+    );
+};

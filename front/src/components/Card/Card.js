@@ -20,7 +20,7 @@ export const Card = ({item}) => {
     const user = useSelector(state => state.user.user)
 
     React.useEffect(() => {
-        let cartItem = allCartItems.find(el => el.itemId === item._id)
+        let cartItem = allCartItems?.find(el => el.itemId === item._id)
         if (cartItem) {
             setQuantityInCart(cartItem.quantity)
         }

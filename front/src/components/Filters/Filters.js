@@ -9,10 +9,11 @@ export const Filters = () => {
     const dispatch = useDispatch()
     const currentCategory = useSelector(store => store.categories.currentCategory)
     const filters = useSelector(store => store.filters.allFilters)
-
+    console.log(filters)
     React.useEffect(() => {
         if (currentCategory.type){
             dispatch(fetchFilters(currentCategory.type))
+
       }
     }, [currentCategory])
 
