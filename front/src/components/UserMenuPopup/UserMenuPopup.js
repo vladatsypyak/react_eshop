@@ -14,9 +14,9 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
     }
     const navigate= useNavigate()
 
-    return <div className={s.menu}>
+    return <>
         {isShown &&
-            <>
+            <div className={s.menu}>
                 <div className={s.overlay}></div>
                 <div className={s.container}>
                     <div className={`${s.menu_wrap} `}>
@@ -34,12 +34,12 @@ export const UserMenuPopup = ({isShown, setIsShown}) => {
 
                     </div>
                 </div>
-            </>
+            </div>
 
         }
 
 
-    </div>
+    </>
 
 
 }

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import s from "./filters.module.scss"
 import {fetchFilters} from "../../redux/slices/filtersSlice";
 import {FiltersItem} from "./FiltersItem";
+import PriceRange from "./PriceRange";
 
 export const Filters = () => {
     const dispatch = useDispatch()
@@ -18,7 +19,9 @@ export const Filters = () => {
     }, [currentCategory])
 
     return <div className={s.filters_wrap}>
-        <div className={s.price_range}></div>
+        <div className={s.price_range}>
+            <PriceRange/>
+        </div>
         <div className={s.filters}>
             {filters.map(obj=>{
                 if (obj.value !== "price"){

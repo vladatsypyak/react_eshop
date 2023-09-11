@@ -39,7 +39,6 @@ export const Header = () => {
                 </div>
                 <div  onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
                     <GlobalSvgSelector id="user_icon"/>
-
                 </div>
             </div>
             {isCatalogue && <Catalogue btnRef={btnRef} hideCatalogue={hideCatalogue}/>}

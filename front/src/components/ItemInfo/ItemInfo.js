@@ -45,6 +45,7 @@ export const ItemInfo = () => {
         fetchItem()
 
     }, [])
+    console.log(item)
 
     function onMinusClick() {
         if (quantityInCart !== 0) {
@@ -82,17 +83,41 @@ export const ItemInfo = () => {
                         До кошика
                     </button>
                 </div>
-                <p className={s.info}><span>Склад: </span>індійський чай Дарджилінг, сушене яблуко, цедра апельсину,
-                    бутон троянди, сушена та сублімована малина, аромати малини, саусепа, бергамота.</p>
-                <p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>
-                <p className={s.info}><span>Країна: </span>Індія</p>
+                {item.ingredients &&
+                    <p className={s.info}><span>Склад: </span>{item.ingredients}</p>
+
+                }
+                {/*<p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>*/}
+                {/*<p className={s.info}><span>Країна: </span>Індія</p>*/}
                 <div className={s.favourite_wrap}>
                     <LikeBtn itemId={item._id} isText={true}/>
                 </div>
             </div>
 
-        </div>
 
+        </div>
+        <div className={`${s.details} container`}>
+            <h3 className={s.title}>Опис</h3>
+            <p className={s.text}>{item.description}</p>
+           <div className={s.characteristics_wrap}>
+               <h3 className={s.title}>Характеристики</h3>
+               {item.characteristics?.map((el) => {
+                   if (Array.isArray(el.value)) {
+                       return <div className={s.characteristics}>
+                           <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
+                           <ul>{el.value.map(arrItem => <li className={s.characteristics_text}>{arrItem}</li>)}</ul>
+                       </div>
+                   }
+                   return <div className={s.characteristics}>
+
+                       <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
+                       <p className={s.characteristics_text}>{el.value}</p>
+                   </div>
+               })}
+           </div>
+
+
+        </div>
     </div>
 
 

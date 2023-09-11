@@ -108,13 +108,16 @@ async function getFilterValues(req, res) {
 async function getFilteredItems(req, res) {
     const allFilters = req.query;
     const sortBy = allFilters.sortBy
-    console.log(sortBy)
     const sortProperty = sortBy.replace("DESC", "")
     const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    const priceMax = allFilters.priceMax || Infinity
+    const priceMin = allFilters.priceMin || 0
+
+    console.log(priceMax)
     console.log(sortOrder)
-    const items = await Item.find({category: allFilters.category}).sort({[sortProperty]: sortOrder})
+    const items = await Item.find({category: allFilters.category, price: {$lt: priceMax, $gt: priceMin}}).sort({[sortProperty]: sortOrder})
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
     );
     console.log(filters)
     let filteredItems = items.filter(item =>
