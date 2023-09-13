@@ -1,7 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
-import {fetchItems} from "./itemsSlice";
-import {useDispatch} from "react-redux";
 
 
 export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params) => {
@@ -17,7 +15,9 @@ const initialState = {
     sortBy: {
         name: "По даті",
         sortProperty: "date"
-    }
+    },
+    priceRange: [0, 0]
+
 
 }
 
@@ -47,6 +47,17 @@ export const filtersSlice = createSlice({
                 state.chosenFilters = [...state.chosenFilters, action.payload]
             }
 
+        },
+        setPriceFilters: (state, action) => {
+            let filters = state.chosenFilters.filter(obj => obj.name !== action.payload.name)
+            state.chosenFilters = [...filters, action.payload]
+        },
+        deletePriceFilter: (state) => {
+            console.log("k")
+            state.chosenFilters = state.chosenFilters.filter(obj => obj.name !== "priceMin" && obj.name !== "priceMax")
+        },
+        setPriceRange: (state, action)=>{
+            state.priceRange = action.payload
         }
 
     },
@@ -59,6 +70,14 @@ export const filtersSlice = createSlice({
 
 })
 
-export const {setItems, setSearchValue, setFilters, setSortBy} = filtersSlice.actions
+export const {
+    setItems,
+    deletePriceFilter,
+    setSearchValue,
+    setFilters,
+    setSortBy,
+    setPriceFilters,
+    setPriceRange
+} = filtersSlice.actions
 
 export default filtersSlice.reducer

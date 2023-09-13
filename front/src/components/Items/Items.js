@@ -16,6 +16,7 @@ export const Items = ({items}) => {
 
     }, [user])
     const dispatch = useDispatch()
+
     function onLikeClick(itemId, liked) {
         if (!liked) {
             dispatch(putFavourite({userId: user._id, itemId: itemId}))
@@ -25,9 +26,11 @@ export const Items = ({items}) => {
     }
 
     return <div className={s.items_wrap}>
-        {items.map(item => {
-            return <Card onLikeClick={onLikeClick} item={item}/>
-        })}
+        {Array.isArray(items) &&
+            items.map(item => {
+                return <Card onLikeClick={onLikeClick} item={item}/>
+            })
+        }
 
 
     </div>

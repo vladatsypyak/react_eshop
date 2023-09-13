@@ -1,10 +1,20 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {deletePriceFilter, setFilters, setPriceFilters, setPriceRange} from "../../redux/slices/filtersSlice";
+import {useState} from "react";
+import debounce from 'lodash.debounce';
+
 
 function PriceRange() {
-    const [range, setRange] = React.useState([0, 0]);
     const items = useSelector(state => state.items.items)
+    const filters = useSelector(state => state.filters.allFilters)
+    const dispatch = useDispatch()
+    const [min, setMin] = React.useState(0);
+    const [max, setMax] = React.useState(0);
+    const [loading, setLoading] = useState(true); // Initialize loading state
+    const priceRange = useSelector(state => state.filters.priceRange)
+    console.log(items)
 
     function getMaxPrice(arr) {
         let prices = arr.map(el => el.price)
@@ -15,21 +25,54 @@ function PriceRange() {
         let prices = arr.map(el => el.price)
         return Math.min(...prices)
     }
-
-
-    function handleChanges(event, newValue) {
-        setRange(newValue);
-    }
-
+    const handleChanges = debounce((event, newValue) => {
+        if (Array.isArray(newValue) && newValue.length === 2) {
+            dispatch(setPriceRange(newValue));
+            dispatch(setPriceFilters({ name: "priceMin", value: newValue[0] }));
+            dispatch(setPriceFilters({ name: "priceMax", value: newValue[1] }));
+        }
+    }, 200);
+    // React.useEffect(() => {
+    //     if (items.length > 0) {
+    //         const minPrice = getMinPrice(items);
+    //         const maxPrice = getMaxPrice(items);
+    //         // setRange([minPrice, maxPrice]);
+    //         // dispatch(setPriceRange([minPrice, maxPrice]))
+    //         setMin(minPrice);
+    //         setMax(maxPrice);
+    //     }
+    //     setLoading(false); // Update loading state once data is fetched
+    //
+    //     return () => {
+    //         dispatch(deletePriceFilter())
+    //     }
+    // }, [filters])
     React.useEffect(() => {
-        console.log(items)
-        setRange([getMinPrice(items), getMaxPrice(items)])
+        console.log(5)
+        if (items.length > 0) {
+            setLoading(false); // Update loading state once data is fetched
+        }
     }, [items])
+    React.useEffect(() => {
+        const minPrice = getMinPrice(items);
+        const maxPrice = getMaxPrice(items);
+        dispatch(setPriceRange([minPrice, maxPrice]))
+        setMin(minPrice);
+        setMax(maxPrice);
+        return () => {
+            console.log("delete")
+                    dispatch(deletePriceFilter())
+                }
+    }, [loading])
+
     return (
         <div style={{width: "150px"}}>
             <h3> Price </h3>
-            <Slider value={range} onChange={handleChanges} valueLabelDisplay="auto"/>
-            The selected range is {range[0]} - {range[1]}
+            {!loading && <Slider
+                min={min}
+                max={max}
+                value={priceRange} onChange={handleChanges} valueLabelDisplay="auto"/>}
+            The selected range is {priceRange[0]} - {priceRange[1]}
         </div>
     );
 }

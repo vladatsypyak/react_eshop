@@ -115,18 +115,11 @@ export const OrderForm = () => {
                             name="npWarehous"
                             control={control}
                             render={({field: {onChange}, field: {value}}) => (
-                                // <NPOfficeSelect
-                                //     city={city}
-                                //     onChange={(val)=>{
-                                //         onChange(val.value)
-                                //     }}/>
                                 <NovaPoshtaOffices
                                     city={city}
                                     onChange={(val)=>{
                                         onChange(val.value)
                                     }}/>
-
-
                             )}
                         />
 

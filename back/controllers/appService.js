@@ -46,7 +46,6 @@ async function getCategoryByValue(req, res) {
 }
 
 async function getItemsByCategory(req, res) {
-    console.log(req.params)
     const {category} = req.params;
     const items = await Item.find({category: category})
     if (!items) {
@@ -62,7 +61,6 @@ async function getItemsByCategory(req, res) {
 async function getCategoryFilters(req, res) {
     const {category} = req.params;
     const currentCategory = await Category.findOne({type: category})
-    console.log(currentCategory)
     const filters = currentCategory.filters;
     if (!currentCategory) {
         res.status(500).send({
@@ -99,7 +97,6 @@ async function getFilterValues(req, res) {
         }
     )
     let uniqueFilterValues = [...new Set(filterValues.filter(el=> el))]
-    console.log(uniqueFilterValues)
     res.send(
         uniqueFilterValues,
     )
@@ -112,14 +109,11 @@ async function getFilteredItems(req, res) {
     const sortOrder = sortBy.includes("DESC") ? -1 : 1
     const priceMax = allFilters.priceMax || Infinity
     const priceMin = allFilters.priceMin || 0
-
-    console.log(priceMax)
-    console.log(sortOrder)
-    const items = await Item.find({category: allFilters.category, price: {$lt: priceMax, $gt: priceMin}}).sort({[sortProperty]: sortOrder})
+    console.log("wor")
+    const items = await Item.find({category: allFilters.category, price: {$lte: priceMax, $gte: priceMin}}).sort({[sortProperty]: sortOrder})
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
     );
-    console.log(filters)
     let filteredItems = items.filter(item =>
         Object.keys(filters).every(key => {
                 if (Array.isArray(filters[key])) {
@@ -140,15 +134,18 @@ async function getFilteredItems(req, res) {
             }
         )
     );
-
-    if (!filteredItems) {
+    console.log(filteredItems.length)
+    if (filteredItems.length === 0) {
+        console.log("300")
         res.status(200).send({
             message: "no items"
         });
+    } else{
+        res.send(
+            filteredItems
+        )
     }
-    res.send(
-        filteredItems
-    )
+
 }
 
 
