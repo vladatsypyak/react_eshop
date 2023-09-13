@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deletePriceFilter, setFilters, setPriceFilters, setPriceRange} from "../../redux/slices/filtersSlice";
 import {useState} from "react";
 import debounce from 'lodash.debounce';
+import {setItems} from "../../redux/slices/itemsSlice";
 
 
 function PriceRange() {
@@ -25,11 +26,12 @@ function PriceRange() {
         let prices = arr.map(el => el.price)
         return Math.min(...prices)
     }
+
     const handleChanges = debounce((event, newValue) => {
         if (Array.isArray(newValue) && newValue.length === 2) {
             dispatch(setPriceRange(newValue));
-            dispatch(setPriceFilters({ name: "priceMin", value: newValue[0] }));
-            dispatch(setPriceFilters({ name: "priceMax", value: newValue[1] }));
+            dispatch(setPriceFilters({name: "priceMin", value: newValue[0]}));
+            dispatch(setPriceFilters({name: "priceMax", value: newValue[1]}));
         }
     }, 200);
     // React.useEffect(() => {
@@ -61,8 +63,11 @@ function PriceRange() {
         setMax(maxPrice);
         return () => {
             console.log("delete")
-                    dispatch(deletePriceFilter())
-                }
+            dispatch(deletePriceFilter())
+            dispatch(setPriceRange([0, 0]))
+            dispatch(setItems([]))
+
+        }
     }, [loading])
 
     return (
