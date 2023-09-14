@@ -5,11 +5,11 @@ import {deletePriceFilter, setFilters, setPriceFilters, setPriceRange} from "../
 import {useState} from "react";
 import debounce from 'lodash.debounce';
 import {setItems} from "../../redux/slices/itemsSlice";
+import s from "./filters.module.scss"
 
 
 function PriceRange() {
     const items = useSelector(state => state.items.items)
-    const filters = useSelector(state => state.filters.allFilters)
     const dispatch = useDispatch()
     const [min, setMin] = React.useState(0);
     const [max, setMax] = React.useState(0);
@@ -34,23 +34,8 @@ function PriceRange() {
             dispatch(setPriceFilters({name: "priceMax", value: newValue[1]}));
         }
     }, 200);
-    // React.useEffect(() => {
-    //     if (items.length > 0) {
-    //         const minPrice = getMinPrice(items);
-    //         const maxPrice = getMaxPrice(items);
-    //         // setRange([minPrice, maxPrice]);
-    //         // dispatch(setPriceRange([minPrice, maxPrice]))
-    //         setMin(minPrice);
-    //         setMax(maxPrice);
-    //     }
-    //     setLoading(false); // Update loading state once data is fetched
-    //
-    //     return () => {
-    //         dispatch(deletePriceFilter())
-    //     }
-    // }, [filters])
+
     React.useEffect(() => {
-        console.log(5)
         if (items.length > 0) {
             setLoading(false); // Update loading state once data is fetched
         }
@@ -62,22 +47,20 @@ function PriceRange() {
         setMin(minPrice);
         setMax(maxPrice);
         return () => {
-            console.log("delete")
             dispatch(deletePriceFilter())
             dispatch(setPriceRange([0, 0]))
             dispatch(setItems([]))
-
         }
     }, [loading])
 
     return (
-        <div style={{width: "150px"}}>
-            <h3> Price </h3>
+        <div className={s.price_wrap} >
+            <h3> Ціна </h3>
             {!loading && <Slider
                 min={min}
                 max={max}
                 value={priceRange} onChange={handleChanges} valueLabelDisplay="auto"/>}
-            The selected range is {priceRange[0]} - {priceRange[1]}
+          <div className={s.values}><p>{priceRange[0]}</p> - <p>{priceRange[1]}</p></div>
         </div>
     );
 }

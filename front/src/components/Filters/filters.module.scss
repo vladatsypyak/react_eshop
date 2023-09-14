@@ -35,3 +35,16 @@
     }
   }
 }
+.values{
+  display: flex;
+  justify-content: space-between;
+}
+.price_wrap{
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 5px;
+  h3{
+    font-size: 18px;
+
+  }
+}
