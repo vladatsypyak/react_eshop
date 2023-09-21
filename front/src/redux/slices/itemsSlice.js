@@ -17,13 +17,16 @@ const fetchFavourites = async (userId) => {
     return data;
 };
 
-
-export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
+const fetchItemsCall = async (params) => {
     let str = buildURL(params)
-    console.log(params)
     const {data} = await axios.get(str)
-    console.log(data)
     return data
+};
+export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
+    return fetchItemsCall(params)
+})
+export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
+    return fetchItemsCall(params)
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
     const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params.title}&sortBy=${params.sortBy}`)
@@ -47,7 +50,8 @@ export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (
 const initialState = {
     items: [],
     favouriteItems: null,
-    foundItems: []
+    foundItems: [],
+    catalogueItems: []
 }
 
 export const itemsSlice = createSlice({
@@ -61,11 +65,14 @@ export const itemsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchItems.fulfilled, (state, action) => {
-
             if (action.payload) {
                 state.items = action.payload
             }
-
+        });
+        builder.addCase(fetchCatalogueItems.fulfilled, (state, action) => {
+            if (action.payload) {
+                state.catalogueItems = action.payload
+            }
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
             console.log(action)

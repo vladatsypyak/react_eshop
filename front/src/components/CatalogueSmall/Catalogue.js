@@ -2,7 +2,7 @@ import React from "react"
 import s from "../Header/header.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
-import {fetchItems} from "../../redux/slices/itemsSlice";
+import {fetchCatalogueItems, fetchItems} from "../../redux/slices/itemsSlice";
 import {CatalogueItem} from "./CatalogueItem";
 import {useNavigate} from "react-router-dom";
 
@@ -13,7 +13,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
 
     const [showItems, setShowItems] = React.useState(false);
     const [activeCategory, setActiveCategory] = React.useState("")
-    const items = useSelector(state => state.items.items)
+    const items = useSelector(state => state.items.catalogueItems)
     const navigate = useNavigate()
     const categories = useSelector(state => state.categories.categories)
 
@@ -33,7 +33,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         setActiveCategory(category)
         setShowItems(true)
         console.log(category)
-        dispatch(fetchItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}]))
+        dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}]))
 
     }
 
