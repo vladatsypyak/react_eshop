@@ -15,7 +15,6 @@ function PriceRange() {
     const [max, setMax] = React.useState(0);
     const [loading, setLoading] = useState(true); // Initialize loading state
     const priceRange = useSelector(state => state.filters.priceRange)
-    console.log(items)
 
     function getMaxPrice(arr) {
         let prices = arr.map(el => el.price)

@@ -5,6 +5,7 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {fetchCatalogueItems, fetchItems} from "../../redux/slices/itemsSlice";
 import {CatalogueItem} from "./CatalogueItem";
 import {useNavigate} from "react-router-dom";
+import {setCurrentCategory} from "../../redux/slices/categoriesSlice";
 
 
 export const Catalogue = ({hideCatalogue, btnRef}) => {
@@ -14,6 +15,8 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     const [showItems, setShowItems] = React.useState(false);
     const [activeCategory, setActiveCategory] = React.useState("")
     const items = useSelector(state => state.items.catalogueItems)
+    const currentCategory = useSelector(state => state.categories.currentCategory)
+
     const navigate = useNavigate()
     const categories = useSelector(state => state.categories.categories)
 
@@ -32,7 +35,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     function onCategoryHover(category) {
         setActiveCategory(category)
         setShowItems(true)
-        console.log(category)
         dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}]))
 
     }
@@ -42,6 +44,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     }
     function onIconClick(){
         console.log(activeCategory)
+        dispatch(setCurrentCategory(activeCategory))
         navigate(`/categories/${activeCategory.type}`)
         hideCatalogue(true)
     }

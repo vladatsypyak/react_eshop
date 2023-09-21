@@ -13,7 +13,6 @@ export const Category = () => {
     const {category} = useParams()
     const dispatch = useDispatch()
     const items = useSelector(state => state.items.items)
-    const currentCategory = useSelector(store => store.categories.currentCategory)
     const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
     const sortBy = useSelector(state => state.filters.sortBy)
 
@@ -24,7 +23,7 @@ export const Category = () => {
 
     React.useEffect(() => {
         dispatch(fetchItems([...currentChosenFilters, {name: "category", value: category}, {name: "sortBy", value: sortBy.sortProperty}]))
-    }, [currentChosenFilters, currentCategory, sortBy])
+    }, [currentChosenFilters, sortBy, category])
 
     return <div className={`${s.category_page_wrap} container`}>
         <Filters/>

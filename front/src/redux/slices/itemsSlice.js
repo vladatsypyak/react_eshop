@@ -23,7 +23,11 @@ const fetchItemsCall = async (params) => {
     return data
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
-    return fetchItemsCall(params)
+    console.log(params)
+    let result = await fetchItemsCall(params)
+    console.log(result)
+    return result
+
 })
 export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
     return fetchItemsCall(params)
