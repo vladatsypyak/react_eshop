@@ -1,13 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-// import {getAllCartItems, setTotal} from "../../redux/slices/cartSlice";
 import s from "./cart.module.scss"
 import {Item} from "./Item";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {getAllCartItems, setTotal} from "../../redux/slices/cartSlice";
-import {logDOM} from "@testing-library/react";
 import {useNavigate} from "react-router-dom";
-
 
 export const Cart = () => {
     const dispatch = useDispatch()

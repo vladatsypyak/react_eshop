@@ -6,20 +6,18 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
 
 export const Item = ({cartItem, user}) => {
+    console.log(cartItem)
     const dispatch = useDispatch()
     function onMinusClick() {
         if(cartItem.quantity === 1){
             dispatch(deleteCartItem({userId: user._id, itemId: cartItem.itemId}))
-
         } else {
             dispatch(removeOneFromCart({userId:  user._id, itemId: cartItem.itemId}))
-
         }
 
     }
 
     function onPlusClick() {
-        console.log(cartItem.quantity)
         dispatch(putToCart({userId:  user._id, itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
     }
 
@@ -28,18 +26,19 @@ export const Item = ({cartItem, user}) => {
     }
     return <div className={s.cart_item_wrap}>
         <div onClick={onDeleteClick}><GlobalSvgSelector id={"cross"}/></div>
-        <img src={cartItem.item.imgUrl} alt=""/>
-        <p>{cartItem.item.title}</p>
+        <div className={s.image}>
+            <img src={cartItem.item.imgUrl} alt=""/>
+        </div>
+        <div className={s.title}>
+            <p className={s.title}>{cartItem.item.title}</p>
+
+        </div>
         <p className={s.price}>{cartItem.item.price}<span> грн</span></p>
         <div className={s.quantity_wrap}>
             <p onClick={onMinusClick} className={s.change_quantity}>-</p>
             <p className={s.quantity}>{cartItem.quantity}</p>
             <p onClick={onPlusClick} className={s.change_quantity}>+</p>
-
-
         </div>
         <p className={s.item_total}>{cartItem.quantity * cartItem.item.price} грн</p>
-
-
     </div>
 }

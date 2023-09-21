@@ -62,7 +62,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
             </div>
             {showItems &&
                 <div className={s.catalogue_items}>
-                    {items.map(el=> <CatalogueItem hideCatalogue={hideCatalogue}  item={el}/>)}
+                    {items.slice(0,9).map(el=> <CatalogueItem hideCatalogue={hideCatalogue}  item={el}/>)}
                 </div>
             }
         </div>
