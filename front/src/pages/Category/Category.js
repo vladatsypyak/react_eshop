@@ -19,7 +19,6 @@ export const Category = () => {
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))
     }, [])
-    console.log(category)
 
     React.useEffect(() => {
         dispatch(fetchItems([...currentChosenFilters, {name: "category", value: category}, {name: "sortBy", value: sortBy.sortProperty}]))

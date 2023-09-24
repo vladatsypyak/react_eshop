@@ -48,15 +48,18 @@ export const filtersSlice = createSlice({
             }
 
         },
+        clearChosenFilters: (state) => {
+            state.chosenFilters = []
+
+        },
         setPriceFilters: (state, action) => {
             let filters = state.chosenFilters.filter(obj => obj.name !== action.payload.name)
             state.chosenFilters = [...filters, action.payload]
         },
         deletePriceFilter: (state) => {
-            console.log("k")
             state.chosenFilters = state.chosenFilters.filter(obj => obj.name !== "priceMin" && obj.name !== "priceMax")
         },
-        setPriceRange: (state, action)=>{
+        setPriceRange: (state, action) => {
             state.priceRange = action.payload
         }
 

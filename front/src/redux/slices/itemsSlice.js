@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 
 function buildURL(arr) {
@@ -23,10 +23,7 @@ const fetchItemsCall = async (params) => {
     return data
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
-    console.log(params)
-    let result = await fetchItemsCall(params)
-    console.log(result)
-    return result
+    return await fetchItemsCall(params)
 
 })
 export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
@@ -34,7 +31,6 @@ export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems',
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
     const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params.title}&sortBy=${params.sortBy}`)
-    console.log(data)
     return data
 })
 export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
@@ -55,7 +51,8 @@ const initialState = {
     items: [],
     favouriteItems: null,
     foundItems: [],
-    catalogueItems: []
+    catalogueItems: [],
+    fetched: false
 }
 
 export const itemsSlice = createSlice({
@@ -72,6 +69,11 @@ export const itemsSlice = createSlice({
             if (action.payload) {
                 state.items = action.payload
             }
+            state.fetched = true
+        });
+        builder.addCase(fetchItems.pending, (state, action) => {
+            state.fetched = false
+
         });
         builder.addCase(fetchCatalogueItems.fulfilled, (state, action) => {
             if (action.payload) {
@@ -89,6 +91,7 @@ export const itemsSlice = createSlice({
             state.favouriteItems = action.payload
 
         });
+
         builder.addCase(deleteFavourite.fulfilled, (state, action) => {
             state.favouriteItems = action.payload
 

@@ -43,7 +43,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         setShowItems(false)
     }
     function onIconClick(){
-        console.log(activeCategory)
         dispatch(setCurrentCategory(activeCategory))
         navigate(`/categories/${activeCategory.type}`)
         hideCatalogue(true)

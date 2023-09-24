@@ -137,9 +137,7 @@ async function getFilteredItems(req, res) {
     console.log(filteredItems.length)
     if (filteredItems.length === 0) {
         console.log("300")
-        res.status(200).send({
-            message: "no items"
-        });
+        res.status(200).send([]);
     } else{
         res.send(
             filteredItems
