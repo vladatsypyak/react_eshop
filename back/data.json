@@ -74,7 +74,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "ВИРОБНИК"
       }
@@ -107,7 +106,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -176,7 +174,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -212,7 +209,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -248,7 +244,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -282,7 +277,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -319,7 +313,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -355,7 +348,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -392,7 +384,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -430,7 +421,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       }
@@ -461,7 +451,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       },
@@ -497,7 +486,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       },
@@ -533,7 +521,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       },
@@ -569,7 +556,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       },
@@ -607,7 +593,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Україна"
       },
@@ -647,7 +632,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Італія"
       },
@@ -713,7 +697,6 @@
       },
       {
         "name": "producer",
-
         "title": "ВИРОБНИК",
         "value": "Нідерланди"
       },
@@ -1002,7 +985,9 @@
   {
     "category": "utensil",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%90%D0%A8%D0%9A%D0%90+%D0%9C%D0%95%D0%A2%D0%90%D0%9B%D0%95%D0%92%D0%90+%D0%91%D0%86%D0%9B%D0%90+%D0%97+%D0%A1%D0%A0%D0%86%D0%91%D0%9B%D0%AF%D0%A1%D0%A2%D0%98%D0%9C+%D0%9A%D0%90%D0%A0%D0%90%D0%91%D0%86%D0%9D%D0%9E%D0%9C+(300+%D0%9C%D0%9B)+%D0%92%D0%A1%D0%A2%D0%90%D0%92%D0%90%D0%98%CC%86%2C+%D0%9C%D0%98+%D0%9F%D0%95%D0%A0%D0%95%D0%9C%D0%9E%D0%93%D0%9B%D0%98!.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%90%D0%A8%D0%9A%D0%90+%D0%9C%D0%95%D0%A2%D0%90%D0%9B%D0%95%D0%92%D0%90+%D0%91%D0%86%D0%9B%D0%90+%D0%97+%D0%A1%D0%A0%D0%86%D0%91%D0%9B%D0%AF%D0%A1%D0%A2%D0%98%D0%9C+%D0%9A%D0%90%D0%A0%D0%90%D0%91%D0%86%D0%9D%D0%9E%D0%9C+(300+%D0%9C%D0%9B)+%D0%92%D0%A1%D0%A2%D0%90%D0%92%D0%90%D0%98%CC%86%2C+%D0%9C%D0%98+%D0%9F%D0%95%D0%A0%D0%95%D0%9C%D0%9E%D0%93%D0%9B%D0%98!.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%90%D0%A8%D0%9A%D0%90+%D0%9C%D0%95%D0%A2%D0%90%D0%9B%D0%95%D0%92%D0%90+%D0%91%D0%86%D0%9B%D0%90+%D0%97+%D0%A1%D0%A0%D0%86%D0%91%D0%9B%D0%AF%D0%A1%D0%A2%D0%98%D0%9C+%D0%9A%D0%90%D0%A0%D0%90%D0%91%D0%86%D0%9D%D0%9E%D0%9C+(300+%D0%9C%D0%9B)+%D0%92%D0%A1%D0%A2%D0%90%D0%92%D0%90%D0%98%CC%86%2C+%D0%9C%D0%98+%D0%9F%D0%95%D0%A0%D0%95%D0%9C%D0%9E%D0%93%D0%9B%D0%98!.jpg"
+    ],
     "price": 905,
     "rating": "5",
     "description": "Чашка для чаю з блюдцем відомого португальського бренду Bordallo Pinheiro виконана з високоякісної кераміки найвищого ґатунку в стилі майоліка. Блюдце і чашка прикрашені маленькими квітами. Такий набір чудово підійде для приємного чаювання. Покрита вологостійкою глазур'ю, стійка до відколів, тріщин і пошкоджень. Португальську посуд можна використовувати в посудомийній машині і мікрохвильовій печі.",
@@ -1029,7 +1014,9 @@
   {
     "category": "utensil",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D1%88%D0%BA%D0%B0+%D0%B4%D0%BB%D1%8F+%D1%87%D0%B0%D1%8E+%D0%B7+%D0%B1%D0%BB%D1%8E%D0%B4%D1%86%D0%B5%D0%BC+Bordallo+%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D1%96%D1%8F+9%D1%857%2C5+%D1%81%D0%BC+65019147-1.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D1%88%D0%BA%D0%B0+%D0%B4%D0%BB%D1%8F+%D1%87%D0%B0%D1%8E+%D0%B7+%D0%B1%D0%BB%D1%8E%D0%B4%D1%86%D0%B5%D0%BC+Bordallo+%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D1%96%D1%8F+9%D1%857%2C5+%D1%81%D0%BC+65019147-12.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A7%D0%B0%D1%88%D0%BA%D0%B0+%D0%B4%D0%BB%D1%8F+%D1%87%D0%B0%D1%8E+%D0%B7+%D0%B1%D0%BB%D1%8E%D0%B4%D1%86%D0%B5%D0%BC+Bordallo+%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D1%96%D1%8F+9%D1%857%2C5+%D1%81%D0%BC+65019147-12.jpg"
+    ],
     "price": 282,
     "rating": "4",
     "description": "",
@@ -1061,7 +1048,9 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Fjord+Nansen+Honer+1000+%D0%BC%D0%BB.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Fjord+Nansen+Honer+1000+%D0%BC%D0%BB.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Fjord+Nansen+Honer+1000+%D0%BC%D0%BB.jpg"
+    ],
     "price": 919,
     "rating": "4",
     "description": "Чудовий подарунок для людини, яка віддає перевагу активному відпочинку - Термос Honer великої ємності. Його можна використовувати як для гарячих, так холодних напоїв. Стінки з нержавіючої сталі на довгий час збережуть температуру Вашого напою, а кришка-заглушка із силіконовим ущільненням запобігає проливанню рідини.",
@@ -1088,7 +1077,9 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Stanley+Legendary+Classic+1+%D0%BB+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+(10-01254-038).jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Stanley+Legendary+Classic+1+%D0%BB+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+(10-01254-038).jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Stanley+Legendary+Classic+1+%D0%BB+%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+(10-01254-038).jpg"
+    ],
     "price": 1904,
     "rating": "4",
     "description": "Коли на вулиці холодно, а в душі нудиться жага пригод, саме час задуматися про якісний термос. Він допоможе Вам зігрітися у будь-який час та в будь-якому місці. Торгова марка Stanley пропонує Вашій увазі якісний продукт. Термос Legendary Classic виготовлений із нержавіючої сталі, яка забезпечить його довговічність. Він добре тримає тепло чи холод цілодобово. Кришка може бути використана як чашка (250мл). Ручка та пробка допоможуть використовувати термос із максимальною зручністю. Його об'єм 1 л.",
@@ -1115,7 +1106,10 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Skif+Outdoor+Traveller+%D1%81%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D0%B8%D0%B9+1%2C5+%D0%BB2.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Skif+Outdoor+Traveller+%D1%81%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D0%B8%D0%B9+1%2C5+%D0%BB2.jpg", "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Skif+Outdoor+Traveller+%D1%81%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D0%B8%D0%B9+1%2C5+%D0%BB.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Skif+Outdoor+Traveller+%D1%81%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D0%B8%D0%B9+1%2C5+%D0%BB2.jpg",
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Skif+Outdoor+Traveller+%D1%81%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D0%B8%D0%B9+1%2C5+%D0%BB.jpg"
+    ],
     "price": 282,
     "rating": "4",
     "description": "",
@@ -1142,7 +1136,9 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Marco+AIRPOT+2200+%D0%BC%D0%BB1.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Marco+AIRPOT+2200+%D0%BC%D0%BB1.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Marco+AIRPOT+2200+%D0%BC%D0%BB1.jpg"
+    ],
     "price": 5600,
     "rating": "4",
     "description": "Marco - ірландський бренд, що належить великій корпорації, що займається виробництвом, дизайном, продажем та підтримкою обладнання для HoReCa. Компанія понад 30 років радує споживачів та партнерів першокласною продукцією. Під брендом Marco можна знайти кавоварки, посуд, комплектуючі для техніки та інші товари такого сегменту. Виробник орієнтується на комерційних клієнтів, але його продукція користується попитом і звичайними любителями кави. Офіс компанії Marco Beverage Systems розташований у Дубліні (Ірландія), але цільова аудиторія знаходиться далеко за межами рідного острова. У продукції Marco поєднуються сучасні інновації і рішення, що вже довели свою ефективність. Тому її рекомендують для використання у закладах громадського харчування, хоч вона підходить і для побутових умов.",
@@ -1169,7 +1165,9 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+%D1%96%D0%B7+%D0%BF%D0%BE%D0%B4%D0%B2%D1%96%D0%B9%D0%BD%D0%B8%D0%BC%D0%B8+%D1%81%D1%82%D1%96%D0%BD%D0%BA%D0%B0%D0%BC%D0%B8+S%26T+390+%D0%BC%D0%BB.jpg",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+%D1%96%D0%B7+%D0%BF%D0%BE%D0%B4%D0%B2%D1%96%D0%B9%D0%BD%D0%B8%D0%BC%D0%B8+%D1%81%D1%82%D1%96%D0%BD%D0%BA%D0%B0%D0%BC%D0%B8+S%26T+390+%D0%BC%D0%BB.jpg"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+%D1%96%D0%B7+%D0%BF%D0%BE%D0%B4%D0%B2%D1%96%D0%B9%D0%BD%D0%B8%D0%BC%D0%B8+%D1%81%D1%82%D1%96%D0%BD%D0%BA%D0%B0%D0%BC%D0%B8+S%26T+390+%D0%BC%D0%BB.jpg"
+    ],
     "price": 282,
     "rating": "4",
     "description": "Компактний термос об'ємом 390мл від компанії S&T привертає увагу сучасним дизайном. Його колба виконана з прозорого скла, а подвійні стінки створюють цікавий ефект - немов рідина ширяє в повітрі. Зверху ємність закривається кришкою герметичною з невеликою ручкою. Така конструкція характеризується простотою та надійністю. Термос S&T призначений для домашньої експлуатації. Він здатний зберігати температуру вмісту до півгодини - це однаково актуально для холодних і гарячих напоїв. Скляний термос стане гарною заміною звичайній чашці, з якої ви п'єте вдома чай чи каву. Можна не переживати, що напій швидко охолоне, поки ви дивитеся кіно або працюєте за комп'ютером.",
@@ -1196,7 +1194,9 @@
   {
     "category": "thermos",
     "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Zojirushi+SC-ZT45RZ+%D0%B4%D0%B8%D1%82%D1%8F%D1%87%D0%B8%D0%B9+%D1%87%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B8%D0%B9+450+%D0%BC%D0%BB.png",
-    "allImages": ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Zojirushi+SC-ZT45RZ+%D0%B4%D0%B8%D1%82%D1%8F%D1%87%D0%B8%D0%B9+%D1%87%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B8%D0%B9+450+%D0%BC%D0%BB.png"],
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Zojirushi+SC-ZT45RZ+%D0%B4%D0%B8%D1%82%D1%8F%D1%87%D0%B8%D0%B9+%D1%87%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B8%D0%B9+450+%D0%BC%D0%BB.png"
+    ],
     "price": 2210,
     "rating": "4",
     "description": "Термос із яскравим дизайном для холодних та гарячих напоїв. Він оснащений зручним і надійним знімним ремінцем, а також спеціальним бейджиком для ідентифікації. Завдяки спеціальному покриттю на внутрішніх стінках термоса, напій не контактує з металом.",
@@ -1219,6 +1219,32 @@
         "value": "Україна"
       }
     ]
+  },
+  {
+    "category": "thermos",
+    "imgUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Zojirushi+SC-ZT45RZ+%D0%B4%D0%B8%D1%82%D1%8F%D1%87%D0%B8%D0%B9+%D1%87%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B8%D0%B9+450+%D0%BC%D0%BB.png",
+    "allImages": [
+      "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81+Zojirushi+SC-ZT45RZ+%D0%B4%D0%B8%D1%82%D1%8F%D1%87%D0%B8%D0%B9+%D1%87%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B8%D0%B9+450+%D0%BC%D0%BB.png"
+    ],
+    "price": 2210,
+    "rating": "4",
+    "description": "Термос із яскравим дизайном для холодних та гарячих напоїв. Він оснащений зручним і надійним знімним ремінцем, а також спеціальним бейджиком для ідентифікації. Завдяки спеціальному покриттю на внутрішніх стінках термоса, напій не контактує з металом.",
+    "isInStock": true,
+    "title": "Термос Zojirushi SC-ZT45RZ дитячий червоний 450 мл",
+    "characteristics": {
+      "capacity": {
+        "title": "Об'єм",
+        "value": "450"
+      },
+      "brand": {
+        "title": "Бренд",
+        "value": "Zojirushi"
+      },
+      "producer": {
+        "title": "ВИРОБНИК",
+        "value": "Україна"
+      }
+    }
   }
 ]
 

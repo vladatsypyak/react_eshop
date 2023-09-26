@@ -16,7 +16,9 @@ const initialState = {
         name: "По даті",
         sortProperty: "date"
     },
-    priceRange: [0, 0]
+    priceRange: [0, 0],
+    max: 0,
+    min: 0
 
 
 }
@@ -80,7 +82,9 @@ export const {
     setFilters,
     setSortBy,
     setPriceFilters,
-    setPriceRange
+    setPriceRange,
+    clearChosenFilters
+
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

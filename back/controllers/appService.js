@@ -96,49 +96,53 @@ async function getFilterValues(req, res) {
 
         }
     )
-    let uniqueFilterValues = [...new Set(filterValues.filter(el=> el))]
+    let uniqueFilterValues = [...new Set(filterValues.filter(el => el))]
     res.send(
         uniqueFilterValues,
     )
 }
 
-async function getFilteredItems(req, res) {
+async function filterItems(req) {
     const allFilters = req.query;
     const sortBy = allFilters.sortBy
     const sortProperty = sortBy.replace("DESC", "")
     const sortOrder = sortBy.includes("DESC") ? -1 : 1
     const priceMax = allFilters.priceMax || Infinity
     const priceMin = allFilters.priceMin || 0
-    console.log("wor")
-    const items = await Item.find({category: allFilters.category, price: {$lte: priceMax, $gte: priceMin}}).sort({[sortProperty]: sortOrder})
+
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
     );
-    let filteredItems = items.filter(item =>
-        Object.keys(filters).every(key => {
-                if (Array.isArray(filters[key])) {
-                    let sum = 0
-                    filters[key].forEach(filterValue => {
-                        if (item.characteristics.some(el => el.name === key && el.value === filterValue)) {
-                            sum = sum + 1
-                        }
-                    })
-                    if (sum) {
-                        return true
-                    }
+    const query = {};
 
+    for (const key in filters) {
+        if (filters.hasOwnProperty(key)) {
+            const filterValue = filters[key];
+            query["characteristics"] = {
+                $elemMatch: {
+                    name: key,
+                    value: Array.isArray(filterValue) ? {$in: filterValue} : filterValue
                 }
-                return item.characteristics.some(el =>
-                    el.name === key && el.value === filters[key]
-                )
-            }
-        )
-    );
+            };
+        }
+    }
+
+    let filteredItems = await Item.find({
+        ...query,
+        "category": allFilters.category,
+        price: {$lte: priceMax, $gte: priceMin}
+    }).sort({[sortProperty]: sortOrder});
     console.log(filteredItems.length)
+    return filteredItems;
+}
+
+async function getFilteredItems(req, res) {
+    let filteredItems = await filterItems(req);
+
     if (filteredItems.length === 0) {
         console.log("300")
         res.status(200).send([]);
-    } else{
+    } else {
         res.send(
             filteredItems
         )
@@ -146,6 +150,13 @@ async function getFilteredItems(req, res) {
 
 }
 
+async function getPriceRange(req, res) {
+    let filteredItems = await filterItems(req);
+    let priceArr = filteredItems.map(el => el.price)
+    res.send(
+        [Math.min(...priceArr), Math.max(...priceArr)]
+    )
+}
 
 async function getItemsByTitle(req, res) {
     const sortBy = req.query.sortBy
@@ -323,5 +334,6 @@ module.exports = {
     clearCart,
     searchCategories,
     createOrder,
-    getUserOrders
+    getUserOrders,
+    getPriceRange
 };

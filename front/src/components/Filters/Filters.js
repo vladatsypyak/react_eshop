@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import s from "./filters.module.scss"
-import {fetchFilters} from "../../redux/slices/filtersSlice";
+import {clearChosenFilters, fetchFilters} from "../../redux/slices/filtersSlice";
 import {FiltersItem} from "./FiltersItem";
 import PriceRange from "./PriceRange";
 
@@ -14,6 +14,9 @@ export const Filters = () => {
         if (currentCategory.type){
             dispatch(fetchFilters(currentCategory.type))
       }
+        return ()=>{
+            dispatch(clearChosenFilters())
+        }
     }, [currentCategory])
 
 
