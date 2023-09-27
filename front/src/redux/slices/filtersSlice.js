@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
+import {buildURL} from "./itemsSlice";
 
 
 export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params) => {
@@ -7,6 +8,15 @@ export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params
     return data
 })
 
+export const fetchMaxMinCall = async (params) => {
+    const baseUrl = 'http://localhost:8080/api/app/items/priceCount';
+    let str = buildURL(params, baseUrl)
+    const {data} = await axios.get(str)
+    return data
+};
+export const fetchMaxMin = createAsyncThunk('items/getMaxAndMin', async (params) => {
+    return await fetchMaxMinCall(params)
+})
 
 const initialState = {
     allFilters: [],
@@ -16,9 +26,8 @@ const initialState = {
         name: "По даті",
         sortProperty: "date"
     },
-    priceRange: [0, 0],
-    max: 0,
-    min: 0
+    priceRange: [0, Infinity],
+    maxAndMin: [0, Infinity]
 
 
 }
@@ -54,10 +63,10 @@ export const filtersSlice = createSlice({
             state.chosenFilters = []
 
         },
-        setPriceFilters: (state, action) => {
-            let filters = state.chosenFilters.filter(obj => obj.name !== action.payload.name)
-            state.chosenFilters = [...filters, action.payload]
-        },
+        // setPriceFilters: (state, action) => {
+        //     let filters = state.chosenFilters.filter(obj => obj.name !== action.payload.name)
+        //     state.chosenFilters = [...filters, action.payload]
+        // },
         deletePriceFilter: (state) => {
             state.chosenFilters = state.chosenFilters.filter(obj => obj.name !== "priceMin" && obj.name !== "priceMax")
         },
@@ -70,8 +79,11 @@ export const filtersSlice = createSlice({
         builder.addCase(fetchFilters.fulfilled, (state, action) => {
             state.allFilters = action.payload
         });
-
+        builder.addCase(fetchMaxMin.fulfilled, (state, action) => {
+            state.maxAndMin = action.payload
+        });
     },
+
 
 })
 

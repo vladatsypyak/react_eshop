@@ -1,31 +1,27 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 
-function buildURL(arr) {
-    const baseUrl = 'http://localhost:8080/api/app/items/filter';
-
+export function buildURL(arr, baseUrl) {
     const queryParams = arr
         .map(obj => `${encodeURIComponent(obj.name)}=${encodeURIComponent(obj.value)}`)
         .join('&');
-
-
     return `${baseUrl}?${queryParams}`;
 }
 
-const fetchFavourites = async (userId) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${userId}`);
-    return data;
-};
-
 const fetchItemsCall = async (params) => {
-    let str = buildURL(params)
+    const baseUrl = 'http://localhost:8080/api/app/items/filter';
+    let str = buildURL(params, baseUrl )
+    console.log(str)
     const {data} = await axios.get(str)
     return data
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
     return await fetchItemsCall(params)
-
 })
+const fetchFavourites = async (userId) => {
+    const {data} = await axios.get(`http://localhost:8080/api/app/favourite/${userId}`);
+    return data;
+};
 export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
     return fetchItemsCall(params)
 })
