@@ -39,6 +39,9 @@ function PriceRange() {
 
 
     function onMinInputChange(e) {
+        if(!Number(e.target.value)){
+            return
+        }
         if(e.target.value > maxAndMin[1]){
             dispatch(setPriceRange([maxAndMin[1], priceRange[1]]))
         } else{
@@ -47,6 +50,9 @@ function PriceRange() {
         }
     }
     function onMaxInputChange(e) {
+        if(!Number(e.target.value)){
+            return
+        }
         if(String(e.target.value).length === String(maxAndMin[0]).length && e.target.value < maxAndMin[0]){
             dispatch(setPriceRange([priceRange[0], maxAndMin[0]] ))
         } else{
