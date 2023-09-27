@@ -11,7 +11,7 @@ export function buildURL(arr, baseUrl) {
 const fetchItemsCall = async (params) => {
     const baseUrl = 'http://localhost:8080/api/app/items/filter';
     let str = buildURL(params, baseUrl )
-    console.log(str)
+
     const {data} = await axios.get(str)
     return data
 };

@@ -22,14 +22,15 @@ function PriceRange() {
     const handleChanges = debounce((event, newValue) => {
         if (Array.isArray(newValue) && newValue.length === 2) {
             dispatch(setPriceRange(newValue));
-            // dispatch(setPriceFilters({name: "priceMin", value: newValue[0]}));
-            // dispatch(setPriceFilters({name: "priceMax", value: newValue[1]}));
         }
     }, 200);
 
 
     React.useEffect(() => {
-        dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {name: "sortBy", value: sortBy.sortProperty}]))
+        dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {
+            name: "sortBy",
+            value: sortBy.sortProperty
+        }]))
     }, [category, currentChosenFilters])
 
     React.useEffect(() => {
@@ -37,14 +38,33 @@ function PriceRange() {
     }, [maxAndMin])
 
 
+    function onMinInputChange(e) {
+        if(e.target.value > maxAndMin[1]){
+            dispatch(setPriceRange([maxAndMin[1], priceRange[1]]))
+        } else{
+            dispatch(setPriceRange([e.target.value, priceRange[1]]))
+
+        }
+    }
+    function onMaxInputChange(e) {
+        if(String(e.target.value).length === String(maxAndMin[0]).length && e.target.value < maxAndMin[0]){
+            dispatch(setPriceRange([priceRange[0], maxAndMin[0]] ))
+        } else{
+            dispatch(setPriceRange([ priceRange[0], e.target.value]))
+        }
+    }
+
     return (
         <div className={s.price_wrap}>
             <h3> Ціна </h3>
-             <Slider
+            <Slider
                 min={maxAndMin[0]}
                 max={maxAndMin[1]}
                 value={priceRange} onChange={handleChanges} valueLabelDisplay="auto"/>
-            <div className={s.values}><p>{priceRange[0]}</p> - <p>{priceRange[1]}</p></div>
+            <div className={s.values}>
+                <input onChange={(e) => onMinInputChange(e)} value={priceRange[0]}/> -
+                <input onChange={(e) => onMaxInputChange(e)} value={priceRange[1]}/>
+            </div>
         </div>
     );
 }
