@@ -113,27 +113,48 @@ async function filterItems(req) {
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
     );
-    const query = {};
+    let query = [];
 
     for (const key in filters) {
         if (filters.hasOwnProperty(key)) {
             const filterValue = filters[key];
-            query["characteristics"] = {
-                $elemMatch: {
-                    name: key,
-                    value: Array.isArray(filterValue) ? {$in: filterValue} : filterValue
+            query = [...query, {
+                "characteristics": {
+                    $elemMatch: {
+                        name: key,
+                        value: Array.isArray(filterValue) ? {$in: filterValue} : filterValue
+                    }
                 }
-            };
+            }]
+
         }
     }
+    console.log(query)
 
-    let filteredItems = await Item.find({
-        ...query,
-        "category": allFilters.category,
-        price: {$lte: priceMax, $gte: priceMin}
-    }).sort({[sortProperty]: sortOrder});
-    console.log(filteredItems.length)
-    return filteredItems;
+
+    try {
+        let filteredItems = await Item.find({
+            $and: [
+                ...query,
+                {"category": allFilters.category},
+                {price: {$lte: priceMax, $gte: priceMin}}
+            ]
+        });
+        console.log("itemssssssssssssss:" + filteredItems)
+        if (filteredItems) {
+            return filteredItems;
+
+        } else {
+            return []
+        }
+    } catch (error) {
+        // Handle the error here
+        console.error("An error occurred:", error);
+    }
+
+
+    // .sort({[sortProperty]: sortOrder});
+    // console.log(filteredItems.length)
 }
 
 async function getFilteredItems(req, res) {
@@ -148,14 +169,22 @@ async function getFilteredItems(req, res) {
         )
     }
 
+
 }
 
 async function getPriceRange(req, res) {
     let filteredItems = await filterItems(req);
-    let priceArr = filteredItems.map(el => el.price)
-    res.send(
-        [Math.min(...priceArr), Math.max(...priceArr)]
-    )
+    if (filteredItems.length !== 0) {
+        let priceArr = filteredItems.map(el => el.price)
+        res.send(
+            [Math.min(...priceArr), Math.max(...priceArr)]
+        )
+    } else {
+        res.send(
+            [0, 0]
+        )
+    }
+
 }
 
 async function getItemsByTitle(req, res) {
