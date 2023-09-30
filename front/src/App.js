@@ -22,6 +22,7 @@ import {OrderForm} from "./components/OrderForm/OrderForm";
 import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
 import {Confirmed} from "./components/OrderConfirm/Confirmed";
 import axios from "axios";
+import {fetchCategories} from "./redux/slices/categoriesSlice";
 // import {withAuthenticator} from "aws-amplify-react"
 function App() {
     const dispatch = useDispatch()
@@ -32,6 +33,8 @@ function App() {
         if (token) {
             dispatch(getUser(token))
         }
+        dispatch(fetchCategories())
+
 
     }, [])
 
