@@ -55,7 +55,6 @@ export const Search = () => {
                    placeholder={"Пошук"}/>
             {!focused && !searchValue &&
                 <div className={s.search_icon}>
-
                     <GlobalSvgSelector id={"search_icon"}/>
                 </div>
             }

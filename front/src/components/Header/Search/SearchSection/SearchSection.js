@@ -61,9 +61,11 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
             <div className={s.items_wrap}>
                 <h3 className={s.title}>Товари</h3>
                 <div className={s.items}>
-                    {items.map(el => {
+                    {items?.slice(0, 5).map(el => {
                         return <Link className={s.item} to={`./items/${el._id}`}>
-                            <img src={el.imgUrl} alt=""/>
+                            <div className={s.image}>
+                                <img src={el.imgUrl} alt=""/>
+                            </div>
                             <div className={s.info}>
                                 <p>{el.title}</p>
                                 <p>{el.price}</p>
