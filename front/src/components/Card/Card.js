@@ -2,11 +2,9 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
-import s from "../Items/items.module.scss"
-import like from "../../assets/card_like_icon.png"
+import s from "./card.module.scss"
 import star from "../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
-import {deleteFavourite, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 import {setLogin} from "../../redux/slices/modalSlice";
@@ -46,13 +44,16 @@ export const Card = ({item}) => {
 
 
         </div>
-        <img onClick={onCardClick} src={item.imgUrl} alt=""/>
+        <div className={s.image}>
+            <img onClick={onCardClick} src={item.imgUrl} alt=""/>
+
+        </div>
         <div className={s.rate}>
             <span>{item.rating}</span><img className={s.star} src={star}/>
         </div>
         <p onClick={onCardClick} className={s.title}>{item.title}</p>
 
-        <div className={s.flex_wrap}>
+        <div className={`${s.flex_wrap} ${s.bottom}`}>
             <p className={s.price}>{item.price} <span>₴</span></p>
             <button onClick={onAddToCartClick} className={s.card_btn}>{hovered && "До кошика"} <GlobalSvgSelector
                 id={"cart_icon"}/>
