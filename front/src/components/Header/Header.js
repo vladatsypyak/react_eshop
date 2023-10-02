@@ -11,6 +11,8 @@ import {UserMenuPopup} from "../UserMenuPopup/UserMenuPopup";
 
 export const Header = () => {
     const btnRef = React.useRef()
+    const userMenuBtn = React.useRef()
+
     const [isCatalogue, setCatalogue] = React.useState(false)
     const [showUserMenu, setShowUserMenu] = React.useState(false)
 
@@ -20,6 +22,7 @@ export const Header = () => {
     function hideCatalogue(){
         setCatalogue(false)
     }
+
     return <header className={s.header}>
         <div className={`container ${s.header_container}`}>
             <Link to={""}>
@@ -33,16 +36,19 @@ export const Header = () => {
             </button>
             <Search/>
             <div className={s.icons}>
-                <Link to={"/favourites"}><img className={s.icon} src={heart} alt=""/></Link>
+                <div className={s.icon}>
+                    <Link to={"/favourites"}><img  src={heart} alt=""/></Link>
+                </div>
                 <div className={s.icon}>
                    <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
+                    {/*<GlobalSvgSelector id="cart_icon"/>*/}
                 </div>
-                <div  onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
+                <div ref={userMenuBtn}  onClick={()=> setShowUserMenu(!showUserMenu)} className={s.icon}>
                     <GlobalSvgSelector id="user_icon"/>
                 </div>
             </div>
             {isCatalogue && <Catalogue btnRef={btnRef} hideCatalogue={hideCatalogue}/>}
-            <UserMenuPopup setIsShown={setShowUserMenu} isShown={showUserMenu}/>
+            <UserMenuPopup usermenuRef={userMenuBtn} setIsShown={setShowUserMenu} isShown={showUserMenu}/>
         </div>
     </header>
 }

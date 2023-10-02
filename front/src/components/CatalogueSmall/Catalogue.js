@@ -15,7 +15,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     const [showItems, setShowItems] = React.useState(false);
     const [activeCategory, setActiveCategory] = React.useState("")
     const items = useSelector(state => state.items.catalogueItems)
-    const currentCategory = useSelector(state => state.categories.currentCategory)
 
     const navigate = useNavigate()
     const categories = useSelector(state => state.categories.categories)
@@ -23,6 +22,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     React.useEffect(() => {
         const handleClickOutside = (event) => {
             if (catalogueRef.current && !event.composedPath().includes(catalogueRef.current) && !event.composedPath().includes(btnRef.current)) {
+                console.log(2)
                 hideCatalogue()
             }
         }

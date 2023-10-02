@@ -1,6 +1,6 @@
 .header {
   background-color: #a8b1e7;
-
+user-select: none;
   .catalogueBtn {
     display: flex;
     align-items: center;
@@ -9,6 +9,11 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid white;
+    &:hover{
+      cursor: pointer;
+      background-color: rgba(216, 217, 231, 0.56);
+      border: 1px solid rgba(216, 217, 231, 0.56);
+    }
   }
 
   .catalogue_text {
@@ -32,15 +37,27 @@
     width: 15%;
 
     .icon {
-      width: 35px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
       &:hover{
         cursor: pointer;
+        background-color: rgba(216, 217, 231, 0.56);
       }
-
-      svg {
-        width: 40px;
+      img{
+        width: 35px;
         height: 40px;
+      }
+      svg {
+        //width: 40px;
+        //height: 40px;
+        max-width: 35px;
+        max-height: 35px;
+        object-fit: cover;
+
       }
     }
   }

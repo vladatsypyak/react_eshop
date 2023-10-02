@@ -14,10 +14,7 @@ export const UserPage = () => {
         <Sidebar/>
         <div className={s.content}>
             <Outlet/>
-
         </div>
-
-
     </div>
 
 }

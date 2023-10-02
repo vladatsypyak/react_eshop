@@ -114,13 +114,10 @@ export const GlobalSvgSelector = ({id}) => {
         case "user_icon":
             return (
 
-                <svg width="78" height="64" viewBox="0 0 78 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M54.766 56V50.6667C54.766 47.8377 53.6659 45.1246 51.7077 43.1242C49.7496 41.1238 47.0937 40 44.3245 40H23.4415C20.6722 40 18.0164 41.1238 16.0582 43.1242C14.1001 45.1246 13 47.8377 13 50.6667V56"
-                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path
-                        d="M33.883 29.3333C39.6497 29.3333 44.3245 24.5577 44.3245 18.6667C44.3245 12.7756 39.6497 8 33.883 8C28.1163 8 23.4415 12.7756 23.4415 18.6667C23.4415 24.5577 28.1163 29.3333 33.883 29.3333Z"
-                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        d="M19.75 15.67a6 6 0 1 0-7.51 0A11 11 0 0 0 5 26v1h22v-1a11 11 0 0 0-7.25-10.33ZM12 11a4 4 0 1 1 4 4 4 4 0 0 1-4-4ZM7.06 25a9 9 0 0 1 17.89 0Z"
+                        data-name="Layer 7" fill="#ffffff" className="fill-606161"/>
                 </svg>
 
             )

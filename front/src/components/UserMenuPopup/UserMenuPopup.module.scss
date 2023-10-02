@@ -6,6 +6,9 @@
   padding: 20px;
   border-radius: 10px;
   min-width: 200px;
+  max-width: 1600px;
+  margin: 0 auto;
+  top: 100px;
   p:not(:last-of-type){
     margin-bottom: 15px;
 
@@ -16,12 +19,7 @@
   }
 
 }
-.container{
-  max-width: 1600px;
-  margin: 0 auto;
-  position: relative;
-  top: 60px
-}
+
 .overlay {
   width: 100%;
   height: 100%;

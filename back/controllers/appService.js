@@ -139,11 +139,10 @@ async function filterItems(req) {
                 {"category": allFilters.category},
                 {price: {$lte: priceMax, $gte: priceMin}}
             ]
-        });
-        console.log("itemssssssssssssss:" + filteredItems)
+        }).sort({[sortProperty]: sortOrder});
+
         if (filteredItems) {
             return filteredItems;
-
         } else {
             return []
         }
@@ -153,7 +152,6 @@ async function filterItems(req) {
     }
 
 
-    // .sort({[sortProperty]: sortOrder});
     // console.log(filteredItems.length)
 }
 
