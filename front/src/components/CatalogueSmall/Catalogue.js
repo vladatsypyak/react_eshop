@@ -50,8 +50,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
 
     return <>
         <div className={s.overlay}></div>
-
-
         <div ref={catalogueRef} onMouseLeave={onLeave} className={s.catalogue}>
             <div className={s.catalogue_categories_wrap}>
                 {categories.map((el) => {

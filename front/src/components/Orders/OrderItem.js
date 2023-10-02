@@ -24,8 +24,9 @@ export const OrderItem = ({item, date}) => {
     return <div className={s.order_item_wrap}  >
         <div className={`${s.flex_wrap} ${s.main_info_wrap}`} onClick={()=> setShowDetails(!showDetails)}>
             <p className={s.date}>{getDate(item.createdAt)}</p>
-
-            <img src={item.items[0].item.imgUrl} alt=""/>
+            <div className={s.image}>
+                <img src={item.items[0].item.imgUrl} alt=""/>
+            </div>
             <p>Товарів: {item.items.length}</p>
             <p>Сума: {item.price}грн</p>
             <div className={s.status}>
