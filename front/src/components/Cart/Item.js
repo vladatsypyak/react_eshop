@@ -33,12 +33,12 @@ export const Item = ({cartItem, user}) => {
             <p className={s.title}>{cartItem.item.title}</p>
 
         </div>
-        <p className={s.price}>{cartItem.item.price}<span> грн</span></p>
+        <p className={s.price}>{cartItem.item.price.toFixed(2)}<span> грн</span></p>
         <div className={s.quantity_wrap}>
             <p onClick={onMinusClick} className={s.change_quantity}>-</p>
             <p className={s.quantity}>{cartItem.quantity}</p>
             <p onClick={onPlusClick} className={s.change_quantity}>+</p>
         </div>
-        <p className={s.item_total}>{cartItem.quantity * cartItem.item.price} грн</p>
+        <p className={s.item_total}>{(cartItem.quantity * cartItem.item.price).toFixed(2)} грн</p>
     </div>
 }

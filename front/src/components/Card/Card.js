@@ -54,7 +54,7 @@ export const Card = ({item}) => {
         <p onClick={onCardClick} className={s.title}>{item.title}</p>
 
         <div className={`${s.flex_wrap} ${s.bottom}`}>
-            <p className={s.price}>{item.price} <span>₴</span></p>
+            <p className={s.price}>{item.price.toFixed(2)} <span>грн</span></p>
             <button onClick={onAddToCartClick} className={s.card_btn}>{hovered && "До кошика"} <GlobalSvgSelector
                 id={"cart_icon"}/>
                 {quantityInCart && <div className={s.quantity}>{quantityInCart}</div>}

@@ -16,8 +16,8 @@ export const OrderDetailsItem = ({item}) => {
             <Link to={`/items/${item.item._id}`} className={s.title}> {item.item.title}</Link>
             <div className={`${s.flex_wrap} ${s.flex_end}`}>
                 <p className={s.quantity}>Кількість: {item.quantity}</p>
-                <p className={s.price}>Ціна: {item.item.price}</p>
-                <p className={s.total}>Сума: {item.item.price * item.quantity}</p>
+                <p className={s.price}>Ціна: {item.item.price.toFixed(2)} грн</p>
+                <p className={s.total}>Сума: {(item.item.price * item.quantity).toFixed(2)} грн</p>
             </div>
 
         </div>

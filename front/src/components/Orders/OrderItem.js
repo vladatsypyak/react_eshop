@@ -28,7 +28,7 @@ export const OrderItem = ({item, date}) => {
                 <img src={item.items[0].item.imgUrl} alt=""/>
             </div>
             <p>Товарів: {item.items.length}</p>
-            <p>Сума: {item.price}грн</p>
+            <p>Сума: {Number(item.price).toFixed(2)} грн</p>
             <div className={s.status}>
                 <div className={s.circle}></div>
                 <p> {getStatus(item.status)}</p>
