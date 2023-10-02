@@ -48,7 +48,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         hideCatalogue(true)
     }
 
-    return <div className={s.catalogue_wrap}>
+    return <>
         <div className={s.overlay}></div>
 
 
@@ -70,5 +70,5 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         </div>
 
 
-    </div>
+    </>
 }
