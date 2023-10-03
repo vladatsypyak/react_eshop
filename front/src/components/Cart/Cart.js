@@ -36,7 +36,7 @@ export const Cart = () => {
         <div className={s.cart_bottom}>
             <div className={s.total_wrap}>
                 <p>Загалом</p>
-                <p className={s.total}>{total.toFixed(2)} грн</p>
+                <p className={s.total}>{total?.toFixed(2)} грн</p>
             </div>
             <button onClick={onOrderClick} className={s.cart_btn}>Оформити замовлення <GlobalSvgSelector id={"rarrow"}/></button>
         </div>

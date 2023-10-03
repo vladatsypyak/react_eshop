@@ -29,7 +29,7 @@ export const Category = () => {
     }, [currentChosenFilters, sortBy, category, priceRange])
 
     return <div className={`${s.category_page_wrap} container`}>
-        {/*<Filters/>*/}
+        <Filters/>
         <Items items={items}/>
         <Sort/>
     </div>

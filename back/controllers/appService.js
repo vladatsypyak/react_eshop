@@ -104,11 +104,6 @@ async function getFilterValues(req, res) {
 
 async function filterItems(req) {
     const allFilters = req.query;
-    const sortBy = allFilters.sortBy
-    const sortProperty = sortBy.replace("DESC", "")
-    const sortOrder = sortBy.includes("DESC") ? -1 : 1
-    const priceMax = allFilters.priceMax || Infinity
-    const priceMin = allFilters.priceMin || 0
 
     let filters = Object.fromEntries(
         Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
@@ -131,7 +126,21 @@ async function filterItems(req) {
     }
     console.log(query)
 
+    return query
 
+
+
+    // console.log(filteredItems.length)
+}
+
+async function getFilteredItems(req, res) {
+    const allFilters = req.query;
+    const sortBy = allFilters.sortBy
+    const sortProperty = sortBy.replace("DESC", "")
+    const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    const priceMax = allFilters.priceMax || Infinity
+    const priceMin = allFilters.priceMin || 0
+    let query = await filterItems(req);
     try {
         let filteredItems = await Item.find({
             $and: [
@@ -141,47 +150,57 @@ async function filterItems(req) {
             ]
         }).sort({[sortProperty]: sortOrder});
 
-        if (filteredItems) {
-            return filteredItems;
+        if (filteredItems.length === 0) {
+            console.log("300")
+            res.status(200).send([]);
         } else {
-            return []
+            res.send(
+                filteredItems
+            )
         }
     } catch (error) {
-        // Handle the error here
         console.error("An error occurred:", error);
     }
 
 
-    // console.log(filteredItems.length)
-}
-
-async function getFilteredItems(req, res) {
-    let filteredItems = await filterItems(req);
-
-    if (filteredItems.length === 0) {
-        console.log("300")
-        res.status(200).send([]);
-    } else {
-        res.send(
-            filteredItems
-        )
-    }
 
 
 }
 
 async function getPriceRange(req, res) {
-    let filteredItems = await filterItems(req);
-    if (filteredItems.length !== 0) {
-        let priceArr = filteredItems.map(el => el.price)
-        res.send(
-            [Math.min(...priceArr), Math.max(...priceArr)]
-        )
-    } else {
-        res.send(
-            [0, 0]
-        )
+    const allFilters = req.query;
+    const sortBy = allFilters.sortBy
+    const sortProperty = sortBy.replace("DESC", "")
+    const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    const priceMax = allFilters.priceMax || Infinity
+    const priceMin = allFilters.priceMin || 0
+    let query = await filterItems(req);
+    try {
+        let filteredItems = await Item.find({
+            $and: [
+                ...query,
+                {"category": allFilters.category},
+                {price: {$lte: priceMax, $gte: priceMin}}
+            ]
+        }).sort({[sortProperty]: sortOrder});
+
+        if (filteredItems.length !== 0) {
+            let priceArr = filteredItems.map(el => el.price)
+            res.send(
+                [Math.min(...priceArr), Math.max(...priceArr)]
+            )
+        } else {
+            res.send(
+                [0, 0]
+            )
+        }
+
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
+
+
+
 
 }
 
