@@ -106,7 +106,7 @@ async function filterItems(req) {
     const allFilters = req.query;
 
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page")
     );
     let query = [];
 
@@ -121,48 +121,54 @@ async function filterItems(req) {
                     }
                 }
             }]
-
         }
     }
     console.log(query)
-
     return query
-
-
-
-    // console.log(filteredItems.length)
 }
+const ITEMS_PER_PAGE = 3
 
 async function getFilteredItems(req, res) {
-    const allFilters = req.query;
-    const sortBy = allFilters.sortBy
-    const sortProperty = sortBy.replace("DESC", "")
-    const sortOrder = sortBy.includes("DESC") ? -1 : 1
-    const priceMax = allFilters.priceMax || Infinity
-    const priceMin = allFilters.priceMin || 0
-    let query = await filterItems(req);
-    try {
-        let filteredItems = await Item.find({
-            $and: [
-                ...query,
-                {"category": allFilters.category},
-                {price: {$lte: priceMax, $gte: priceMin}}
-            ]
-        }).sort({[sortProperty]: sortOrder});
 
-        if (filteredItems.length === 0) {
-            console.log("300")
-            res.status(200).send([]);
-        } else {
-            res.send(
-                filteredItems
-            )
+        try {
+            const { sortBy, priceMax = Infinity, priceMin = 0, category, page = 1 } = req.query;
+
+            const sortProperty = sortBy.replace("DESC", "");
+            const sortOrder = sortBy.includes("DESC") ? -1 : 1;
+
+            const query = await filterItems(req);
+
+            const skip = (page - 1) * ITEMS_PER_PAGE;
+
+            const filterCriteria = {
+                $and: [
+                    ...query,
+                    { "category": category },
+                    { "price": { $lte: priceMax, $gte: priceMin } }
+                ]
+            };
+
+            const countPromise = Item.countDocuments(filterCriteria);
+            const itemsPromise = Item.find(filterCriteria)
+                .limit(ITEMS_PER_PAGE)
+                .skip(skip)
+                .sort({ [sortProperty]: sortOrder });
+
+            const [count, items] = await Promise.all([countPromise, itemsPromise]);
+            const pageCount = Math.ceil(count / ITEMS_PER_PAGE);
+
+            if (items.length === 0) {
+                res.status(200).send([]);
+            } else {
+                res.send({
+                    pagination: { count, pageCount },
+                    items,
+                });
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+            res.status(500).send("Internal Server Error");
         }
-    } catch (error) {
-        console.error("An error occurred:", error);
-    }
-
-
 
 
 }
@@ -198,10 +204,6 @@ async function getPriceRange(req, res) {
     } catch (error) {
         console.error("An error occurred:", error);
     }
-
-
-
-
 }
 
 async function getItemsByTitle(req, res) {
