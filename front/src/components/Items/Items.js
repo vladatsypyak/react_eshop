@@ -1,21 +1,34 @@
-import React from "react";
-import {Link, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
-import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
-import {deleteFavourite, fetchItems, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
+import {deleteFavourite, fetchItems, getAllFavourites, putFavourite, setPage} from "../../redux/slices/itemsSlice";
 import {Card} from "../Card/Card"
 import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
 export const Items = ({items}) => {
+    const pageTotal = useSelector(state => state.items.pageCount)
+    // const [page, setPage] = useState(1);
+    const page = useSelector(state => state.items.page)
+    const [pageCount, setPageCount] = useState(0);
     const user = useSelector(state => state.user.user)
     React.useEffect(() => {
         dispatch(getAllFavourites({userId: user._id}))
         dispatch(getAllCartItems({userId: user._id}))
-
     }, [user])
     const dispatch = useDispatch()
+    useEffect(() => {
+        setPageCount(pageTotal)
+    }, [pageTotal]);
+
+    function handlePrevious() {
+        let p = page === 1 ? page : page - 1
+        dispatch(setPage(p))
+    }
+
+    function handleNext() {
+        let p = page === pageCount ? page : page + 1
+        dispatch(setPage(p))
+    }
 
     function onLikeClick(itemId, liked) {
         if (!liked) {
@@ -31,6 +44,30 @@ export const Items = ({items}) => {
                 return <Card onLikeClick={onLikeClick} item={item}/>
             })
         }
+        <footer>
+            Page: {page}
+            <br/>
+            Page count: {pageCount}
+            <br/>
+            <button disabled={page === 1} onClick={handlePrevious}>
+                Previous
+            </button>
+            <button disabled={page === pageCount} onClick={handleNext}>
+                Next
+            </button>
+            <select
+                value={page}
+                onChange={(event) => {
+                    setPage(event.target.value);
+                }}
+            >
+                {Array(pageCount)
+                    .fill(null)
+                    .map((_, index) => {
+                        return <option key={index}>{index + 1}</option>;
+                    })}
+            </select>
+        </footer>
 
 
     </div>

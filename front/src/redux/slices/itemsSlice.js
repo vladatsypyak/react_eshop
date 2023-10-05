@@ -48,6 +48,8 @@ const initialState = {
     favouriteItems: null,
     foundItems: [],
     catalogueItems: [],
+    pageCount: 0,
+    page: 1,
     fetched: false
 }
 
@@ -58,14 +60,18 @@ export const itemsSlice = createSlice({
         setItems: (state, action) => {
             state.items = action.payload
         },
+        setPage: (state, action) => {
+            state.page = action.payload
+        },
 
     },
     extraReducers: (builder) => {
         builder.addCase(fetchItems.fulfilled, (state, action) => {
             if (action.payload) {
-                state.items = action.payload
+                state.items = action.payload.items
             }
             state.fetched = true
+            state.pageCount = action.payload.pagination.pageCount
         });
         builder.addCase(fetchItems.pending, (state, action) => {
             state.fetched = false
@@ -101,6 +107,6 @@ export const itemsSlice = createSlice({
 
 })
 
-export const {setItems} = itemsSlice.actions
+export const {setItems, setPage} = itemsSlice.actions
 
 export default itemsSlice.reducer

@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {setPage} from "./itemsSlice";
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatus', async (params) => {
     const {data} = await axios.get(`http://localhost:8080/api/app/categories`)
@@ -13,7 +15,6 @@ export const searchCategories = createAsyncThunk("categories/searchCategories", 
     const {data} = await axios.get(`http://localhost:8080/api/app/categories/search?text=${params}`)
     return data
 })
-
 const initialState = {
     categories: [],
     currentCategory: {},
