@@ -7,6 +7,7 @@ import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {fetchItems, setPage} from "../../redux/slices/itemsSlice";
+import {Pagination} from "../../components/Pagination/Pagination";
 
 
 export const Category = () => {
@@ -36,6 +37,7 @@ export const Category = () => {
         <Filters/>
         <Items items={items}/>
         <Sort/>
+
     </div>
 
 }
