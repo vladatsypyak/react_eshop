@@ -36,7 +36,13 @@ export const Card = ({item}) => {
         }
         dispatch(putToCart({userId: user._id, itemId: item._id, quantity: quantityInCart + 1}))
     }
-
+    function truncateString(str, maxLength) {
+        if (str.length <= maxLength) {
+            return str;
+        } else {
+            return str.substring(0, maxLength) + "...";
+        }
+    }
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
@@ -51,7 +57,7 @@ export const Card = ({item}) => {
         <div className={s.rate}>
             <span>{item.rating}</span><img className={s.star} src={star}/>
         </div>
-        <p onClick={onCardClick} className={s.title}>{item.title}</p>
+        <p onClick={onCardClick} className={s.title}>{truncateString(item.title, 65)}</p>
 
         <div className={`${s.flex_wrap} ${s.bottom}`}>
             <p className={s.price}>{item.price.toFixed(2)} <span>грн</span></p>

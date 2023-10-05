@@ -30,14 +30,19 @@ export const Category = () => {
         let priceMax = {name: "priceMax", value: priceRange[1]}
         let pageQuery = {name: "page", value: page}
 
-        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: category}, {name: "sortBy", value: sortBy.sortProperty}, priceMin, priceMax, pageQuery]))
+        dispatch(fetchItems([...currentChosenFilters, {name: "category", value: category}, {
+            name: "sortBy",
+            value: sortBy.sortProperty
+        }, priceMin, priceMax, pageQuery]))
     }, [currentChosenFilters, sortBy, category, priceRange, page])
 
     return <div className={`${s.category_page_wrap} container`}>
-        <Filters/>
-        <Items items={items}/>
-        <Sort/>
-
+       <div className={s.flex_wrap}>
+           <Filters/>
+           <Items items={items}/>
+           <Sort/>
+       </div>
+        <Pagination/>
     </div>
 
 }

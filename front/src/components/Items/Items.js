@@ -30,6 +30,5 @@ export const Items = ({items}) => {
             })
         }
     </div>
-        <Pagination/>
         </div>
 }
