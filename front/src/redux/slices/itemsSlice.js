@@ -79,7 +79,7 @@ export const itemsSlice = createSlice({
         });
         builder.addCase(fetchCatalogueItems.fulfilled, (state, action) => {
             if (action.payload) {
-                state.catalogueItems = action.payload
+                state.catalogueItems = action.payload.items
             }
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
