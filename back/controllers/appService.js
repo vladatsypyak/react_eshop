@@ -106,7 +106,7 @@ async function filterItems(req) {
     const allFilters = req.query;
 
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page" &&  key !== "itemsPerPage")
     );
     let query = [];
 
@@ -126,20 +126,15 @@ async function filterItems(req) {
     console.log(query)
     return query
 }
-const ITEMS_PER_PAGE = 3
 
 async function getFilteredItems(req, res) {
 
         try {
-            const { sortBy, priceMax = Infinity, priceMin = 0, category, page = 1 } = req.query;
-
+            const { sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4 } = req.query;
             const sortProperty = sortBy.replace("DESC", "");
             const sortOrder = sortBy.includes("DESC") ? -1 : 1;
-
             const query = await filterItems(req);
-
-            const skip = (page - 1) * ITEMS_PER_PAGE;
-
+            const skip = (page - 1) * itemsPerPage;
             const filterCriteria = {
                 $and: [
                     ...query,
@@ -150,13 +145,13 @@ async function getFilteredItems(req, res) {
 
             const countPromise = Item.countDocuments(filterCriteria);
             const itemsPromise = Item.find(filterCriteria)
-                .limit(ITEMS_PER_PAGE)
+                .limit(itemsPerPage)
                 .skip(skip)
                 .sort({ [sortProperty]: sortOrder });
 
             const [count, items] = await Promise.all([countPromise, itemsPromise]);
-            const pageCount = Math.ceil(count / ITEMS_PER_PAGE);
-
+            const pageCount = Math.ceil(count / itemsPerPage);
+            console.log(items)
             if (items.length === 0) {
                 res.status(200).send([]);
             } else {

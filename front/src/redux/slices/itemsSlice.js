@@ -78,9 +78,15 @@ export const itemsSlice = createSlice({
 
         });
         builder.addCase(fetchCatalogueItems.fulfilled, (state, action) => {
+            console.log(action.payload)
             if (action.payload) {
                 state.catalogueItems = action.payload.items
+            } else {
+                state.catalogueItems = []
             }
+        });
+        builder.addCase(fetchCatalogueItems.rejected, (state, action) => {
+            state.catalogueItems = []
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
             console.log(action)

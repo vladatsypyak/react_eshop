@@ -31,11 +31,17 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
             document.body.removeEventListener("click", handleClickOutside)
         }
     }, [])
+    React.useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "scroll"
+        };
+    }, []);
 
     function onCategoryHover(category) {
         setActiveCategory(category)
         setShowItems(true)
-        dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}]))
+        dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}, {name: "itemsPerPage", value: "12"} ]))
 
     }
 
@@ -62,7 +68,7 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
             </div>
             {showItems &&
                 <div className={s.catalogue_items}>
-                    {items.slice(0,9).map(el=> <CatalogueItem hideCatalogue={hideCatalogue}  item={el}/>)}
+                    {items.slice(0,11).map(el=> <CatalogueItem hideCatalogue={hideCatalogue}  item={el}/>)}
                 </div>
             }
         </div>
