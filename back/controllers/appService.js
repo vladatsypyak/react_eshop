@@ -151,7 +151,7 @@ async function getFilteredItems(req, res) {
 
             const [count, items] = await Promise.all([countPromise, itemsPromise]);
             const pageCount = Math.ceil(count / itemsPerPage);
-            console.log(items)
+            console.log(items.length)
             if (items.length === 0) {
                 res.status(200).send([]);
             } else {

@@ -3,6 +3,19 @@
   margin-top: auto;
   li:hover{
     cursor: pointer;
+    a{
+      color: #7a8bed;
+    }
   }
+  li a{
+    color: #7a8bed;
+  }
+.active a{
+  background-color: #7a8bed;
+  border: 1px rgba(122, 139, 237, 0.61) solid ;
+  &:hover{
+    color: white;
 
+  }
+}
 }

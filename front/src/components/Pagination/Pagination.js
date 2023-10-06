@@ -36,7 +36,7 @@ export const Pagination = () => {
                                 console.log(page)
                                 console.log(index)
                             }}
-                            className={page === index + 1  ? "page-item active" : "page-item"}
+                            className={page === index + 1  ? `page-item active ${s.active}` : "page-item"}
                             key={index}>
                             <a className={"page-link"}>{index + 1}</a>
                         </li>;
