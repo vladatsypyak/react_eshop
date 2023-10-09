@@ -34,7 +34,7 @@ export const Category = () => {
             name: "sortBy",
             value: sortBy.sortProperty
         }, priceMin, priceMax, pageQuery]))
-    }, [currentChosenFilters, sortBy, category, priceRange, page])
+    }, [currentChosenFilters, sortBy, priceRange, category, page])
 
     return <div className={`${s.category_page_wrap} container`}>
        <div className={s.flex_wrap}>
