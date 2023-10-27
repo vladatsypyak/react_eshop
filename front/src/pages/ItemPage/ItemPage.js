@@ -3,7 +3,7 @@ import {ItemInfo} from "../../components/ItemInfo/ItemInfo";
 
 
 export const ItemPage = () => {
-    return <div>
+    return <div className={"wrapper"}>
         <ItemInfo/>
     </div>
 

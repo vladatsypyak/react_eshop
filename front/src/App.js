@@ -70,6 +70,8 @@ function App() {
                     {/*<Route path={"/"} element={<App/>}>*/}
                     {/*    <Route path={"login"} element={<Login/>}/>*/}
                     {/*</Route>*/}
+                    {/*<Route breadcrumb={"test"} path={"/categories"} element={<Main/>}/>*/}
+
                     <Route path={"/categories/:category"} element={<Category/>}/>
 
                     <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>

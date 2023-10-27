@@ -5,6 +5,7 @@ import {Card} from "../Card/Card"
 import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 import {Pagination} from "../Pagination/Pagination";
+import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
 
 export const Items = ({items}) => {
     const user = useSelector(state => state.user.user)
@@ -23,6 +24,7 @@ export const Items = ({items}) => {
     }
 
     return <div className={s.container}>
+        <BreadCrumbs/>
         <div className={s.items_wrap}>
         {Array.isArray(items) &&
             items.map(item => {

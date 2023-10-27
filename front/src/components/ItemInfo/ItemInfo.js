@@ -7,6 +7,7 @@ import star from "../../assets/star .png"
 import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
+import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
 
 export const ItemInfo = () => {
     const [item, setItem] = React.useState({})
@@ -60,7 +61,8 @@ export const ItemInfo = () => {
 
     }
 
-    return <div>
+    return <div className={"wrapper"}>
+        <BreadCrumbs/>
         <div className={s.main_info_wrap}>
             <img src={item.imgUrl}/>
             <div className={s.main_info_text}>
