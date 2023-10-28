@@ -8,6 +8,7 @@ import star from "../../../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
 import {setItems} from "../../../../redux/slices/itemsSlice";
 import {setCurrentCategory} from "../../../../redux/slices/categoriesSlice";
+import {truncateString} from "../../../../helpers/helpers";
 
 
 export const SearchSection = ({hideSearchResults, inputRef}) => {
@@ -48,36 +49,39 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
     return <div className={s.search_section_wrap}>
         <div className={s.overlay}></div>
         <div ref={searchRef} className={s.search_results}>
-            <div className={s.categories_wrap}>
-                <h3 className={s.title}>Категорії</h3>
+            <div className={s.flex_wrap}>
+                <div className={s.categories_wrap}>
+                    <h3 className={s.title}>Категорії</h3>
 
-                {foundCategories.map(el => {
-                    return <Link to={  `categories/${el.type}`} onClick={()=>onCategoryClick(el)} className={s.category}>
-                        <img src={el.iconUrl} alt=""/>
-                        <p>{el.value}</p>
-                    </Link>
-                })}
-            </div>
-            <div className={s.items_wrap}>
-                <h3 className={s.title}>Товари</h3>
-                <div className={s.items}>
-                    {items?.slice(0, 5).map(el => {
-                        return <Link className={s.item} to={`./items/${el._id}`}>
-                            <div className={s.image}>
-                                <img src={el.imgUrl} alt=""/>
-                            </div>
-                            <div className={s.info}>
-                                <p>{el.title}</p>
-                                <p>{el.price}</p>
-                            </div>
+                    {foundCategories.map(el => {
+                        return <Link to={  `categories/${el.type}`} onClick={()=>onCategoryClick(el)} className={s.category}>
+                            <img src={el.iconUrl} alt=""/>
+                            <p>{el.value}</p>
                         </Link>
-
                     })}
                 </div>
-                <button onClick={onBtnClick} className={s.search_btn}>
-                    Всі результати
-                </button>
+                <div className={s.items_wrap}>
+                    <h3 className={s.title}>Товари</h3>
+                    <div className={s.items}>
+                        {items?.slice(0, 5).map(el => {
+                            return <Link className={s.item} to={`./items/${el._id}`}>
+                                <div className={s.image}>
+                                    <img src={el.imgUrl} alt=""/>
+                                </div>
+                                <div className={s.info}>
+                                    <p>{truncateString(el.title, 30)}</p>
+                                    <p>{el.price.toFixed(2)} грн</p>
+                                </div>
+                            </Link>
+
+                        })}
+                    </div>
+                    <button onClick={onBtnClick} className={s.search_btn}>
+                        Всі результати
+                    </button>
+                </div>
             </div>
+
 
         </div>
 

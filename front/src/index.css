@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-a{
+body a{
   color: black;
   text-decoration: none;
 }
@@ -24,6 +24,8 @@ a{
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 20px;
+  color: black;
+  text-decoration: none;
 }
 button{
   outline: none;

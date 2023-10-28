@@ -12,7 +12,8 @@ import {useParams} from "react-router-dom";
 
 
 function PriceRange() {
-    const {category} = useParams()
+    // const {category} = useParams()
+    const category = useSelector(state => state.categories.currentCategory.type)
     const dispatch = useDispatch()
     const priceRange = useSelector(state => state.filters.priceRange)
     const maxAndMin = useSelector(state => state.filters.maxAndMin)
@@ -25,8 +26,9 @@ function PriceRange() {
         }
     }, 200);
 
-
+    console.log(category)
     React.useEffect(() => {
+        console.log(category)
         dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {
             name: "sortBy",
             value: sortBy.sortProperty

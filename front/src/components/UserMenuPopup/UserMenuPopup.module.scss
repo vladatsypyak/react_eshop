@@ -9,6 +9,10 @@
   max-width: 1600px;
   margin: 0 auto;
   top: 100px;
+  a{
+    text-decoration: none;
+    color: black;
+  }
   p:not(:last-of-type){
     margin-bottom: 15px;
 
