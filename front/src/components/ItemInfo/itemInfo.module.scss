@@ -1,7 +1,17 @@
+
+
 .main_info_wrap {
+
   padding: 30px;
   user-select: none;
-  p{
+  justify-content: center;
+  display: flex;
+  //align-items: center;
+  gap: 100px;
+  margin-bottom: 50px;
+
+
+  p {
     margin: 0;
 
   }
@@ -12,33 +22,50 @@
     height: 500px;
   }
 
-  display: flex;
-  justify-content: space-around;
-
   .main_info_text {
-    width: 60%;
     user-select: text;
-
-  }
-
-  .title {
-    user-select: text;
-
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 60px;
-
-    color: #1B2978;
-  }
-
-  .price {
-    margin-bottom: 10px;
-    font-size: 18px;
-
-    span {
-      color: #BDC8FF;
+    //padding-top: 50px;
+    max-width: 600px;
+    .title {
+      user-select: text;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 40px;
     }
+    .text {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      margin-bottom: 10px;
+      font-size: 21px;
+      font-weight: bold;
+
+      span {
+        color: #BDC8FF;
+        font-weight: normal;
+
+      }
+    }
+
+    .in_stock {
+      img {
+        width: 25px;
+        height: 30px;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
   }
+
 
   .rating {
     color: #909090;
@@ -140,26 +167,41 @@
   }
 
 }
-.details{
-  span{
+
+.details {
+  display: flex;
+  gap: 30px;
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+
+  }
+
+  span {
     text-transform: capitalize;
 
   }
-  .text{
+
+  .description {
+    width: 60%;
+  }
+
+  .text {
     margin-bottom: 15px;
   }
-  h3{
-    margin-bottom: 10px;
 
-  }
-  .characteristics_wrap{
-    background-color: #f8f7f4;
+
+  .characteristics_wrap {
+    background-color: #f8f8f9;
     width: 500px;
     padding: 20px;
     margin-bottom: 15px;
+    border-radius: 10px;
 
   }
-  .characteristics{
+
+  .characteristics {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -167,21 +209,25 @@
     gap: 10px;
     padding: 8px 0;
     border-top: 1px solid #ede9e7;
-    &_title{
-      color: #9e826e;
+
+    &_title {
+      color: #969696;
       text-transform: capitalize;
     }
-    &_text{
+
+    &_text {
       width: 130px;
     }
-    li{
+
+    li {
       list-style: circle;
     }
   }
-//.dots{
-//  flex-grow: 1;
-//  height: 20px;
-//  border-bottom: 1px dashed lightgrey;
-//}
+
+  //.dots{
+  //  flex-grow: 1;
+  //  height: 20px;
+  //  border-bottom: 1px dashed lightgrey;
+  //}
 
 }

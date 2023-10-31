@@ -8,6 +8,8 @@ import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
 import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
+import check from "../../assets/check.png"
+import Images from "./Images/Images";
 
 export const ItemInfo = () => {
     const [item, setItem] = React.useState({})
@@ -64,10 +66,16 @@ export const ItemInfo = () => {
     return <div className={"wrapper"}>
         <BreadCrumbs/>
         <div className={s.main_info_wrap}>
-            <img src={item.imgUrl}/>
+            <Images photos={item?.allImages} defaultImg={item.imgUrl}/>
             <div className={s.main_info_text}>
                 <h2 className={s.title}>{item.title}</h2>
-                <p className={s.price}>{item.price}грн/ <span>1шт</span></p>
+
+                <div className={s.in_stock}>
+                    <img src={check} alt="check"/>
+                    <p className={s.text}>В наявності</p>
+                </div>
+                <p className={`${s.text} ${s.code}`}>Артикул: 51267</p>
+                <p className={`${s.text} ${s.price}`}>{item.price}грн/ <span>1шт</span></p>
                 <div className={s.rating}> {item.rating}
                     <img src={star} alt=""/>
                 </div>
@@ -87,7 +95,6 @@ export const ItemInfo = () => {
                 </div>
                 {item.ingredients &&
                     <p className={s.info}><span>Склад: </span>{item.ingredients}</p>
-
                 }
                 {/*<p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>*/}
                 {/*<p className={s.info}><span>Країна: </span>Індія</p>*/}
@@ -98,25 +105,28 @@ export const ItemInfo = () => {
 
 
         </div>
-        <div className={`${s.details} container`}>
-            <h3 className={s.title}>Опис</h3>
-            <p className={s.text}>{item.description}</p>
-           <div className={s.characteristics_wrap}>
-               <h3 className={s.title}>Характеристики</h3>
-               {item.characteristics?.map((el) => {
-                   if (Array.isArray(el.value)) {
-                       return <div className={s.characteristics}>
-                           <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
-                           <ul>{el.value.map(arrItem => <li className={s.characteristics_text}>{arrItem}</li>)}</ul>
-                       </div>
-                   }
-                   return <div className={s.characteristics}>
+        <div className={`${s.details} wrapper`}>
+            {item.description &&
+                <div className={s.description}>
+                    <h3 className={s.title}>Опис</h3>
+                    <p className={s.text}>{item.description}</p>
+                </div>}
 
-                       <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
-                       <p className={s.characteristics_text}>{el.value}</p>
-                   </div>
-               })}
-           </div>
+            <div className={s.characteristics_wrap}>
+                <h3 className={s.title}>Характеристики</h3>
+                {item.characteristics?.map((el) => {
+                    if (Array.isArray(el.value)) {
+                        return <div className={s.characteristics}>
+                            <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
+                            <ul>{el.value.map(arrItem => <li className={s.characteristics_text}>{arrItem}</li>)}</ul>
+                        </div>
+                    }
+                    return <div className={s.characteristics}>
+                        <p className={s.characteristics_title}>{el.title.toLowerCase()}:</p>
+                        <p className={s.characteristics_text}>{el.value}</p>
+                    </div>
+                })}
+            </div>
 
 
         </div>
