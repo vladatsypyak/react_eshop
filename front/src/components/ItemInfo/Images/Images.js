@@ -12,15 +12,18 @@ export const Images = ({photos, defaultImg}) => {
     const handleThumbnailClick = (index) => {
         setCurrentIndex(index);
     };
+    console.log(photos)
 
-    if (!defaultImg){
+    if (!photos ) {
+        console.log(1)
         return
     }
-    if (!photos){
-        return  <div className={s.main_image}>
-            <img src={defaultImg} alt=""/>
-        </div>
-    }
+    // if (!photos ){
+    //     console.log(2)
+    //     return  <div className={s.main_image}>
+    //         <img src={defaultImg} alt=""/>
+    //     </div>
+    // }
 
 
     return <div className={s.images}>

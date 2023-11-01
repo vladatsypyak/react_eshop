@@ -66,7 +66,10 @@ export const ItemInfo = () => {
     return <div className={"wrapper"}>
         <BreadCrumbs/>
         <div className={s.main_info_wrap}>
-            <Images photos={item?.allImages} defaultImg={item.imgUrl}/>
+            <div className={s.images_wrap}>
+                <Images photos={item?.allImages || [item?.imgUrl]} />
+
+            </div>
             <div className={s.main_info_text}>
                 <h2 className={s.title}>{item.title}</h2>
 

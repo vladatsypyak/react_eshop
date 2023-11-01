@@ -1,37 +1,44 @@
 
-
 .main_info_wrap {
 
   padding: 30px;
   user-select: none;
-  justify-content: center;
+  justify-content: space-evenly;
   display: flex;
   //align-items: center;
-  gap: 100px;
+  gap: 30px;
   margin-bottom: 50px;
 
 
   p {
     margin: 0;
-
   }
 
 
-  img {
-    width: auto;
-    height: 500px;
+  //img {
+  //  width: auto;
+  //  height: 500px;
+  //}
+  .images_wrap {
+    //width: auto;
+    //min-width: 500px;
+    max-width: 700px;
+    //flex-shrink: 2;
   }
 
   .main_info_text {
     user-select: text;
     //padding-top: 50px;
     max-width: 600px;
+    flex-shrink: 2;
+
     .title {
       user-select: text;
       font-weight: 600;
       font-size: 32px;
       line-height: 40px;
     }
+
     .text {
       font-size: 16px;
       margin-bottom: 10px;
