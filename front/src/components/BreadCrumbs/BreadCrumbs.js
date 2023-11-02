@@ -10,7 +10,7 @@ const DynamicBreadcrumb = ({match}) => {
     const items = useSelector(state => state.items.items)
 
     let item = items.find(el => el._id === match.params.id)
-    return <span>{item.title}</span>
+    return <span>{item?.title}</span>
 };
 const DynamicCategoryBreadcrumb = ({match}) => {
     const category = useSelector(state => state.categories.currentCategory.value)

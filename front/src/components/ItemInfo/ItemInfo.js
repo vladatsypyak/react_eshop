@@ -47,7 +47,7 @@ export const ItemInfo = () => {
         }
         fetchItem()
 
-    }, [])
+    }, [id])
     console.log(item)
 
     function onMinusClick() {
@@ -71,7 +71,7 @@ export const ItemInfo = () => {
 
             </div>
             <div className={s.main_info_text}>
-                <h2 className={s.title}>{item.title}</h2>
+                <h2 className={s.title}>{item?.title}</h2>
 
                 <div className={s.in_stock}>
                     <img src={check} alt="check"/>
@@ -79,7 +79,7 @@ export const ItemInfo = () => {
                 </div>
                 <p className={`${s.text} ${s.code}`}>Артикул: 51267</p>
                 <p className={`${s.text} ${s.price}`}>{item.price}грн/ <span>1шт</span></p>
-                <div className={s.rating}> {item.rating}
+                <div className={s.rating}> {item?.rating}
                     <img src={star} alt=""/>
                 </div>
                 <div className={s.add_to_cart_wrap}>
@@ -96,13 +96,13 @@ export const ItemInfo = () => {
                         До кошика
                     </button>
                 </div>
-                {item.ingredients &&
-                    <p className={s.info}><span>Склад: </span>{item.ingredients}</p>
+                {item?.ingredients &&
+                    <p className={s.info}><span>Склад: </span>{item?.ingredients}</p>
                 }
                 {/*<p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>*/}
                 {/*<p className={s.info}><span>Країна: </span>Індія</p>*/}
                 <div className={s.favourite_wrap}>
-                    <LikeBtn itemId={item._id} isText={true}/>
+                    <LikeBtn itemId={item?._id} isText={true}/>
                 </div>
             </div>
 
