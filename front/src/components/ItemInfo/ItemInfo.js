@@ -10,6 +10,7 @@ import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../
 import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
 import check from "../../assets/check.png"
 import Images from "./Images/Images";
+import {Description} from "./Description";
 
 export const ItemInfo = () => {
     const [item, setItem] = React.useState({})
@@ -67,7 +68,7 @@ export const ItemInfo = () => {
         <BreadCrumbs/>
         <div className={s.main_info_wrap}>
             <div className={s.images_wrap}>
-                <Images photos={item?.allImages || [item?.imgUrl]} />
+                <Images photos={item?.allImages || [item?.imgUrl]}/>
 
             </div>
             <div className={s.main_info_text}>
@@ -109,12 +110,7 @@ export const ItemInfo = () => {
 
         </div>
         <div className={`${s.details} wrapper`}>
-            {item.description &&
-                <div className={s.description}>
-                    <h3 className={s.title}>Опис</h3>
-                    <p className={s.text}>{item.description}</p>
-                </div>}
-
+            <Description item={item}/>
             <div className={s.characteristics_wrap}>
                 <h3 className={s.title}>Характеристики</h3>
                 {item.characteristics?.map((el) => {
