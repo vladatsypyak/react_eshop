@@ -13,7 +13,7 @@ export function Description({item}) {
                             item.description.map(el => {
                                 return (
                                     <div>
-                                        <p className={s.subtitle}>{capitalize(el.title)}</p>
+                                        <p className={s.subtitle}>{el.title && capitalize(el.title)}</p>
                                         {Array.isArray(el.text) ? el.text.map(item => <p>{item}</p>)
                                             : <p>{el.text}</p>}
                                     </div>
