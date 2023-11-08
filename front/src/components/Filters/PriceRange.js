@@ -26,9 +26,7 @@ function PriceRange() {
         }
     }, 200);
 
-    console.log(category)
     React.useEffect(() => {
-        console.log(category)
         dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {
             name: "sortBy",
             value: sortBy.sortProperty

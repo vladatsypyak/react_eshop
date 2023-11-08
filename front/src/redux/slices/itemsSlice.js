@@ -10,9 +10,10 @@ export function buildURL(arr, baseUrl) {
 
 const fetchItemsCall = async (params) => {
     const baseUrl = 'http://localhost:8080/api/app/items/filter';
-    let str = buildURL(params, baseUrl )
+    let str = buildURL(params, baseUrl)
 
     const {data} = await axios.get(str)
+    console.log(data)
     return data
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
@@ -67,11 +68,17 @@ export const itemsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchItems.fulfilled, (state, action) => {
+
+
             if (action.payload) {
-                state.items = action.payload.items
+                if (action.payload.items?.length > 0) {
+                    state.items = action.payload.items
+                } else {
+                    state.items = []
+                }
             }
             state.fetched = true
-            state.pageCount = action.payload.pagination.pageCount
+            state.pageCount = action.payload.pagination?.pageCount
         });
         builder.addCase(fetchItems.pending, (state, action) => {
             state.fetched = false
