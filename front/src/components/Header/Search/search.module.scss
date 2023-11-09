@@ -1,5 +1,6 @@
 .search {
   width: 40%;
+  margin: 0 auto;
 
   .input_wrap {
     position: relative;
@@ -14,6 +15,7 @@
     padding: 11px 45px;
     display: block;
     border: none;
+    background-color: white;
   }
 }
 
@@ -25,3 +27,24 @@
   transform: translateY(-50%);
   display: block;
 }
+/* 992px - 1200px */
+@media screen and (max-width: 1200px) {
+
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .search {
+   width: 100%;
+
+  }
+}
+
+
+/* 576px - 768px */
+@media screen and (max-width: 768px) {
+
+}
+
+/* 320px - 576px */
+@media screen and (max-width: 576px) {}

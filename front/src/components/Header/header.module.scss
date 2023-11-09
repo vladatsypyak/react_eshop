@@ -26,18 +26,23 @@
     margin: 0;
   }
 
-  .header_container {
+  .header_container, .collapse {
+    margin-bottom: 0;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    //background-color: red;
+    //gap: 30px;
     align-items: center;
+    width: 100%;
   }
 
   .icons {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 15%;
+    margin-left: auto;
+    //width: 15%;
+    gap: 10px;
 
     .icon {
       width: 42px;
@@ -58,8 +63,8 @@
       }
 
       svg {
-        max-width: 35px;
-        max-height: 35px;
+        width: 35px;
+        height: 35px;
         object-fit: cover;
       }
     }
@@ -133,4 +138,32 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+
+
+
+/* 992px - 1200px */
+@media screen and (max-width: 1200px) {
+
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .collapse {
+    //background-color: lightgrey;
+    flex-direction: column-reverse;
+
+  }
+}
+
+
+/* 576px - 768px */
+@media screen and (max-width: 768px) {
+
+}
+
+/* 320px - 576px */
+@media screen and (max-width: 576px) {
+
 }
