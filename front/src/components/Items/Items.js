@@ -23,8 +23,8 @@ export const Items = ({items}) => {
         }
     }
 
-    return <div className={s.container}>
-        <BreadCrumbs/>
+    return <div className={`${s.container} wrapper`}>
+
         <div className={s.items_wrap}>
         {Array.isArray(items) &&
             items.map(item => {

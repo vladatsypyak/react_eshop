@@ -39,11 +39,11 @@ export const Header = () => {
              </button>
 
              <button style={{border: "1px solid white"}} className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                     data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                     data-bs-target="#navbarTogglerDemo0" aria-controls="navbarTogglerDemo0" aria-expanded="false"
                      aria-label="Toggle navigation">
                  <span  className="navbar-toggler-icon"></span>
              </button>
-             <div className={` ${s.collapse} collapse navbar-collapse`} id="navbarToggler">
+             <div className={` ${s.collapse} collapse navbar-collapse`} id="navbarTogglerDemo0">
                  <Search/>
 
                  <ul className={`${s.icons} navbar-nav `}>

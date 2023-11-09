@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Filters} from "../../components/Filters/Filters";
 import {Items} from "../../components/Items/Items";
 import s from "./category.module.scss"
@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {fetchItems, setPage} from "../../redux/slices/itemsSlice";
 import {Pagination} from "../../components/Pagination/Pagination";
+import filter from "../../assets/filter.png"
+import {BreadCrumbs} from "../../components/BreadCrumbs/BreadCrumbs";
 
 
 export const Category = () => {
@@ -18,6 +20,8 @@ export const Category = () => {
     const sortBy = useSelector(state => state.filters.sortBy)
     const priceRange = useSelector(state => state.filters.priceRange)
     const page = useSelector(state => state.items.page)
+    const [showSort, setShowSort] = useState(false)
+    const [showFilters, setShowFilters] = useState(false)
 
 
     React.useEffect(() => {
@@ -36,13 +40,37 @@ export const Category = () => {
         }, priceMin, priceMax, pageQuery]))
     }, [currentChosenFilters, sortBy, priceRange, category, page])
 
-    return <div className={`${s.category_page_wrap} container`}>
-       <div className={s.flex_wrap}>
-           <Filters/>
-           <Items items={items}/>
-           <Sort/>
-       </div>
-        <Pagination/>
-    </div>
+    return <>
+        <div className={`${s.category_page_wrap} wrapper`}>
+            <div className={s.flex_wrap}>
+                <Filters/>
+               <div className={s.items_wrap}>
+                   <BreadCrumbs/>
+                   <Items items={items}/>
+               </div>
+                <Sort/>
+            </div>
+            <Pagination/>
+        </div>
+
+        <div className={s.mob_wrapper}>
+            <BreadCrumbs/>
+
+            <div className={s.header}>
+                <div className={s.filters}>
+                    <div onClick={() => setShowFilters(!showFilters)}
+                         className={showFilters ? `${s.icon} ${s.active}` : s.icon}>
+                        <img src={filter} alt="filter"/>
+                    </div>
+                </div>
+                <Sort/>
+            </div>
+            {showFilters && <Filters/>}
+            <Items items={items}/>
+            <Pagination/>
+
+        </div>
+    </>
+
 
 }
