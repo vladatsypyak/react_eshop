@@ -10,6 +10,7 @@ import {AllCategoriesSidebar} from "../../components/AllCategoriesSidebar/AllCat
 import s from "./search_results_page.module.scss"
 import {fetchItems, searchItems, setItems} from "../../redux/slices/itemsSlice";
 import {logDOM} from "@testing-library/react";
+import {Pagination} from "../../components/Pagination/Pagination";
 
 export const SearchResultsPage = () => {
 
@@ -33,7 +34,6 @@ export const SearchResultsPage = () => {
     }, [])
 
     React.useEffect(() => {
-        console.log("rerender")
         dispatch(searchItems({
             title: searchValue,
             sortBy: sortBy.sortProperty
@@ -46,6 +46,7 @@ export const SearchResultsPage = () => {
         <AllCategoriesSidebar/>
         <Items items={foundItems}/>
         <Sort/>
+        <Pagination/>
     </div>
 
 }

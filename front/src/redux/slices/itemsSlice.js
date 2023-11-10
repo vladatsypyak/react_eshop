@@ -68,8 +68,6 @@ export const itemsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchItems.fulfilled, (state, action) => {
-
-
             if (action.payload) {
                 if (action.payload.items?.length > 0) {
                     state.items = action.payload.items
@@ -79,6 +77,21 @@ export const itemsSlice = createSlice({
             }
             state.fetched = true
             state.pageCount = action.payload.pagination?.pageCount
+        });
+        builder.addCase(searchItems.fulfilled, (state, action) => {
+            console.log(action)
+
+
+            if (action.payload) {
+                if (action.payload.items?.length > 0) {
+                    state.foundItems = action.payload.items
+                } else {
+                    state.foundItems = []
+                }
+            }
+            state.fetched = true
+            state.pageCount = action.payload.pagination?.pageCount
+
         });
         builder.addCase(fetchItems.pending, (state, action) => {
             state.fetched = false
@@ -95,13 +108,7 @@ export const itemsSlice = createSlice({
         builder.addCase(fetchCatalogueItems.rejected, (state, action) => {
             state.catalogueItems = []
         });
-        builder.addCase(searchItems.fulfilled, (state, action) => {
-            console.log(action)
-            if (action.payload) {
-                state.foundItems = action.payload
-            }
 
-        });
         builder.addCase(putFavourite.fulfilled, (state, action) => {
             state.favouriteItems = action.payload
 

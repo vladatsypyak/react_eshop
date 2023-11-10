@@ -106,7 +106,7 @@ async function filterItems(req) {
     const allFilters = req.query;
 
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page" &&  key !== "itemsPerPage")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page" && key !== "itemsPerPage")
     );
     let query = [];
 
@@ -129,46 +129,78 @@ async function filterItems(req) {
 
 async function getFilteredItems(req, res) {
 
-        try {
-            const { sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4 } = req.query;
-            const sortProperty = sortBy.replace("DESC", "");
-            const sortOrder = sortBy.includes("DESC") ? -1 : 1;
-            const query = await filterItems(req);
-            const skip = (page - 1) * itemsPerPage;
-            const filterCriteria = {
-                $and: [
-                    ...query,
-                    { "category": category },
-                    { "price": { $lte: priceMax, $gte: priceMin } }
-                ]
-            };
+    try {
+        const {sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4} = req.query;
+        const sortProperty = sortBy.replace("DESC", "");
+        const sortOrder = sortBy.includes("DESC") ? -1 : 1;
+        const query = await filterItems(req);
+        const skip = (page - 1) * itemsPerPage;
+        const filterCriteria = {
+            $and: [
+                ...query,
+                {"category": category},
+                {"price": {$lte: priceMax, $gte: priceMin}}
+            ]
+        };
 
-            const countPromise = Item.countDocuments(filterCriteria);
-            const itemsPromise = Item.find(filterCriteria)
-                .limit(itemsPerPage)
-                .skip(skip)
-                .sort({ [sortProperty]: sortOrder });
+        const countPromise = Item.countDocuments(filterCriteria);
+        const itemsPromise = Item.find(filterCriteria)
+            .limit(itemsPerPage)
+            .skip(skip)
+            .sort({[sortProperty]: sortOrder});
 
-            const [count, items] = await Promise.all([countPromise, itemsPromise]);
-            const pageCount = Math.ceil(count / itemsPerPage);
-            console.log(items.length)
-            if (items.length === 0) {
-                res.status(200).send([]);
-            } else {
-                res.send({
-                    pagination: { count, pageCount },
-                    items,
-                });
-            }
-        } catch (error) {
-            console.error("An error occurred:", error);
-            res.status(500).send("Internal Server Error");
+        const [count, items] = await Promise.all([countPromise, itemsPromise]);
+        const pageCount = Math.ceil(count / itemsPerPage);
+        console.log(items.length)
+        if (items.length === 0) {
+            res.status(200).send([]);
+        } else {
+            res.send({
+                pagination: {count, pageCount},
+                items,
+            });
         }
+    } catch (error) {
+        console.error("An error occurred:", error);
+        res.status(500).send("Internal Server Error");
+    }
 
 
 }
 
+async function getItemsByTitle(req, res) {
+    const {sortBy, title, page = 1, itemsPerPage = 4} = req.query;
+    const skip = (page - 1) * itemsPerPage;
+
+    const sortProperty = sortBy.replace("DESC", "")
+    const sortOrder = sortBy.includes("DESC") ? -1 : 1
+    const filterCriteria = {title: {$regex: title, $options: "i"}}
+
+    const countPromise = Item.countDocuments(filterCriteria);
+    const itemsPromise = Item.find(filterCriteria)
+        .limit(itemsPerPage)
+        .skip(skip)
+        .sort({[sortProperty]: sortOrder});
+
+    const [count, items] = await Promise.all([countPromise, itemsPromise]);
+    const pageCount = Math.ceil(count / itemsPerPage);
+    console.log(items.length)
+
+    if (!items) {
+        res.status(500).send({
+            message: "no items"
+        });
+    }
+
+    res.send({
+        pagination: {count, pageCount},
+        items,
+    })
+
+}
+
 async function getPriceRange(req, res) {
+
     const allFilters = req.query;
     const sortBy = allFilters.sortBy
     const sortProperty = sortBy.replace("DESC", "")
@@ -199,22 +231,6 @@ async function getPriceRange(req, res) {
     } catch (error) {
         console.error("An error occurred:", error);
     }
-}
-
-async function getItemsByTitle(req, res) {
-    const sortBy = req.query.sortBy
-    const title = req.query.title;
-    const sortProperty = sortBy.replace("DESC", "")
-    const sortOrder = sortBy.includes("DESC") ? -1 : 1
-    const items = await Item.find({title: {$regex: title, $options: "i"}}).sort({[sortProperty]: sortOrder})
-    if (!items) {
-        res.status(500).send({
-            message: "no items"
-        });
-    }
-    res.send(
-        items
-    )
 }
 
 
