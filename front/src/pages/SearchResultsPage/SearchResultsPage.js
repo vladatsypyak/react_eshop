@@ -11,6 +11,7 @@ import s from "./search_results_page.module.scss"
 import {fetchItems, searchItems, setItems} from "../../redux/slices/itemsSlice";
 import {logDOM} from "@testing-library/react";
 import {Pagination} from "../../components/Pagination/Pagination";
+import {ItemsOnPage} from "../../components/Items/ItemsOnPage/ItemsOnPage";
 
 export const SearchResultsPage = () => {
 
@@ -42,11 +43,8 @@ export const SearchResultsPage = () => {
     }, [currentChosenFilters, currentCategory, sortBy])
 
 
-    return <div className={` container ${s.search_results_page_wrap}`}>
-        <AllCategoriesSidebar/>
-        <Items items={foundItems}/>
-        <Sort/>
-        <Pagination/>
-    </div>
+    return <>
+        <ItemsOnPage items={items} sidebar={<AllCategoriesSidebar/>}/>
+    </>
 
 }

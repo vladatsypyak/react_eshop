@@ -80,8 +80,6 @@ export const itemsSlice = createSlice({
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
             console.log(action)
-
-
             if (action.payload) {
                 if (action.payload.items?.length > 0) {
                     state.foundItems = action.payload.items

@@ -23,6 +23,8 @@ const routes = [
     {path: "/categories/:category", breadcrumb: DynamicCategoryBreadcrumb,},
     {path: "/items", breadcrumb: DynamicCategoryBreadcrumb,},
     {path: "/", breadcrumb: "Головна",},
+    {path: "/searchResultsPage", breadcrumb: "Результати пошуку",}
+
 
 
 ];
