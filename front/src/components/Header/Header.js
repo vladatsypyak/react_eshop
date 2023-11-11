@@ -24,7 +24,7 @@ export const Header = () => {
     }
 
     return <header className={s.header}>
-        <nav className={`navbar navbar-expand-lg wrapper `} data-bs-theme="dark">
+        <nav className={`navbar navbar-expand-lg navbar-dark wrapper `} >
          <div className={`${s.header_container} container-fluid `}>
             <div className={"navbar-brand"}>
                 <Link to={""}>
