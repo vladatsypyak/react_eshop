@@ -70,7 +70,7 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
                                 </div>
                                 <div className={s.info}>
                                     <p>{truncateString(el.title, 30)}</p>
-                                    <p>{el.price.toFixed(2)} грн</p>
+                                    <p className={s.price}>{el.price.toFixed(2)} грн</p>
                                 </div>
                             </Link>
 

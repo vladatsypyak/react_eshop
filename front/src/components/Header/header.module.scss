@@ -1,6 +1,11 @@
 .header {
   background-color: #a8b1e7;
   user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 
   .catalogueBtn {
     display: flex;

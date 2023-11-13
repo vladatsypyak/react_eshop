@@ -45,21 +45,24 @@ export const Search = () => {
     }
 
 
-    return <div className={s.search}>
-        <div className={s.input_wrap}>
-            <input ref={inputRef} onFocus={() => setFocused(true)}
-                   onBlur={() => setFocused(false)}
-                   onChange={onInputChange}
-                   onClick={onInputClick}
-                   type="text"
-                   placeholder={"Пошук"}/>
-            {!focused && !searchValue &&
-                <div className={s.search_icon}>
-                    <GlobalSvgSelector id={"search_icon"}/>
-                </div>
-            }
-        </div>
+    return <>
+        <div className={s.search}>
+            <div className={s.input_wrap}>
+                <input ref={inputRef} onFocus={() => setFocused(true)}
+                       onBlur={() => setFocused(false)}
+                       onChange={onInputChange}
+                       onClick={onInputClick}
+                       type="text"
+                       placeholder={"Пошук"}/>
+                {!focused && !searchValue &&
+                    <div className={s.search_icon}>
+                        <GlobalSvgSelector id={"search_icon"}/>
+                    </div>
+                }
+            </div>
 
+        </div>
         {showResults && <SearchSection inputRef={inputRef} hideSearchResults={hideSearchResults}/>}
-    </div>
+    </>
+
 }
