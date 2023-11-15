@@ -7,6 +7,7 @@
   left: 0;
   background-color: rgba(29, 29, 29, 0.8);
   z-index: 2;
+  overflow: hidden;
 
 }
 
@@ -25,9 +26,10 @@
   background-color: #fff;
   z-index: 3;
   top: 120px;
-
+overflow-x: hidden;
   padding: 20px;
   width: 700px;
+
 }
 
 .categories_wrap {
@@ -149,6 +151,7 @@ a {
   .overlay {
     top: 305px;
     height: 100vh;
+    overflow: hidden;
   }
   .item {
     flex-direction: column;

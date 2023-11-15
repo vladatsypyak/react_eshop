@@ -32,6 +32,12 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
             document.body.removeEventListener("click", handleClickOutside)
         }
     }, [])
+    React.useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "scroll"
+        };
+    }, []);
 
     function onBtnClick() {
         dispatch(setItems(items))
