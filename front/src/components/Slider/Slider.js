@@ -2,7 +2,9 @@ import React from "react";
 import s from "./slider.module.scss"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
-const imagesUrls = ["https://www.dropbox.com/s/w17bw23vwi35d7d/44840-1680608871.jpg?raw=1", "https://www.dropbox.com/s/rem7egzgc73pu2a/44903-1680774523.jpg?raw=1", "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/coffee.jpg"]
+const imagesUrls = ["https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%B0%D0%BA%D1%86%D1%96%D1%8F5.jpg",
+    "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%B0%D0%BA%D1%86%D1%96%D1%8F3.png",
+    "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/%D0%B0%D0%BA%D1%86%D1%96%D1%8F.jpg"]
 export const Slider = () => {
     const [slideIndex, setSlideIndex] = React.useState(0);
 
@@ -32,7 +34,10 @@ export const Slider = () => {
                 <GlobalSvgSelector id={"larrow"}/>
 
             </button>
-            <img className={s.slide_image} src={imagesUrls[slideIndex]} alt=""/>
+            <div className={s.slide_image}>
+                <img  src={imagesUrls[slideIndex]} alt=""/>
+
+            </div>
             <button className={s.right} onClick={onNextClick}>
                 <GlobalSvgSelector id={"rarrow"}/>
             </button>

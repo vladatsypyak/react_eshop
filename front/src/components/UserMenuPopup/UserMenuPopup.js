@@ -26,6 +26,12 @@ export const UserMenuPopup = ({isShown, setIsShown, usermenuRef}) => {
             document.body.removeEventListener("click", handleClickOutside)
         }
     }, [])
+    // React.useEffect(() => {
+    //     document.body.style.overflow = "hidden";
+    //     return () => {
+    //         document.body.style.overflow = "scroll"
+    //     };
+    // }, []);
 
     return <>
         {isShown &&

@@ -8,7 +8,7 @@
   min-width: 200px;
   max-width: 1600px;
   margin: 0 auto;
-  top: 100px;
+  top: 120px;
   a{
     text-decoration: none;
     color: black;
@@ -24,11 +24,22 @@
 
 .overlay {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
-  top: 90px;
+  top: 114px;
   left: 0;
   background-color: rgba(29, 29, 29, 0.8);
   z-index: 2;
   overflow-x: hidden;
+}
+@media screen and (max-width: 992px) {
+  .menu_wrap {
+    top: 320px;
+
+  }
+  //.overlay {
+  //  top: 305px;
+  //
+  //}
+
 }
