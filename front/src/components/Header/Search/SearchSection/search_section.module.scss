@@ -1,15 +1,4 @@
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  //top: 115px;
-  top: 115px;
-  left: 0;
-  background-color: rgba(29, 29, 29, 0.8);
-  z-index: 2;
-  overflow: hidden;
 
-}
 
 .flex_wrap {
   width: 100%;
@@ -149,9 +138,11 @@ a {
 
   }
   .overlay {
-    top: 305px;
-    height: 100vh;
-    overflow: hidden;
+    div {
+      top: 305px;
+      height: 100vh;
+      overflow: hidden;
+    }
   }
   .item {
     flex-direction: column;

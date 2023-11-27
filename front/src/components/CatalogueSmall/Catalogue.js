@@ -6,6 +6,7 @@ import {fetchCatalogueItems, fetchItems} from "../../redux/slices/itemsSlice";
 import {CatalogueItem} from "./CatalogueItem";
 import {useNavigate} from "react-router-dom";
 import {setCurrentCategory} from "../../redux/slices/categoriesSlice";
+import {Overlay} from "../Overlay/Overlay";
 
 
 export const Catalogue = ({hideCatalogue, btnRef}) => {
@@ -55,7 +56,8 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     }
 
     return <>
-        <div className={s.overlay}></div>
+        {/*<div className={s.overlay}></div>*/}
+        <Overlay/>
         <div ref={catalogueRef} onMouseLeave={onLeave} className={s.catalogue}>
             <div className={s.catalogue_categories_wrap}>
                 {categories.map((el) => {

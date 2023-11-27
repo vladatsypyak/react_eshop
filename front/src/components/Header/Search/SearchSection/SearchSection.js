@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setItems} from "../../../../redux/slices/itemsSlice";
 import {setCurrentCategory} from "../../../../redux/slices/categoriesSlice";
 import {truncateString} from "../../../../helpers/helpers";
+import {Overlay} from "../../../Overlay/Overlay";
 
 
 export const SearchSection = ({hideSearchResults, inputRef}) => {
@@ -53,14 +54,17 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
     }
 
     return <div className={s.search_section_wrap}>
-        <div className={s.overlay}></div>
+        <div className={s.overlay}>
+            <Overlay/>
+        </div>
         <div ref={searchRef} className={s.search_results}>
             <div className={s.flex_wrap}>
                 <div className={s.categories_wrap}>
                     <h3 className={s.title}>Категорії</h3>
 
                     {foundCategories.map(el => {
-                        return <Link to={  `categories/${el.type}`} onClick={()=>onCategoryClick(el)} className={s.category}>
+                        return <Link to={`categories/${el.type}`} onClick={() => onCategoryClick(el)}
+                                     className={s.category}>
                             <img src={el.iconUrl} alt=""/>
                             <p>{el.value}</p>
                         </Link>
