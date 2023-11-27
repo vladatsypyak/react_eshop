@@ -7,7 +7,7 @@ import {setLogin} from "../../redux/slices/modalSlice";
 import {logout} from "../../redux/slices/userSlice";
 import {Overlay} from "../Overlay/Overlay";
 
-export const UserMenuPopup = ({isShown, setIsShown, usermenuRef}) => {
+export const UserMenuPopup = ({setIsShown, usermenuRef}) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.user)
 
@@ -28,40 +28,33 @@ export const UserMenuPopup = ({isShown, setIsShown, usermenuRef}) => {
             document.body.removeEventListener("click", handleClickOutside)
         }
     }, [])
-    // React.useEffect(() => {
-    //     document.body.style.overflow = "hidden";
-    //     return () => {
-    //         document.body.style.overflow = "scroll"
-    //     };
-    // }, []);
+    React.useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "scroll"
+        };
+    }, []);
 
     return <>
-        {isShown &&
 
-            <>
-                <div className={s.overlay}>
-                    <Overlay/>
+        <div className={s.overlay}>
+            <Overlay/>
 
-                </div>
-                <div ref={menuRef} className={`${s.menu_wrap}  `}>
-                    <p><Link onClick={() => setIsShown(false)} to={"user/orders"}>Мої замовлення</Link></p>
-                    <p><Link onClick={() => setIsShown(false)} to={"user/profile"}>Дані</Link></p>
-                    {isEmpty(user) ? <p onClick={() => {
-                            dispatch(setLogin(true))
-                            // navigate("/login")
-                            setIsShown(false)
-                        }}>Вхід</p>
-                        : <p onClick={() => dispatch(logout())}>Вихід</p>
+        </div>
+        <div ref={menuRef} className={`${s.menu_wrap}  `}>
+            <p><Link onClick={() => setIsShown(false)} to={"user/orders"}>Мої замовлення</Link></p>
+            <p><Link onClick={() => setIsShown(false)} to={"user/profile"}>Дані</Link></p>
+            {isEmpty(user) ? <p onClick={() => {
+                    dispatch(setLogin(true))
+                    // navigate("/login")
+                    setIsShown(false)
+                }}>Вхід</p>
+                : <p onClick={() => dispatch(logout())}>Вихід</p>
 
-                    }
+            }
 
 
-                </div>
-            </>
-
-        }
-
-
+        </div>
     </>
 
 
