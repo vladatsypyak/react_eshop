@@ -17,6 +17,7 @@ const fetchItemsCall = async (params) => {
     return data
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
+    console.log(params)
     return await fetchItemsCall(params)
 })
 const fetchFavourites = async (userId) => {

@@ -8,10 +8,11 @@ import viber from "../../assets/viber.png"
 
 
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
+import {Link} from "react-router-dom";
 
 export const Footer = () => {
     return <footer className={s.footer}>
-        <div className={`container ${s.footer_container}`}>
+        <div className={`wrapper ${s.footer_container}`}>
             <div className={s.logo}>
                 <img src={logo} alt=""/>
             </div>
@@ -19,18 +20,18 @@ export const Footer = () => {
                 <p className={s.group_title}>
                     Сервіс
                 </p>
-                <p className={s.text}>
-                    Каталог
-                </p>
-                <p className={s.text}>
-                    Акції
-                </p>
-                <p className={s.text}>
-                    Корзина
-                </p>
-                <p className={s.text}>
-                    Доставка
-                </p>
+                <Link to={"/"} className={s.text}>
+                    <p>Категорії</p>
+                </Link>
+                <Link to={"/"} className={s.text}>
+                    <p>Акції</p>
+                </Link>
+                <Link to={"/cart"} className={s.text}>
+                    <p>Корзина</p>
+                </Link>
+                <Link to={"/favourites"} className={s.text}>
+                    <p>Збережені</p>
+                </Link>
             </div>
             <div className={s.group}>
                 <p className={s.group_title}>
@@ -45,21 +46,21 @@ export const Footer = () => {
 
             </div>
             <div className={s.group}>
-                <p className={s.group_title}>
+                <p  className={s.group_title}>
                     Топ категорій
                 </p>
-                <p className={s.text}>
-                    Смартфони
-                </p>
-                <p className={s.text}>
-                    Ноутбуки
-                </p>
-                <p className={s.text}>
-                    Побутова техніка
-                </p>
-                <p className={s.text}>
-                    Побутова техніка
-                </p>
+                <Link to={"categories/tea"} className={s.text}>
+                    <p>Чай</p>
+                </Link>
+                <Link to={"categories/coffee"} className={s.text}>
+                    <p>Кава</p>
+                </Link>
+                <Link to={"categories/thermos"} className={s.text}>
+                    <p>Термоси</p>
+                </Link>
+                <Link to={"categories/machines"} className={s.text}>
+                    <p>Кавомашини</p>
+                </Link>
 
             </div>
             <div className={s.group}>
