@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 import {setLogin} from "../../redux/slices/modalSlice";
+import {QuantityInCart} from "../shared/QuantityInCart/QuantityInCart";
 
 export const Card = ({item}) => {
     const allCartItems = useSelector(state => state.cart.items)
@@ -63,7 +64,7 @@ export const Card = ({item}) => {
             <p className={s.price}>{item.price.toFixed(2)} <span>грн</span></p>
             <button onClick={onAddToCartClick} className={s.card_btn}>{hovered && "До кошика"} <GlobalSvgSelector
                 id={"cart_icon"}/>
-                {quantityInCart && <div className={s.quantity}>{quantityInCart}</div>}
+                {quantityInCart && <QuantityInCart number={quantityInCart}/> }
             </button>
 
         </div>

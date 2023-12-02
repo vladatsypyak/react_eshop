@@ -8,6 +8,8 @@ import {Search} from "./Search/Search";
 import {Catalogue} from "../CatalogueSmall/Catalogue";
 import {Link} from "react-router-dom";
 import {UserMenuPopup} from "../UserMenuPopup/UserMenuPopup";
+import {useSelector} from "react-redux";
+import {QuantityInCart} from "../shared/QuantityInCart/QuantityInCart";
 
 export const Header = () => {
     const btnRef = React.useRef()
@@ -15,6 +17,9 @@ export const Header = () => {
 
     const [isCatalogue, setCatalogue] = React.useState(false)
     const [showUserMenu, setShowUserMenu] = React.useState(false)
+
+    const quantityInCart = useSelector(state => state.cart.items)
+
 
     function onCatalogueBtnClick() {
         setCatalogue(!isCatalogue)
@@ -52,9 +57,11 @@ export const Header = () => {
                         <li className={`${s.icon} nav-item`}>
                             <Link to={"/favourites"}><img src={heart} alt=""/></Link>
                         </li>
-                        <li className={`${s.icon} nav-item`}>
+                        <li className={`${s.icon} ${s.cart_icon} nav-item`}>
                             <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                             {/*<GlobalSvgSelector id="cart_icon"/>*/}
+                            {quantityInCart.length > 0 && <QuantityInCart number={quantityInCart.length}/>}
+
                         </li>
                         <li ref={userMenuBtn} onClick={() => setShowUserMenu(!showUserMenu)}
                             className={`${s.icon} nav-item`}>
