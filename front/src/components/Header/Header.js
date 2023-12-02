@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png"
 import heart from "../../assets/heart_red.png"
 
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
-import {Search} from "./Search/Search";
+import {Search} from "../Search/Search";
 import {Catalogue} from "../CatalogueSmall/Catalogue";
 import {Link} from "react-router-dom";
 import {UserMenuPopup} from "../UserMenuPopup/UserMenuPopup";

@@ -1,12 +1,12 @@
 import React, {useRef} from "react"
 import s from "./search.module.scss"
-import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
+import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {useDispatch, useSelector} from "react-redux";
-import {searchItems} from "../../../redux/slices/itemsSlice";
+import {searchItems} from "../../redux/slices/itemsSlice";
 import {SearchSection} from "./SearchSection/SearchSection";
 import {logDOM} from "@testing-library/react";
-import {searchCategories} from "../../../redux/slices/categoriesSlice";
-import {setSearchValue} from "../../../redux/slices/filtersSlice";
+import {searchCategories} from "../../redux/slices/categoriesSlice";
+import {setSearchValue} from "../../redux/slices/filtersSlice";
 
 
 export const Search = () => {

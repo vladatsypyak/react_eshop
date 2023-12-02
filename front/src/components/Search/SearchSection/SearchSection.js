@@ -1,15 +1,15 @@
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import {GlobalSvgSelector} from "../../../../assets/GlobalSvgSelector";
+import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import s from "./search_section.module.scss"
 
-import star from "../../../../assets/star .png"
+import star from "../../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
-import {setItems} from "../../../../redux/slices/itemsSlice";
-import {setCurrentCategory} from "../../../../redux/slices/categoriesSlice";
-import {truncateString} from "../../../../helpers/helpers";
-import {Overlay} from "../../../Overlay/Overlay";
+import {setItems} from "../../../redux/slices/itemsSlice";
+import {setCurrentCategory} from "../../../redux/slices/categoriesSlice";
+import {truncateString} from "../../../helpers/helpers";
+import {Overlay} from "../../Overlay/Overlay";
 
 
 export const SearchSection = ({hideSearchResults, inputRef}) => {
