@@ -60,7 +60,7 @@ export const Header = () => {
                         <li className={`${s.icon} ${s.cart_icon} nav-item`}>
                             <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
                             {/*<GlobalSvgSelector id="cart_icon"/>*/}
-                            {quantityInCart.length > 0 && <QuantityInCart number={quantityInCart.length}/>}
+                            {quantityInCart?.length > 0 && <QuantityInCart number={quantityInCart?.length}/>}
 
                         </li>
                         <li ref={userMenuBtn} onClick={() => setShowUserMenu(!showUserMenu)}

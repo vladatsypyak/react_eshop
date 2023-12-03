@@ -3,11 +3,13 @@ const express = require('express');
 const router = express.Router();
 // const {authMiddleware} = require('../middleware/authMiddleware');
 const {
-    getCategories, getCategoryByValue, getItemsByCategory, getCategoryFilters, getFilterValues, getFilteredItems,
-    getItemsByTitle, addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites, addToCart,
-    getUserCartItems, removeOneFromCart, deleteCartItem, searchCategories, createOrder, clearCart, getUserOrders,
+     getItemsByCategory, getCategoryFilters, getFilterValues, getFilteredItems,
+    getItemsByTitle, addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites,
     getPriceRange
 } = require("../controllers/appService");
+const {searchCategories, getCategories, getCategoryByValue} = require("../controllers/categoriesService");
+const {removeOneFromCart, getUserCartItems, addToCart, deleteCartItem, clearCart} = require("../controllers/cartService");
+const {createOrder, getUserOrders} = require("../controllers/ordersService");
 
 
 router.get('/app/categories/search', searchCategories);
