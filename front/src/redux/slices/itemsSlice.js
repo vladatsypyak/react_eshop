@@ -28,7 +28,7 @@ export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems',
     return fetchItemsCall(params)
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/items/search?title=${params.title}&sortBy=${params.sortBy}`)
+    const {data} = await axios.get(`http://localhost:8080/api/app/items/filter?title=${params.title}&sortBy=${params.sortBy}`)
     return data
 })
 export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
