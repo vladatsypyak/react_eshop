@@ -69,9 +69,10 @@ async function filterItems(req) {
     const allFilters = req.query;
 
     let filters = Object.fromEntries(
-        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page" && key !== "itemsPerPage")
+        Object.entries(allFilters).filter(([key]) => key !== "category" && key !== "sortBy" && key !== "priceMax" && key !== "priceMin" && key !== "page" && key !== "itemsPerPage" && key !== "title")
     );
     let query = [];
+    console.log(filters)
 
     for (const key in filters) {
         if (filters.hasOwnProperty(key)) {
@@ -93,17 +94,20 @@ async function filterItems(req) {
 async function getFilteredItems(req, res) {
 
     try {
-        const {sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4} = req.query;
+        const {sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4, title} = req.query;
         const sortProperty = sortBy.replace("DESC", "");
         const sortOrder = sortBy.includes("DESC") ? -1 : 1;
         const query = await filterItems(req);
         const skip = (page - 1) * itemsPerPage;
+        console.log(title)
+        console.log(query)
         const filterCriteria = {
             $and: [
                 ...query,
-                {"category": category},
-                {"price": {$lte: priceMax, $gte: priceMin}}
-            ]
+                category ? {"category": category} : null,
+                title ? { "title": { $regex: title, $options: "i" } } : null,
+                {"price": {$lte: priceMax, $gte: priceMin}},
+            ].filter(Boolean)
         };
 
         const countPromise = Item.countDocuments(filterCriteria);
