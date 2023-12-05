@@ -4,7 +4,7 @@ const router = express.Router();
 // const {authMiddleware} = require('../middleware/authMiddleware');
 const {
      getItemsByCategory, getCategoryFilters, getFilterValues, getFilteredItems,
-    getItemsByTitle, addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites,
+    addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites,
     getPriceRange
 } = require("../controllers/appService");
 const {searchCategories, getCategories, getCategoryByValue} = require("../controllers/categoriesService");
@@ -18,7 +18,7 @@ router.get('/app/categories/:type', getCategoryByValue);
 
 router.get('/app/items/filter', getFilteredItems);
 router.get('/app/items/priceCount', getPriceRange);
-router.get('/app/items/search', getItemsByTitle);
+// router.get('/app/items/search', getItemsByTitle);
 router.get('/app/item/:id', getItemById);
 router.get('/app/items/:category', getItemsByCategory);
 

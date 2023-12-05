@@ -1,12 +1,8 @@
 const {Category} = require('../models/Categories');
 
-
 const jwt = require("jsonwebtoken");
-const {now} = require("mongoose");
 const {Item} = require("../models/Items");
 const {Favourite} = require("../models/Favourites");
-const {CartItem} = require("../models/CartItems");
-const {Order} = require("../models/Orders");
 require('dotenv').config();
 
 
@@ -16,8 +12,6 @@ function getTokenPayload(req) {
     const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
     return tokenPayload;
 }
-
-
 
 
 async function getItemsByCategory(req, res) {
@@ -91,24 +85,28 @@ async function filterItems(req) {
     return query
 }
 
+async function getFilterQuery(req) {
+    const {priceMax = Infinity, priceMin = 0, category, title} = req.query;
+
+    const query = await filterItems(req);
+    return {
+        $and: [
+            ...query,
+            category ? {"category": category} : null,
+            title ? {"title": {$regex: title, $options: "i"}} : null,
+            {"price": {$lte: priceMax, $gte: priceMin}},
+        ].filter(Boolean)
+    };
+}
+
 async function getFilteredItems(req, res) {
 
     try {
-        const {sortBy, priceMax = Infinity, priceMin = 0, category, page = 1, itemsPerPage = 4, title} = req.query;
+        const {sortBy, page = 1, itemsPerPage = 4} = req.query;
         const sortProperty = sortBy.replace("DESC", "");
         const sortOrder = sortBy.includes("DESC") ? -1 : 1;
-        const query = await filterItems(req);
         const skip = (page - 1) * itemsPerPage;
-        console.log(title)
-        console.log(query)
-        const filterCriteria = {
-            $and: [
-                ...query,
-                category ? {"category": category} : null,
-                title ? { "title": { $regex: title, $options: "i" } } : null,
-                {"price": {$lte: priceMax, $gte: priceMin}},
-            ].filter(Boolean)
-        };
+        const filterCriteria = await getFilterQuery(req);
 
         const countPromise = Item.countDocuments(filterCriteria);
         const itemsPromise = Item.find(filterCriteria)
@@ -135,55 +133,10 @@ async function getFilteredItems(req, res) {
 
 }
 
-async function getItemsByTitle(req, res) {
-    const {sortBy, title, page = 1, itemsPerPage = 4} = req.query;
-    const skip = (page - 1) * itemsPerPage;
-
-    const sortProperty = sortBy.replace("DESC", "")
-    const sortOrder = sortBy.includes("DESC") ? -1 : 1
-    const filterCriteria = {title: {$regex: title, $options: "i"}}
-
-    const countPromise = Item.countDocuments(filterCriteria);
-    const itemsPromise = Item.find(filterCriteria)
-        .limit(itemsPerPage)
-        .skip(skip)
-        .sort({[sortProperty]: sortOrder});
-
-    const [count, items] = await Promise.all([countPromise, itemsPromise]);
-    const pageCount = Math.ceil(count / itemsPerPage);
-    console.log(items.length)
-
-    if (!items) {
-        res.status(500).send({
-            message: "no items"
-        });
-    }
-
-    res.send({
-        pagination: {count, pageCount},
-        items,
-    })
-
-}
-
 async function getPriceRange(req, res) {
-
-    const allFilters = req.query;
-    const sortBy = allFilters.sortBy
-    const sortProperty = sortBy.replace("DESC", "")
-    const sortOrder = sortBy.includes("DESC") ? -1 : 1
-    const priceMax = allFilters.priceMax || Infinity
-    const priceMin = allFilters.priceMin || 0
-    let query = await filterItems(req);
     try {
-        let filteredItems = await Item.find({
-            $and: [
-                ...query,
-                {"category": allFilters.category},
-                {price: {$lte: priceMax, $gte: priceMin}}
-            ]
-        }).sort({[sortProperty]: sortOrder});
-
+        const filterCriteria = await getFilterQuery(req);
+        let filteredItems = await Item.find(filterCriteria);
         if (filteredItems.length !== 0) {
             let priceArr = filteredItems.map(el => el.price)
             res.send(
@@ -197,10 +150,9 @@ async function getPriceRange(req, res) {
 
     } catch (error) {
         console.error("An error occurred:", error);
+        res.status(500).send("Internal Server Error");
     }
 }
-
-
 async function addToFavourite(req, res) {
     const {userId, itemId} = req.body
     const favourite = new Favourite({userId, itemId});
@@ -226,12 +178,10 @@ async function getUserFavourites(req, res) {
         const items = await Item.find({_id: {$in: itemIds}}).exec();
         res.send(items);
     } catch (error) {
-        // Обробка помилки, якщо є
         console.error(error);
         res.status(500).send('Помилка сервера');
     }
 }
-
 
 
 async function deleteFavourite(req, res) {
@@ -251,14 +201,12 @@ async function getItemById(req, res) {
 }
 
 
-
 module.exports = {
 
     getItemsByCategory,
     getCategoryFilters,
     getFilterValues,
     getFilteredItems,
-    getItemsByTitle,
     addToFavourite,
     getFavourites,
     deleteFavourite,
