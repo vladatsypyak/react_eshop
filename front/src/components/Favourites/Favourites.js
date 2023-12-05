@@ -16,15 +16,15 @@ export const Favourites = () => {
 
     function onLikeClick(itemId, liked) {
         if (!liked) {
-            dispatch(putFavourite({userId: user._id, itemId: itemId}))
+            dispatch(putFavourite({itemId}))
         } else {
-            dispatch(deleteFavourite({userId: user._id, itemId: itemId}))
+            dispatch(deleteFavourite({itemId}))
         }
     }
 
 
     React.useEffect(() => {
-        dispatch(getAllFavourites({userId: user._id}))
+        dispatch(getAllFavourites())
     }, [])
 
     return <div className={s.items_wrap}>

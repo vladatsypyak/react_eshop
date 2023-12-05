@@ -25,7 +25,7 @@ router.get('/app/filters/:category', getCategoryFilters);
 router.get('/app/filters/:category/:filter', getFilterValues);
 
 router.post('/app/favourite', authMiddleware, addToFavourite);
-router.get('/app/favourite/:userId', getUserFavourites);
+router.get('/app/favourite', getUserFavourites);
 router.delete('/app/favourite', deleteFavourite);
 
 router.post('/app/cart/remove', removeOneFromCart);

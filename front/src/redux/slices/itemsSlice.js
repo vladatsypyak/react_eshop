@@ -20,11 +20,11 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async (params) =>
     console.log(params)
     return await fetchItemsCall(params)
 })
-const fetchFavourites = async (userId) => {
+const fetchFavourites = async () => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    const {data} = await instance.get(`http://localhost:8080/api/app/favourite/${userId}`);
+    const {data} = await instance.get(`http://localhost:8080/api/app/favourite/`);
     return data;
 };
 export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
@@ -35,14 +35,14 @@ export const searchItems = createAsyncThunk('items/searchItems', async (params) 
     return data
 })
 export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
-    return await fetchFavourites(params.userId)
+    return await fetchFavourites()
 })
 export const putFavourite = createAsyncThunk('items/putFavourite', async (params) => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
     await instance.post(`http://localhost:8080/api/app/favourite`, params)
-    return await fetchFavourites(params.userId)
+    return await fetchFavourites()
 })
 export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {
     const instance = axios.create({
@@ -50,7 +50,7 @@ export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (
     });
     await instance.delete(`http://localhost:8080/api/app/favourite`, {data: params})
 
-    return await fetchFavourites(params.userId)
+    return await fetchFavourites()
 
 })
 
