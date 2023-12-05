@@ -168,8 +168,8 @@ async function addToFavourite(req, res) {
 
 async function getUserFavourites(req, res) {
     try {
-        const {userId} = req.params;
-        const favourites = await Favourite.find({userId}).exec();
+        const tokenPayload = getTokenPayload(req);
+        const favourites = await Favourite.find({userId: tokenPayload.userId}).exec();
         const itemIds = favourites.map((el) => el.itemId);
         const items = await Item.find({_id: {$in: itemIds}}).exec();
         res.send(items);
@@ -181,8 +181,9 @@ async function getUserFavourites(req, res) {
 
 async function deleteFavourite(req, res) {
     try {
-        const { userId, itemId } = req.body;
-        const favourite = await Favourite.findOneAndDelete({ userId, itemId });
+        const tokenPayload = getTokenPayload(req);
+        const { itemId } = req.body;
+        const favourite = await Favourite.findOneAndDelete({ userId: tokenPayload.userId, itemId });
 
         if (!favourite) {
             return res.status(404).send({ message: "Favourite not found" });
