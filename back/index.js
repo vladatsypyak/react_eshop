@@ -16,13 +16,9 @@ const { appRouter } = require('./routers/appRouter');
 const {usersRouter} = require("./routers/usersRouter");
 const {authRouter} = require("./routers/authRouter");
 
-
-
 app.use(express.json());
 app.use(cors())
 app.use(morgan('tiny'));
-
-
 
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
@@ -30,12 +26,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use('/api/', appRouter);
 app.use('/api/user/', usersRouter);
 
-
-
-
-
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -68,7 +59,6 @@ const start = async () => {
 
 start();
 
-// ERROR HANDLER
 app.use(errorHandler);
 
 function errorHandler(err, req, res, next) {

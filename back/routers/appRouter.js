@@ -18,9 +18,7 @@ router.get('/app/categories/:type', getCategoryByValue);
 
 router.get('/app/items/filter', getFilteredItems);
 router.get('/app/items/priceCount', getPriceRange);
-// router.get('/app/items/search', getItemsByTitle);
 router.get('/app/item/:id', getItemById);
-router.get('/app/items/:category', getItemsByCategory);
 
 router.get('/app/filters/:category', getCategoryFilters);
 router.get('/app/filters/:category/:filter', getFilterValues);
