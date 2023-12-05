@@ -10,6 +10,7 @@ const {
 const {searchCategories, getCategories, getCategoryByValue} = require("../controllers/categoriesService");
 const {removeOneFromCart, getUserCartItems, addToCart, deleteCartItem, clearCart} = require("../controllers/cartService");
 const {createOrder, getUserOrders} = require("../controllers/ordersService");
+const {authMiddleware} = require("../middleware/authMiddleware");
 
 
 router.get('/app/categories/search', searchCategories);
@@ -23,7 +24,7 @@ router.get('/app/item/:id', getItemById);
 router.get('/app/filters/:category', getCategoryFilters);
 router.get('/app/filters/:category/:filter', getFilterValues);
 
-router.post('/app/favourite', addToFavourite);
+router.post('/app/favourite', authMiddleware, addToFavourite);
 router.get('/app/favourite/:userId', getUserFavourites);
 router.delete('/app/favourite', deleteFavourite);
 

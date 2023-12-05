@@ -41,6 +41,7 @@ router.get("/login/success", async (req, res) => {
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 router.get("/google/callback",
+
     passport.authenticate("google",
         {
             successRedirect: "http://localhost:3000",

@@ -29,8 +29,6 @@ export const loginUser = createAsyncThunk('items/loginUser', async (params) => {
 export const editProfile = createAsyncThunk('items/editProfile', async (params) => {
     console.log(params)
     const instance = axios.create({
-
-
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
     const headers =  {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}

@@ -35,7 +35,10 @@ export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async
     return await fetchFavourites(params.userId)
 })
 export const putFavourite = createAsyncThunk('items/putFavourite', async (params) => {
-    await axios.post(`http://localhost:8080/api/app/favourite`, params)
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    await instance.post(`http://localhost:8080/api/app/favourite`, params)
     return await fetchFavourites(params.userId)
 })
 export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {

@@ -2,13 +2,14 @@ const {Category} = require('../models/Categories');
 const jwt = require("jsonwebtoken");
 const {Item} = require("../models/Items");
 const {Favourite} = require("../models/Favourites");
+const {User} = require("../models/Users");
 require('dotenv').config();
 
 
 function getTokenPayload(req) {
     const {authorization} = req.headers;
     const [, token] = authorization.split(' ');
-    const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
+    const tokenPayload = jwt.verify(token, "secret");
     return tokenPayload;
 }
 
@@ -154,23 +155,13 @@ async function getPriceRange(req, res) {
 
 async function addToFavourite(req, res) {
     try {
-        const { userId, itemId } = req.body;
-        const favourite = new Favourite({ userId, itemId });
+        const tokenPayload = getTokenPayload(req);
+        const { itemId } = req.body;
+        const favourite = new Favourite({ userId: tokenPayload.userId, itemId });
         await favourite.save();
         res.send({ message: "Added to favorites" });
     } catch (error) {
         console.error("Error in addToFavourite:", error);
-        res.status(500).send({ message: "Internal Server Error" });
-    }
-}
-
-async function getFavourites(req, res) {
-    try {
-        const { userId } = req.params;
-        const favourites = await Favourite.find({ userId });
-        res.send(favourites);
-    } catch (error) {
-        console.error("Error in getFavourites:", error);
         res.status(500).send({ message: "Internal Server Error" });
     }
 }
@@ -227,7 +218,6 @@ module.exports = {
     getFilterValues,
     getFilteredItems,
     addToFavourite,
-    getFavourites,
     deleteFavourite,
     getItemById,
     getUserFavourites,
