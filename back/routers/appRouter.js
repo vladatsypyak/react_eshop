@@ -9,7 +9,7 @@ const {
 } = require("../controllers/appService");
 const {searchCategories, getCategories, getCategoryByValue} = require("../controllers/categoriesService");
 const {removeOneFromCart, getUserCartItems, addToCart, deleteCartItem, clearCart} = require("../controllers/cartService");
-const {createOrder, getUserOrders} = require("../controllers/ordersService");
+const {createOrder, getUserOrders, deleteUserOrder} = require("../controllers/ordersService");
 const {authMiddleware} = require("../middleware/authMiddleware");
 
 
@@ -25,8 +25,8 @@ router.get('/app/filters/:category', getCategoryFilters);
 router.get('/app/filters/:category/:filter', getFilterValues);
 
 router.post('/app/favourite', authMiddleware, addToFavourite);
-router.get('/app/favourite', getUserFavourites);
-router.delete('/app/favourite', deleteFavourite);
+router.get('/app/favourite', authMiddleware, getUserFavourites);
+router.delete('/app/favourite',authMiddleware, deleteFavourite);
 
 router.post('/app/cart/remove', removeOneFromCart);
 router.get('/app/cart/:userId', getUserCartItems);
@@ -35,8 +35,11 @@ router.delete('/app/cart', deleteCartItem)
 router.delete('/app/cart/clear/:userId', clearCart);
 ;
 
-router.post('/app/orders/add', createOrder);
-router.get('/app/orders/:userId', getUserOrders);
+router.post('/app/orders/add', authMiddleware, createOrder);
+router.get('/app/orders/:userId', authMiddleware, getUserOrders);
+router.delete('/app/orders', authMiddleware, deleteUserOrder)
+
+
 
 
 
