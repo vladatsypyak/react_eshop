@@ -11,7 +11,7 @@ export const OrderConfirm = () => {
     const cartItems = useSelector(state => state.cart.items)
     const price = useSelector(state => state.cart.total)
 
-    const orderItems = cartItems.map((obj => {
+    const orderItems = cartItems?.map((obj => {
         return {quantity: obj.quantity, item: obj.item}
     }))
     console.log(orderItems)

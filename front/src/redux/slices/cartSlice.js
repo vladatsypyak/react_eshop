@@ -7,7 +7,10 @@ const fetchCartItems = async (userId) => {
 };
 
 const fetchUserOrders = async (userId) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/orders/${userId}`);
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    const {data} = await instance.get(`http://localhost:8080/api/app/orders/${userId}`);
     return data;
 };
 
@@ -16,14 +19,15 @@ export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
     return await fetchCartItems(params.userId)
 })
 export const createOrder = createAsyncThunk('items/createOrder', async (params) => {
-
-    await axios.post(`http://localhost:8080/api/app/orders/add`, params)
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    await instance.post(`http://localhost:8080/api/app/orders/add`, params)
     await axios.delete(`http://localhost:8080/api/app/cart/clear/${params.userId}`)
 
 })
 
 export const getUserOrders = createAsyncThunk('orders/getUserOrders', async (params) => {
-    console.log(params)
     return await fetchUserOrders(params.userId)
 })
 export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', async (params) => {

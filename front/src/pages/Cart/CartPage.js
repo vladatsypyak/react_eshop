@@ -16,7 +16,7 @@ export const CartPage = () => {
     }
 
     return <div className={"cart"}>
-        <div className={"container"}>
+        <div className={"wrapper"}>
             {isEmpty(user) && items?.length === 0 &&  <NoItems page={"cart"}/> }
             {!isEmpty(user) && <AskToAuth page={"cart"}/> }
             {isEmpty(user) && items?.length !== 0 && <Cart/>}

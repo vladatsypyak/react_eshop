@@ -33,7 +33,7 @@ router.get('/app/cart/:userId', getUserCartItems);
 router.post('/app/cart', addToCart);
 router.delete('/app/cart', deleteCartItem)
 router.delete('/app/cart/clear/:userId', clearCart);
-;
+
 
 router.post('/app/orders/add', authMiddleware, createOrder);
 router.get('/app/orders/:userId', authMiddleware, getUserOrders);
