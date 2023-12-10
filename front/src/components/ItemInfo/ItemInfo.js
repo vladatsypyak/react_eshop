@@ -59,8 +59,12 @@ export const ItemInfo = () => {
     }
 
     function onAddToCartClick() {
-        setQuantityOnBtn(quantityInCart)
-        dispatch(putToCart({userId: user._id, itemId: id, quantity: quantityInCart}))
+        if (quantityInCart !== 0){
+            setQuantityOnBtn(quantityInCart)
+            dispatch(putToCart({userId: user._id, itemId: id, quantity: quantityInCart}))
+        } else {
+            return
+        }
 
     }
 
