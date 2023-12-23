@@ -9,7 +9,6 @@ export const Sidebar = () => {
            <NavLink
                to={"profile"}
                className= {({isActive}) => isActive ? `${s.link} ${s.active}` : s.link}
-
            >
                Профіль
            </NavLink>
@@ -21,7 +20,6 @@ export const Sidebar = () => {
            <NavLink
                to={"orders"}
                className= {({isActive}) => isActive ? `${s.link} ${s.active}` : s.link}
-
            >Замовлення</NavLink>
 
     </div>

@@ -11,8 +11,32 @@ import heart from "../../assets/heart.png"
 import s from "./NoItems.module.scss"
 
 export const NoItems = ({page}) => {
-    let text = page === "cart" ? "Ваша корзина наразу пуста" : "У вашому списку бажань немає товарів"
-let imageSrc = page === "cart" ? cart : heart
+    let text = ""
+    let imageSrc
+
+    switch (page) {
+        case "cart" :
+            text = "Ваша корзина наразі пуста";
+            break
+        case  "favourite" :
+            text = "У вашому списку бажань немає товарів";
+            break
+        case "orders" :
+            text = "У вас немає замовлень";
+            break
+    }
+
+    switch (page) {
+        case "cart" :
+            imageSrc = cart;
+            break
+        case  "favourite" :
+            imageSrc = heart;
+            break
+        case "orders" :
+            imageSrc = cart;
+            break
+    }
     return <div className={s.no_items}>
         <div className={"container"}>
             <img src={imageSrc} alt={"empty cart"}/>
