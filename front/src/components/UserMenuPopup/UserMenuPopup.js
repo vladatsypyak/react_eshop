@@ -9,6 +9,7 @@ import {Overlay} from "../Overlay/Overlay";
 
 export const UserMenuPopup = ({setIsShown, usermenuRef}) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const user = useSelector(state => state.user.user)
 
     function isEmpty(obj) {

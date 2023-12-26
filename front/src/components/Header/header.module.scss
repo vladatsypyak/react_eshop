@@ -1,5 +1,6 @@
 .header {
-  background-color: #a8b1e7;
+  background: #FFF;
+  box-shadow: 0px 0px 16.8px 0px #8CC59C;
   user-select: none;
   position: relative;
   top: 0;
@@ -11,10 +12,10 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    background: none;
-    padding: 10px;
     border-radius: 10px;
-    border: 1px solid white;
+    border: 2px solid #8CC59C;
+    background: #8CC59C;
+    padding: 10px;
 
     &:hover {
       cursor: pointer;
@@ -62,17 +63,62 @@
         background-color: rgba(216, 217, 231, 0.56);
       }
 
-      img {
-        width: 35px;
-        height: 40px;
-      }
+      //
+      //img {
+      //  width: 35px;
+      //  height: 40px;
+      //}
 
       svg {
         width: 35px;
         height: 35px;
         object-fit: cover;
+
+        path {
+          stroke: #000000;
+          stroke-width: 3;
+
+        }
       }
     }
+
+    .user_icon {
+      svg {
+        path {
+          fill: #000000;
+          stroke-width: 5;
+        }
+      }
+    }
+
+    .heart_icon {
+      svg {
+        width: 50px;
+        height: 45px;
+
+        path {
+          fill: #8CC59C;
+          stroke-width: 5;
+          stroke: #8CC59C;
+        }
+      }
+    }
+
+    .cart_icon {
+      position: relative;
+
+      svg {
+        width: 30px;
+        height: 28px;
+
+        path {
+          //fill: #8CC59C;
+          stroke-width: 2.5;
+          //stroke: #8CC59C;
+        }
+      }
+    }
+
   }
 }
 
@@ -122,6 +168,16 @@
     }
   }
 
+  //.custom_toggler .navbar-toggler{
+  //  border: #8DA0FF !important;
+  //  background-color: red !important;
+  //  &:focus{
+  //    border: green;
+  //    outline: #727cb3;
+  //    box-shadow: none !important;
+  //  }
+  //}
+
 
 }
 
@@ -144,10 +200,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.cart_icon{
-  position: relative;
-}
-
 
 
 
@@ -161,13 +213,11 @@
   .collapse {
     //background-color: lightgrey;
     flex-direction: column-reverse;
-    padding-bottom: 10px;
+    padding: 10px 5px;
 
   }
 
 }
-
-
 
 
 /* 576px - 768px */

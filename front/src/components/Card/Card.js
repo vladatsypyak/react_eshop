@@ -44,6 +44,8 @@ export const Card = ({item}) => {
             return str.substring(0, maxLength) + "...";
         }
     }
+
+    console.log(quantityInCart)
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>
@@ -64,7 +66,7 @@ export const Card = ({item}) => {
             <p className={s.price}>{item.price.toFixed(2)} <span>грн</span></p>
             <button onClick={onAddToCartClick} className={s.card_btn}>{hovered && "До кошика"} <GlobalSvgSelector
                 id={"cart_icon"}/>
-                {quantityInCart && <QuantityInCart number={quantityInCart}/> }
+                {quantityInCart !== 0 &&  <QuantityInCart number={quantityInCart}/>  }
             </button>
 
         </div>

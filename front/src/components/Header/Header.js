@@ -1,7 +1,8 @@
 import React from "react"
 import s from "./header.module.scss"
 import logo from "../../assets/logo.png"
-import heart from "../../assets/heart_red.png"
+import heart from "../../assets/heart.png"
+
 
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {Search} from "../Search/Search";
@@ -30,7 +31,7 @@ export const Header = () => {
     }
 
     return <header className={s.header}>
-        <nav className={`navbar navbar-expand-lg navbar-dark wrapper `}>
+        <nav className={`navbar navbar-expand-lg navbar-light wrapper `}>
             <div className={`${s.header_container} container-fluid `}>
                 <div className={"navbar-brand"}>
                     <Link to={""}>
@@ -44,7 +45,9 @@ export const Header = () => {
                     <p className={s.catalogue_text}>Каталог</p>
                 </button>
 
-                <button style={{border: "1px solid white"}} className="navbar-toggler" type="button"
+                <button style={{ border: "1px solid black" }
+                } className={`navbar-toggler ${s.custom_toggler}`} id={"button"} type="button"
+
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarTogglerDemo0" aria-controls="navbarTogglerDemo0" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -54,8 +57,8 @@ export const Header = () => {
                     <Search/>
 
                     <ul className={`${s.icons} navbar-nav `}>
-                        <li className={`${s.icon} nav-item`}>
-                            <Link to={"/favourites"}><img src={heart} alt=""/></Link>
+                        <li className={`${s.icon} ${s.heart_icon} nav-item`}>
+                            <Link to={"/favourites"}> <GlobalSvgSelector id="heart_green"/></Link>
                         </li>
                         <li className={`${s.icon} ${s.cart_icon} nav-item`}>
                             <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
@@ -64,7 +67,7 @@ export const Header = () => {
 
                         </li>
                         <li ref={userMenuBtn} onClick={() => setShowUserMenu(!showUserMenu)}
-                            className={`${s.icon} nav-item`}>
+                            className={`${s.icon} ${s.user_icon} nav-item`}>
                             <GlobalSvgSelector id="user_icon"/>
                         </li>
                     </ul>

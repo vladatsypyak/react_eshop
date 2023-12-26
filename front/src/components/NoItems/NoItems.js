@@ -30,7 +30,7 @@ export const NoItems = ({page}) => {
         case "cart" :
             imageSrc = cart;
             break
-        case  "favourite" :
+        case  "favourites" :
             imageSrc = heart;
             break
         case "orders" :
@@ -43,7 +43,5 @@ export const NoItems = ({page}) => {
             <p>{text}</p>
             <button><Link to={"/"}>До головної сторінки</Link></button>
         </div>
-
-
     </div>
 }
