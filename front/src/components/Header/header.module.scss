@@ -24,6 +24,7 @@
     }
   }
 
+
   .catalogue_text {
     font-weight: 700;
     font-size: 24px;
@@ -167,6 +168,9 @@
 
     }
   }
+  .logo_wrap{
+    margin-right: 270px;
+  }
 
   //.custom_toggler .navbar-toggler{
   //  border: #8DA0FF !important;
@@ -215,6 +219,10 @@
     flex-direction: column-reverse;
     padding: 10px 5px;
 
+
+  }
+  .logo_wrap{
+    margin-right: 0;
   }
 
 }

@@ -33,7 +33,7 @@ export const Header = () => {
     return <header className={s.header}>
         <nav className={`navbar navbar-expand-lg navbar-light wrapper `}>
             <div className={`${s.header_container} container-fluid `}>
-                <div className={"navbar-brand"}>
+                <div className={`navbar-brand ${s.logo_wrap}`}>
                     <Link to={""}>
                         <div className={s.logo}>
                             <img src={logo} alt=""/>

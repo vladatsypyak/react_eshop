@@ -1,6 +1,6 @@
 import React from "react"
 import s from "./footer.module.scss"
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo_green.png"
 import inst from "../../assets/instagram.png"
 import telegramm from "../../assets/telegram.png"
 import fb from "../../assets/facebook.png"
