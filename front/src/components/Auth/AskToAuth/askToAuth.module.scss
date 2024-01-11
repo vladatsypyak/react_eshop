@@ -1,20 +1,40 @@
-.ask_to_auth{
-  max-width: 280px;
+.ask_to_auth {
+  //max-width: 280px;
   margin: 0 auto;
   padding: 25px;
   text-align: center;
+  user-select: none;
+  font-size: 18px;
+  position: relative;
+
+  .background {
+    max-width: 1900px;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      filter: opacity(50%)
+    }
+  }
+
   img {
     display: block;
-    width: 150px;
-    margin: 0 auto 10px;
+    width: 250px;
+    margin: 0px auto 10px;
   }
-  span{
-    color: #727cb3;
-    &:hover{
+  .lock_wrap{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+
+  span {
+    color: #84b693;
+    &:hover {
       cursor: pointer;
       text-decoration: underline;
     }
   }
-  user-select: none;
-  font-size: 18px;
+
 }

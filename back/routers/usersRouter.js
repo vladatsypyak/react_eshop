@@ -22,8 +22,6 @@ router.patch('/users/me/password', authMiddleware, changeUserPassword);
 router.patch('/users/me/edit', authMiddleware, editUserProfile);
 
 
-
-
 module.exports = {
     usersRouter: router,
 };
