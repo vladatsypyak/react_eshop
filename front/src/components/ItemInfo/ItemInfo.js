@@ -63,7 +63,11 @@ export const ItemInfo = () => {
             setQuantityOnBtn(quantityInCart)
             dispatch(putToCart({userId: user._id, itemId: id, quantity: quantityInCart}))
         } else {
-            return
+            setQuantityOnBtn(1)
+            setQuantityInCart(1)
+            dispatch(putToCart({userId: user._id, itemId: id, quantity: 1}))
+
+
         }
 
     }
