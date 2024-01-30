@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import s from "./itemInfo.module.scss"
-import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import star from "../../assets/star .png"
 import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,6 +10,7 @@ import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
 import check from "../../assets/check.png"
 import Images from "./Images/Images";
 import {Description} from "./Description";
+import {fetchCategoryByType, setCurrentCategory} from "../../redux/slices/categoriesSlice";
 
 export const ItemInfo = () => {
     const [item, setItem] = React.useState({})
@@ -43,13 +43,15 @@ export const ItemInfo = () => {
     useEffect(() => {
         const fetchItem = async () => {
             const {data} = await axios.get(`http://localhost:8080/api/app/item/${id}`)
+            const category = await data?.category
+            dispatch(fetchCategoryByType(category))
             setItem(data)
             return data
         }
         fetchItem()
-
     }, [id])
-    console.log(item)
+
+    // console.log(item)
 
     function onMinusClick() {
         if (quantityInCart !== 0) {
@@ -59,7 +61,7 @@ export const ItemInfo = () => {
     }
 
     function onAddToCartClick() {
-        if (quantityInCart !== 0){
+        if (quantityInCart !== 0) {
             setQuantityOnBtn(quantityInCart)
             dispatch(putToCart({userId: user._id, itemId: id, quantity: quantityInCart}))
         } else {
