@@ -46,7 +46,7 @@ export const Search = () => {
 
 
     return <>
-        <div className={s.search}>
+        <div className={`${s.search} search`}>
             <div className={s.input_wrap}>
                 <input ref={inputRef} onFocus={() => setFocused(true)}
                        onBlur={() => setFocused(false)}
