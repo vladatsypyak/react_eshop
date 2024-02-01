@@ -27,3 +27,11 @@
 .catalogue_items{
   gap: 10px;
 }
+@media screen and (max-width: 767px) {
+
+  .catalogue_items{
+    display: none;
+  }
+
+
+}

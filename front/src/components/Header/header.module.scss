@@ -263,6 +263,17 @@
 
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
+  .catalogue_items{
+    display: none;
+  }
+  .catalogue_categories_wrap{
+    border: none;
+    padding-right: 0;
+  }
+  .catalogue{
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* 320px - 576px */
