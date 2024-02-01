@@ -40,7 +40,7 @@
     outline: none;
     //background-color: rgba(238, 238, 238, 0.35);
     &:focus{
-      border: 2px solid #7a8bed;
+      border: 2px solid #8bc39c;
     }
   }
 
@@ -71,7 +71,7 @@
   }
 
   .submit {
-    background-color: #1ad61a;
+    background-color: #8bc39c;
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -80,9 +80,10 @@
     //right: 10px;
     //bottom: 10px;
     font-size: 18px;
+    user-select: none;
 
     &:hover {
-      background-color: #11ac12;
+      background-color: #548866;
       cursor: pointer;
     }
 
