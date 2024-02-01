@@ -5,7 +5,7 @@
   text-align: center;
   user-select: none;
   font-size: 18px;
-  position: relative;
+  //position: relative;
 
   .background {
     max-width: 1900px;
@@ -23,9 +23,9 @@
     margin: 0px auto 10px;
   }
   .lock_wrap{
-    top: 50%;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translatex( -50%);
     position: absolute;
   }
 

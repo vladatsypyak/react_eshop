@@ -18,10 +18,11 @@ export const AskToAuth = ({page}) => {
     function onSignUpClick() {
         dispatch(setSignup(true))
     }
+    let background = page === "cart" ? bg : null
 
     return <div className={s.ask_to_auth}>
         <div className={s.background}>
-            <img src={bg} alt=""/>
+            <img src={background} alt=""/>
         </div>
        <div className={s.lock_wrap}>
            <img src={lock} alt=""/>
