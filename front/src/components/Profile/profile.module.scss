@@ -1,5 +1,6 @@
 .section {
   border: 1px solid #CACACA;
+  border-radius: 10px;
   width: 100%;
   margin-bottom: 15px;
   position: relative;
@@ -26,6 +27,7 @@
     &_item {
       width: 30%;
       margin-bottom: 10px;
+      overflow: hidden;
 
       input, option, .select {
         border: 1px solid grey;
@@ -56,7 +58,7 @@
 
   .edit_btn {
     border-radius: 10px;
-    background: #5e75eb;
+    background: #8bc39c;
     color: #FFF;
     font-weight: 700;
     width: 150px;
@@ -88,10 +90,12 @@
     user-select: none;
 
   }
-  .PhoneInputCountryIcon :root{
+
+  .PhoneInputCountryIcon :root {
     width: 500px;
   }
-  svg{
+
+  svg {
     width: 26px;
     height: auto;
     user-select: none;
