@@ -6,7 +6,8 @@ import AsyncSelect from 'react-select/async';
 import s from "./orderForm.module.scss"
 
 
-const NovaPoshtaOffices = ({onChange, city}) => {
+const NovaPoshtaOffices = ({onChange, city, error}) => {
+    console.log(error)
     const [offices, setOffices] = useState([]);
     const [str, setStr] = useState("");
     const [loading, setLoading] = useState(false);
@@ -46,7 +47,7 @@ const NovaPoshtaOffices = ({onChange, city}) => {
             debouncedFetchOffices.cancel(); // Cleanup debounce on unmount
         };
     }, [str, city]);
-
+    const baseStyles = error ? `${s.error} ${s.select} ` : s.select
     const options = useMemo(
         () =>
             offices.map((el) => {
@@ -54,7 +55,6 @@ const NovaPoshtaOffices = ({onChange, city}) => {
             }),
         [offices]
     );
-
 
 
     return (
@@ -73,10 +73,15 @@ const NovaPoshtaOffices = ({onChange, city}) => {
                 }}
                 isLoading={loading}
                 placeholder={"Виберіть країну"}
-                classNames={{
-                    control: (state) =>
-                        state.isFocused ? `${s.focused} ${s.select}  ` : ` ${s.select}  `,
-                }}
+
+                classNames={
+                    {
+
+                        control: (state) => {
+                            let focusedStyle = state.isFocused ? `${s.focused} ${s.select}  ` : ` ${s.select}  `
+                            return focusedStyle + baseStyles
+                        }
+                    }}
             />
 
 

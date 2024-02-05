@@ -16,13 +16,22 @@ import NovaPoshtaOffices from "./NP";
 export const OrderForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const {register, handleSubmit, control} = useForm();
-
     const user = useSelector(state => state.user.user)
+    const [phone, setUserPhone] = useState(user.phone);
+
+    const values ={
+        name: user.name,
+        surname: user.surname,
+        patronymic: user.patronymic,
+        phone: user.phone,
+        email: user.email
+    }
+    const {register, handleSubmit, control, formState: { errors }} = useForm({
+        values
+    });
+
 
     const [city, setCity] = useState('Київ')
-    const [phone, setUserPhone] = useState(user.phone);
 
     const autoCompleteRef = useRef();
 
@@ -63,22 +72,28 @@ export const OrderForm = () => {
                 <div className={s.items_wrap}>
                     <div className={s.item}>
                         <p className={s.text}>Ім'я</p>
-                        <input type="text" defaultValue={user.name}  {...register("name", {required: true})} />
+                        <input
+                            className={errors.name ? s.error : ''}
+                            type="text"   {...register("name", {required: true})} />
 
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>Прізвище</p>
-                        <input type="text" defaultValue={user.surname}  {...register("surname", {required: true})}/>
+                        <input
+                            className={errors.surname ? s.error : ''}
+                            type="text"   {...register("surname", {required: true})}/>
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>По батькові</p>
                         <input type="text"
-                               defaultValue={user.patronymic} {...register("patronymic", {required: true})}/>
+                               defaultValue={user.patronymic}
+                               {...register("patronymic", {required: true})}/>
                     </div>
-                    <div className={s.item}>
+                    <div
+                        className={errors.phone ? `${s.item} ${s.phone_error}` : s.item}>
                         <p className={s.text}>Phone</p>
                         <Controller
-                            defaultValue={phone}
+                            rules={{ required: 'Введіть номер телефону' }}
                             name="phone"
                             control={control}
                             render={({field: {onChange, value}}) => (
@@ -91,13 +106,14 @@ export const OrderForm = () => {
                                     }}
                                     international={true}
                                     defaultCountry={"UA"}
+                                    inputClass={s.error}
                                 />
                             )}
                         />
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>Email</p>
-                        <input type="text" defaultValue={user.email}  {...register("email", {required: true})}/>
+                        <input className={errors.email ? s.error : ''} required={true} type="email" {...register("email", {required: true})}/>
                     </div>
                 </div>
             </div>
@@ -106,7 +122,7 @@ export const OrderForm = () => {
                 <div className={s.items_wrap}>
                     <div className={s.item}>
                         <p className={s.text}>Введіть свій населений пункт :</p>
-                        <input type={"text"} ref={inputRef}  />
+                        <input className={errors.city ? s.error : ''} {...register("city", {required: true})} type={"text"} ref={inputRef}  />
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>Введіть адрес відділення Нової пошти :</p>
@@ -114,26 +130,25 @@ export const OrderForm = () => {
                         <Controller
                             name="npWarehous"
                             control={control}
-                            render={({field: {onChange}, field: {value}}) => (
-                                <NovaPoshtaOffices
-                                    city={city}
-                                    onChange={(val)=>{
-                                        onChange(val.value)
-                                    }}/>
+                            rules={{ required: 'Введіть адрес відділення Нової пошти' }}
+                            render={({ field: { onChange, value }, fieldState: { error } }) => (
+                                <>
+                                    <NovaPoshtaOffices
+                                        city={city}
+                                        onChange={(val) => {
+                                            onChange(val.value);
+                                        }}
+                                        error={error}
+                                    />
+                                </>
                             )}
                         />
-
-
                     </div>
 
                 </div>
-
-
-
-
             </div>
             <div className={s.btn_wrap}>
-                <button className={s.submit} type={"submit"}>Підтвердити</button>
+                <button onClick={()=>console.log()} className={s.submit} type={"submit"}>Підтвердити</button>
 
             </div>
 
