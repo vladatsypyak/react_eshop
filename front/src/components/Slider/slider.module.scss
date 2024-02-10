@@ -4,7 +4,6 @@
 }
 .wrap{
   max-width: 1300px;
-  height: 700px;
   display: block;
   position: relative;
   border-radius: 15px;
@@ -29,7 +28,6 @@
   button{
     height: 55px;
     width: 55px;
-    //background-color: #fff;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -86,15 +84,11 @@
 }
 @media screen and (max-width: 992px) {
 
-.wrap{
-  height: content-box;
-}
+
 }
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
-  .wrap{
-    height: 400px;
-  }
+
 }
 
 /* 320px - 576px */
