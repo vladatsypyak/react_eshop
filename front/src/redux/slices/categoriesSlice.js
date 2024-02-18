@@ -12,8 +12,8 @@ export const fetchCategoryByType = createAsyncThunk("categories/getCategory", as
     return data.category
 })
 export const searchCategories = createAsyncThunk("categories/searchCategories", async (params)=>{
-    const {data} = await axios.get(`http://localhost:8080/api/app/categories/search?text=${params}`)
-    return data
+    const {data} = await axios.get(`http://localhost:8080/api/app/categories/?text=${params}`)
+    return data.categories
 })
 const initialState = {
     categories: [],
