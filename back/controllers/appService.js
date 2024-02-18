@@ -38,14 +38,15 @@ async function getCategoryFilters(req, res) {
 async function getFilterValues(req, res) {
     try {
         const {category, filter} = req.params;
-        const items = await Item.find({category: category});
-
+        const items = await Item.find({
+            "category": category,
+            "characteristics.name": filter,
+        })
         let filterValues = items.map(obj => {
             let foundFilter = obj?.characteristics?.find((el) => el.name === filter);
             return foundFilter && foundFilter.value;
         });
-
-        let uniqueFilterValues = [...new Set(filterValues.filter(el => el))];
+        let uniqueFilterValues =  [...new Set(filterValues.filter(el => el))];
         res.send(uniqueFilterValues);
     } catch (error) {
         console.error("Error in getFilterValues:", error);
