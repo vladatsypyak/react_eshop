@@ -10,6 +10,7 @@ import {setItems} from "../../../redux/slices/itemsSlice";
 import {setCurrentCategory} from "../../../redux/slices/categoriesSlice";
 import {truncateString} from "../../../helpers/helpers";
 import {Overlay} from "../../Overlay/Overlay";
+import {setSearchValue} from "../../../redux/slices/filtersSlice";
 
 
 export const SearchSection = ({hideSearchResults, inputRef}) => {
@@ -44,12 +45,16 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
         dispatch(setItems(items))
         navigate("searchResultsPage")
         hideSearchResults()
-
     }
 
     function onCategoryClick(category) {
         dispatch(setCurrentCategory(category))
         hideSearchResults()
+
+    }
+    function onItemClick(){
+        hideSearchResults()
+        dispatch(setSearchValue(""))
 
     }
 
@@ -74,7 +79,7 @@ export const SearchSection = ({hideSearchResults, inputRef}) => {
                     <h3 className={s.title}>Товари</h3>
                     <div className={s.items}>
                         {items?.slice(0, 5).map(el => {
-                            return <Link className={s.item} to={`./items/${el._id}`}>
+                            return <Link onClick={onItemClick} className={s.item} to={`./items/${el._id}`}>
                                 <div className={s.image}>
                                     <img src={el.imgUrl} alt=""/>
                                 </div>

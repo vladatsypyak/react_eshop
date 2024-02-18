@@ -9,7 +9,6 @@ import {useRef} from "react";
 import PhoneInput from "react-phone-number-input";
 import {Outlet, NavLink} from "react-router-dom";
 import {setOrderData} from "../../redux/slices/cartSlice";
-import {NPOfficeSelect} from "./asyncNP";
 import NovaPoshtaOffices from "./NP";
 
 
@@ -19,26 +18,26 @@ export const OrderForm = () => {
     const user = useSelector(state => state.user.user)
     const [phone, setUserPhone] = useState(user.phone);
 
-    const values ={
+    const values = {
         name: user.name,
         surname: user.surname,
         patronymic: user.patronymic,
         phone: user.phone,
         email: user.email
     }
-    const {register, handleSubmit, control, formState: { errors }} = useForm({
+    const {register, handleSubmit, control, formState: {errors}} = useForm({
         values
     });
 
 
-    const [city, setCity] = useState('Київ')
+    const [city, setCity] = useState('')
 
     const autoCompleteRef = useRef();
 
     const inputRef = useRef();
 
     const options = {
-        componentRestrictions: { country: "ua" },
+        componentRestrictions: {country: "ua"},
         fields: ["address_components", "geometry", "icon", "name"],
         types: ["(cities)"]
     };
@@ -49,7 +48,7 @@ export const OrderForm = () => {
         );
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace();
-            console.log({ place });
+            console.log({place});
             setCity(place.name)
         });
     }, [city]);
@@ -63,6 +62,8 @@ export const OrderForm = () => {
         )
         navigate("/orderform/confirm")
     }
+
+    console.log(errors)
 
     return <div className={`container ${s.order_form_wrapper}`}>
         <h3>Оформлення замовлення</h3>
@@ -93,7 +94,7 @@ export const OrderForm = () => {
                         className={errors.phone ? `${s.item} ${s.phone_error}` : s.item}>
                         <p className={s.text}>Phone</p>
                         <Controller
-                            rules={{ required: 'Введіть номер телефону' }}
+                            rules={{required: 'Введіть номер телефону'}}
                             name="phone"
                             control={control}
                             render={({field: {onChange, value}}) => (
@@ -113,7 +114,8 @@ export const OrderForm = () => {
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>Email</p>
-                        <input className={errors.email ? s.error : ''} required={true} type="email" {...register("email", {required: true})}/>
+                        <input className={errors.email ? s.error : ''}
+                               type="email" {...register("email", {required: true})}/>
                     </div>
                 </div>
             </div>
@@ -122,7 +124,18 @@ export const OrderForm = () => {
                 <div className={s.items_wrap}>
                     <div className={s.item}>
                         <p className={s.text}>Введіть свій населений пункт :</p>
-                        <input className={errors.city ? s.error : ''} {...register("city", {required: true})} type={"text"} ref={inputRef}  />
+                        <input className={errors.city ? s.error : ''}
+                               {...register("city",
+                                   {
+                                       validate: () => {
+                                           console.log(city)
+                                           return Boolean(city)
+
+                                       }
+                                   })}
+                               type={"text"}
+                               ref={inputRef}
+                        />
                     </div>
                     <div className={s.item}>
                         <p className={s.text}>Введіть адрес відділення Нової пошти :</p>
@@ -130,8 +143,8 @@ export const OrderForm = () => {
                         <Controller
                             name="npWarehous"
                             control={control}
-                            rules={{ required: 'Введіть адрес відділення Нової пошти' }}
-                            render={({ field: { onChange, value }, fieldState: { error } }) => (
+                            rules={{required: 'Введіть адрес відділення Нової пошти'}}
+                            render={({field: {onChange, value}, fieldState: {error}}) => (
                                 <>
                                     <NovaPoshtaOffices
                                         city={city}
@@ -148,7 +161,10 @@ export const OrderForm = () => {
                 </div>
             </div>
             <div className={s.btn_wrap}>
-                <button onClick={()=>console.log()} className={s.submit} type={"submit"}>Підтвердити</button>
+                <button onClick={() => console.log()}
+                        className={s.submit}
+                        type={"submit"}>Підтвердити
+                </button>
 
             </div>
 

@@ -44,9 +44,6 @@ function App() {
             sessionStorage.setItem("jwt_token", data.jwt_token)
             const token = sessionStorage.getItem("jwt_token")
             dispatch(getUser(token))
-
-            // setUser(data.user._json);
-            // dispatch(setUser(data.user))
         } catch (err) {
             console.log(err);
         }
@@ -61,13 +58,7 @@ function App() {
                 <Header/>
                 <main>
                     <Routes>
-
                         <Route path={"/"} element={<Main/>}/>
-                        {/*<Route path={"/"} element={<App/>}>*/}
-                        {/*    <Route path={"login"} element={<Authtest/>}/>*/}
-                        {/*</Route>*/}
-                        {/*<Route breadcrumb={"test"} path={"/categories"} element={<Main/>}/>*/}
-
                         <Route path={"/categories/:category"} element={<Category/>}/>
 
                         <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
@@ -84,17 +75,11 @@ function App() {
                             <Route path={"orders"} element={<Orders/>}/>
                             <Route path={"favourites"} element={<FavouritesPage/>}/>
                         </Route>
-                        {/*<Route path={"*"} element={<NotFound/>}/>*/}
                     </Routes>
-
                 </main>
-
-
                 <Footer/>
                 {showLogin && <Login/>}
                 {showSignup && <Signup/>}
-
-
         </div>
     );
 }

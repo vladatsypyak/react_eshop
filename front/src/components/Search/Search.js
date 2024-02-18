@@ -52,6 +52,7 @@ export const Search = () => {
                        onBlur={() => setFocused(false)}
                        onChange={onInputChange}
                        onClick={onInputClick}
+
                        type="text"
                        placeholder={"Пошук"}/>
                 {!focused && !searchValue &&
