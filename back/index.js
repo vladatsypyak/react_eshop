@@ -7,6 +7,12 @@ const mongoose = require('mongoose');
 const bp = require('body-parser');
 const passport = require('passport');
 const passportSetup = require("./passport")
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
+const swaggerDocument = require('./swagger.json');
+const router = require('express').Router();
+
 
 // const cors = require('cors')
 
@@ -25,6 +31,22 @@ app.use(bp.urlencoded({ extended: true }));
 
 app.use('/api/', appRouter);
 app.use('/api/user/', usersRouter);
+
+
+const swaggerOptions = {
+    swaggerDefinition:{
+        info:{
+            title: "Eshop API",
+            version: "1.0.0"
+        }
+    },
+    apis: ["./routers/appRouter.js"]
+}
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
@@ -49,7 +71,7 @@ app.use('/auth', authRouter);
 // })
 const start = async () => {
     try {
-        console.log('hi ');
+        console.log('listening on 8080 ');
         app.listen(8080);
 
     } catch (err) {

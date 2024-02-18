@@ -7,22 +7,32 @@ const {
     addToFavourite, getFavourites, deleteFavourite, getItemById, getUserFavourites,
     getPriceRange
 } = require("../controllers/appService");
-const {searchCategories, getCategories, getCategoryByValue} = require("../controllers/categoriesService");
+const {searchCategories, getCategories, getCategoryByType} = require("../controllers/categoriesService");
 const {removeOneFromCart, getUserCartItems, addToCart, deleteCartItem, clearCart} = require("../controllers/cartService");
 const {createOrder, getUserOrders, deleteUserOrder} = require("../controllers/ordersService");
 const {authMiddleware} = require("../middleware/authMiddleware");
 
 
+/**
+ * @swagger
+ * /api/app/categories:
+ *   get:
+ *     description: Get all categories
+ *     responses:
+ *       200:
+ *         description: Success
+ *
+ */
 router.get('/app/categories/search', searchCategories);
 router.get('/app/categories', getCategories);
-router.get('/app/categories/:type', getCategoryByValue);
+router.get('/app/categories/:type', getCategoryByType);
 
 router.get('/app/items/filter', getFilteredItems);
 router.get('/app/items/priceCount', getPriceRange);
 router.get('/app/item/:id', getItemById);
 
-router.get('/app/filters/:category', getCategoryFilters);
-router.get('/app/filters/:category/:filter', getFilterValues);
+router.get('/app/filters/:category', getCategoryFilters); //app/categories/categoryID/filter-categories
+router.get('/app/filters/:category/:filter', getFilterValues); //app/categories/categoryID/filter-categories/filter-categoryid
 
 router.post('/app/favourite', authMiddleware, addToFavourite);
 router.get('/app/favourite', authMiddleware, getUserFavourites);
