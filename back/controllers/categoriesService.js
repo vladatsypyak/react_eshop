@@ -13,17 +13,18 @@ async function getCategories(req, res) {
     })
 }
 
-async function getCategoryByValue(req, res) {
+async function getCategoryByType(req, res) {
     const {type} = req.params;
     const category = await Category.findOne({type: type})
     if (!category) {
         res.status(500).send({
             message: "category was not found"
         });
+    }else {
+        res.send({
+            category,
+        })
     }
-    res.send({
-        category,
-    })
 }
 
 async function searchCategories(req, res) {
@@ -41,7 +42,7 @@ async function searchCategories(req, res) {
 
 module.exports = {
     getCategories,
-    getCategoryByValue,
+    getCategoryByType,
     searchCategories
 
 };
