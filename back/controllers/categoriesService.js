@@ -1,17 +1,32 @@
 const {Category} = require("../models/Categories");
 
 async function getCategories(req, res) {
-    const categories = await Category.find()
+    const searchBy = req.query.text || ""
+    const categories = await Category.find({value: {$regex: searchBy, $options: "i"}})
     if (!categories) {
         res.status(500).send({
-            message: "trucks were not found"
+            message: "categories were not found"
         });
+        return
     }
     res.send({
-        count: await Category.count(),
+        count: categories?.length,
         categories,
     })
 }
+async function searchCategories(req, res) {
+    const text = req.query.text;
+    const categories = await Category.find({value: {$regex: text, $options: "i"}})
+    if (!categories) {
+        res.status(500).send({
+            message: "no items"
+        });
+    }
+    res.send(
+        categories
+    )
+}
+
 
 async function getCategoryByType(req, res) {
     const {type} = req.params;
@@ -27,18 +42,6 @@ async function getCategoryByType(req, res) {
     }
 }
 
-async function searchCategories(req, res) {
-    const text = req.query.text;
-    const categories = await Category.find({value: {$regex: text, $options: "i"}})
-    if (!categories) {
-        res.status(500).send({
-            message: "no items"
-        });
-    }
-    res.send(
-        categories
-    )
-}
 
 module.exports = {
     getCategories,

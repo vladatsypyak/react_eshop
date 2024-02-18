@@ -23,7 +23,7 @@ const {authMiddleware} = require("../middleware/authMiddleware");
  *         description: Success
  *
  */
-router.get('/app/categories/search', searchCategories);
+// router.get('/app/categories/search', searchCategories);
 router.get('/app/categories', getCategories);
 router.get('/app/categories/:type', getCategoryByType);
 
