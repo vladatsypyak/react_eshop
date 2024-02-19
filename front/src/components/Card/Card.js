@@ -35,7 +35,7 @@ export const Card = ({item}) => {
             dispatch(setLogin(true))
             return
         }
-        dispatch(putToCart({userId: user._id, itemId: item._id, quantity: quantityInCart + 1}))
+        dispatch(putToCart({itemId: item._id, quantity: quantityInCart + 1}))
     }
     function truncateString(str, maxLength) {
         if (str.length <= maxLength) {
@@ -45,7 +45,6 @@ export const Card = ({item}) => {
         }
     }
 
-    console.log(quantityInCart)
     return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={s.card}>
         <div className={s.flex_wrap}>
             <p className={s.code}>Код товару: 980128</p>

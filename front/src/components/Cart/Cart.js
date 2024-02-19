@@ -14,10 +14,10 @@ export const Cart = () => {
     const user = useSelector(state => state.user.user)
     const navigate = useNavigate()
     React.useEffect(() => {
-        dispatch(getAllCartItems({userId: user._id}))
+        dispatch(getAllCartItems())
     }, [items])
     React.useEffect(() => {
-        dispatch(getAllCartItems({userId: user._id}))
+        dispatch(getAllCartItems())
     }, [])
     React.useEffect(() => {
         dispatch(setTotal())
