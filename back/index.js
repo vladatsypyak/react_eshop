@@ -24,6 +24,9 @@ const {authRouter} = require("./routers/authRouter");
 const {categoriesRouter} = require("./routers/categoriesRouter");
 const {itemsRouter} = require("./routers/itemsRouter");
 const {filterRouter} = require("./routers/filtersRouter");
+const {favouriteRouter} = require("./routers/favouritesRouter");
+const {cartRouter} = require("./routers/cartRouter");
+const {ordersRouter} = require("./routers/ordersRouter");
 
 app.use(express.json());
 app.use(cors())
@@ -37,6 +40,12 @@ app.use('/api/user/', usersRouter);
 app.use('/api/categories/', categoriesRouter);
 app.use('/api/items/', itemsRouter);
 app.use('/api/filters/', filterRouter);
+app.use('/api/favourites/', favouriteRouter);
+app.use('/api/cart/', cartRouter);
+app.use('/api/orders/', ordersRouter);
+
+
+
 
 
 const swaggerOptions = {

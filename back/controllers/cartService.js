@@ -8,7 +8,6 @@ async function addToCart(req, res) {
     const item = await Item.findById(itemId)
     if (existingCartItem) {
         const updatedItem = await CartItem.findOneAndUpdate({userId, itemId}, {quantity: quantity});
-
     } else {
         const newCartItem = new CartItem({userId, itemId, quantity: quantity, item: item});
         await newCartItem.save();
@@ -51,7 +50,6 @@ async function getUserCartItems(req, res) {
         const cartItems = await CartItem.find({userId}).exec();
         res.send(cartItems);
     } catch (error) {
-        // Обробка помилки, якщо є
         console.error(error);
         res.status(500).send('Помилка сервера');
     }
@@ -63,5 +61,4 @@ module.exports = {
     clearCart,
     deleteCartItem,
     removeOneFromCart
-
 };
