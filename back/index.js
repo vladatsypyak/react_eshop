@@ -23,6 +23,7 @@ const {usersRouter} = require("./routers/usersRouter");
 const {authRouter} = require("./routers/authRouter");
 const {categoriesRouter} = require("./routers/categoriesRouter");
 const {itemsRouter} = require("./routers/itemsRouter");
+const {filterRouter} = require("./routers/filtersRouter");
 
 app.use(express.json());
 app.use(cors())
@@ -35,6 +36,7 @@ app.use('/api/', appRouter);
 app.use('/api/user/', usersRouter);
 app.use('/api/categories/', categoriesRouter);
 app.use('/api/items/', itemsRouter);
+app.use('/api/filters/', filterRouter);
 
 
 const swaggerOptions = {

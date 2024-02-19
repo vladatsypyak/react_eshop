@@ -59,14 +59,6 @@ const router = express.Router();
  *
  *       404:
  *         description: No items found matching the specified criteria.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   example: No items found matching the specified criteria.
  */
 
 router.get('/', getFilteredItems);

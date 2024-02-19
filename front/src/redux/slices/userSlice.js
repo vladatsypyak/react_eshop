@@ -6,7 +6,7 @@ const fetchUser = async (params) => {
         headers: {'Authorization': 'Bearer ' + params}
     });
 
-    const {data} = await instance.get('http://localhost:8080/api/user/users/me')
+    const {data} = await instance.get('http://localhost:8080/api/user/me')
     return data.user
 }
 
@@ -32,7 +32,7 @@ export const editProfile = createAsyncThunk('items/editProfile', async (params) 
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
     const headers =  {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
-    let {data} = await axios.patch(`http://localhost:8080/api/user/users/me/edit`, params,{headers} )
+    let {data} = await axios.patch(`http://localhost:8080/api/user/me/edit`, params,{headers} )
     return fetchUser(sessionStorage.getItem("jwt_token"))
 
 })
