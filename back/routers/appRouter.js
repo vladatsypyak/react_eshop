@@ -14,9 +14,8 @@ const {authMiddleware} = require("../middleware/authMiddleware");
 
 
 
-router.get('/app/items/filter', getFilteredItems);
-router.get('/app/items/priceCount', getPriceRange);
-router.get('/app/item/:id', getItemById);
+router.get('/app/items/priceRange', getPriceRange); //змінила
+
 
 router.get('/app/filters/:category', getCategoryFilters); //app/categories/categoryID/filter-categories
 router.get('/app/filters/:category/:filter', getFilterValues); //app/categories/categoryID/filter-categories/filter-categoryid

@@ -9,7 +9,7 @@ export function buildURL(arr, baseUrl) {
 }
 
 const fetchItemsCall = async (params) => {
-    const baseUrl = 'http://localhost:8080/api/app/items/filter';
+    const baseUrl = 'http://localhost:8080/api/items';
     let str = buildURL(params, baseUrl)
 
     const {data} = await axios.get(str)
@@ -24,14 +24,14 @@ const fetchFavourites = async () => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    const {data} = await instance.get(`http://localhost:8080/api/app/favourite/`);
+    const {data} = await instance.get(`http://localhost:8080/api/favourite/`);
     return data;
 };
 export const fetchCatalogueItems = createAsyncThunk('items/fetchCatalogueItems', async (params) => {
     return fetchItemsCall(params)
 })
 export const searchItems = createAsyncThunk('items/searchItems', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/items/filter?title=${params.title}&sortBy=${params.sortBy}`)
+    const {data} = await axios.get(`http://localhost:8080/api/items?title=${params.title}&sortBy=${params.sortBy}`)
     return data
 })
 export const getAllFavourites = createAsyncThunk('items/getAllFavourites', async (params) => {
@@ -41,14 +41,14 @@ export const putFavourite = createAsyncThunk('items/putFavourite', async (params
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.post(`http://localhost:8080/api/app/favourite`, params)
+    await instance.post(`http://localhost:8080/api/favourite`, params)
     return await fetchFavourites()
 })
 export const deleteFavourite = createAsyncThunk('items/deleteFavourite', async (params) => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.delete(`http://localhost:8080/api/app/favourite`, {data: params})
+    await instance.delete(`http://localhost:8080/api/favourite`, {data: params})
 
     return await fetchFavourites()
 
