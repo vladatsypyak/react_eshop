@@ -5,36 +5,41 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/orders:
- *   post:
- *     tags:
- *       - orders
- *     summary: Create new order
- *     description: Create a new order
- *     security:
- *       - BearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
+ * paths:
+ *   /api/orders:
+ *     post:
+ *       tags:
+ *         - orders
+ *       summary: Create new order
+ *       description: Create a new order
+ *       security:
+ *         - BearerAuth: []
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing order information
+ *           required: true
  *           schema:
  *             type: object
  *             properties:
  *               items:
  *                 type: array
- *                 description: array of items
+ *                 description: Array of items
  *               price:
  *                 type: string
- *                 description: total price of order
+ *                 description: Total price of order
  *               userData:
  *                 type: object
- *                 description: user data including phone, email
- *     responses:
- *       200:
- *         description: Order successfully created
- *       401:
- *         description: Unauthorized. User is not authenticated.
- */
+ *                 description: User data including phone, email
+ *       responses:
+ *         200:
+ *           description: Order successfully created
+ *         401:
+ *           description: Unauthorized. User is not authenticated.*/
 
 
 router.post('/', authMiddleware, createOrder);

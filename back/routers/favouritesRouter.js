@@ -7,18 +7,24 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/favourites:
- *   post:
- *     tags:
- *       - favourites
- *     summary: Add user favourite
- *     description: Add an item to the user's favourites.
- *     security:
- *       - BearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
+ * paths:
+ *   /api/favourites:
+ *     post:
+ *       tags:
+ *         - favourites
+ *       summary: Add user favourite
+ *       description: Add an item to the user's favourites.
+ *       security:
+ *         - BearerAuth: []
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing item ID to be added to favourites
+ *           required: true
  *           schema:
  *             type: object
  *             properties:
@@ -26,12 +32,11 @@ const router = express.Router();
  *                 type: integer
  *                 description: ID of the item to add to favourites.
  *                 example: 123
- *     responses:
- *       200:
- *         description: Successfully added to favourites
- *       401:
- *         description: Unauthorized. User is not authenticated.
- */
+ *       responses:
+ *         200:
+ *           description: Successfully added to favourites
+ *         401:
+ *           description: Unauthorized. User is not authenticated.*/
 
 
 router.post('/', authMiddleware, addToFavourite);

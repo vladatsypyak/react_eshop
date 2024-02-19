@@ -12,18 +12,23 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/cart:
- *   post:
- *     tags:
- *       - cart
- *     summary: Add item to cart
- *     description: Add item to cart
- *     security:
+ * paths:
+ *   /api/cart:
+ *     post:
+ *       tags:
+ *         - cart
+ *       summary: Add item to cart
+ *       security:
  *       - BearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: item
+ *           description: object with item
+ *           required: true
  *           schema:
  *             type: object
  *             properties:
@@ -35,42 +40,48 @@ const router = express.Router();
  *                 type: integer
  *                 description: number of items to add to cart
  *                 example: 2
- *     responses:
- *       200:
- *         description: Successfully added to cart
- *       401:
- *         description: Unauthorized. User is not authenticated.
+ *       responses:
+ *         200:
+ *           description: Successfully added to cart
+ *         401:
+ *           description: Unauthorized. User is not authenticated.
  */
 router.post('/', authMiddleware, addToCart);
 
 
 /**
  * @swagger
- * /api/cart/remove:
- *   post:
- *     tags:
- *       - cart
- *     summary: remove item from cart
- *     description: remove item from cart
- *     security:
- *       - BearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
+ * paths:
+ *   /api/cart/remove:
+ *     post:
+ *       tags:
+ *         - cart
+ *       summary: Remove one item from cart
+ *       description: Remove one item from cart
+ *       security:
+ *         - BearerAuth: []
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing item ID to be removed from cart
+ *           required: true
  *           schema:
  *             type: object
  *             properties:
  *               itemId:
  *                 type: integer
- *                 description: ID of the item to add to cart.
+ *                 description: ID of the item to remove from cart.
  *                 example: 123
- *     responses:
- *       200:
- *         description: Successfully removed from cart
- *       401:
- *         description: Unauthorized. User is not authenticated.
- */
+ *       responses:
+ *         200:
+ *           description: Successfully removed from cart
+ *         401:
+ *           description: Unauthorized. User is not authenticated.*/
+
 router.post('/remove', authMiddleware,  removeOneFromCart);
 
 /**
