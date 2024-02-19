@@ -11,19 +11,19 @@ export const Item = ({cartItem, user}) => {
 
     function onMinusClick() {
         if (cartItem.quantity === 1) {
-            dispatch(deleteCartItem({userId: user._id, itemId: cartItem.itemId}))
+            dispatch(deleteCartItem({itemId: cartItem.itemId}))
         } else {
-            dispatch(removeOneFromCart({userId: user._id, itemId: cartItem.itemId}))
+            dispatch(removeOneFromCart({itemId: cartItem.itemId}))
         }
 
     }
 
     function onPlusClick() {
-        dispatch(putToCart({userId: user._id, itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
+        dispatch(putToCart({itemId: cartItem.itemId, quantity: cartItem.quantity + 1}))
     }
 
     function onDeleteClick() {
-        dispatch(deleteCartItem({userId: user._id, itemId: cartItem.itemId}))
+        dispatch(deleteCartItem({itemId: cartItem.itemId}))
     }
 
     return <div className={s.cart_item_wrap}>

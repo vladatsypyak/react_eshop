@@ -4,12 +4,12 @@ import {buildURL} from "./itemsSlice";
 
 
 export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/filters/${params}`)
+    const {data} = await axios.get(`http://localhost:8080/api/categories/${params}/filters`)
     return data
 })
 
 export const fetchMaxMinCall = async (params) => {
-    const baseUrl = 'http://localhost:8080/api/app/items/priceCount';
+    const baseUrl = 'http://localhost:8080/api/filters/pricerange';
     let str = buildURL(params, baseUrl)
     const {data} = await axios.get(str)
     return data

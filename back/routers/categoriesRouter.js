@@ -10,6 +10,8 @@ const {getCategoryFilters, getFilterValues} = require("../controllers/appService
  * @swagger
  * /api/categories:
  *   get:
+ *     tags:
+ *        - categories
  *     description: Get categories
  *     responses:
  *       200:

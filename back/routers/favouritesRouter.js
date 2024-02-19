@@ -74,7 +74,7 @@ router.get('/', authMiddleware, getUserFavourites);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/',authMiddleware, deleteFavourite);
+router.delete('/', authMiddleware, deleteFavourite);
 
 module.exports = {
     favouriteRouter: router,

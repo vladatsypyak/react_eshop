@@ -7,6 +7,7 @@ async function createOrder(req, res) {
         console.log(tokenPayload)
         const { items, price, userData} = req.body
         const order = new Order({userId: tokenPayload.userId, items, status: "New", price, userData});
+        console.log(order)
         await order.save();
         res.send(
             {message: "added to orders"}
