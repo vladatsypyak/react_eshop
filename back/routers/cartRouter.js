@@ -6,6 +6,7 @@ const {
     deleteCartItem,
     clearCart
 } = require("../controllers/cartService");
+const {authMiddleware} = require("../middleware/authMiddleware");
 const router = express.Router();
 
 
@@ -40,7 +41,7 @@ const router = express.Router();
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.post('/app/cart', addToCart);
+router.post('/', authMiddleware, addToCart);
 
 
 /**
@@ -70,7 +71,7 @@ router.post('/app/cart', addToCart);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.post('/remove', removeOneFromCart);
+router.post('/remove', authMiddleware,  removeOneFromCart);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.post('/remove', removeOneFromCart);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.get('/:userId', getUserCartItems); //auth
+router.get('/', authMiddleware,  getUserCartItems);
 
 /**
  * @swagger
@@ -110,7 +111,7 @@ router.get('/:userId', getUserCartItems); //auth
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/', deleteCartItem) //auth
+router.delete('/', authMiddleware, deleteCartItem)
 
 /**
  * @swagger
@@ -128,7 +129,7 @@ router.delete('/', deleteCartItem) //auth
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/clear/:userId', clearCart); //auth
+router.delete('/clear', authMiddleware,  clearCart);
 
 module.exports = {
     cartRouter: router,
