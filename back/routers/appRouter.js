@@ -13,19 +13,6 @@ const {createOrder, getUserOrders, deleteUserOrder} = require("../controllers/or
 const {authMiddleware} = require("../middleware/authMiddleware");
 
 
-/**
- * @swagger
- * /api/app/categories:
- *   get:
- *     description: Get all categories
- *     responses:
- *       200:
- *         description: Success
- *
- */
-// router.get('/app/categories/search', searchCategories);
-router.get('/app/categories', getCategories);
-router.get('/app/categories/:type', getCategoryByType);
 
 router.get('/app/items/filter', getFilteredItems);
 router.get('/app/items/priceCount', getPriceRange);
