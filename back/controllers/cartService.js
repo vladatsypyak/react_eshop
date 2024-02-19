@@ -15,7 +15,7 @@ async function addToCart(req, res) {
                 itemId
             }, {quantity: quantity});
         } else {
-            const newCartItem = new CartItem({userId, itemId, quantity: quantity, item: item});
+            const newCartItem = new CartItem({userId: tokenPayload.userId, itemId, quantity: quantity, item: item});
             await newCartItem.save();
         }
         res.send(
