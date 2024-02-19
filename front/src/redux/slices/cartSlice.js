@@ -1,47 +1,59 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
 
-const fetchCartItems = async (userId) => {
-    const {data} = await axios.get(`http://localhost:8080/api/app/cart/${userId}`);
-    return data;
-};
-
-const fetchUserOrders = async (userId) => {
+const fetchCartItems = async () => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    const {data} = await instance.get(`http://localhost:8080/api/app/orders/${userId}`);
+    const {data} = await instance.get(`http://localhost:8080/api/cart/`);
+    return data;
+};
+
+const fetchUserOrders = async () => {
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    const {data} = await instance.get(`http://localhost:8080/api/orders/`);
     return data;
 };
 
 export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
-    await axios.post(`http://localhost:8080/api/app/cart`, params)
-    return await fetchCartItems(params.userId)
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    await instance.post(`http://localhost:8080/api/cart`, params)
+    return await fetchCartItems()
 })
 export const createOrder = createAsyncThunk('items/createOrder', async (params) => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.post(`http://localhost:8080/api/app/orders/add`, params)
-    await axios.delete(`http://localhost:8080/api/app/cart/clear/${params.userId}`)
+    await instance.post(`http://localhost:8080/api/orders/`, params)
+    await instance.delete(`http://localhost:8080/api/cart/clear/`)
 
 })
 
-export const getUserOrders = createAsyncThunk('orders/getUserOrders', async (params) => {
-    return await fetchUserOrders(params.userId)
+export const getUserOrders = createAsyncThunk('orders/getUserOrders', async () => {
+    return await fetchUserOrders()
 })
 export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', async (params) => {
-    await axios.post(`http://localhost:8080/api/app/cart/remove`, params)
-    return await fetchCartItems(params.userId)
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    await instance.post(`http://localhost:8080/api/cart/remove`, params)
+    return await fetchCartItems()
 })
 
 export const getAllCartItems = createAsyncThunk('items/getAllCartItems', async (params) => {
-    return await fetchCartItems(params.userId)
+    return await fetchCartItems()
 })
 
 export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (params) => {
-    await axios.delete(`http://localhost:8080/api/app/cart`, {data: params})
-    return await fetchCartItems(params.userId)
+    const instance = axios.create({
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    });
+    await instance.delete(`http://localhost:8080/api/cart`, {data: params})
+    return await fetchCartItems()
 
 })
 
@@ -50,8 +62,6 @@ const initialState = {
     total: 0,
     orderData: {},
     orders: []
-
-
 }
 
 export const cartSlice = createSlice({
@@ -71,9 +81,6 @@ export const cartSlice = createSlice({
             console.log(action.payload)
             state.orderData = action.payload
         }
-
-
-
     },
     extraReducers: (builder) => {
         builder.addCase(putToCart.fulfilled, (state, action) => {
