@@ -18,7 +18,6 @@ const router = require('express').Router();
 
 mongoose.connect('mongodb+srv://vladatsyupyak:Vladochka2002@eshop2.fsgyzpe.mongodb.net/?retryWrites=true&w=majority');
 
-const { appRouter } = require('./routers/appRouter');
 const {usersRouter} = require("./routers/usersRouter");
 const {authRouter} = require("./routers/authRouter");
 const {categoriesRouter} = require("./routers/categoriesRouter");
@@ -35,7 +34,6 @@ app.use(morgan('tiny'));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
-app.use('/api/', appRouter);
 app.use('/api/user/', usersRouter);
 app.use('/api/categories/', categoriesRouter);
 app.use('/api/items/', itemsRouter);
