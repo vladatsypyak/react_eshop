@@ -1,7 +1,6 @@
 const express = require('express');
 //
 const router = express.Router();
-const passport = require("passport")
 const {
     registerUser,
     loginUser,
@@ -13,12 +12,224 @@ const {
 } = require('../controllers/usersService');
 const {authMiddleware} = require('../middleware/authMiddleware');
 //
+
+/**
+ * @swagger
+ * paths:
+ *   /api/user/auth/register:
+ *     post:
+ *       tags:
+ *         - user
+ *       summary: sign up
+ *       description: Create a new user
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing user information
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 required: true
+ *               password:
+ *                 type: string
+ *                 required: true
+ *               name:
+ *                 type: string
+ *               otherData:
+ *                 type: string
+ *                 description: other user data including surname, patronymic, address
+ *       responses:
+ *         200:
+ *           description: User successfully created
+ *         400:
+ *           description: Server error.*/
 router.post('/auth/register', registerUser);
+
+/**
+ * @swagger
+ * paths:
+ *   /api/user/auth/login:
+ *     post:
+ *       tags:
+ *         - user
+ *       summary: sign up
+ *       description: Create a new user
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing login information
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 required: true
+ *               password:
+ *                 type: string
+ *                 required: true
+ *       responses:
+ *         200:
+ *           description: successfully logged in
+ *         400:
+ *           description: not authorized.*/
+
 router.post('/auth/login', loginUser);
-router.post('/auth/forgot_password', forgotPassword);
+
+/**
+ * @swagger
+ * paths:
+ *   /api/user/auth/login:
+ *     post:
+ *       tags:
+ *         - user
+ *       summary: sign up
+ *       description: Create a new user
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing login information
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 required: true
+ *               password:
+ *                 type: string
+ *                 required: true
+ *       responses:
+ *         200:
+ *           description: successfully logged in
+ *         400:
+ *           description: not authorized.*/
+
+// router.post('/auth/forgot_password', forgotPassword);
+
+/**
+ * @swagger
+ * /api/user/me:
+ *   get:
+ *     tags:
+ *       - user
+ *     summary: Get user profile
+ *     description: Get user profile
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: user object
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       401:
+ *         description: Unauthorized. User is not authenticated.
+ */
+
 router.get('/me', authMiddleware, getUserProfile);
+
+/**
+ * @swagger
+ * /api/user/me:
+ *   delete:
+ *     tags:
+ *       - user
+ *     summary: delete user profile
+ *     description: delete user profile
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: successfully deleted
+ *       401:
+ *         description: Unauthorized. User is not authenticated.
+ */
 router.delete('/me', authMiddleware, deleteUserProfile);
+
+/**
+ * @swagger
+ * paths:
+ *   /api/user/me/password:
+ *     patch:
+ *       tags:
+ *         - user
+ *       summary: change password
+ *       description: change password
+ *       security:
+ *       - BearerAuth: []
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing login information
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *               oldPassword:
+ *                 type: string
+ *                 required: true
+ *               newPassword:
+ *                 type: string
+ *                 required: true
+ *       responses:
+ *         200:
+ *           description: successfully changed
+ *         400:
+ *           description: not authorized.*/
+
 router.patch('/me/password', authMiddleware, changeUserPassword);
+
+/**
+ * @swagger
+ * paths:
+ *   /api/user/me/edit:
+ *     patch:
+ *       tags:
+ *         - user
+ *       summary: edit user info
+ *       description: edit user info
+ *       security:
+ *       - BearerAuth: []
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - in: body
+ *           name: body
+ *           description: Request body containing user information to change
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *       responses:
+ *         200:
+ *           description: successfully changed
+ *         400:
+ *           description: not authorized.*/
 router.patch('/me/edit', authMiddleware, editUserProfile);
 
 

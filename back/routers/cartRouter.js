@@ -13,7 +13,7 @@ const router = express.Router();
 /**
  * @swagger
  * paths:
- *   /api/cart:
+ *   /api/carts/current/items/{itemId}:
  *     post:
  *       tags:
  *         - cart
@@ -25,17 +25,20 @@ const router = express.Router();
  *       produces:
  *         - application/json
  *       parameters:
+ *         - in: path
+ *           name: itemId
+ *           schema:
+ *             type: string
+ *           required: true
+ *           example: "123"
+ *           description: id of the item to put in the cart
  *         - in: body
- *           name: item
- *           description: object with item
+ *           name: quantity
+ *           description: object with quantity
  *           required: true
  *           schema:
  *             type: object
  *             properties:
- *               itemId:
- *                 type: integer
- *                 description: ID of the item to add to cart.
- *                 example: 123
  *               quantity:
  *                 type: integer
  *                 description: number of items to add to cart
@@ -46,13 +49,13 @@ const router = express.Router();
  *         401:
  *           description: Unauthorized. User is not authenticated.
  */
-router.post('/', authMiddleware, addToCart);
+router.post('/current/items/:itemId', authMiddleware, addToCart);
 
 
 /**
  * @swagger
  * paths:
- *   /api/cart/remove:
+ *   /api/carts/current/remove:
  *     post:
  *       tags:
  *         - cart
@@ -86,7 +89,7 @@ router.post('/remove', authMiddleware,  removeOneFromCart);
 
 /**
  * @swagger
- * /api/cart:
+ * /api/carts/current/items:
  *   get:
  *     tags:
  *       - cart
@@ -96,19 +99,19 @@ router.post('/remove', authMiddleware,  removeOneFromCart);
  *       - BearerAuth: []
  *     responses:
  *       200:
- *         description: array of user cart items
+ *         description: object with user cart items
  *         content:
  *           application/json:
  *             schema:
- *               type: array
+ *               type: object
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.get('/', authMiddleware,  getUserCartItems);
+router.get('/current/items', authMiddleware,  getUserCartItems);
 
 /**
  * @swagger
- * /api/cart:
+ * /api/carts/current/items/{itemId}:
  *   delete:
  *     tags:
  *       - cart
@@ -116,17 +119,25 @@ router.get('/', authMiddleware,  getUserCartItems);
  *     description: delete cart item
  *     security:
  *       - BearerAuth: []
+ *     parameters:
+ *         - in: path
+ *           name: itemId
+ *           schema:
+ *             type: string
+ *           required: true
+ *           example: "123"
+ *           description: id of the item to delete
  *     responses:
  *       200:
  *         description: Successfully deleted
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/', authMiddleware, deleteCartItem)
+router.delete('/current/items/:itemId', authMiddleware, deleteCartItem)
 
 /**
  * @swagger
- * /api/cart/clear:
+ * /api/carts/current:
  *   delete:
  *     tags:
  *       - cart
@@ -140,7 +151,7 @@ router.delete('/', authMiddleware, deleteCartItem)
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/clear', authMiddleware,  clearCart);
+router.delete('/current', authMiddleware,  clearCart);
 
 module.exports = {
     cartRouter: router,

@@ -39,7 +39,7 @@ app.use('/api/categories/', categoriesRouter);
 app.use('/api/items/', itemsRouter);
 app.use('/api/filters/', filterRouter);
 app.use('/api/favourites/', favouriteRouter);
-app.use('/api/cart/', cartRouter);
+app.use('/api/carts/', cartRouter);
 app.use('/api/orders/', ordersRouter);
 
 

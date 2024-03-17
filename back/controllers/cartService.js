@@ -6,7 +6,8 @@ async function addToCart(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
         console.log(tokenPayload)
-        const {itemId, quantity} = req.body
+        const {quantity} = req.body
+        const {itemId} = req.params
         const existingCartItem = await CartItem.findOne({userId: tokenPayload.userId, itemId});
         const item = await Item.findById(itemId)
         if (existingCartItem) {
@@ -25,8 +26,6 @@ async function addToCart(req, res) {
         console.error(error);
         res.status(500).send('Internal server error')
     }
-
-
 }
 
 
@@ -55,7 +54,7 @@ async function removeOneFromCart(req, res) {
 async function deleteCartItem(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const {itemId} = req.body
+        const {itemId} = req.params
         const cartItem = await CartItem.findOneAndDelete({userId: tokenPayload.userId, itemId});
         res.send(
             cartItem
@@ -85,7 +84,7 @@ async function getUserCartItems(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
         const cartItems = await CartItem.find({userId: tokenPayload.userId}).exec();
-        res.send(cartItems);
+        res.send({items: cartItems});
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal server error');

@@ -16,7 +16,6 @@ const registerUser = async (req, res, next) => {
         birthdate: req.body.birthdate,
         patronymic: req.body.patronymic,
         gender: req.body.gender
-
     });
     console.log(user)
     // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -47,50 +46,48 @@ const loginUser = async (req, res) => {
     return res.status(400).json({message: 'Not authorized'});
 };
 
-const forgotPassword = async (req, res) => {
-
-    const user = await User.findOne({email: req.body.email});
-    console.log('user is this' + user)
-    if(user){
-        nodemailer.sendEmail({
-                auth: {
-                    user: "vladatss@outlook.com",
-                    pass: "sobakaenot123"
-                },
-                from: 'vladatss@outlook.com',
-                to: 'vladatsyupyak@gmail.com',
-                subject: 'Hey you, awesome!',
-                html: '<b>This is bold text</b>',
-                text: 'This is text version!',
-                replyTo: 'vladatsyupyak@gmail.com',
-                attachments: [],
-                onError: (e) => console.log(e),
-                onSuccess: (i) => console.log(i)
-            }
-        );
-        return res.json({
-            message: 'Success',
-        });
-    }
-    return res.status(400).json({
-        message: 'No user with such email',
-    })
-
-
-
-};
+// const forgotPassword = async (req, res) => {
+//
+//     const user = await User.findOne({email: req.body.email});
+//     console.log('user is this' + user)
+//     if(user){
+//         nodemailer.sendEmail({
+//                 auth: {
+//                     user: "vladatss@outlook.com",
+//                     pass: "sobakaenot123"
+//                 },
+//                 from: 'vladatss@outlook.com',
+//                 to: 'vladatsyupyak@gmail.com',
+//                 subject: 'Hey you, awesome!',
+//                 html: '<b>This is bold text</b>',
+//                 text: 'This is text version!',
+//                 replyTo: 'vladatsyupyak@gmail.com',
+//                 attachments: [],
+//                 onError: (e) => console.log(e),
+//                 onSuccess: (i) => console.log(i)
+//             }
+//         );
+//         return res.json({
+//             message: 'Success',
+//         });
+//     }
+//     return res.status(400).json({
+//         message: 'No user with such email',
+//     })
+//
+//
+//
+// };
 
 
 
 function getTokenPayload(req) {
     const { authorization } = req.headers;
     const [, token] = authorization.split(' ');
-    // const tokenPayload = jwt.verify(token, process.env.SECRET_KEY);
     return jwt.verify(token, "secret");
 }
 
 const getUserProfile = async (req, res) => {
-    console.log(7)
     const tokenPayload = getTokenPayload(req);
     const user = await User.findById(tokenPayload.userId);
     return res.status(200).send({
@@ -101,9 +98,10 @@ const deleteUserProfile = async (req, res) => {
     const tokenPayload = getTokenPayload(req);
     const user = await User.findOneAndDelete({ email: tokenPayload.email });
     return res.status(200).send({
-        message: `success delete ${user}`,
+        message: `successfully deleted ${user}`,
     });
 };
+
 const changeUserPassword = async (req, res) => {
     const tokenPayload = getTokenPayload(req);
     const user = await User.findOne({ email: tokenPayload.email });
@@ -124,6 +122,7 @@ const changeUserPassword = async (req, res) => {
     }
     res.send({ message: 'Success' });
 };
+
 const editUserProfile = async (req, res) => {
     let newData = req.body
     const tokenPayload = getTokenPayload(req);
@@ -135,13 +134,12 @@ const editUserProfile = async (req, res) => {
     }
     const changedData = await User.findByIdAndUpdate(user._id,newData )
 
-
     res.send({ message: 'Success' });
 };
 module.exports = {
     loginUser,
     registerUser,
-    forgotPassword,
+    // forgotPassword,
     getUserProfile,
     deleteUserProfile,
     changeUserPassword,

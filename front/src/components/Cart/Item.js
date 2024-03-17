@@ -29,11 +29,11 @@ export const Item = ({cartItem, user}) => {
     return <div className={s.cart_item_wrap}>
         <div className={s.close} onClick={onDeleteClick}><GlobalSvgSelector id={"cross"}/></div>
         <div className={s.image}>
-            <img src={cartItem.item.imgUrl} alt=""/>
+            <img src={cartItem?.item?.imgUrl} alt=""/>
         </div>
         <div className={s.responsive_wrap1}>
             <div className={s.title}>
-                <p className={s.title}>{cartItem.item.title}</p>
+                <p className={s.title}>{cartItem.item?.title}</p>
             </div>
             <p className={s.price}>{cartItem?.item?.price.toFixed(2)}<span> грн</span></p>
         </div>
@@ -44,7 +44,7 @@ export const Item = ({cartItem, user}) => {
                 <p className={s.quantity}>{cartItem.quantity}</p>
                 <p onClick={onPlusClick} className={s.change_quantity}>+</p>
             </div>
-            <p className={s.item_total}>{(cartItem?.quantity * cartItem?.item.price).toFixed(2)} грн</p>
+            <p className={s.item_total}>{(cartItem?.quantity * cartItem?.item?.price).toFixed(2)} грн</p>
         </div>
     </div>
 }

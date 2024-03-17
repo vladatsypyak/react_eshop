@@ -5,8 +5,9 @@ const fetchCartItems = async () => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    const {data} = await instance.get(`http://localhost:8080/api/cart/`);
-    return data;
+    const {data} = await instance.get(`http://localhost:8080/api/carts/current/items/`);
+    console.log(data)
+    return data.items;
 };
 
 const fetchUserOrders = async () => {
@@ -21,7 +22,7 @@ export const putToCart = createAsyncThunk('items/putToCart', async (params) => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.post(`http://localhost:8080/api/cart`, params)
+    await instance.post(`http://localhost:8080/api/carts/current/items/${params.itemId}`, {quantity: params.quantity})
     return await fetchCartItems()
 })
 export const createOrder = createAsyncThunk('items/createOrder', async (params) => {
@@ -29,7 +30,7 @@ export const createOrder = createAsyncThunk('items/createOrder', async (params) 
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
     await instance.post(`http://localhost:8080/api/orders/`, params)
-    await instance.delete(`http://localhost:8080/api/cart/clear/`)
+    await instance.delete(`http://localhost:8080/api/carts/current/`)
 
 })
 
@@ -52,7 +53,8 @@ export const deleteCartItem = createAsyncThunk('items/deleteCartItem', async (pa
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.delete(`http://localhost:8080/api/cart`, {data: params})
+    console.log(params)
+    await instance.delete(`http://localhost:8080/api/carts/current/items/${params.itemId}`)
     return await fetchCartItems()
 
 })
@@ -87,6 +89,7 @@ export const cartSlice = createSlice({
             state.items = action.payload
         });
         builder.addCase(getAllCartItems.fulfilled, (state, action) => {
+            console.log(action.payload)
             state.items = action.payload
         });
         builder.addCase(removeOneFromCart.fulfilled, (state, action) => {
