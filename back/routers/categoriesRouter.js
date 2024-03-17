@@ -47,9 +47,9 @@ router.get('/:type', getCategoryByType);
  * @swagger
  * /api/categories/{category}/filters:
  *   get:
- *       summary: Get available category filters
+ *       summary: Get available filters of a category
  *       tags:
- *         - categories
+ *         - filters
  *       responses:
  *          200:
  *           description: filters array
@@ -69,9 +69,9 @@ router.get('/:category/filters', getCategoryFilters); //categories/categoryID/fi
  * @swagger
  * /api/categories/{category}/filters/{filter}:
  *   get:
- *       summary: Get available filter values
+ *       summary: Get available values of a filter
  *       tags:
- *         - categories
+ *         - filters
  *       responses:
  *          200:
  *           description: filter values array

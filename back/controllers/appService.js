@@ -157,7 +157,7 @@ async function getPriceRange(req, res) {
 async function addToFavourite(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const { itemId } = req.body;
+        const { itemId } = req.params;
         const favourite = new Favourite({ userId: tokenPayload.userId, itemId });
         await favourite.save();
         res.send({ message: "Added to favorites" });
@@ -183,7 +183,7 @@ async function getUserFavourites(req, res) {
 async function deleteFavourite(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const { itemId } = req.body;
+        const { itemId } = req.params;
         const favourite = await Favourite.findOneAndDelete({ userId: tokenPayload.userId, itemId });
 
         if (!favourite) {

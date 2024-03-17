@@ -8,7 +8,7 @@ const router = express.Router();
 /**
  * @swagger
  * paths:
- *   /api/favourites:
+ *   /api/favourites/{itemId}:
  *     post:
  *       tags:
  *         - favourites
@@ -21,17 +21,11 @@ const router = express.Router();
  *       produces:
  *         - application/json
  *       parameters:
- *         - in: body
- *           name: body
- *           description: Request body containing item ID to be added to favourites
+ *         - in: path
+ *           name: itemId
+ *           description: ID of the item to add to favourites.
  *           required: true
- *           schema:
- *             type: object
- *             properties:
- *               itemId:
- *                 type: integer
- *                 description: ID of the item to add to favourites.
- *                 example: 123
+ *           example: 123
  *       responses:
  *         200:
  *           description: Successfully added to favourites
@@ -39,7 +33,8 @@ const router = express.Router();
  *           description: Unauthorized. User is not authenticated.*/
 
 
-router.post('/', authMiddleware, addToFavourite);
+router.post('/:itemId', authMiddleware, addToFavourite);
+
 /**
  * @swagger
  * /api/favourites:
@@ -65,12 +60,18 @@ router.get('/', authMiddleware, getUserFavourites);
 
 /**
  * @swagger
- * /api/favourites:
+ * /api/favourites/{itemId}:
  *   delete:
  *     tags:
  *       - favourites
  *     summary: delete user favourite
  *     description: delete user favourite
+ *     parameters:
+ *        - in: path
+ *          name: itemId
+ *          description: ID of the item to add to favourites.
+ *          required: true
+ *          example: 123
  *     security:
  *       - BearerAuth: []
  *     responses:
@@ -79,7 +80,7 @@ router.get('/', authMiddleware, getUserFavourites);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/', authMiddleware, deleteFavourite);
+router.delete('/:itemId', authMiddleware, deleteFavourite);
 
 module.exports = {
     favouriteRouter: router,
