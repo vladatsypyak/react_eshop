@@ -34,7 +34,7 @@ app.use(morgan('tiny'));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
-app.use('/api/user/', usersRouter);
+app.use('/api/users/', usersRouter);
 app.use('/api/categories/', categoriesRouter);
 app.use('/api/items/', itemsRouter);
 app.use('/api/filters/', filterRouter);

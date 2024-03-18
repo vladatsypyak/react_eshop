@@ -16,7 +16,7 @@ const {authMiddleware} = require('../middleware/authMiddleware');
 /**
  * @swagger
  * paths:
- *   /api/user/auth/register:
+ *   /api/users/auth/register:
  *     post:
  *       tags:
  *         - user
@@ -55,7 +55,7 @@ router.post('/auth/register', registerUser);
 /**
  * @swagger
  * paths:
- *   /api/user/auth/login:
+ *   /api/users/auth/login:
  *     post:
  *       tags:
  *         - user
@@ -90,12 +90,12 @@ router.post('/auth/login', loginUser);
 /**
  * @swagger
  * paths:
- *   /api/user/auth/login:
+ *   /api/users/auth/login:
  *     post:
  *       tags:
  *         - user
- *       summary: sign up
- *       description: Create a new user
+ *       summary: sign in
+ *       description: user logs in
  *       consumes:
  *         - application/json
  *       produces:
@@ -124,7 +124,7 @@ router.post('/auth/login', loginUser);
 
 /**
  * @swagger
- * /api/user/me:
+ * /api/users/current:
  *   get:
  *     tags:
  *       - user
@@ -143,11 +143,11 @@ router.post('/auth/login', loginUser);
  *         description: Unauthorized. User is not authenticated.
  */
 
-router.get('/me', authMiddleware, getUserProfile);
+router.get('/', authMiddleware, getUserProfile);
 
 /**
  * @swagger
- * /api/user/me:
+ * /api/users/current:
  *   delete:
  *     tags:
  *       - user
@@ -161,12 +161,12 @@ router.get('/me', authMiddleware, getUserProfile);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/me', authMiddleware, deleteUserProfile);
+router.delete('/', authMiddleware, deleteUserProfile);
 
 /**
  * @swagger
  * paths:
- *   /api/user/me/password:
+ *   /api/users/current/password:
  *     patch:
  *       tags:
  *         - user
@@ -198,12 +198,12 @@ router.delete('/me', authMiddleware, deleteUserProfile);
  *         400:
  *           description: not authorized.*/
 
-router.patch('/me/password', authMiddleware, changeUserPassword);
+router.patch('/users/current/password', authMiddleware, changeUserPassword);
 
 /**
  * @swagger
  * paths:
- *   /api/user/me/edit:
+ *   /api/users/current:
  *     patch:
  *       tags:
  *         - user
@@ -230,7 +230,7 @@ router.patch('/me/password', authMiddleware, changeUserPassword);
  *           description: successfully changed
  *         400:
  *           description: not authorized.*/
-router.patch('/me/edit', authMiddleware, editUserProfile);
+router.patch('/current', authMiddleware, editUserProfile);
 
 
 module.exports = {
