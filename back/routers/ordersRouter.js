@@ -70,14 +70,19 @@ router.get('/', authMiddleware, getUserOrders);
 
 
 
+router.delete('/:orderId', authMiddleware, deleteUserOrder)
 /**
  * @swagger
- * /api/orders:
+ * /api/orders/{orderId}:
  *   delete:
  *     tags:
  *       - orders
  *     summary: delete user order
  *     description: delete user order
+ *     parameters:
+ *       - in: path
+ *         name: orderId
+ *         description: id of the order to delete
  *     security:
  *       - BearerAuth: []
  *     responses:
@@ -86,7 +91,6 @@ router.get('/', authMiddleware, getUserOrders);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/', authMiddleware, deleteUserOrder)
 
 
 module.exports = {

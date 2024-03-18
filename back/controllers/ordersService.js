@@ -30,7 +30,7 @@ async function getUserOrders(req, res) {
 }
 async function deleteUserOrder(req, res) {
     try {
-        const { orderId } = req.body;
+        const { orderId } = req.params;
         const order = await Order.findByIdAndDelete(orderId);
         if (!order) {
             return res.status(404).send({ message: "order not found" });
