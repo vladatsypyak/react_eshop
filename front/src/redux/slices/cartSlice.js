@@ -41,7 +41,7 @@ export const removeOneFromCart = createAsyncThunk('items/removeOneFromCart', asy
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    await instance.post(`http://localhost:8080/api/cart/remove`, params)
+    await instance.patch(`http://localhost:8080/api/carts/current/items/${params.itemId}`)
     return await fetchCartItems()
 })
 

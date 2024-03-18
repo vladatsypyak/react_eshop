@@ -55,8 +55,8 @@ router.post('/current/items/:itemId', authMiddleware, addToCart);
 /**
  * @swagger
  * paths:
- *   /api/carts/current/remove:
- *     post:
+ *   /api/carts/current/items/{itemId}:
+ *     patch:
  *       tags:
  *         - cart
  *       summary: Remove one item from cart
@@ -68,24 +68,17 @@ router.post('/current/items/:itemId', authMiddleware, addToCart);
  *       produces:
  *         - application/json
  *       parameters:
- *         - in: body
- *           name: body
- *           description: Request body containing item ID to be removed from cart
- *           required: true
- *           schema:
- *             type: object
- *             properties:
- *               itemId:
- *                 type: integer
- *                 description: ID of the item to remove from cart.
- *                 example: 123
+ *         - in: path
+ *           name: itemId
+ *           description: item ID to be removed from cart
+ *           example: 123
  *       responses:
  *         200:
  *           description: Successfully removed from cart
  *         401:
  *           description: Unauthorized. User is not authenticated.*/
 
-router.post('/remove', authMiddleware,  removeOneFromCart);
+router.patch('/current/items/:itemId', authMiddleware,  removeOneFromCart);
 
 /**
  * @swagger

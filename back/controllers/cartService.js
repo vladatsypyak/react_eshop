@@ -32,7 +32,7 @@ async function addToCart(req, res) {
 async function removeOneFromCart(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const {itemId} = req.body
+        const {itemId} = req.params
         const cartItem = await CartItem.findOne({userId: tokenPayload.userId, itemId});
         const item = await Item.findById(itemId)
         const quantity = cartItem.quantity
