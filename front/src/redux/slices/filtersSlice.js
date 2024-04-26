@@ -27,9 +27,7 @@ const initialState = {
         sortProperty: "date"
     },
     priceRange: [0, Infinity],
-    maxAndMin: [0, Infinity]
-
-
+    // maxAndMin: [0, Infinity]
 }
 
 export const filtersSlice = createSlice({

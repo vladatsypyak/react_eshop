@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Slider from "@mui/material/Slider";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -16,47 +16,63 @@ function PriceRange() {
     const category = useSelector(state => state.categories.currentCategory.type)
     const dispatch = useDispatch()
     const priceRange = useSelector(state => state.filters.priceRange)
-    const maxAndMin = useSelector(state => state.filters.maxAndMin)
+    const maxAndMin = useSelector(state => state.items.maxAndMin)
     const currentChosenFilters = useSelector(state => state.filters.chosenFilters)
     const sortBy = useSelector(state => state.filters.sortBy)
-
+    const fetched = useSelector(state => state.items.fetched)
+    const [firstRender , setFirstRender] = useState(false)
+    const [testPriceRange, setTestPriceRange] = useState([1,9])
     const handleChanges = debounce((event, newValue) => {
         if (Array.isArray(newValue) && newValue.length === 2) {
             dispatch(setPriceRange(newValue));
         }
     }, 200);
+    console.log(testPriceRange)
+    console.log(maxAndMin)
+    console.log(firstRender)
 
-    React.useEffect(() => {
-        dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {
-            name: "sortBy",
-            value: sortBy.sortProperty
-        }]))
-    }, [category, currentChosenFilters])
 
+    // React.useEffect(() => {
+    //     dispatch(fetchMaxMin([...currentChosenFilters, {name: "category", value: category}, {
+    //         name: "sortBy",
+    //         value: sortBy.sortProperty
+    //     }]))
+    // }, [category, currentChosenFilters])
+    //
+    // React.useEffect(() => {
+    //     dispatch(setPriceRange(maxAndMin))
+    // }, [maxAndMin])
     React.useEffect(() => {
-        dispatch(setPriceRange(maxAndMin))
-    }, [maxAndMin])
+        setTestPriceRange(priceRange)
+    }, [priceRange])
+    React.useEffect(() => {
+        setFirstRender(true)
+    }, [category])
+    React.useEffect(() => {
+        setTestPriceRange(maxAndMin)
+    }, [category])
 
 
     function onMinInputChange(e) {
-        if(!Number(e.target.value)){
+        if (!Number(e.target.value)) {
             return
         }
-        if(e.target.value > maxAndMin[1]){
+        if (e.target.value > maxAndMin[1]) {
             dispatch(setPriceRange([maxAndMin[1], priceRange[1]]))
-        } else{
+        } else {
             dispatch(setPriceRange([e.target.value, priceRange[1]]))
 
         }
     }
+
     function onMaxInputChange(e) {
-        if(!Number(e.target.value)){
+        if (!Number(e.target.value)) {
             return
         }
-        if(String(e.target.value).length === String(maxAndMin[0]).length && e.target.value < maxAndMin[0]){
-            dispatch(setPriceRange([priceRange[0], maxAndMin[0]] ))
-        } else{
-            dispatch(setPriceRange([ priceRange[0], e.target.value]))
+        if (String(e.target.value).length === String(maxAndMin[0]).length && e.target.value < maxAndMin[0]) {
+            dispatch(setPriceRange([priceRange[0], maxAndMin[0]]))
+        } else {
+            dispatch(setPriceRange([priceRange[0], e.target.value]))
         }
     }
 
@@ -66,10 +82,10 @@ function PriceRange() {
             <Slider
                 min={maxAndMin[0]}
                 max={maxAndMin[1]}
-                value={priceRange} onChange={handleChanges} valueLabelDisplay="auto"/>
+                value={testPriceRange} onChange={handleChanges} valueLabelDisplay="auto"/>
             <div className={s.values}>
-                <input onChange={(e) => onMinInputChange(e)} value={priceRange[0]}/> -
-                <input onChange={(e) => onMaxInputChange(e)} value={priceRange[1]}/>
+                <input onChange={(e) => onMinInputChange(e)} value={testPriceRange[0]}/> -
+                <input onChange={(e) => onMaxInputChange(e)} value={testPriceRange[1]}/>
             </div>
         </div>
     );

@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
+import {useDispatch} from "react-redux";
+
 
 export function buildURL(arr, baseUrl) {
     const queryParams = arr
@@ -18,6 +20,7 @@ const fetchItemsCall = async (params) => {
 };
 export const fetchItems = createAsyncThunk('items/fetchItems', async (params) => {
     console.log(params)
+
     return await fetchItemsCall(params)
 })
 const fetchFavourites = async () => {
@@ -62,7 +65,9 @@ const initialState = {
     catalogueItems: [],
     pageCount: 0,
     page: 1,
-    fetched: false
+    fetched: false,
+    maxAndMin: [0, Infinity]
+
 }
 
 export const itemsSlice = createSlice({
@@ -87,6 +92,7 @@ export const itemsSlice = createSlice({
                 }
             }
             state.fetched = true
+            state.maxAndMin = action.payload.priceRange
             state.pageCount = action.payload.pagination?.pageCount
         });
         builder.addCase(searchItems.fulfilled, (state, action) => {
