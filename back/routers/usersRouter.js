@@ -143,7 +143,7 @@ router.post('/auth/login', loginUser);
  *         description: Unauthorized. User is not authenticated.
  */
 
-router.get('/', authMiddleware, getUserProfile);
+router.get('/current', authMiddleware, getUserProfile);
 
 /**
  * @swagger
@@ -161,7 +161,7 @@ router.get('/', authMiddleware, getUserProfile);
  *       401:
  *         description: Unauthorized. User is not authenticated.
  */
-router.delete('/', authMiddleware, deleteUserProfile);
+router.delete('/current', authMiddleware, deleteUserProfile);
 
 /**
  * @swagger
