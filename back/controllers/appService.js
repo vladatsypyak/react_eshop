@@ -46,7 +46,7 @@ async function getFilterValues(req, res) {
             let foundFilter = obj?.characteristics?.find((el) => el.name === filter);
             return foundFilter && foundFilter.value;
         });
-        let uniqueFilterValues = [...new Set(filterValues.filter(el => el))];
+        let uniqueFilterValues =  [...new Set(filterValues.filter(el => el))];
         res.send(uniqueFilterValues);
     } catch (error) {
         console.error("Error in getFilterValues:", error);
@@ -95,6 +95,7 @@ async function getFilterQuery(req) {
             ...query,
             category ? {"category": category} : null,
             title ? {"title": {$regex: title, $options: "i"}} : null,
+            {"price": {$lte: priceMax, $gte: priceMin}},
         ].filter(Boolean)
     };
 }
@@ -102,25 +103,14 @@ async function getFilterQuery(req) {
 async function getFilteredItems(req, res) {
 
     try {
-        const {priceMax = Infinity, priceMin = 0} = req.query;
         const {sortBy, page = 1, itemsPerPage = 4} = req.query;
         const sortProperty = sortBy?.replace("DESC", "");
         const sortOrder = sortBy?.includes("DESC") ? -1 : 1;
         const skip = (page - 1) * itemsPerPage;
         const filterCriteria = await getFilterQuery(req);
-        let priceRange
-        let filteredItems = await Item.find(filterCriteria);
-        if (filteredItems.length !== 0) {
-            let priceArr = filteredItems.map(el => el.price)
-            priceRange = [Math.min(...priceArr), Math.max(...priceArr)]
-        } else {
-            priceRange = [0, 0]
-        }
-        const countPromise = Item.countDocuments(filterCriteria);
-        const itemsPromise = Item.find({
-            $and: [filterCriteria, {"price": {$lte: priceMax, $gte: priceMin}}]
 
-        })
+        const countPromise = Item.countDocuments(filterCriteria);
+        const itemsPromise = Item.find(filterCriteria)
             .limit(itemsPerPage)
             .skip(skip)
             .sort({[sortProperty]: sortOrder});
@@ -134,7 +124,6 @@ async function getFilteredItems(req, res) {
             res.send({
                 pagination: {count, pageCount},
                 items,
-                priceRange: priceRange
             });
         }
     } catch (error) {
@@ -148,12 +137,9 @@ async function getFilteredItems(req, res) {
 async function getPriceRange(req, res) {
     try {
         const filterCriteria = await getFilterQuery(req);
-        console.log(filterCriteria)
         let filteredItems = await Item.find(filterCriteria);
         if (filteredItems.length !== 0) {
             let priceArr = filteredItems.map(el => el.price)
-            console.log([Math.min(...priceArr), Math.max(...priceArr)])
-
             res.send(
                 [Math.min(...priceArr), Math.max(...priceArr)]
             )
@@ -171,13 +157,13 @@ async function getPriceRange(req, res) {
 async function addToFavourite(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const {itemId} = req.params;
-        const favourite = new Favourite({userId: tokenPayload.userId, itemId});
+        const { itemId } = req.params;
+        const favourite = new Favourite({ userId: tokenPayload.userId, itemId });
         await favourite.save();
-        res.send({message: "Added to favorites"});
+        res.send({ message: "Added to favorites" });
     } catch (error) {
         console.error("Error in addToFavourite:", error);
-        res.status(500).send({message: "Internal Server Error"});
+        res.status(500).send({ message: "Internal Server Error" });
     }
 }
 
@@ -197,35 +183,36 @@ async function getUserFavourites(req, res) {
 async function deleteFavourite(req, res) {
     try {
         const tokenPayload = getTokenPayload(req);
-        const {itemId} = req.params;
-        const favourite = await Favourite.findOneAndDelete({userId: tokenPayload.userId, itemId});
+        const { itemId } = req.params;
+        const favourite = await Favourite.findOneAndDelete({ userId: tokenPayload.userId, itemId });
 
         if (!favourite) {
-            return res.status(404).send({message: "Favourite not found"});
+            return res.status(404).send({ message: "Favourite not found" });
         }
 
         res.send(favourite);
     } catch (error) {
         console.error("Error in deleteFavourite:", error);
-        res.status(500).send({message: "Internal Server Error"});
+        res.status(500).send({ message: "Internal Server Error" });
     }
 }
 
 async function getItemById(req, res) {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const item = await Item.findById(id);
 
         if (!item) {
-            return res.status(404).send({message: "Item not found"});
+            return res.status(404).send({ message: "Item not found" });
         }
 
         res.send(item);
     } catch (error) {
         console.error("Error in getItemById:", error);
-        res.status(500).send({message: "Internal Server Error"});
+        res.status(500).send({ message: "Internal Server Error" });
     }
 }
+
 
 
 module.exports = {
