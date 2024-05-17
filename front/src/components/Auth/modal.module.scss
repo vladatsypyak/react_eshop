@@ -1,4 +1,4 @@
-
+@import "../../variables.module";
 .overlay div{
   top: 0;
   z-index: 4;
@@ -7,7 +7,7 @@
 .modal_wrap {
   position: fixed;
   z-index: 4;
-  background-color: #fff;
+  background-color: $white;
   padding: 15px 30px;
   border-radius: 10px;
   top: 50%;

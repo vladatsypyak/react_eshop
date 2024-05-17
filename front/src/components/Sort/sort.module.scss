@@ -1,44 +1,55 @@
-.sort{
-//width: 150px;
+@import "../../variables.module";
+
+.sort {
+  user-select: none;
 
 }
-.sort__label{
-  background: #FFFFFF;
-  border: 1px solid #BDC8FF;
+
+.sort__label {
+  background: $white;
+  border: 1px solid $light_green;
   border-radius: 5px;
   padding: 10px;
-  color: #45485A;
+  color: $text_dark;
   min-width: 200px;
   text-align: center;
   display: flex;
   align-items: center;
-justify-content: space-between;
+  justify-content: space-between;
   gap: 10px;
   margin-bottom: 3px;
-  &:hover{
-    border: 1px solid #727cb3;
+
+  &:hover {
+    border: 1px solid $primary_green;
     cursor: pointer;
   }
-  svg{
+
+  svg {
     width: 20px;
-    path{
-      fill: #bcc6fe;
+
+    path {
+      fill: $light_green;
     }
   }
 }
-.sort_popup li{
-  background: rgba(237, 239, 253, 0.36);
+.sort_popup ul{
+  padding: 0;
+}
+.sort_popup li {
+  background: $bg_green;
+
   border-radius: 5px;
   text-align: center;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid $white;
   padding: 10px;
 
-  &:hover{
-    border: 1px solid #727cb3;
+  &:hover {
+    border: 1px solid $primary_green;
     cursor: pointer;
   }
 
 }
+
 .sort_popup .active {
   font-weight: bold;
 }

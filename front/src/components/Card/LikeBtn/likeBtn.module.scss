@@ -1,3 +1,4 @@
+@import "../../../variables.module";
 .like {
   display: flex;
   align-items: center;
@@ -8,7 +9,7 @@
     cursor: pointer;
 
     p {
-      color: #707070;
+      color: $grey;
       font-size: 17px;
     }
 
@@ -19,8 +20,7 @@
 
     svg path {
       stroke-width: 1.3;
-
-      stroke: #b91111;
+      stroke: $red;
 
     }
   }
@@ -33,7 +33,7 @@
 
   svg path {
     stroke-width: 1;
-    stroke: #767676;
+    stroke: $grey;
   }
 
 
@@ -45,7 +45,7 @@
   }
 
   svg {
-    fill: #cf1a1b;
+    fill: $red;
   }
 }
 

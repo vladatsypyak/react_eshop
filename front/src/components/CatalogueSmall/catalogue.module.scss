@@ -1,3 +1,4 @@
+@import "../../variables.module";
 .catalogue_item {
   width: 120px;
   flex-wrap: wrap;
@@ -21,7 +22,7 @@
   &:hover {
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px lightgrey;
+    box-shadow: 2px 2px 5px $light_grey;
   }
 }
 .catalogue_items{
@@ -32,6 +33,4 @@
   .catalogue_items{
     display: none;
   }
-
-
 }

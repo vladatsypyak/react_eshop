@@ -1,6 +1,7 @@
+@import "../../variables.module";
 .header {
-  background: #FFF;
-  box-shadow: 0px 0px 16.8px 0px #8CC59C;
+  background: $white;
+  box-shadow: 0 0 16.8px 0 $primary_green;
   user-select: none;
   position: relative;
   top: 0;
@@ -8,30 +9,27 @@
   width: 100%;
   z-index: 3;
 
-  .catalogueBtn {
+  .catalogue_btn {
     margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 20px;
     border-radius: 10px;
-    border: 2px solid #8CC59C;
-    background: #8CC59C;
+    background: $primary_green;
     padding: 10px;
 
     &:hover {
       cursor: pointer;
-      background-color: rgba(216, 217, 231, 0.56);
-      border: 1px solid rgba(216, 217, 231, 0.56);
+      background-color: $light_green;
+      transition:0.2s;
     }
-  }
-
-
-  .catalogue_text {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
-    color: #FFFFFF;
-    margin: 0;
+    &_text {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      color: $white;
+      margin: 0;
+    }
   }
 
   .header_container, .collapse {
@@ -68,9 +66,6 @@
     align-items: center;
     justify-content: space-around;
     margin-left: auto;
-    //width: 150px;
-    //width: 20vw;
-    //width: 15%;
     gap: 10px;
 
     .icon {
@@ -83,14 +78,8 @@
 
       &:hover {
         cursor: pointer;
-        background-color: rgba(216, 217, 231, 0.56);
+        background-color: $light_green;
       }
-
-      //
-      //img {
-      //  width: 35px;
-      //  height: 40px;
-      //}
 
       svg {
         width: 35px;
@@ -98,9 +87,8 @@
         object-fit: cover;
 
         path {
-          stroke: #000000;
+          stroke: $black;
           stroke-width: 3;
-
         }
       }
     }
@@ -108,7 +96,7 @@
     .user_icon {
       svg {
         path {
-          fill: #000000;
+          fill: $black;
           stroke-width: 5;
         }
       }
@@ -120,9 +108,9 @@
         height: 45px;
 
         path {
-          fill: #8CC59C;
+          fill: $primary_green;
           stroke-width: 5;
-          stroke: #8CC59C;
+          stroke: $primary_green;
         }
       }
     }
@@ -135,9 +123,7 @@
         height: 28px;
 
         path {
-          //fill: #8CC59C;
           stroke-width: 2.5;
-          //stroke: #8CC59C;
         }
       }
     }
@@ -180,14 +166,13 @@
 
     svg {
       rect {
-        fill: #272929;
+        fill: $black;
       }
     }
 
     p {
       padding-bottom: 10px;
-      border-bottom: 1px solid #c0c0c0;
-
+      border-bottom: 1px solid $grey;
     }
   }
 
@@ -215,7 +200,7 @@
   //top: 115px;
   top: 115px;
   left: 0;
-  background-color: rgba(29, 29, 29, 0.8);
+  background-color: $dark_grey;
   z-index: 2;
 
 }

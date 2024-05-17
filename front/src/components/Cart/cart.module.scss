@@ -1,7 +1,8 @@
+@import "../../variables.module";
 .cart_item_wrap {
   max-width: 1200px;
   margin: 0 auto 50px auto;
-  border-bottom: 1px solid #BDC8FF;
+  border-bottom: 1px solid $light_green;
   padding: 30px;
   display: flex;
   align-items: center;
@@ -37,12 +38,12 @@
       font-style: normal;
       font-weight: 400;
       font-size: 36px;
-      color: #B8B8B8;
+      color: $light_grey;
 
       &:hover {
-        text-shadow: 5px 2px 5px #e4e4e4;
+        text-shadow: 5px 2px 5px $light_grey;
         cursor: pointer;
-        color: #727cb3;
+        color: $grey;
       }
 
     }
@@ -53,7 +54,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 44px;
-    color: #4D516A;
+    color: $text_dark;
   }
 
   .price {
@@ -109,14 +110,14 @@
       font-size: 30px;
       line-height: 48px;
 
-      color: #000000;
+      color: $black;
     }
 
     .total {
       font-size: 30px;
       line-height: 48px;
 
-      color: #7283E1;
+      color: $text_dark;
       font-weight: bold;
     }
   }
@@ -124,9 +125,9 @@
   .cart_btn {
     font-weight: 400;
     font-size: 18px;
-    background: #8bc39c;
+    background: $primary_green;
     border-radius: 10px;
-    color: #FFFFFF;
+    color: $white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -135,7 +136,7 @@
     user-select: none;
 
     svg path {
-      fill: #fff;
+      fill: $white;
     }
 
     svg {
@@ -143,8 +144,9 @@
     }
 
     &:hover {
-      background-color: #3da472;
+      background-color: $light_green;
       cursor: pointer;
+      transition: 0.2s;
     }
   }
 }

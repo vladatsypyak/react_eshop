@@ -1,6 +1,6 @@
-
+@import "../../variables.module";
 .order_item_wrap {
-  background-color: #FBFBFB;
+  background-color: $white;
   border-radius: 10px;
   margin-bottom: 20px;
   font-size: 18px;
@@ -13,7 +13,7 @@
     border-radius: 10px;
 
     &:hover {
-      outline: 1px solid #c5cbf0;
+      outline: 1px solid $light_green;
       cursor: pointer;
     }
   }
@@ -42,13 +42,13 @@
     border-radius: 50%;
     width: 15px;
     height: 15px;
-    background-color: orange;
+    background-color: $orange;
   }
 
   .status {
     display: flex;
     gap: 15px;
-    color: orange;
+    color: $orange;
     align-items: center;
 
   }
@@ -63,7 +63,7 @@
 }
 
 .details {
-  border-top: 1px solid #b0b0e4;
+  border-top: 1px solid $light_green;
   padding: 20px 0;
 
 
@@ -73,7 +73,7 @@
     margin-bottom: 15px;
 
     &:hover {
-      color: #727cb3;
+      color: $primary_green;
     }
   }
 }

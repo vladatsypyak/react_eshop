@@ -1,4 +1,4 @@
-
+@import "../../../variables.module";
 
 .flex_wrap {
   width: 100%;
@@ -12,7 +12,7 @@
   transform: translateX(-50%);
   margin-right: 30px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: $white;
   z-index: 3;
   top: 120px;
 overflow-x: hidden;
@@ -22,7 +22,7 @@ overflow-x: hidden;
 }
 
 .categories_wrap {
-  border-right: 1px solid grey;
+  border-right: 1px solid $grey;
   padding-right: 30px;
 
   .category {
@@ -47,7 +47,7 @@ overflow-x: hidden;
 
       p {
         padding-bottom: 5px;
-        border-bottom: 1px solid #c0c0c0;
+        border-bottom: 1px solid $light_grey;
 
       }
     }
@@ -65,7 +65,7 @@ overflow-x: hidden;
 
 a {
   text-decoration: none;
-  color: black;
+  color: $black;
 }
 
 .title {
@@ -81,7 +81,6 @@ a {
 .item {
   display: flex;
   align-items: center;
-  //justify-content: space-between;
   gap: 15px;
   margin-bottom: 15px;
 
@@ -115,15 +114,15 @@ a {
 }
 
 .search_btn {
-  background: #ECECEC;
+  background: $white;
   padding: 10px;
   border-radius: 10px;
   width: 100%;
   font-size: 16px;
 
   &:hover {
-    background-color: grey;
-    color: white;
+    background-color: $grey;
+    color: $white;
     cursor: pointer;
   }
 }

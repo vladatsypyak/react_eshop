@@ -41,9 +41,9 @@ export const Header = () => {
                          </div>
                      </Link>
                  </div>
-                 <button ref={btnRef} onClick={onCatalogueBtnClick} className={s.catalogueBtn}>
+                 <button ref={btnRef} onClick={onCatalogueBtnClick} className={s.catalogue_btn}>
                      <GlobalSvgSelector id="catalogue_icon"/>
-                     <p className={s.catalogue_text}>Каталог</p>
+                     <p className={s.catalogue_btn_text}>Каталог</p>
                  </button>
              </div>
 

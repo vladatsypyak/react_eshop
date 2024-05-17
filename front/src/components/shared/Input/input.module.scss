@@ -1,13 +1,14 @@
+@import "../../../variables.module";
 .input_wrap{
   input{
     width: 300px;
   }
   p{
-    color: #61dafb;
+    color: $grey ;
   }
 
 }
 .text{
-  color: #61dafb;
+  color: $light_green;
 
 }

@@ -1,4 +1,4 @@
-
+@import "../../variables.module";
 .slider{
   user-select: none;
 }
@@ -36,11 +36,11 @@
     align-items: center;
     &:hover {
       svg path{
-        fill: #8bc39c;
+        fill: $primary_green;
       }
     }
     svg path{
-      fill: #d6eadd;
+      fill: $light_green;
     }
   }
 }
@@ -67,7 +67,7 @@
 .dot{
   width: 10px;
   height: 10px;
-  background-color: black;
+  background-color: $light_grey;
   border-radius: 50%;
 
   &:hover{
@@ -77,7 +77,7 @@
 
 }
 .active{
-  background-color: #746756;
+  background-color: $primary_green;
   scale: 1.2;
 
 

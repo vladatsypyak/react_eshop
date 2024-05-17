@@ -1,9 +1,8 @@
+@import "../../variables.module";
+
 .order_form_wrapper {
   margin: 5px auto;
-  padding: 15px;
-  //position: relative;
-  padding-bottom: 50px;
-
+  padding: 15px 15px 50px;
 
   h3 {
     margin: 10px 0;
@@ -18,7 +17,7 @@
 
   .section {
     width: 100%;
-    border: 1px solid #d5d5f2;
+    border: 1px solid $light_green;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
@@ -36,11 +35,10 @@
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid $light_grey;
     outline: none;
-    //background-color: rgba(238, 238, 238, 0.35);
     &:focus{
-      border: 2px solid #8bc39c;
+      border: 2px solid $light_green;
     }
   }
 
@@ -71,35 +69,31 @@
   }
 
   .submit {
-    background-color: #8bc39c;
-    color: white;
+    background-color: $primary_green;
+    color: $white;
     padding: 10px;
     border-radius: 5px;
     margin-top: 15px;
-    //position: absolute;
-    //right: 10px;
-    //bottom: 10px;
     font-size: 18px;
     user-select: none;
 
     &:hover {
-      background-color: #548866;
+      background-color: $light_green;
+      transition: 0.2s;
       cursor: pointer;
     }
-
   }
-
 }
 
 .select {
   font-size: 14px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $light_grey;
 
 }
 .focused{
-  border: 2px solid #7a8bed;
+  border: 2px solid $light_green;
   box-shadow: none;
 }
  .error, .phone_error input{
-  border: 1px solid #e24949 !important;
+  border: 1px solid $red !important;
 }

@@ -1,3 +1,5 @@
+
+@import "../../../variables.module";
 .ask_to_auth {
   //max-width: 280px;
   margin: 0 auto;
@@ -20,7 +22,7 @@
   img {
     display: block;
     width: 250px;
-    margin: 0px auto 10px;
+    margin: 0 auto 10px;
   }
   .lock_wrap{
     top: 20%;
@@ -30,7 +32,7 @@
   }
 
   span {
-    color: #84b693;
+    color: $primary_green;
     &:hover {
       cursor: pointer;
       text-decoration: underline;

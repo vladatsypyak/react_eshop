@@ -1,20 +1,21 @@
+@import "../../variables.module";
 .pagination{
   user-select: none;
   margin-top: auto;
   li:hover{
     cursor: pointer;
     a{
-      color: #7a8bed;
+      color: $primary_green;
     }
   }
   li a{
-    color: #7a8bed;
+    color: $grey;
   }
 .active a{
-  background-color: #7a8bed;
-  border: 1px rgba(122, 139, 237, 0.61) solid ;
+  background-color: $primary_green;
+  border: 1px solid $primary_green;
   &:hover{
-    color: white;
+    color: $white;
 
   }
 }

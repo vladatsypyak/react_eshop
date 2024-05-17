@@ -1,6 +1,7 @@
+@import "../../../variables.module";
 .quantity {
   position: absolute;
-  background-color: #f2d465;
+  background-color: $yellow;
   border-radius: 50%;
   width: 23px;
   height: 23px;
@@ -8,6 +9,6 @@
   right: -8px;
   font-size: 14px;
   text-align: center;
-  color: black;
+  color: $black;
   line-height: 23px;
 }

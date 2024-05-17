@@ -1,10 +1,11 @@
+@import "../../variables.module";
 .active{
   font-weight: bold;
 }
 .link{
   display: block;
   margin-bottom: 15px;
-  background-color: #fff;
+  background-color: $white;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -13,6 +14,6 @@
 width: 250px;
   justify-self: flex-start;
   padding: 15px;
-  background-color: #f4f6ff;
+  background-color: $white;
   height: 100vh;
 }

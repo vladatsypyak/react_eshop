@@ -1,6 +1,4 @@
-.input {
-
-}
+@import "../../../variables.module";
 
 .login {
   form {
@@ -11,8 +9,7 @@
       width: 300px;
       outline: none;
       border: none;
-      border-bottom: 1px solid #afafaf;
-      //box-shadow: 3px 3px 3px lightgrey;
+      border-bottom: 1px solid $light_green;
       padding: 10px;
       margin-bottom: 10px;
 
@@ -21,11 +18,11 @@
   .error {
     input {
 
-      border: 1px solid red;
+      border: 1px solid $red;
       border-radius: 5px;
     }
     .error_text{
-      color: red;
+      color: $red;
     }
   }
 
@@ -41,11 +38,12 @@
       margin-top: 15px;
       border: none;
       border-radius: 5px;
-      background-color: #a7b0e6;
-      color: white;
+      background-color: $primary_green ;
+      color: $white;
       font-size: 16px;
       &:hover{
-        background-color: #6b7ee0;
+        background-color: $light_green;
+        transition: 0.2s;
         cursor: pointer;
       }
     }
@@ -53,6 +51,7 @@
   }
   .close{
     margin-left: auto;
+    
     display: block;
     svg {
       &:hover{
@@ -68,9 +67,9 @@
     border-radius: 5px;
     padding: 8px;
     width: 100%;
-    color: #545454;
-    background-color: #ffffff;
-    box-shadow: 0 1px 2px 1px #ddd;
+    color: $text_dark;
+    background-color: $white;
+    box-shadow: 0 1px 2px 1px $light_grey;
     text-align: center;
     display: flex;
     align-items: center;
@@ -83,18 +82,18 @@
     }
     &:hover{
       cursor: pointer;
-      box-shadow: 0 2px 3px 2px #ddd;
+      box-shadow: 0 2px 3px 2px $light_green;
 
     }
   }
   .or_container {
     align-items: center;
-    color: #ccc;
+    color: $grey;
     display: flex;
     margin: 25px 0;
   }
   .line_separator {
-    background-color: #ccc;
+    background-color: $grey;
     flex-grow: 5;
     height: 1px;
   }
@@ -109,7 +108,7 @@
   margin-top: 10px;
   text-align: center;
   span{
-    color: #727cb3;
+    color: $primary_green;
     &:hover{
       //display: inline-block;
       //padding-bottom:4px ;

@@ -1,5 +1,7 @@
+@import "../../variables.module" ;
+
 .footer {
-  background-color: #558966;
+  background-color: $dark_bg_green;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -8,12 +10,12 @@
 .footer_container {
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: $white;
   gap: 15px;
   padding: 20px;
   flex-wrap: wrap;
   a{
-    color: white;
+    color: $white;
     &:hover{
       text-decoration: underline;
     }
