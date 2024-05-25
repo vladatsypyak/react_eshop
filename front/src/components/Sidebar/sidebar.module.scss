@@ -9,11 +9,12 @@
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  user-select: none;
 }
 .navbar{
 width: 250px;
   justify-self: flex-start;
   padding: 15px;
-  background-color: $white;
+  background-color: $bg_green;
   height: 100vh;
 }
