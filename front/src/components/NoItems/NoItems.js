@@ -6,7 +6,7 @@ import {Favourites} from "../Favourites/Favourites";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import cart from "../../assets/empty_cart.png"
-import heart from "../../assets/heart.png"
+import heart from "../../assets/heart-red.png"
 
 import s from "./NoItems.module.scss"
 
