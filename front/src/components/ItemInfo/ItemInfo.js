@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import s from "./itemInfo.module.scss"
 import star from "../../assets/star .png"
-import {LikeBtn} from "../Favourites/LikeBtn/LikeBtn";
+import {LikeBtn} from "../Card/LikeBtn/LikeBtn";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
 import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";

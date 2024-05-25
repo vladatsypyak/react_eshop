@@ -5,7 +5,7 @@ import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {deleteFavourite, fetchItems, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
 import {Card} from "../Card/Card"
-import s from "./items.module.scss"
+import s from "./favourites.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 
 export const Favourites = () => {

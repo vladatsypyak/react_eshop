@@ -18,7 +18,7 @@ export const NoItems = ({page}) => {
         case "cart" :
             text = "Ваша корзина наразі пуста";
             break
-        case  "favourite" :
+        case  "favourites" :
             text = "У вашому списку бажань немає товарів";
             break
         case "orders" :

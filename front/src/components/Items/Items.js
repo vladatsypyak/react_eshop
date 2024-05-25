@@ -4,8 +4,7 @@ import {deleteFavourite, fetchItems, getAllFavourites, putFavourite, setPage} fr
 import {Card} from "../Card/Card"
 import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
-import {Pagination} from "../Pagination/Pagination";
-import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
+
 
 export const Items = ({items}) => {
     const user = useSelector(state => state.user.user)
