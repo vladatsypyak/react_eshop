@@ -4,7 +4,7 @@ import axios from "axios";
 import s from "./orderForm.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {useForm, Controller} from "react-hook-form";
-import {useState, useMemo} from 'react'
+import {useState} from 'react'
 import {useRef} from "react";
 import PhoneInput from "react-phone-number-input";
 import {Outlet, NavLink} from "react-router-dom";
@@ -123,7 +123,7 @@ export const OrderForm = () => {
                 <h4 className={s.title}>Доставка</h4>
                 <div className={s.items_wrap}>
                     <div className={s.item}>
-                        <p className={s.text}>Введіть свій населений пункт :</p>
+                        <p className={s.text}>Введіть свій населений пункт:</p>
                         <input className={errors.city ? s.error : ''}
                                {...register("city",
                                    {
@@ -137,8 +137,8 @@ export const OrderForm = () => {
                                ref={inputRef}
                         />
                     </div>
-                    <div className={s.item}>
-                        <p className={s.text}>Введіть адрес відділення Нової пошти :</p>
+                    <div className={`${s.item} ${s.post}`}>
+                        <p className={s.text}>Введіть адрес відділення Нової пошти:</p>
 
                         <Controller
                             name="npWarehous"

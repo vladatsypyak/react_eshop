@@ -40,6 +40,11 @@
     &:focus{
       border: 2px solid $light_green;
     }
+    &:hover {
+      transition: 0.2s;
+      cursor: pointer;
+      border: 1px solid $grey;
+    }
   }
 
   .title {
@@ -86,8 +91,14 @@
 }
 
 .select {
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid $light_grey;
+  padding: 4px;
+  &:hover {
+    transition: 0.2s;
+    border: 1px solid $grey;
+    cursor: pointer;
+  }
 
 }
 .focused{
@@ -97,3 +108,4 @@
  .error, .phone_error input{
   border: 1px solid $red !important;
 }
+

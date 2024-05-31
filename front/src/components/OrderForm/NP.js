@@ -44,7 +44,7 @@ const NovaPoshtaOffices = ({onChange, city, error}) => {
     useEffect(() => {
         debouncedFetchOffices(str);
         return () => {
-            debouncedFetchOffices.cancel(); // Cleanup debounce on unmount
+            debouncedFetchOffices.cancel();
         };
     }, [str, city]);
     const baseStyles = error ? `${s.error} ${s.select} ` : s.select
