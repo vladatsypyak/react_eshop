@@ -62,21 +62,21 @@ export const Login = () => {
                            onChange={onPasswordChange}/>
                     {error && <p className={s.error_text}>Неправильний логін або пароль</p>}
                     <div className={s.submit}>
-                        <Input type={"submit"}/>
+                        <Input type={"submit"} value={"Підтвердити"}/>
 
                     </div>
                     <div className={s.google}>
                         <div className={s.or_container}>
                             <div className={s.line_separator}></div>
-                            <div className={s.or_label}>or</div>
+                            <div className={s.or_label}>або</div>
                             <div className={s.line_separator}></div>
                         </div>
 
                         <button onClick={googleAuth}>
                           <img src="https://img.icons8.com/color/16/000000/google-logo.png"/>
-                            Sign in with Google </button>
+                            Ввійти з Google </button>
                     </div>
-                    <p className={s.register_link}>Do not have an account? <span onClick={customNavigate}>Register</span>
+                    <p className={s.register_link}>Не маєте аккаунту? <span onClick={customNavigate}>Зареєструватися</span>
                     </p>
                 </form>
             </div>
