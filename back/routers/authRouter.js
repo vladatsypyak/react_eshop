@@ -49,7 +49,7 @@ router.get("/google/callback",
             failureRedirect: "/login/failed"
         }
     ))
-console.log("new version")
+
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("https://deft-boba-72d60a.netlify.app");
