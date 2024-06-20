@@ -28,8 +28,11 @@ function App() {
     const showSignup = useSelector(state => state.modal.showSignup)
     useEffect(() => {
         const token = sessionStorage.getItem("jwt_token")
+        console.log(token);
         if (token) {
-            dispatch(getUser(token))
+            let user = getUser(token);
+            console.log(user)
+            dispatch(user)
         }
         dispatch(fetchCategories())
 
