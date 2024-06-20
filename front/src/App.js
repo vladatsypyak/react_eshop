@@ -39,7 +39,7 @@ function App() {
     const getUser1 = async () => {
         try {
             const url = `https://react-eshop-9tge.onrender.com/auth/login/success`;
-            const { data } = await axios.get(url, { withCredentials: true });
+            const { data } = await axios.get(url, { withCredentials: true }, {user: "hahafgfdg"});
             console.log(data)
             sessionStorage.setItem("jwt_token", data.jwt_token)
             const token = sessionStorage.getItem("jwt_token")
