@@ -16,7 +16,6 @@ router.get("/login/failed", (req, res) => {
 })
 router.get("/login/success", async (req, res) => {
     console.log("goes here")
-    console.log(req)
     console.log("passport from google" + " " + req.passport)
 
     console.log("user from google" + " " + req.user)
