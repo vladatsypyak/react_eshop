@@ -35,6 +35,7 @@ passport.use(new GoogleStrategy({
                 email: profile.emails[0].value,
                 googleId: profile.id
             });
+            console.log("user checked hahaha")
             user.save()
         }
         done(null, profile)

@@ -20,7 +20,7 @@ export const FiltersItem = ({ filter, filterName }) => {
         const getFilterValues = async () => {
             try {
                 const { data } = await axios.get(
-                    `http://localhost:8080/api/categories/${currentCategory.type}/filters/${filter}`
+                    `https://react-eshop-9tge.onrender.com/api/categories/${currentCategory.type}/filters/${filter}`
                 );
                 setValues(data);
                 setLoading(false); // Update loading state once data is fetched
