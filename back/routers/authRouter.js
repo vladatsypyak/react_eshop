@@ -44,13 +44,13 @@ router.get("/google/callback",
 
     passport.authenticate("google",
         {
-            successRedirect: "https://keen-biscuit-07cf08.netlify.app",
+            successRedirect: "https://keen-biscuit-07cf08.netlify.app/",
             failureRedirect: "/login/failed"
         }
     ))
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("https://keen-biscuit-07cf08.netlify.app");
+    res.redirect("https://keen-biscuit-07cf08.netlify.app/");
 });
 
 
