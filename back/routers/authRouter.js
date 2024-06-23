@@ -19,7 +19,6 @@ router.get("/login/success", async (req, res) => {
     console.log("passport from google" + " " + req.passport)
 
     console.log("user from google" + " " + req.user)
-    console.log(req.agent)
 
 
     if (req.user) {
