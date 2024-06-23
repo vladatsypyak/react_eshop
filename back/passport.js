@@ -38,8 +38,6 @@ passport.use(new GoogleStrategy({
             console.log("user checked hahaha")
             user.save()
         }
-        console.log("profile")
-
         console.log(profile)
         done(null, profile)
     }
