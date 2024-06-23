@@ -41,7 +41,7 @@ export const Login = () => {
 
     const googleAuth = () => {
         window.open(
-            `http://localhost:8080/auth/google/callback`,
+            `${apiUrl}/auth/google/callback`,
             "_self"
         );
     };

@@ -1,15 +1,16 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 import {buildURL} from "./itemsSlice";
+import {apiUrl} from "../../../config";
 
 
 export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/categories/${params}/filters`)
+    const {data} = await axios.get(`${apiUrl}/api/categories/${params}/filters`)
     return data
 })
 
 export const fetchMaxMinCall = async (params) => {
-    const baseUrl = 'http://localhost:8080/api/filters/pricerange';
+    const baseUrl = '${apiUrl}/api/filters/pricerange';
     let str = buildURL(params, baseUrl)
     const {data} = await axios.get(str)
     return data

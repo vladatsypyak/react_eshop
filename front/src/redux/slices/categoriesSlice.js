@@ -2,17 +2,18 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {setPage} from "./itemsSlice";
+import {apiUrl} from "../../../config";
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatus', async (params) => {
-    const {data} = await axios.get(`http://localhost:8080/api/categories`)
+    const {data} = await axios.get(`${apiUrl}/api/categories`)
     return data.categories
 })
 export const fetchCategoryByType = createAsyncThunk("categories/getCategory", async (params)=>{
-    const {data} = await axios.get(`http://localhost:8080/api/categories/${params}`)
+    const {data} = await axios.get(`${apiUrl}/api/categories/${params}`)
     return data.category
 })
 export const searchCategories = createAsyncThunk("categories/searchCategories", async (params)=>{
-    const {data} = await axios.get(`http://localhost:8080/api/categories/?text=${params}`)
+    const {data} = await axios.get(`${apiUrl}/api/categories/?text=${params}`)
     return data.categories
 })
 const initialState = {
