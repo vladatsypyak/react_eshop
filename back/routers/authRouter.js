@@ -5,7 +5,6 @@ const passport = require("passport")
 const {User} = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const {logout} = require("passport/lib/http/request");
 
 
 router.get("/login/failed", (req, res) => {
@@ -42,13 +41,13 @@ router.get("/login/success", async (req, res) => {
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 router.get("/google/callback",
+
     passport.authenticate("google",
         {
             successRedirect: "http://localhost:3000",
             failureRedirect: "/login/failed"
         }
     ))
-console.log("new version")
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("http://localhost:3000");
