@@ -44,13 +44,13 @@ router.get("/google/callback",
 
     passport.authenticate("google",
         {
-            successRedirect: "http://localhost:3000",
+            successRedirect: "http://localhost:3030",
             failureRedirect: "/login/failed"
         }
     ))
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("http://localhost:3000");
+    res.redirect("http://localhost:3030");
 });
 
 
