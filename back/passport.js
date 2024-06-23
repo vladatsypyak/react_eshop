@@ -4,8 +4,8 @@ const bcrypt = require("bcryptjs");
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-let GOOGLE_CLIENT_ID = "990484738658-mpvr77l27hm170g4ig0k5k7o559upeke.apps.googleusercontent.com"
-const GOOGLE_CLIENT_SECRET = "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"
+let GOOGLE_CLIENT_ID = "671523017249-0j9sjnenlq1eja742s3aiucj2dp12vqm.apps.googleusercontent.com"
+const GOOGLE_CLIENT_SECRET = "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"
 
  passport.serializeUser(async function (user, done) {
     // console.log(user)

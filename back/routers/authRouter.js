@@ -44,14 +44,14 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get("/google/callback",
     passport.authenticate("google",
         {
-            successRedirect: "https://deft-boba-72d60a.netlify.app",
+            successRedirect: "http://localhost:3000",
             failureRedirect: "/login/failed"
         }
     ))
 console.log("new version")
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("https://deft-boba-72d60a.netlify.app");
+    res.redirect("http://localhost:3000");
 });
 
 
