@@ -11,6 +11,7 @@ import check from "../../assets/check.png"
 import Images from "./Images/Images";
 import {Description} from "./Description";
 import {fetchCategoryByType, setCurrentCategory} from "../../redux/slices/categoriesSlice";
+import {apiUrl} from "../../config";
 
 export const ItemInfo = () => {
     const [item, setItem] = React.useState({})

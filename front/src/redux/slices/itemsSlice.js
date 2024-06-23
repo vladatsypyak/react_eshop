@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 export function buildURL(arr, baseUrl) {
     const queryParams = arr
@@ -9,7 +10,7 @@ export function buildURL(arr, baseUrl) {
 }
 
 const fetchItemsCall = async (params) => {
-    const baseUrl = '${apiUrl}/api/items';
+    const baseUrl = `${apiUrl}/api/items`;
     let str = buildURL(params, baseUrl)
 
     const {data} = await axios.get(str)

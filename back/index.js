@@ -13,6 +13,9 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerDocument = require('./swagger.json');
 const router = require('express').Router();
 
+require('dotenv').config();
+
+
 
 const frontendUrl = process.env.FRONTEND_URL;
 const apiUrl = process.env.API_URL;

@@ -9,6 +9,7 @@ import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
 import {Modal} from "../Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import axios from "axios";
+import {apiUrl} from "../../../config";
 
 
 export const Login = () => {

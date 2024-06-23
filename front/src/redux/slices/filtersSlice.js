@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 import {buildURL} from "./itemsSlice";
-import {apiUrl} from "../../../config";
+import {apiUrl} from "../../config";
 
 
 export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params) => {
@@ -10,7 +10,7 @@ export const fetchFilters = createAsyncThunk('items/fetchFilters', async (params
 })
 
 export const fetchMaxMinCall = async (params) => {
-    const baseUrl = '${apiUrl}/api/filters/pricerange';
+    const baseUrl = `${apiUrl}/api/filters/pricerange`;
     let str = buildURL(params, baseUrl)
     const {data} = await axios.get(str)
     return data

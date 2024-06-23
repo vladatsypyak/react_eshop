@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { setFilters } from "../../redux/slices/filtersSlice";
 import axios from "axios";
 import s from "./filters.module.scss";
+import {apiUrl} from "../../config";
 
 export const FiltersItem = ({ filter, filterName }) => {
     const currentChosenFilters = useSelector(

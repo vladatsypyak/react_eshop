@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
-import {apiUrl} from "../../../config";
+import {apiUrl} from "../../config";
 
 const fetchCartItems = async () => {
     const instance = axios.create({

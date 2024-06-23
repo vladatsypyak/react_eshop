@@ -1,13 +1,13 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
-import {apiUrl} from "../../../config";
+import {apiUrl} from "../../config";
 
 const fetchUser = async (params) => {
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + params}
     });
 
-    const {data} = await instance.get('${apiUrl}/api/users/current')
+    const {data} = await instance.get(`${apiUrl}/api/users/current`)
     return data.user
 }
 
