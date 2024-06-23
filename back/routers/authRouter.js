@@ -45,14 +45,14 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get("/google/callback",
     passport.authenticate("google",
         {
-            successRedirect: "https://classy-sunburst-8171f2.netlify.app",
+            successRedirect: "https://deft-boba-72d60a.netlify.app",
             failureRedirect: "/login/failed"
         }
     ))
 
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("https://classy-sunburst-8171f2.netlify.app");
+    res.redirect("https://deft-boba-72d60a.netlify.app");
 });
 
 

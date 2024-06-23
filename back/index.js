@@ -67,7 +67,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(
     cors({
-        origin:"https://classy-sunburst-8171f2.netlify.app",
+        origin:"https://deft-boba-72d60a.netlify.app",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })

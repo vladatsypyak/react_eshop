@@ -38,7 +38,7 @@ function App() {
 
     const getUser1 = async () => {
         try {
-            const url = `https://react-eshop-9tge.onrender.com/auth/login/success`;
+            const url = `http://localhost:8080/auth/login/success`;
             const { data } = await axios.get(url, { withCredentials: true });
             console.log(data)
             sessionStorage.setItem("jwt_token", data.jwt_token)
