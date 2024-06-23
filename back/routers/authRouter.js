@@ -5,6 +5,7 @@ const passport = require("passport")
 const {User} = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const frontendUrl = process.env.FRONTEND_URL;
 
 
 router.get("/login/failed", (req, res) => {
@@ -44,13 +45,13 @@ router.get("/google/callback",
 
     passport.authenticate("google",
         {
-            successRedirect: "http://localhost:3000",
+            successRedirect: frontendUrl,
             failureRedirect: "/login/failed"
         }
     ))
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("http://localhost:3000");
+    res.redirect(frontendUrl);
 });
 
 

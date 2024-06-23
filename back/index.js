@@ -14,7 +14,10 @@ const swaggerDocument = require('./swagger.json');
 const router = require('express').Router();
 
 
-// const cors = require('cors')
+const frontendUrl = process.env.FRONTEND_URL;
+const apiUrl = process.env.API_URL;
+const port = process.env.PORT;
+
 
 mongoose.connect('mongodb+srv://vladatsyupyak:Vladochka2002@eshop2.fsgyzpe.mongodb.net/?retryWrites=true&w=majority');
 
@@ -67,7 +70,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(
     cors({
-        origin:"http://localhost:3000",
+        origin: frontendUrl,
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
@@ -84,8 +87,8 @@ app.use('/auth', authRouter);
 // })
 const start = async () => {
     try {
-        console.log('listening on 8080 ');
-        app.listen(8080);
+        console.log( `listening on ${apiUrl} `);
+        app.listen(port);
 
     } catch (err) {
         console.error(`Error on server startup: ${err.message}`);
