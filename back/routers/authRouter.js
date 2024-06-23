@@ -16,7 +16,6 @@ router.get("/login/failed", (req, res) => {
 })
 router.get("/login/success", async (req, res) => {
     console.log("goes here")
-    console.log(req)
     if (req.user) {
         console.log(req.user.id)
         // const user = await User.findOne({googleId: req.user.id});
