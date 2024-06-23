@@ -41,7 +41,7 @@ export const Login = () => {
 
     const googleAuth = () => {
         window.open(
-            `https://react-eshop-9tge.onrender.com/auth/google/callback`,
+            `http://localhost:8080/auth/google/callback`,
             "_self"
         );
     };

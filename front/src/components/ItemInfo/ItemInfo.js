@@ -42,7 +42,7 @@ export const ItemInfo = () => {
 
     useEffect(() => {
         const fetchItem = async () => {
-            const {data} = await axios.get(`https://react-eshop-9tge.onrender.com/api/items/${id}`)
+            const {data} = await axios.get(`http://localhost:8080/api/items/${id}`)
             const category = await data?.category
             dispatch(fetchCategoryByType(category))
             setItem(data)

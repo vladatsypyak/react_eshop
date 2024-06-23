@@ -4,15 +4,15 @@ import {useDispatch} from "react-redux";
 import {setPage} from "./itemsSlice";
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatus', async (params) => {
-    const {data} = await axios.get(`https://react-eshop-9tge.onrender.com/api/categories`)
+    const {data} = await axios.get(`http://localhost:8080/api/categories`)
     return data.categories
 })
 export const fetchCategoryByType = createAsyncThunk("categories/getCategory", async (params)=>{
-    const {data} = await axios.get(`https://react-eshop-9tge.onrender.com/api/categories/${params}`)
+    const {data} = await axios.get(`http://localhost:8080/api/categories/${params}`)
     return data.category
 })
 export const searchCategories = createAsyncThunk("categories/searchCategories", async (params)=>{
-    const {data} = await axios.get(`https://react-eshop-9tge.onrender.com/api/categories/?text=${params}`)
+    const {data} = await axios.get(`http://localhost:8080/api/categories/?text=${params}`)
     return data.categories
 })
 const initialState = {
