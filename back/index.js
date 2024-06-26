@@ -102,7 +102,7 @@ app.use(session({
 const start = async () => {
     try {
         console.log( `listening on ${apiUrl} `);
-        app.listen(process.env.PORT);
+        app.listen(process.env.PORT || 8080);
 
     } catch (err) {
         console.error(`Error on server startup: ${err.message}`);
