@@ -20,7 +20,7 @@ require('dotenv').config();
 const frontendUrl = process.env.FRONTEND_URL;
 const apiUrl = process.env.API_URL;
 const port = process.env.PORT;
-
+console.log("port" + port)
 
 mongoose.connect('mongodb+srv://vladatsyupyak:Vladochka2002@eshop2.fsgyzpe.mongodb.net/?retryWrites=true&w=majority');
 
