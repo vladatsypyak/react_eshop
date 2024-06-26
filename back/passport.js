@@ -8,9 +8,6 @@ let GOOGLE_CLIENT_ID = "671523017249-0j9sjnenlq1eja742s3aiucj2dp12vqm.apps.googl
 const GOOGLE_CLIENT_SECRET = "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"
 
  passport.serializeUser(async function (user, done) {
-    // console.log(user)
-    // const userCheck = await User.find({email: user.emails[0]})
-    //  console.log(userCheck)
     done(null, user);
 });
 passport.deserializeUser(function (user, done) {
@@ -37,6 +34,7 @@ passport.use(new GoogleStrategy({
             });
             user.save()
         }
+        console.log(profile)
         done(null, profile)
     }
 ));

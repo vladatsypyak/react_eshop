@@ -32,6 +32,7 @@ const {filterRouter} = require("./routers/filtersRouter");
 const {favouriteRouter} = require("./routers/favouritesRouter");
 const {cartRouter} = require("./routers/cartRouter");
 const {ordersRouter} = require("./routers/ordersRouter");
+const session = require("express-session");
 
 app.use(express.json());
 app.use(cors())
@@ -80,6 +81,16 @@ app.use(
 )
 app.use('/auth', authRouter);
 
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your-default-secret', // Provide your secret here or from an environment variable
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: false,
+        secure: false,
+        sameSite: 'None', // Necessary for cross-site cookies
+    }
+}));
 
 // require("./auth")
 // app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));

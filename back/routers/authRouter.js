@@ -15,8 +15,11 @@ router.get("/login/failed", (req, res) => {
     })
 })
 router.get("/login/success", async (req, res) => {
+    console.log('User from login success:', req.user);
+    console.log('User headers:', req.headers);
+
     if (req.user) {
-        console.log(req.user.id)
+        console.log(req.user)
         // const user = await User.findOne({googleId: req.user.id});
         const user = await User.findOne({email: req.user.emails[0].value})
 
@@ -32,7 +35,7 @@ router.get("/login/success", async (req, res) => {
 
         res.status(200).json({
             error: false,
-            message: "Successfully Loged In",
+            message: "Successfully Logged In",
             user: req.user,
         });
     } else {
