@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react_eshop/static/css/main.ffa575ce.css",
+    "main.js": "/react_eshop/static/js/main.f63526b3.js",
+    "static/js/787.71df535f.chunk.js": "/react_eshop/static/js/787.71df535f.chunk.js",
+    "static/media/cart_bg.png": "/react_eshop/static/media/cart_bg.9c01d5865050e065d3d2.png",
+    "static/media/instagram.png": "/react_eshop/static/media/instagram.e719d8b29f452a16302d.png",
+    "static/media/viber.png": "/react_eshop/static/media/viber.479e1c693358bfdfc654.png",
+    "static/media/empty_cart.png": "/react_eshop/static/media/empty_cart.1a1c5295d39941ae4ebd.png",
+    "static/media/telegram.png": "/react_eshop/static/media/telegram.e8540dc14b381676ad9c.png",
+    "static/media/lock.png": "/react_eshop/static/media/lock.c88308b0b017a4a5c41e.png",
+    "static/media/heart-red.png": "/react_eshop/static/media/heart-red.a13e3857c7c7f11756ac.png",
+    "static/media/logo.svg": "/react_eshop/static/media/logo.6ce24c58023cc2f8fd88.svg",
+    "index.html": "/react_eshop/index.html",
+    "main.ffa575ce.css.map": "/react_eshop/static/css/main.ffa575ce.css.map",
+    "main.f63526b3.js.map": "/react_eshop/static/js/main.f63526b3.js.map",
+    "787.71df535f.chunk.js.map": "/react_eshop/static/js/787.71df535f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffa575ce.css",
+    "static/js/main.f63526b3.js"
+  ]
+}
