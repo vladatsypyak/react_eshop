@@ -23,6 +23,9 @@ import {fetchCategories} from "./redux/slices/categoriesSlice";
 import {Signup} from "./components/Auth/Signup/Signup";
 import {Login} from "./components/Auth/Login/Login";
 import {apiUrl} from "./config";
+
+console.log(apiUrl)
+console.log(process.env.REACT_APP_API_URL)
 function App() {
     const dispatch = useDispatch()
     const showLogin = useSelector(state => state.modal.showLogin)
