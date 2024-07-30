@@ -1,14 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./login.module.scss"
 import {Input} from "../../shared/Input/Input";
-import {Link, useLocation, useNavigate} from "react-router-dom";
 import {loginUser, registerUser} from "../../../redux/slices/userSlice";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
 import {Modal} from "../Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
-import axios from "axios";
 import {apiUrl} from "../../../config";
 
 
@@ -17,7 +15,6 @@ export const Login = () => {
     const dispatch = useDispatch()
     const error = useSelector(state => state.user.isError)
 
-    const navigate = useNavigate()
     const onSubmit = async (data) => {
         const {password, email} = data
         try {
@@ -29,11 +26,7 @@ export const Login = () => {
 
 
     }
-    const onEmailChange = (e) => {
-    }
 
-    const onPasswordChange = (e) => {
-    }
     const customNavigate = () => {
         dispatch(setSignup(true))
         dispatch(setLogin(false))
@@ -58,9 +51,9 @@ export const Login = () => {
 
                 <form className={error ? `${s.error}` : ""} onSubmit={handleSubmit(onSubmit)}>
                     <Input placeholder={"email"} type={"email"} register={{...register("email", {required: true})}}
-                           onChange={onEmailChange}/>
+                    />
                     <Input placeholder={"пароль"} type={"text"} register={{...register("password", {required: true})}}
-                           onChange={onPasswordChange}/>
+                    />
                     {error && <p className={s.error_text}>Неправильний логін або пароль</p>}
                     <div className={s.submit}>
                         <Input type={"submit"} value={"Підтвердити"}/>
@@ -74,10 +67,12 @@ export const Login = () => {
                         </div>
 
                         <button onClick={googleAuth}>
-                          <img src="https://img.icons8.com/color/16/000000/google-logo.png"/>
-                            Ввійти з Google </button>
+                            <img src="https://img.icons8.com/color/16/000000/google-logo.png"/>
+                            Ввійти з Google
+                        </button>
                     </div>
-                    <p className={s.register_link}>Не маєте аккаунту? <span onClick={customNavigate}>Зареєструватися</span>
+                    <p className={s.register_link}>Не маєте аккаунту? <span
+                        onClick={customNavigate}>Зареєструватися</span>
                     </p>
                 </form>
             </div>

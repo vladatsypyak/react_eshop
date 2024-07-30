@@ -1,9 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./askToAuth.module.scss"
 import lock from "../../../assets/lock.png"
 import bg from "../../../assets/cart_bg.png"
-
-import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
 

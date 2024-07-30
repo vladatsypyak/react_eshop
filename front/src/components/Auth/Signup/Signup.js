@@ -4,18 +4,13 @@ import {Input} from "../../shared/Input/Input";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {registerUser} from "../../../redux/slices/userSlice";
-import {useNavigate} from "react-router-dom";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
 import {Modal} from "../Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 
 export const Signup = () => {
     const {register, handleSubmit} = useForm();
-    const navigate = useNavigate()
-    const [password, setPassword] = React.useState("")
-    const [repeatPassword, setRepeatPassword] = React.useState("")
     const dispatch = useDispatch()
-    const [email, setEmail] = React.useState("")
     const onSubmit = (data) => {
         console.log(data)
         const {password, repeatPassword, email, name, surname, patronymic, birthdate, gender} = data
@@ -28,20 +23,6 @@ export const Signup = () => {
 
     }
 
-    const onEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const onPasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
-
-    const onRepeatPasswordChange = (e) => {
-        setRepeatPassword(e.target.value)
-    }
-    const onDateChange = (e) => {
-        setRepeatPassword(e.target.value)
-    }
 
     return <div className={s.signup}>
         <Modal>
@@ -54,16 +35,17 @@ export const Signup = () => {
                     <div className={s.field}>
                         <p className={s.asterisk}>*</p>
                         <Input type={"email"} placeholder={"email"} register={{...register("email", {required: true})}}
-                               onChange={onEmailChange}/>
+                        />
                     </div>
-                   <div className={s.field}>
-                       <p className={s.asterisk}>*</p>
-                       <Input type={"text"} placeholder={"пароль"} register={{...register("password", {required: true})}}
-                              onChange={onPasswordChange}/>
-                   </div>
+                    <div className={s.field}>
+                        <p className={s.asterisk}>*</p>
+                        <Input type={"text"} placeholder={"пароль"}
+                               register={{...register("password", {required: true})}}
+                        />
+                    </div>
                     <Input type={"text"} placeholder={"повторіть пароль"}
                            register={{...register("repeatPassword", {required: true})}}
-                           onChange={onRepeatPasswordChange}/>
+                    />
                     <Input type={"text"} placeholder={"прізвище"} register={{...register("surname")}}/>
                     <Input type={"text"} placeholder={"ім'я"} register={{...register("name")}}
                     />
@@ -71,7 +53,7 @@ export const Signup = () => {
                            register={{...register("patronymic")}}/>
                     <Input type={"date"} placeholder={"дата народження"}
                            register={{...register("birthdate")}}
-                           onChange={onPasswordChange}/>
+                    />
                     <label className={s.label}>Стать: </label>
                     <select {...register("gender")} className={s.text} defaultValue="Жіноча">
                         <option value="female">Жіноча</option>
