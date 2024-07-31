@@ -2,7 +2,7 @@ import React from "react";
 import s from "./likeBtn.module.scss"
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteFavourite, getAllFavourites, putFavourite} from "../../../redux/slices/itemsSlice";
+import {deleteFavourite, putFavourite} from "../../../redux/slices/itemsSlice";
 import {setLogin} from "../../../redux/slices/modalSlice";
 
 

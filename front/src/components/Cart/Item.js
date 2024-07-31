@@ -1,11 +1,11 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
+import {useDispatch} from "react-redux";
+import {deleteCartItem, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
 import s from "./cart.module.scss"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
 
-export const Item = ({cartItem, user}) => {
+export const Item = ({cartItem}) => {
     console.log(cartItem)
     const dispatch = useDispatch()
 

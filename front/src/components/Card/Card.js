@@ -5,7 +5,7 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import s from "./card.module.scss"
 import star from "../../assets/star .png"
 import {useDispatch, useSelector} from "react-redux";
-import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
+import {putToCart} from "../../redux/slices/cartSlice";
 import {LikeBtn} from "./LikeBtn/LikeBtn";
 import {setLogin} from "../../redux/slices/modalSlice";
 import {QuantityInCart} from "../shared/QuantityInCart/QuantityInCart";
