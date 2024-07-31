@@ -8,7 +8,6 @@ export const Main = () => {
     return <div className={"main"}>
         <Slider/>
         <Categories/>
-
         {<Outlet/>}
     </div>
 }

@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
 import {apiUrl} from "../../config";
 
@@ -32,8 +32,8 @@ export const editProfile = createAsyncThunk('items/editProfile', async (params) 
     const instance = axios.create({
         headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
     });
-    const headers =  {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
-    let {data} = await axios.patch(`${apiUrl}/api/users/current`, params,{headers} )
+    const headers = {'Authorization': 'Bearer ' + sessionStorage.getItem("jwt_token")}
+    let {data} = await axios.patch(`${apiUrl}/api/users/current`, params, {headers})
     return fetchUser(sessionStorage.getItem("jwt_token"))
 
 })
@@ -55,7 +55,6 @@ export const userSlice = createSlice({
             state.user = {}
             sessionStorage.clear()
         }
-
 
 
     },

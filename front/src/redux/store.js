@@ -7,9 +7,6 @@ import cart from "./slices/cartSlice";
 import user from "./slices/userSlice";
 import modal from "./slices/modalSlice";
 
-
-
-
 export const store = configureStore({
     reducer: {
         categories,

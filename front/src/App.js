@@ -1,20 +1,18 @@
 import {Header} from "./components/Header/Header";
 import {Main} from "./pages/Main/Main";
 import {Footer} from "./components/Footer/Footer";
-import {Outlet, Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import {Category} from "./pages/Category/Category";
 import {ItemInfo} from "./components/ItemInfo/ItemInfo";
 import {CartPage} from "./pages/Cart/CartPage";
 import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
 import {UserPage} from "./pages/UserPage/UserPage";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-
 import {Profile} from "./components/Profile/Profile";
 import {Orders} from "./components/Orders/Orders";
-
-import {getUser, setUser} from "./redux/slices/userSlice";
+import {getUser} from "./redux/slices/userSlice";
 import {OrderForm} from "./components/OrderForm/OrderForm";
 import {OrderConfirm} from "./components/OrderConfirm/OrderConfirm";
 import {Confirmed} from "./components/OrderConfirm/Confirmed";

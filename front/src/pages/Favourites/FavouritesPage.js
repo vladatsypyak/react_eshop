@@ -1,10 +1,6 @@
 import React from "react";
-import {Slider} from "../../components/Slider/Slider";
-import {Categories} from "../../components/CategoriesMainPage/Categories";
-import {Cart} from "../../components/Cart/Cart";
 import {Favourites} from "../../components/Favourites/Favourites";
 import {useSelector} from "react-redux";
-import {loginUser} from "../../redux/slices/userSlice";
 import {AskToAuth} from "../../components/Auth/AskToAuth/AskToAuth";
 import {NoItems} from "../../components/NoItems/NoItems";
 

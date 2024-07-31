@@ -1,7 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from "axios";
-import {useDispatch} from "react-redux";
-import {setPage} from "./itemsSlice";
 import {apiUrl} from "../../config";
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategoriesStatus', async (params) => {
