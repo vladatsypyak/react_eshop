@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {registerUser} from "../../../redux/slices/userSlice";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
-import {Modal} from "../Modal";
+import {Modal} from "../../shared/Modal/Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 
 export const Signup = () => {

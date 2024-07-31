@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import s from "./orderConfirm.module.scss"
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {Modal} from "../Auth/Modal";
+import {Modal} from "../shared/Modal/Modal";
 import {createOrder} from "../../redux/slices/cartSlice";
 
 export const OrderConfirm = () => {

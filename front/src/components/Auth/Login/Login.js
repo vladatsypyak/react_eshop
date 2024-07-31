@@ -6,7 +6,7 @@ import {loginUser, registerUser} from "../../../redux/slices/userSlice";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {setLogin, setSignup} from "../../../redux/slices/modalSlice";
-import {Modal} from "../Modal";
+import {Modal} from "../../shared/Modal/Modal";
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import {apiUrl} from "../../../config";
 
