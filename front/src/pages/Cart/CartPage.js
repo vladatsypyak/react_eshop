@@ -1,10 +1,7 @@
 import React from "react";
-import {Slider} from "../../components/Slider/Slider";
-import {Categories} from "../../components/CategoriesMainPage/Categories";
 import {Cart} from "../../components/Cart/Cart";
 import {useSelector} from "react-redux";
 import {NoItems} from "../../components/NoItems/NoItems";
-import {Link} from "react-router-dom";
 import {AskToAuth} from "../../components/Auth/AskToAuth/AskToAuth";
 
 export const CartPage = () => {

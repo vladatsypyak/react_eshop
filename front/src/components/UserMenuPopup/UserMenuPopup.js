@@ -1,15 +1,14 @@
-import React, {useEffect, useRef} from "react";
+import React, {useRef} from "react";
 
 import {useDispatch, useSelector} from "react-redux";
 import s from "./UserMenuPopup.module.scss"
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {setLogin} from "../../redux/slices/modalSlice";
 import {logout} from "../../redux/slices/userSlice";
 import {Overlay} from "../Overlay/Overlay";
 
 export const UserMenuPopup = ({setIsShown, usermenuRef}) => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const user = useSelector(state => state.user.user)
 
     function isEmpty(obj) {
@@ -47,14 +46,10 @@ export const UserMenuPopup = ({setIsShown, usermenuRef}) => {
             <p><Link onClick={() => setIsShown(false)} to={"user/profile"}>Дані</Link></p>
             {isEmpty(user) ? <p onClick={() => {
                     dispatch(setLogin(true))
-                    // navigate("/login")
                     setIsShown(false)
                 }}>Вхід</p>
                 : <p onClick={() => dispatch(logout())}>Вихід</p>
-
             }
-
-
         </div>
     </>
 

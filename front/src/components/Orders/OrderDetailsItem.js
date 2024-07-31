@@ -1,12 +1,9 @@
-import React, {useEffect} from "react";
-import {Link, useParams} from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import {Link} from "react-router-dom";
 import s from "./orders.module.scss"
-import moment from "moment";
 
 
 export const OrderDetailsItem = ({item}) => {
-
 
     return <div className={s.order_details_item_wrap}>
         <div className={`${s.flex_wrap} ${s.details_item_wrap}`}>
@@ -19,11 +16,6 @@ export const OrderDetailsItem = ({item}) => {
                 <p className={s.price}>Ціна: {Number(item.item.price).toFixed(2)} грн</p>
                 <p className={s.total}>Сума: {(Number(item.item.price) * item.quantity).toFixed(2)} грн</p>
             </div>
-
         </div>
-
-
     </div>
-
-
 }

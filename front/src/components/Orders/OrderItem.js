@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import axios from "axios";
+import React, {useState} from "react";
 import s from "./orders.module.scss"
-import moment from"moment";
+import moment from "moment";
 import {OrderDetailsItem} from "./OrderDetailsItem";
 
 
 export const OrderItem = ({item, date}) => {
     const [showDetails, setShowDetails] = useState(false)
+
     function getStatus(status) {
         switch (status) {
             case "New" :
@@ -16,13 +15,14 @@ export const OrderItem = ({item, date}) => {
                 return "Очікується на відправку"
         }
     }
-    function getDate(date){
-        return moment(new Date(date) ).format("DD/MM/YYYY")
+
+    function getDate(date) {
+        return moment(new Date(date)).format("DD/MM/YYYY")
     }
 
 
-    return <div className={s.order_item_wrap}  >
-        <div className={`${s.flex_wrap} ${s.main_info_wrap}`} onClick={()=> setShowDetails(!showDetails)}>
+    return <div className={s.order_item_wrap}>
+        <div className={`${s.flex_wrap} ${s.main_info_wrap}`} onClick={() => setShowDetails(!showDetails)}>
             <p className={s.date}>{getDate(item.createdAt)}</p>
             <div className={s.image}>
                 <img src={item.items[0].item.imgUrl} alt=""/>
@@ -38,10 +38,10 @@ export const OrderItem = ({item, date}) => {
 
         {showDetails &&
             <div className={s.details_wrapper}>
-                <div className={s.details} >
+                <div className={s.details}>
                     <h3 className={s.title}>Інформація про замовлення</h3>
                     <div className={s.items}>
-                        {item.items.map(obj=> <OrderDetailsItem item={obj}/> )}
+                        {item.items.map(obj => <OrderDetailsItem item={obj}/>)}
                     </div>
                 </div>
             </div>

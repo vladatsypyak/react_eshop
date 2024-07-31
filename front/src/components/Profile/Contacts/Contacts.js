@@ -1,10 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
 import 'react-phone-number-input/style.css'
 import {isValidPhoneNumber} from 'react-phone-number-input'
-
-
 import s from "../profile.module.scss"
 import {GlobalSvgSelector} from "../../../assets/GlobalSvgSelector";
 import {editProfile} from "../../../redux/slices/userSlice";
@@ -24,14 +21,13 @@ export const Contacts = () => {
     const onSubmit = () => {
         console.log(userInfo)
         if (phone && !isValidPhoneNumber(phone)) {
-         return
+            return
         }
-          dispatch(editProfile({...userInfo, phone: phone}))
+        dispatch(editProfile({...userInfo, phone: phone}))
         setIsEditable(false)
     }
-    // const phoneIcon = <img src="https://img.freepik.com/free-icon/phone-call_318-162256.jpg" alt="">
 
-        return <div className={s.section}>
+    return <div className={s.section}>
         <div className={s.icon}>
             <GlobalSvgSelector id={"user_icon"}/>
 
@@ -61,10 +57,6 @@ export const Contacts = () => {
                             international={true}
                             defaultCountry={"UA"}
                         />
-                        // <input className={s.text} type="text" defaultValue={user.phone}
-                        //        onChange={(e) => setUserInfo(() => {
-                        //            return {...userInfo, phone: e.target.value}
-                        //        })}/>
                     ) : (
                         <p className={s.text}>{user.phone}</p>
                     )}
@@ -79,8 +71,5 @@ export const Contacts = () => {
             {isEditable && <button className={s.submit} onClick={onSubmit}>Save</button>}
 
         </div>
-
     </div>
-
-
-        }
+}

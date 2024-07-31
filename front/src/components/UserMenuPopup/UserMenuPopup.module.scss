@@ -1,4 +1,5 @@
 @import "../../variables.module";
+
 .menu_wrap {
   position: absolute;
   right: 50px;
@@ -29,19 +30,16 @@
 .overlay {
   div {
     top: 82px;
-
   }
 }
 
 @media screen and (max-width: 992px) {
   .menu_wrap {
     top: 320px;
-
   }
   .overlay {
     div {
       top: 304px;
-
     }
   }
 

@@ -1,4 +1,5 @@
 @import "../../variables.module";
+
 .no_items {
   max-width: 600px;
   margin: 0 auto;
@@ -18,16 +19,19 @@
     font-size: 24px;
     margin-bottom: 25px;
   }
-  button{
+
+  button {
     background-color: $primary_green;
-    a{
+
+    a {
       color: $white;
     }
 
     border-radius: 15px;
     padding: 15px;
     font-size: 18px;
-    &:hover{
+
+    &:hover {
       background-color: $light_green;
       transition: 0.2s;
       cursor: pointer;

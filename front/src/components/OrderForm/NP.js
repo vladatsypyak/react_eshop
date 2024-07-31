@@ -2,7 +2,6 @@ import React, {useEffect, useMemo, useState} from 'react';
 import axios from 'axios';
 import Select from "react-select";
 import debounce from 'lodash.debounce';
-import AsyncSelect from 'react-select/async';
 import s from "./orderForm.module.scss"
 
 
@@ -73,7 +72,6 @@ const NovaPoshtaOffices = ({onChange, city, error}) => {
                 }}
                 isLoading={loading}
                 placeholder={"Виберіть країну"}
-
                 classNames={
                     {
 
@@ -83,8 +81,6 @@ const NovaPoshtaOffices = ({onChange, city, error}) => {
                         }
                     }}
             />
-
-
         </div>
     );
 };

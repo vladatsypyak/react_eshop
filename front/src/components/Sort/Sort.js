@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setSortBy} from "../../redux/slices/filtersSlice";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 
-export const sortList  = [
+export const sortList = [
     {
         name: "По популярності",
         sortProperty: "rating"
@@ -51,8 +51,8 @@ export const Sort = () => {
 
     return <div ref={sortRef} className={s.sort}>
         <div onClick={() => setOpen(!open)} className={s.sort__label}>
-             <span >{sort?.name}</span>
-            { open ? <GlobalSvgSelector id={"sort_arrow_up"} /> :<GlobalSvgSelector id={"sort_arrow_down"} />  }
+            <span>{sort?.name}</span>
+            {open ? <GlobalSvgSelector id={"sort_arrow_up"}/> : <GlobalSvgSelector id={"sort_arrow_down"}/>}
         </div>
         {
             open && (
@@ -64,13 +64,10 @@ export const Sort = () => {
                                            className={obj.sortProperty === sort.sortProperty ? `${s.active}` : ""}>{obj.name}</li>
                             })
                         }
-
-
                     </ul>
                 </div>
             )
         }
-
     </div>
 
 }

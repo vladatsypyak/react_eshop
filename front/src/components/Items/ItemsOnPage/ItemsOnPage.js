@@ -8,7 +8,6 @@ import s from "./itemsOnPage.module.scss"
 
 
 export const ItemsOnPage = ({items, sidebar}) => {
-    const [showSort, setShowSort] = useState(false)
     const [showFilters, setShowFilters] = useState(false)
 
     return <>
@@ -40,6 +39,4 @@ export const ItemsOnPage = ({items, sidebar}) => {
             <Pagination/>
         </div>
     </>
-
-
 }

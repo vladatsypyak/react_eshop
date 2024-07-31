@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./orderConfirm.module.scss"
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -54,7 +54,6 @@ export const OrderConfirm = () => {
             <div className={s.buttons_wrap}>
                 <button className={s.btn}>
                     <Link to={"/orderform"}>Назад</Link>
-
                 </button>
                 <button onClick={onConfirmClick} className={`${s.btn} ${s.confirm_btn}`}>
                     Підтвердити

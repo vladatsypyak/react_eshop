@@ -4,7 +4,6 @@ import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {useDispatch, useSelector} from "react-redux";
 import {searchItems} from "../../redux/slices/itemsSlice";
 import {SearchSection} from "./SearchSection/SearchSection";
-import {logDOM} from "@testing-library/react";
 import {searchCategories} from "../../redux/slices/categoriesSlice";
 import {setSearchValue} from "../../redux/slices/filtersSlice";
 
@@ -12,10 +11,7 @@ import {setSearchValue} from "../../redux/slices/filtersSlice";
 export const Search = () => {
     const dispatch = useDispatch()
     const sortBy = useSelector(state => state.filters.sortBy)
-
     const [focused, setFocused] = React.useState(false)
-    // const [searchValue, setSearchValue] = React.useState("")
-
     const [showResults, setShowResults] = React.useState(false)
     const inputRef = useRef()
     const searchValue = useSelector(state => state.filters.searchValue)

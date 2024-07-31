@@ -9,17 +9,6 @@
   display: none;
 }
 
-/* 992px - 1200px */
-@media screen and (max-width: 1200px) {
-
-}
-
-/* 768px - 992px */
-@media screen and (max-width: 992px) {
-
-}
-
-
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
   .category_page_wrap {
@@ -29,7 +18,6 @@
     display: block;
     .header{
       display: flex;
-      //align-items: center;
       gap: 20px ;
       padding: 10px 25px;
     }

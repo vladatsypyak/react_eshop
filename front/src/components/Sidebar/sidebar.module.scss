@@ -1,8 +1,10 @@
 @import "../../variables.module";
-.active{
+
+.active {
   font-weight: bold;
 }
-.link{
+
+.link {
   display: block;
   margin-bottom: 15px;
   background-color: $white;
@@ -11,8 +13,9 @@
   text-align: center;
   user-select: none;
 }
-.navbar{
-width: 250px;
+
+.navbar {
+  width: 250px;
   justify-self: flex-start;
   padding: 15px;
   background-color: $bg_green;

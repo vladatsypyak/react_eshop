@@ -37,9 +37,11 @@
     border-radius: 5px;
     border: 1px solid $light_grey;
     outline: none;
-    &:focus{
+
+    &:focus {
       border: 2px solid $light_green;
     }
+
     &:hover {
       transition: 0.2s;
       cursor: pointer;
@@ -94,6 +96,7 @@
   font-size: 16px;
   border: 1px solid $light_grey;
   padding: 4px;
+
   &:hover {
     transition: 0.2s;
     border: 1px solid $grey;
@@ -101,11 +104,13 @@
   }
 
 }
-.focused{
+
+.focused {
   border: 2px solid $light_green;
   box-shadow: none;
 }
- .error, .phone_error input{
+
+.error, .phone_error input {
   border: 1px solid $red !important;
 }
 

@@ -1,6 +1,6 @@
 @import "../../variables.module";
+
 .search {
-  //width: 40%;
   margin: 0 auto;
 
   .input_wrap {
@@ -19,7 +19,8 @@
 
 
   }
-  input:focus{
+
+  input:focus {
     outline: 2px solid $light_green;
   }
 }
@@ -33,10 +34,6 @@
   display: block;
 }
 
-/* 992px - 1200px */
-@media screen and (max-width: 1200px) {
-
-}
 
 /* 768px - 992px */
 @media screen and (max-width: 992px) {
@@ -44,14 +41,4 @@
     width: 100%;
 
   }
-}
-
-
-/* 576px - 768px */
-@media screen and (max-width: 768px) {
-
-}
-
-/* 320px - 576px */
-@media screen and (max-width: 576px) {
 }

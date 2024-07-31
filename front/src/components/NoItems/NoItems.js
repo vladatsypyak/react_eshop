@@ -1,10 +1,5 @@
 import React from "react";
-import {Slider} from "../Slider/Slider";
-import {Categories} from "../CategoriesMainPage/Categories";
-import {Cart} from "../Cart/Cart";
-import {Favourites} from "../Favourites/Favourites";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
 import cart from "../../assets/empty_cart.png"
 import heart from "../../assets/heart-red.png"
 

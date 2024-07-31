@@ -1,11 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import {Filters} from "../../components/Filters/Filters";
-
 import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {fetchItems, setPage} from "../../redux/slices/itemsSlice";
-
 import {ItemsOnPage} from "../../components/Items/ItemsOnPage/ItemsOnPage";
 
 
@@ -17,8 +15,6 @@ export const Category = () => {
     const sortBy = useSelector(state => state.filters.sortBy)
     const priceRange = useSelector(state => state.filters.priceRange)
     const page = useSelector(state => state.items.page)
-    const [showSort, setShowSort] = useState(false)
-    const [showFilters, setShowFilters] = useState(false)
 
     React.useEffect(() => {
         dispatch(fetchCategoryByType(category))

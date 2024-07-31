@@ -1,12 +1,9 @@
 import React, {useEffect} from "react";
-import {useParams} from "react-router-dom";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserOrders} from "../../redux/slices/cartSlice";
 import {OrderItem} from "./OrderItem";
 import {NoItems} from "../NoItems/NoItems";
 import {AskToAuth} from "../Auth/AskToAuth/AskToAuth";
-import {Favourites} from "../Favourites/Favourites";
 import {isEmpty} from "../../helpers/helpers";
 
 export const Orders = () => {
@@ -30,7 +27,5 @@ export const Orders = () => {
             })
 
         }
-</div>
-
-
+    </div>
 }

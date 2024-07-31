@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
 import s from "./profile.module.scss"
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {editProfile} from "../../redux/slices/userSlice";
@@ -13,9 +12,11 @@ export const Profile = () => {
     const user = useSelector(state => state.user.user)
     const [isEditable, setIsEditable] = useState(false); // Стан для визначення, чи можна редагувати поля
     const [userInfo, setUserInfo] = useState({});
+
     function isEmpty(obj) {
         return Object.values(obj).length === 0;
     }
+
     const handleEditClick = () => {
         setIsEditable(true);
     };
@@ -28,7 +29,7 @@ export const Profile = () => {
 
     return <div className={` container`}>
         {isEmpty(user) ? <AskToAuth page={"сторінку"}/>
-        :  <div className={s.profile_wrapper}>
+            : <div className={s.profile_wrapper}>
                 <div className={s.section}>
                     <div className={s.icon}>
                         <GlobalSvgSelector id={"user_icon"}/>
@@ -106,13 +107,9 @@ export const Profile = () => {
                         {isEditable && <button className={s.submit} onClick={onSubmit}>Save</button>}
 
                     </div>
-
                 </div>
                 <Contacts/>
             </div>
         }
-
     </div>
-
-
 }

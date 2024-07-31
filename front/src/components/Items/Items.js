@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteFavourite, fetchItems, getAllFavourites, putFavourite, setPage} from "../../redux/slices/itemsSlice";
+import {deleteFavourite, getAllFavourites, putFavourite} from "../../redux/slices/itemsSlice";
 import {Card} from "../Card/Card"
 import s from "./items.module.scss"
 import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
@@ -14,6 +14,7 @@ export const Items = ({items}) => {
         dispatch(getAllFavourites({userId: user._id}))
         dispatch(getAllCartItems({userId: user._id}))
     }, [user])
+
     function onLikeClick(itemId, liked) {
         if (!liked) {
             dispatch(putFavourite({userId: user._id, itemId: itemId}))
@@ -25,11 +26,11 @@ export const Items = ({items}) => {
     return <div className={`${s.container} wrapper`}>
 
         <div className={s.items_wrap}>
-        {Array.isArray(items) &&
-            items.map(item => {
-                return <Card onLikeClick={onLikeClick} item={item}/>
-            })
-        }
-    </div>
+            {Array.isArray(items) &&
+                items.map(item => {
+                    return <Card onLikeClick={onLikeClick} item={item}/>
+                })
+            }
         </div>
+    </div>
 }

@@ -1,13 +1,12 @@
 import React, {useEffect} from "react";
-import {Form, useNavigate, useParams} from "react-router-dom";
-import axios from "axios";
+import {useNavigate} from "react-router-dom";
 import s from "./orderForm.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {useForm, Controller} from "react-hook-form";
 import {useState} from 'react'
 import {useRef} from "react";
 import PhoneInput from "react-phone-number-input";
-import {Outlet, NavLink} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import {setOrderData} from "../../redux/slices/cartSlice";
 import NovaPoshtaOffices from "./NP";
 
