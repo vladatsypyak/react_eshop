@@ -1,4 +1,5 @@
 @import "../../variables.module";
+
 .header {
   background: $white;
   box-shadow: 0 0 16.8px 0 $primary_green;
@@ -21,8 +22,9 @@
     &:hover {
       cursor: pointer;
       background-color: $light_green;
-      transition:0.2s;
+      transition: 0.2s;
     }
+
     &_text {
       font-weight: 700;
       font-size: 24px;
@@ -48,7 +50,7 @@
 
   .search_wrap {
     width: 50%;
-    margin-right:  auto;
+    margin-right: auto;
     padding: 0 20px;
 
     .search {
@@ -179,25 +181,12 @@
   .logo_wrap {
     margin-right: 270px;
   }
-
-  //.custom_toggler .navbar-toggler{
-  //  border: #8DA0FF !important;
-  //  background-color: red !important;
-  //  &:focus{
-  //    border: green;
-  //    outline: #727cb3;
-  //    box-shadow: none !important;
-  //  }
-  //}
-
-
 }
 
 .overlay {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  //top: 115px;
   top: 115px;
   left: 0;
   background-color: $dark_grey;
@@ -228,19 +217,21 @@
 
 
   }
-  .left_wrap{
+  .left_wrap {
     flex-grow: 2;
   }
   .logo_wrap {
     margin-right: 0;
   }
-  .header .search_wrap{
+  .header .search_wrap {
     width: 100%;
     margin-left: auto;
     padding: 10px;
-    .search{
+
+    .search {
       width: 100%;
-    };
+    }
+  ;
   }
 
 }
@@ -248,14 +239,14 @@
 
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
-  .catalogue_items{
+  .catalogue_items {
     display: none;
   }
-  .catalogue_categories_wrap{
+  .catalogue_categories_wrap {
     border: none;
     padding-right: 0;
   }
-  .catalogue{
+  .catalogue {
     left: 50%;
     transform: translateX(-50%);
   }

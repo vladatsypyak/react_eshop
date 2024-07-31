@@ -2,12 +2,11 @@ import React from "react"
 import s from "./footer.module.scss"
 import logo from "../../assets/logo_green.png"
 import inst from "../../assets/instagram.png"
-import telegramm from "../../assets/telegram.png"
+import telegram from "../../assets/telegram.png"
 import fb from "../../assets/facebook.png"
 import viber from "../../assets/viber.png"
 
 
-import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {Link} from "react-router-dom";
 
 export const Footer = () => {
@@ -72,7 +71,7 @@ export const Footer = () => {
                        <img src={inst} alt={"inst"}/>
                    </div>
                    <div className={s.icon}>
-                       <img src={telegramm} alt={"inst"}/>
+                       <img src={telegram} alt={"inst"}/>
                    </div>
                    <div className={s.icon}>
                        <img src={fb} alt={"inst"}/>

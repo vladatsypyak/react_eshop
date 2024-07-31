@@ -1,9 +1,6 @@
 import React from "react"
 import s from "./header.module.scss"
 import logo from "../../assets/logo.png"
-import heart from "../../assets/heart.png"
-
-
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {Search} from "../Search/Search";
 import {Catalogue} from "../CatalogueSmall/Catalogue";
@@ -67,7 +64,6 @@ export const Header = () => {
                          </li>
                          <li className={`${s.icon} ${s.cart_icon} nav-item`}>
                              <Link to={"cart"}><GlobalSvgSelector id="cart_icon"/></Link>
-                             {/*<GlobalSvgSelector id="cart_icon"/>*/}
                              {quantityInCart?.length > 0 && <QuantityInCart number={quantityInCart?.length}/>}
 
                          </li>

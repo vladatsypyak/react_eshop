@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-
 import s from "./filters.module.scss"
 import {clearChosenFilters, fetchFilters} from "../../redux/slices/filtersSlice";
 import {FiltersItem} from "./FiltersItem";
@@ -28,7 +27,6 @@ export const Filters = () => {
             {filters.map(obj=>{
                 if (obj.value !== "price"){
                     return <FiltersItem filterName={obj.name} filter={obj.value}/>
-
                 }
             })}
         </div>

@@ -1,8 +1,8 @@
 import React from "react"
 import s from "./categories.module.scss"
 import {CategoriesItem} from "./CategoriesItem";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCategories, selectCategories} from "../../redux/slices/categoriesSlice";
+import { useSelector} from "react-redux";
+
 
 
 

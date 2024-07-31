@@ -1,18 +1,13 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    fetchMaxMin,
-    setPriceFilters,
-    setPriceRange
-} from "../../redux/slices/filtersSlice";
+import {fetchMaxMin, setPriceRange} from "../../redux/slices/filtersSlice";
 import debounce from 'lodash.debounce';
 import s from "./filters.module.scss"
-import {useParams} from "react-router-dom";
+
 
 
 function PriceRange() {
-    // const {category} = useParams()
     const category = useSelector(state => state.categories.currentCategory.type)
     const dispatch = useDispatch()
     const priceRange = useSelector(state => state.filters.priceRange)

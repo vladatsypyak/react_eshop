@@ -5,12 +5,12 @@ import s from "./itemInfo.module.scss"
 import star from "../../assets/star .png"
 import {LikeBtn} from "../Card/LikeBtn/LikeBtn";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteCartItem, getAllCartItems, putToCart, removeOneFromCart} from "../../redux/slices/cartSlice";
+import {getAllCartItems, putToCart} from "../../redux/slices/cartSlice";
 import {BreadCrumbs} from "../BreadCrumbs/BreadCrumbs";
 import check from "../../assets/check.png"
 import Images from "./Images/Images";
 import {Description} from "./Description";
-import {fetchCategoryByType, setCurrentCategory} from "../../redux/slices/categoriesSlice";
+import {fetchCategoryByType} from "../../redux/slices/categoriesSlice";
 import {apiUrl} from "../../config";
 
 export const ItemInfo = () => {
@@ -18,10 +18,8 @@ export const ItemInfo = () => {
     const allCartItems = useSelector(state => state.cart.items)
     const [quantityInCart, setQuantityInCart] = React.useState(0)
     const [quantityOnBtn, setQuantityOnBtn] = React.useState(0)
-
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.user)
-
     const {id} = useParams()
 
     React.useEffect(() => {
@@ -52,13 +50,11 @@ export const ItemInfo = () => {
         fetchItem()
     }, [id])
 
-    // console.log(item)
 
     function onMinusClick() {
         if (quantityInCart !== 0) {
             setQuantityInCart(() => quantityInCart - 1)
         }
-
     }
 
     function onAddToCartClick() {
@@ -69,8 +65,6 @@ export const ItemInfo = () => {
             setQuantityOnBtn(1)
             setQuantityInCart(1)
             dispatch(putToCart({userId: user._id, itemId: id, quantity: 1}))
-
-
         }
 
     }
@@ -84,7 +78,6 @@ export const ItemInfo = () => {
             </div>
             <div className={s.main_info_text}>
                 <h2 className={s.title}>{item?.title}</h2>
-
                 <div className={s.in_stock}>
                     <img src={check} alt="check"/>
                     <p className={s.text}>В наявності</p>
@@ -111,8 +104,6 @@ export const ItemInfo = () => {
                 {item?.ingredients &&
                     <p className={s.info}><span>Склад: </span>{item?.ingredients}</p>
                 }
-                {/*<p className={s.info}><span>Вага упаковки: </span>100 грамів.</p>*/}
-                {/*<p className={s.info}><span>Країна: </span>Індія</p>*/}
                 <div className={s.favourite_wrap}>
                     <LikeBtn itemId={item?._id} isText={true}/>
                 </div>
