@@ -1,66 +1,5 @@
 @import "../../../variables.module";
 
-.login {
-  form {
-    margin: 0 auto;
-    user-select: none;
-
-    input {
-      width: 300px;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid $light_green;
-      padding: 10px;
-      margin-bottom: 10px;
-
-    }
-  }
-  .error {
-    input {
-
-      border: 1px solid $red;
-      border-radius: 5px;
-    }
-    .error_text{
-      color: $red;
-    }
-  }
-
-  h3{
-    text-align: center;
-    font-weight: 400;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .submit {
-    input {
-      margin-top: 15px;
-      border: none;
-      border-radius: 5px;
-      background-color: $primary_green ;
-      color: $white;
-      font-size: 16px;
-      &:hover{
-        background-color: $light_green;
-        transition: 0.2s;
-        cursor: pointer;
-      }
-    }
-
-  }
-  .close{
-    margin-left: auto;
-    
-    display: block;
-    svg {
-      &:hover{
-        scale: 1.3;
-        cursor: pointer;
-      }
-    }
-  }
-}
 .google{
 
   button{
@@ -110,9 +49,6 @@
   span{
     color: $primary_green;
     &:hover{
-      //display: inline-block;
-      //padding-bottom:4px ;
-      //border-bottom: 1px solid grey;
       text-decoration: underline;
       cursor: pointer;
     }

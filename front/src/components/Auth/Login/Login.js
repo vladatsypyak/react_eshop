@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./login.module.scss"
+import form from "../form.module.scss"
 import {Input} from "../../shared/Input/Input";
 import {loginUser, registerUser} from "../../../redux/slices/userSlice";
 import {useForm} from "react-hook-form";
@@ -43,19 +44,20 @@ export const Login = () => {
 
     return <div className={s.login}>
         <Modal>
-            <div className={s.login_wrap}>
-                <button className={s.close} onClick={() => dispatch(setLogin(false))}><GlobalSvgSelector id={"cross"}/>
+            <div className={form.form_wrap}>
+
+                <button className={form.close} onClick={() => dispatch(setLogin(false))}><GlobalSvgSelector id={"cross"}/>
                 </button>
 
                 <h3>Ввійдіть в свій аккаунт</h3>
 
-                <form className={error ? `${s.error}` : ""} onSubmit={handleSubmit(onSubmit)}>
+                <form className={error ? `${form.error}` : `${form.form}`} onSubmit={handleSubmit(onSubmit)}>
                     <Input placeholder={"email"} type={"email"} register={{...register("email", {required: true})}}
                     />
                     <Input placeholder={"пароль"} type={"text"} register={{...register("password", {required: true})}}
                     />
-                    {error && <p className={s.error_text}>Неправильний логін або пароль</p>}
-                    <div className={s.submit}>
+                    {error && <p className={form.error_text}>Неправильний логін або пароль</p>}
+                    <div className={form.submit}>
                         <Input type={"submit"} value={"Підтвердити"}/>
 
                     </div>

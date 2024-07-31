@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./signup.module.scss"
+import form from "../form.module.scss"
 import {Input} from "../../shared/Input/Input";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
@@ -18,19 +19,17 @@ export const Signup = () => {
             dispatch(registerUser({email, password, name, surname, patronymic, birthdate, gender}))
             dispatch(setLogin(true))
             dispatch(setSignup(false))
-
         }
-
     }
 
 
     return <div className={s.signup}>
         <Modal>
-            <div className={s.signup_wrap}>
-                <button className={s.close} onClick={() => dispatch(setSignup(false))}><GlobalSvgSelector id={"cross"}/>
+            <div className={`${form.form_wrap}`}>
+                <button className={form.close} onClick={() => dispatch(setSignup(false))}><GlobalSvgSelector id={"cross"}/>
                 </button>
                 <h3>Зареєструйтесь</h3>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className={form.form} onSubmit={handleSubmit(onSubmit)}>
 
                     <div className={s.field}>
                         <p className={s.asterisk}>*</p>
@@ -59,7 +58,7 @@ export const Signup = () => {
                         <option value="female">Жіноча</option>
                         <option value="male">чоловіча</option>
                     </select>
-                    <div className={s.submit}>
+                    <div className={form.submit}>
                         <Input type={"submit"}/>
                     </div>
                 </form>

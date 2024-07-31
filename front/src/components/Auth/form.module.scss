@@ -1,0 +1,63 @@
+@import "../../variables.module";
+.blue{
+  color: blue;
+}
+.form_wrap{
+  user-select: none;
+  .form {
+    margin: 0 auto;
+
+    input {
+      width: 300px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $light_green;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  h3{
+    user-select: none;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .submit {
+    input {
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: $primary_green;
+      color: $white;
+      font-size: 16px;
+      &:hover{
+        background-color: $light_green;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .close{
+    margin-left: auto;
+    display: block;
+    svg {
+      &:hover{
+        scale: 1.3;
+        cursor: pointer;
+      }
+    }
+  }
+  .error {
+    input {
+
+      border: 1px solid $red;
+      border-radius: 5px;
+    }
+    .error_text{
+      color: $red;
+    }
+  }
+}
