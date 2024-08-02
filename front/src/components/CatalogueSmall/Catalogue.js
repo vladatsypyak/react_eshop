@@ -1,5 +1,5 @@
 import React from "react"
-import s from "../Header/header.module.scss"
+import s from "./catalogue.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalSvgSelector} from "../../assets/GlobalSvgSelector";
 import {fetchCatalogueItems, fetchItems} from "../../redux/slices/itemsSlice";
@@ -23,7 +23,6 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     React.useEffect(() => {
         const handleClickOutside = (event) => {
             if (catalogueRef.current && !event.composedPath().includes(catalogueRef.current) && !event.composedPath().includes(btnRef.current)) {
-                console.log(2)
                 hideCatalogue()
             }
         }
@@ -42,14 +41,18 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
     function onCategoryHover(category) {
         setActiveCategory(category)
         setShowItems(true)
-        dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {name: "sortBy", value: "date"}, {name: "itemsPerPage", value: "12"} ]))
+        dispatch(fetchCatalogueItems([{name: "category", value: category.type}, {
+            name: "sortBy",
+            value: "date"
+        }, {name: "itemsPerPage", value: "12"}]))
 
     }
 
     function onLeave() {
         setShowItems(false)
     }
-    function onIconClick(){
+
+    function onIconClick() {
         dispatch(setCurrentCategory(activeCategory))
         navigate(`/categories/${activeCategory.type}`)
         hideCatalogue(true)
@@ -60,7 +63,8 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
         <div ref={catalogueRef} onMouseLeave={onLeave} className={s.catalogue}>
             <div className={s.catalogue_categories_wrap}>
                 {categories.map((el) => {
-                    return <div onClick={onIconClick} onMouseEnter={() => onCategoryHover(el)} className={s.catalogue_categorie}>
+                    return <div onClick={onIconClick} onMouseEnter={() => onCategoryHover(el)}
+                                className={s.catalogue_category}>
                         <img src={el.iconUrl} alt={el.value}/>
                         <p>{el.value}</p>
                         <GlobalSvgSelector id={"categorie_arrow"}/>
@@ -69,11 +73,9 @@ export const Catalogue = ({hideCatalogue, btnRef}) => {
             </div>
             {showItems &&
                 <div className={s.catalogue_items}>
-                    {items.slice(0,11).map(el=> <CatalogueItem hideCatalogue={hideCatalogue}  item={el}/>)}
+                    {items.slice(0, 11).map(el => <CatalogueItem hideCatalogue={hideCatalogue} item={el}/>)}
                 </div>
             }
         </div>
-
-
     </>
 }
