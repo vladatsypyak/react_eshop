@@ -1,0 +1,168 @@
+[
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b71d"
+    },
+    "value": "Термоси",
+    "imageUrl": "https://cdn03.ciceksepeti.com/cicek/kcm58737239-1/XL/kisiye-ozel-dereceli-termos-kcm58737239-1-708970c7cf934625b8c18898dac41cb1.jpg",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/3687837_adventure_cup_drink_thermo_thermos_icon.png",
+    "type": "thermos",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "brand",
+        "name": "бренд"
+      },
+      {
+        "value": "capacity",
+        "name": "об'єм"
+      },
+      {
+        "value": "producer",
+        "name": "виробник"
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b71a"
+    },
+    "value": "Кава",
+    "imageUrl": "https://www.dropbox.com/s/nsi8o2a6wqmfna8/%D0%BA%D0%B0%D0%B2%D0%B0.jpg?raw=1",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/889379_barista_bean_beans_coffee_espresso_icon.png",
+    "type": "coffee",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "country",
+        "name": "країна"
+      },
+      {
+        "value": "type",
+        "name": "тип кави"
+      },
+      {
+        "value": "roasting",
+        "name": "Обсмажування кави"
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b719"
+    },
+    "value": "Чай",
+    "imageUrl": "https://www.dropbox.com/s/n92omxoln9hf3nb/%D1%87%D0%B0%D0%B9.jpg?raw=1",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/3241112_drawn_drink_green_hand_lifestyle_icon.png",
+    "type": "tea",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "country",
+        "name": "країна"
+      },
+      {
+        "value": "sort",
+        "name": "сорт"
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b71b"
+    },
+    "value": "Посуд",
+    "imageUrl": "https://www.dropbox.com/s/073a3rb1vlnoz0t/dishes.png?raw=1\n\n",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/5853999_chores_dishes_household_plate_saucer_icon.png",
+    "type": "utensil",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "producer",
+        "name": "виробник"
+      },
+      {
+        "value": "type",
+        "name": "Посуд"
+      },
+      {
+        "value": "brand",
+        "name": "Бренд"
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b71c"
+    },
+    "value": "Продукти",
+    "imageUrl": "https://www.dropbox.com/s/png9eu7oavas76g/%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B8.jpg?raw=1\n\n",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/4137957_background_black_cake_concept_flat_icon.png",
+    "type": "products",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "producer",
+        "name": "виробник"
+      },
+      {
+        "value": "type",
+        "name": "Продукт"
+      },
+      {
+        "value": "brand",
+        "name": "Бренд"
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64346dee456a07b673e8b71e"
+    },
+    "value": "Кавомашини",
+    "imageUrl": "https://img.mebelok.com/image/cache/data/Renklod/Delonghi/delonghi_ecam_23460_b_a-280x280.jpg.webp",
+    "iconUrl": "https://vlada-tea-images.s3.eu-north-1.amazonaws.com/categories+icons/7830578_coffee_machine_icon.png",
+    "type": "machines",
+    "filters": [
+      {
+        "value": "price",
+        "name": "ціна"
+      },
+      {
+        "value": "producer",
+        "name": "виробник"
+      },
+      {
+        "value": "type",
+        "name": "Тип кавомашини"
+      },
+      {
+        "value": "brand",
+        "name": "Бренд"
+      },
+      {
+        "value": "pressure",
+        "name": "Тиск"
+      },
+      {
+        "value": "power",
+        "name": "Потужність"
+      }
+    ]
+  }
+]

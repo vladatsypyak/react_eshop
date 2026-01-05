@@ -1,0 +1,27 @@
+/api/cart:
+  post:
+    tags:
+      - cart
+    summary: Add item to cart
+    description: Add item to cart
+    requestBody:
+      description: Optional description in *Markdown*
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              itemId:
+                type: integer
+                description: ID of the item to add to cart.
+                example: 123
+              quantity:
+                type: integer
+                description: number of items to add to cart
+                example: 2
+    responses:
+      200:
+        description: Successfully added to cart
+      401:
+        description: Unauthorized. User is not authenticated.
