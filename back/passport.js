@@ -17,7 +17,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: "/auth/google/callback",
+        callbackURL: "https://react-eshop-1.onrender.com/auth/google/callback",
         scope: ["profile", "email"],
         passReqToCallback: true
     },
