@@ -8,6 +8,7 @@ import {CartPage} from "./pages/Cart/CartPage";
 import {FavouritesPage} from "./pages/Favourites/FavouritesPage";
 import {SearchResultsPage} from "./pages/SearchResultsPage/SearchResultsPage";
 import {UserPage} from "./pages/UserPage/UserPage";
+import {OAuthSuccess} from "./pages/OAuthSuccess/OAuthSuccess";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Profile} from "./components/Profile/Profile";
@@ -23,7 +24,7 @@ import {Login} from "./components/Auth/Login/Login";
 import {apiUrl} from "./config";
 
 console.log(apiUrl)
-console.log(process.env.REACT_APP_API_URL)
+
 function App() {
     const dispatch = useDispatch()
     const showLogin = useSelector(state => state.modal.showLogin)
@@ -38,22 +39,22 @@ function App() {
 
     }, [])
 
-    const getUser1 = async () => {
-        try {
-            const url = `${apiUrl}/auth/login/success`;
-            const { data } = await axios.get(url, { withCredentials: true });
-            console.log(data)
-            sessionStorage.setItem("jwt_token", data.jwt_token)
-            const token = sessionStorage.getItem("jwt_token")
-            dispatch(getUser(token))
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    // const getUser1 = async () => {
+    //     try {
+    //         const url = `${apiUrl}/auth/login/success`;
+    //         const { data } = await axios.get(url, { withCredentials: true });
+    //         console.log(data)
+    //         sessionStorage.setItem("jwt_token", data.jwt_token)
+    //         const token = sessionStorage.getItem("jwt_token")
+    //         dispatch(getUser(token))
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
-    useEffect(() => {
-        getUser1();
-    }, []);
+    // useEffect(() => {
+    //     getUser1();
+    // }, []);
 
     return (
         <div className="App">
@@ -61,6 +62,8 @@ function App() {
                 <main>
                     <Routes>
                         <Route path={"/"} element={<Main/>}/>
+                        <Route path="/oauth-success" element={<OAuthSuccess />} />
+
                         <Route path={"/categories/:category"} element={<Category/>}/>
 
                         <Route path={"searchResultsPage"} element={<SearchResultsPage/>}/>
