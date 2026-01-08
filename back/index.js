@@ -102,8 +102,9 @@ app.use('/auth', authRouter);
 // })
 const start = async () => {
     try {
-        console.log( `listening on ${apiUrl} `);
-        app.listen(process.env.PORT );
+        const port = process.env.PORT || 5000;
+         console.log(`Server listening on port ${port}`)
+        app.listen(port, "0.0.0.0");
 
     } catch (err) {
         console.error(`Error on server startup: ${err.message}`);
