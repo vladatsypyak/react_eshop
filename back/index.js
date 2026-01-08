@@ -15,13 +15,7 @@ const router = require('express').Router();
 
 require('dotenv').config();
 
-
-
-const frontendUrl = process.env.FRONTEND_URL;
-const apiUrl = process.env.API_URL;
-const port = process.env.PORT;
-console.log("port" + port)
-
+console.log(process.env.MONGO_URL)
 mongoose.connect(process.env.MONGO_URL);
 const {usersRouter} = require("./routers/usersRouter");
 const {authRouter} = require("./routers/authRouter");
