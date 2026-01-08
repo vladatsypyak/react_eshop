@@ -1,40 +1,54 @@
 const passport = require("passport");
 const {User}= require("./models/Users")
-const bcrypt = require("bcryptjs");
-
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-let GOOGLE_CLIENT_ID = "671523017249-0j9sjnenlq1eja742s3aiucj2dp12vqm.apps.googleusercontent.com"
-const GOOGLE_CLIENT_SECRET = "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"
 
- passport.serializeUser(async function (user, done) {
-    done(null, user);
-});
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+
+//  passport.serializeUser(async function (user, done) {
+//     done(null, user);
+// });
+// passport.deserializeUser(function (user, done) {
+//     done(null, user);
+// });
 
 passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: "https://react-eshop-1.onrender.com/auth/google/callback",
         scope: ["profile", "email"],
-        passReqToCallback: true
+        // passReqToCallback: true
     },
-    async function (request, accessToken, refreshToken, profile, done) {
+    // async function (request, accessToken, refreshToken, profile, done) {
 
-        // console.log(accessToken)
-        console.log(profile.emails[0].value)
-        const userCheck = await User.findOne({email: profile.emails[0].value})
-        console.log(userCheck)
-        if(!userCheck){
-            const user = new User({
-                email: profile.emails[0].value,
-                googleId: profile.id
-            });
-            user.save()
+    //     let user  = await User.findOne({email: profile.emails[0].value})
+    //     if(!user){
+    //          user = await  User.create({
+    //             email: profile.emails[0].value,
+    //             googleId: profile.id
+    //         });
+    //     }
+    //     console.log(user)
+    //     done(null, user)
+    // }
+  async (accessToken, refreshToken, profile, done) => {
+      try {
+        let user = await User.findOne({
+          email: profile.emails[0].value,
+        });
+
+        if (!user) {
+          user = await User.create({
+            email: profile.emails[0].value,
+            googleId: profile.id,
+          });
         }
-        console.log(profile)
-        done(null, profile)
+
+        return done(null, user);
+      } catch (err) {
+        return done(err, null);
+      }
     }
+
 ));

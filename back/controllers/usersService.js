@@ -29,7 +29,7 @@ const registerUser = async (req, res, next) => {
             res.status(400).json({
                 message: err,
             })
-            console.log(err)
+            console.error(err)
         });
 };
 
@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({email: req.body.email});
     if (user && await bcrypt.compare(String(req.body.password), String(user.password))) {
         const payload = {email: user.email, userId: user._id};
-        const jwtToken = jwt.sign(payload, "secret");
+        const jwtToken = jwt.sign(payload, process.env.JWT_SECRET);
         return res.json({
             message: 'Success',
             jwt_token: jwtToken,
@@ -84,7 +84,7 @@ const loginUser = async (req, res) => {
 function getTokenPayload(req) {
     const { authorization } = req.headers;
     const [, token] = authorization.split(' ');
-    return jwt.verify(token, "secret");
+    return jwt.verify(token, process.env.JWT_SECRET);
 }
 
 const getUserProfile = async (req, res) => {

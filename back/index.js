@@ -22,8 +22,7 @@ const apiUrl = process.env.API_URL;
 const port = process.env.PORT;
 console.log("port" + port)
 
-mongoose.connect('mongodb+srv://vladatsyupyak:Vladochka2002@eshop2.fsgyzpe.mongodb.net/?retryWrites=true&w=majority');
-
+mongoose.connect(process.env.MONGO_URL);
 const {usersRouter} = require("./routers/usersRouter");
 const {authRouter} = require("./routers/authRouter");
 const {categoriesRouter} = require("./routers/categoriesRouter");
@@ -68,29 +67,31 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+// app.use(require('express-session')({ secret: 'keyboard cat',
+//      resave: true, 
+//      saveUninitialized: true }));
 
 app.use(passport.initialize())
-app.use(passport.session())
-app.use(
-    cors({
-        origin: frontendUrl,
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true
-    })
-)
+// app.use(passport.session())
+// app.use(
+//     cors({
+//         origin: frontendUrl,
+//         methods: "GET,POST,PUT,DELETE",
+//         credentials: true
+//     })
+// )
 app.use('/auth', authRouter);
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-default-secret', // Provide your secret here or from an environment variable
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: false,
-        secure: false,
-        sameSite: 'None', // Necessary for cross-site cookies
-    }
-}));
+// app.use(session({
+//     secret: process.env.SESSION_SECRET || 'your-default-secret', // Provide your secret here or from an environment variable
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         httpOnly: false,
+//         secure: false,
+//         sameSite: 'None', // Necessary for cross-site cookies
+//     }
+// }));
 
 // require("./auth")
 // app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));

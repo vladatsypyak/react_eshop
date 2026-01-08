@@ -8,54 +8,70 @@ const jwt = require("jsonwebtoken");
 const frontendUrl = process.env.FRONTEND_URL;
 
 
-router.get("/login/failed", (req, res) => {
-    res.status(401).json({
-        error: true,
-        message: "loginfailure"
-    })
-})
-router.get("/login/success", async (req, res) => {
-    console.log('User from login success:', req.user);
-    console.log('User headers:', req.headers);
+// router.get("/login/failed", (req, res) => {
+//     res.status(401).json({
+//         error: true,
+//         message: "loginfailure"
+//     })
+// })
 
-    if (req.user) {
-        console.log(req.user)
-        // const user = await User.findOne({googleId: req.user.id});
-        const user = await User.findOne({email: req.user.emails[0].value})
+// router.get("/login/success", async (req, res) => {
+//     console.log('User from login success:', req.user);
+//     console.log('User headers:', req.headers);
 
-        if (user) {
-            const payload = {email: user.email, userId: user._id};
-            const jwtToken = jwt.sign(payload, "secret");
-            console.log(user)
-            return res.json({
-                message: 'Success',
-                jwt_token: jwtToken,
-            });
-        }
+//     if (req.user) {
+//         console.log(req.user)
+//         // const user = await User.findOne({googleId: req.user.id});
+//         const user = await User.findOne({email: req.user.emails[0].value})
 
-        res.status(200).json({
-            error: false,
-            message: "Successfully Logged In",
-            user: req.user,
-        });
-    } else {
-        res.status(403).json({ error: true, message: "Not Authorized" });
-    }
-});
+//         if (user) {
+//             const payload = {email: user.email, userId: user._id};
+//             const jwtToken = jwt.sign(payload, "secret");
+//             console.log(user)
+//             return res.json({
+//                 message: 'Success',
+//                 jwt_token: jwtToken,
+//             });
+//         }
+
+//         res.status(200).json({
+//             error: false,
+//             message: "Successfully Logged In",
+//             user: req.user,
+//         });
+//     } else {
+//         res.status(403).json({ error: true, message: "Not Authorized" });
+//     }
+// });
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 router.get("/google/callback",
 
-    passport.authenticate("google",
-        {
-            successRedirect: frontendUrl,
-            failureRedirect: "/login/failed"
-        }
-    ))
-router.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect(frontendUrl);
-});
+    // passport.authenticate("google",
+    //     {
+    //         successRedirect: frontendUrl,
+    //         failureRedirect: "/login/failed"
+    //     })
+     passport.authenticate("google", { session: false }),
+  (req, res) => {
+    const payload = {
+      email: req.user.email,
+      userId: req.user._id,
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
+
+    res.redirect(
+      `${frontendUrl}/oauth-success?token=${token}`
+    );
+  }
+)
+
+
+// router.get("/logout", (req, res) => {
+//     req.logout();
+//     res.redirect(frontendUrl);
+// });
 
 
 module.exports = {
